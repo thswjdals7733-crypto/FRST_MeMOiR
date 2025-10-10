@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Memoir | 시대인재 - 학생 성취 대시보드</title>
+  
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css" />
+  
+  <style>
+    * {
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    }
+    
+    /* 검정/회색/흰색 베이스 + Deep Blue 데이터 강조 */
+    :root {
+      --sdij-primary: #00458C;        /* Deep Blue - 데이터 강조만 */
+      --sdij-black: #000000;          /* 순수 검정 */
+      --sdij-secondary: #1A1A1A;      /* 헤더/푸터 검정 */
+      --sdij-accent: #333333;         /* 어두운 회색 */
+      --sdij-white: #FFFFFF;          /* 순수 흰색 */
+      --sdij-gray-50: #FAFAFA;        /* 아주 연한 회색 배경 */
+      --sdij-gray-100: #F5F5F5;       /* 연한 회색 배경 */
+      --sdij-gray-200: #E5E5E5;       /* 라인/테두리 */
+      --sdij-gray-300: #D4D4D4;
+      --sdij-gray-400: #A3A3A3;
+      --sdij-gray-500: #737373;       /* 중간 회색 */
+      --sdij-gray-600: #525252;
+      --sdij-gray-700: #404040;       /* 부제목 회색 */
+      --sdij-gray-800: #262626;       /* 진한 회색 */
+      --sdij-gray-900: #0A0A0A;       /* 거의 검정 - 주요 텍스트 */
+    }
+    
+    .sdij-gradient {
+      background: linear-gradient(135deg, var(--sdij-black) 0%, var(--sdij-secondary) 100%);
+    }
+    
+    .sdij-card {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid var(--sdij-gray-200);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+    
+    .sdij-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-color: var(--sdij-gray-300);
+    }
+    
+    .sdij-header {
+      background: white;
+      border-bottom: 1px solid var(--sdij-gray-200);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sdij-nav-link {
+      color: var(--sdij-gray-700);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .sdij-nav-link:hover {
+      color: var(--sdij-primary);
+    }
+    
+    .sdij-nav-link.active {
+      color: var(--sdij-primary);
+    }
+    
+    .sdij-hero {
+      background: linear-gradient(135deg, var(--sdij-black) 0%, var(--sdij-accent) 100%);
+      position: relative;
+    }
+    
+    .sdij-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .sdij-section {
+      background: var(--sdij-white);
+    }
+    
+    .sdij-section-alt {
+      background: var(--sdij-gray-50);
+    }
+    
+    .sdij-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sdij-icon.primary { background: var(--sdij-gray-800); color: white; }
+    .sdij-icon.secondary { background: var(--sdij-gray-700); color: white; }
+    .sdij-icon.accent { background: var(--sdij-gray-600); color: white; }
+    .sdij-icon.success { background: var(--sdij-gray-500); color: white; }
+    .sdij-icon.warning { background: var(--sdij-gray-400); color: white; }
+    .sdij-icon.info { background: var(--sdij-gray-300); color: var(--sdij-gray-800); }
+    
+    .sdij-title {
+      color: var(--sdij-gray-900);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .sdij-subtitle {
+      color: var(--sdij-gray-600);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    
+    .sdij-value {
+      font-weight: 700;
+      font-size: 1.875rem;
+      margin-top: 0.5rem;
+    }
+    
+    /* 통일된 메트릭 크기 */
+    .sdij-metric-xl {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--sdij-primary);
+      line-height: 1;
+    }
+    
+    .sdij-metric-lg {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--sdij-primary);
+      line-height: 1.2;
+    }
+    
+    .sdij-metric-md {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--sdij-primary);
+      line-height: 1.2;
+    }
+    
+    .sdij-metric-unit {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--sdij-gray-800);
+      margin-left: 0.5rem;
+    }
+    
+    .scroll-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3rem;
+      height: 3rem;
+      background: var(--sdij-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+    }
+    
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .scroll-to-top:hover {
+      transform: scale(1.1);
+      background: var(--sdij-secondary);
+      box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4);
+    }
+    
+    .sdij-footer {
+      background: var(--sdij-gray-800);
+      border-top: 1px solid var(--sdij-gray-700);
+    }
+    
+    .sdij-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      background: var(--sdij-gray-100);
+      color: var(--sdij-gray-700);
+      border: 1px solid var(--sdij-gray-200);
+    }
+    
+    .sdij-badge.primary {
+      background: var(--sdij-black);
+      color: white;
+      border-color: var(--sdij-black);
+    }
+    
+    .sdij-badge.secondary {
+      background: var(--sdij-gray-800);
+      color: white;
+      border-color: var(--sdij-gray-800);
+    }
+    
+    /* Timeline Section Styles */
+    .timeline-container {
+      position: relative;
+    }
+    
+    .timeline-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .timeline-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .timeline-connector {
+      position: relative;
+    }
+    
+    .timeline-connector::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--sdij-gray-300), var(--sdij-gray-500), var(--sdij-gray-300));
+      transform: translateY(-50%);
+    }
+    
+    .timeline-dot {
+      position: relative;
+      z-index: 10;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .timeline-connector {
+        display: none;
+      }
+      
+      .timeline-card {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Fixed Header -->
+  <header class="fixed top-0 w-full z-50 sdij-header">
+    <nav class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 sdij-gradient rounded-xl flex items-center justify-center">
+            <i class="fas fa-graduation-cap text-white text-xl"></i>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gray-800">Memoir</h1>
+            <p class="text-sm text-gray-500">시대인재 학생 대시보드</p>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#basic" class="sdij-nav-link">기본 정보</a>
+          <a href="#students" class="sdij-nav-link">학생 현황</a>
+          <a href="#life" class="sdij-nav-link">생활 관리</a>
+          <a href="#study" class="sdij-nav-link">학습 현황</a>
+          <a href="#subjects" class="sdij-nav-link">과목별 성취</a>
+        </div>
+        <div class="md:hidden">
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="py-20 sdij-hero relative">
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-5xl mx-auto text-center">
+          <div data-aos="fade-up">
+            <div class="mb-6">
+              <span class="sdij-badge primary text-sm px-4 py-2">학생 성취 대시보드</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6" id="name">학생 이름</h1>
+            <p class="text-xl text-white/90 mb-8">시대인재에서의 학습 현황과 성취를 한눈에 확인하세요</p>
+            <div class="flex flex-wrap justify-center gap-4 text-white/80">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-building text-sm"></i>
+                <span class="text-sm">캠퍼스: <span id="campus">-</span></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-users text-sm"></i>
+                <span class="text-sm">반: <span id="className">-</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memoir Message Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="bg-white p-12 rounded-lg shadow-sm border border-gray-100" data-aos="fade-up">
+            <div class="text-center mb-8">
+              <h2 class="text-2xl font-bold text-gray-800 mb-4">부엉이 여러분, 수고 많으셨습니다.</h2>
+            </div>
+            
+            <div class="text-gray-700 leading-relaxed space-y-4 text-left">
+              <p class="text-lg">
+                학생님이 달려온 시간을 회고하는 <span class="font-bold text-gray-800">[Memoir]</span>
+              </p>
+              
+              <p class="text-base text-gray-600 italic">
+                📝 'memoir'는 유명인의 회고록이라는 뜻을 지녔습니다.
+              </p>
+              
+              <p class="text-base leading-lax">
+                시대인재는 여러분 하나하나를 존중하고, 여러분이 시대인재와 함께한 시간의 가치를 간과하지 않기에 그동안 달려온 시간을 회고해보고자 했습니다.
+              </p>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-100">
+              <div class="text-center">
+                <button class="px-8 py-3 rounded-lg font-semibold text-white transition-all hover:opacity-90" style="background-color: var(--sdij-black);">
+                  <i class="fas fa-heart mr-2"></i>
+                  시대인재와 함께한 소중한 시간
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="timeline-container flex items-center justify-center" data-aos="fade-up">
+            <!-- Start Card -->
+            <div class="timeline-card bg-white rounded-lg shadow-sm border border-gray-200 p-6 min-w-[200px] text-center">
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">시대인재 N 처음 만난 날</h3>
+              <p class="text-2xl font-bold text-gray-900" id="startDate">2/1X일</p>
+            </div>
+            
+            <!-- Connector Line -->
+            <div class="timeline-connector flex-1 mx-8 relative">
+              <div class="timeline-dot absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-50 px-4">
+                <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+              </div>
+            </div>
+            
+            <!-- End Card -->
+            <div class="timeline-card bg-white rounded-lg shadow-sm border border-gray-200 p-6 min-w-[200px] text-center">
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">The End</h3>
+              <p class="text-2xl font-bold text-gray-900" id="endDate">11/13</p>
+            </div>
+          </div>
+          
+          <!-- Total Days Metric -->
+          <div class="text-center mt-8" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-xl text-gray-700">
+              총 <span class="font-bold" style="color: var(--sdij-primary);" id="totalDays">XXX</span>일 함께했습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Text Section -->
+    <section class="py-8 px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center">
+          <p class="text-lg text-gray-700">
+            <span class="font-bold" style="color: var(--sdij-primary);" id="summaryName">-</span>님은 <span class="font-bold" style="color: var(--sdij-primary);" id="summaryTotalStudents">-</span>명 중, <span class="font-bold" style="color: var(--sdij-primary);" id="summaryCampusStudents">-</span>명의 학생과 함께 <span class="font-bold" style="color: var(--sdij-primary);" id="summaryCampus">-</span>에서, <span class="font-bold" style="color: var(--sdij-primary);" id="summaryClassName">-</span> <span class="font-bold" style="color: var(--sdij-primary);" id="summaryClassStudents">-</span>명과 함께 1년간 치열하게 달려왔습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Total Hours Block -->
+    <section class="py-16 sdij-section">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">함께한 시간</h2>
+            <p class="sdij-subtitle">시대인재와 함께 달려온 소중한 시간을 확인하세요</p>
+          </div>
+          
+          <!-- Main Stats Card -->
+          <div class="sdij-card p-12 mb-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <!-- Metric (Left) -->
+              <div class="text-center md:text-left">
+                <div class="flex items-baseline justify-center md:justify-start gap-3 mb-4">
+                  <div class="sdij-metric-xl" id="totalHours">0</div>
+                  <div class="sdij-metric-unit">시간</div>
+                </div>
+                <p class="sdij-subtitle text-lg">총 공부시간</p>
+              </div>
+              
+              <!-- Illustration (Right) -->
+              <div class="text-center">
+                <div class="text-8xl mb-4">🦉📝</div>
+                <p class="sdij-subtitle">함께 성장한 시간들</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Supporting Text Card -->
+          <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="sdij-card p-8">
+              <p class="text-lg" style="color: var(--sdij-gray-700);">
+                총 <span class="font-bold" style="color: var(--sdij-gray-900);" id="cohortStudents">-</span>명의 학생과 함께 
+                <span class="font-bold sdij-metric-md" id="cohortHours">-</span>시간 동안 
+                강의를 들으며 달려왔습니다
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meal Section -->
+    <section class="py-16 sdij-section-alt">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <!-- Section Title -->
+          <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">시대인재가 따뜻한 한 끼를 주었길 바라요</h2>
+          </div>
+          
+          <!-- 2x2 Grid Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Top Left: Icon & Label -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-center">
+                <div class="sdij-icon primary mx-auto mb-4">
+                  <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="sdij-title text-xl">총 식사 일수</h3>
+                <p class="sdij-subtitle mt-2">시대인재와 함께한 식사</p>
+              </div>
+            </div>
+            
+            <!-- Top Right: Metric & Illustration -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
+              <div class="grid grid-cols-2 gap-4 items-center">
+                <div class="text-center">
+                  <div class="flex items-baseline justify-center gap-2">
+                    <div class="sdij-metric-lg" id="totalMeals">0</div>
+                    <div class="sdij-metric-unit">끼</div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div class="text-7xl">🦉🍴</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Bottom Left: Image Placeholder -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
+              <div class="flex items-center justify-center h-full">
+                <div class="text-center">
+                  <div class="text-6xl mb-4">📸</div>
+                  <p class="sdij-subtitle">최애 메뉴 사진</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Bottom Right: Label & Favorite Meal -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="400">
+              <div class="text-center">
+                <h3 class="sdij-title text-xl mb-4">최애 메뉴</h3>
+                <div class="sdij-metric-md mb-2" id="favMeal">-</div>
+                <p class="sdij-subtitle">가장 인기있던 메뉴</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Explanatory Text -->
+          <div class="space-y-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="sdij-card p-8">
+              <p class="text-lg text-center" style="color: var(--sdij-gray-700);">
+                시대인재와 함께한 식사 일 수 동안, 총 <span class="font-bold" style="color: var(--sdij-gray-900);" id="mealCohortStudents">-</span>명의 학생과 급식 먹은 횟수 
+                <span class="font-bold" style="color: var(--sdij-primary);" id="mealTotalMeals">-</span>끼를 함께했습니다.
+              </p>
+            </div>
+            
+            <div class="sdij-card p-8">
+              <p class="text-lg text-center" style="color: var(--sdij-gray-700);">
+                • 그 중 <span class="font-bold" style="color: var(--sdij-primary);" id="mealCampus">-</span>이 가장 좋아했던 음식은 
+                <span class="font-bold" style="color: var(--sdij-primary);" id="mealFavMeal">-</span> 이었습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Basic Info Section -->
+    <section id="basic" class="py-16 sdij-section-alt">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">기본 정보</h2>
+            <p class="sdij-subtitle">학생의 기본 정보와 소속 정보를 확인할 수 있습니다</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <!-- Campus Card -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-center">
+                <div class="sdij-icon primary mx-auto">
+                  <i class="fas fa-building"></i>
+                </div>
+                <h3 class="sdij-title">캠퍼스</h3>
+                <p class="sdij-value text-gray-800" id="campus">-</p>
+              </div>
+            </div>
+
+            <!-- Class Card -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
+              <div class="text-center">
+                <div class="sdij-icon secondary mx-auto">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h3 class="sdij-title">반명</h3>
+                <p class="sdij-value text-gray-800" id="className">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Students Section -->
+    <section id="students" class="py-16 sdij-section">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">학생 현황</h2>
+            <p class="sdij-subtitle">전체, 캠퍼스, 반별 학생 수 통계를 확인할 수 있습니다</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Total Students Card -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-center">
+                <div class="sdij-icon primary mx-auto">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="sdij-title">총 학생 수</h3>
+                <p class="sdij-value text-gray-800" id="totalStudents">-</p>
+              </div>
+            </div>
+
+            <!-- Campus Students Card -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
+              <div class="text-center">
+                <div class="sdij-icon secondary mx-auto">
+                  <i class="fas fa-school"></i>
+                </div>
+                <h3 class="sdij-title">캠퍼스 학생 수</h3>
+                <p class="sdij-value text-gray-800" id="campusStudents">-</p>
+              </div>
+            </div>
+
+            <!-- Class Students Card -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
+              <div class="text-center">
+                <div class="sdij-icon accent mx-auto">
+                  <i class="fas fa-user-friends"></i>
+                </div>
+                <h3 class="sdij-title">반 학생 수</h3>
+                <p class="sdij-value text-gray-800" id="classStudents">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Life Management Section -->
+    <section id="life" class="py-16 sdij-section-alt">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">생활 관리</h2>
+            <p class="sdij-subtitle">일상 생활과 식사 관련 통계를 확인할 수 있습니다</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Days Card -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-center">
+                <div class="sdij-icon accent mx-auto">
+                  <i class="fas fa-calendar-days"></i>
+                </div>
+                <h3 class="sdij-title">총 일수</h3>
+                <p class="sdij-value text-gray-800" id="days">-</p>
+              </div>
+            </div>
+
+            <!-- Meals Card -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
+              <div class="text-center">
+                <div class="sdij-icon success mx-auto">
+                  <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="sdij-title">총 끼니</h3>
+                <p class="sdij-value text-gray-800" id="meals">-</p>
+              </div>
+            </div>
+
+            <!-- Menu Card -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
+              <div class="text-center">
+                <div class="sdij-icon warning mx-auto">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <h3 class="sdij-title">인기 메뉴</h3>
+                <p class="sdij-value text-gray-800" id="menu">-</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Time Management -->
+          <div class="text-center mb-8" data-aos="fade-up">
+            <h3 class="text-2xl font-bold sdij-title mb-8">시간 관리</h3>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Total Study Time -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-center">
+                <div class="sdij-icon primary mx-auto">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="sdij-title">총 공부 시간</h3>
+                <p class="sdij-value text-gray-800" id="time">-</p>
+              </div>
+            </div>
+
+            <!-- Self Study Time -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
+              <div class="text-center">
+                <div class="sdij-icon secondary mx-auto">
+                  <i class="fas fa-book-open"></i>
+                </div>
+                <h3 class="sdij-title">자습 시간</h3>
+                <p class="sdij-value text-gray-800" id="self">-</p>
+              </div>
+            </div>
+
+            <!-- Class Time -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
+              <div class="text-center">
+                <div class="sdij-icon info mx-auto">
+                  <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3 class="sdij-title">수업 시간</h3>
+                <p class="sdij-value text-gray-800" id="classTime">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Study Section -->
+    <section id="study" class="py-16 sdij-section">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">학습 현황</h2>
+            <p class="sdij-subtitle">질문, 출석, 집중도 관련 통계를 확인할 수 있습니다</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Total Questions -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-center">
+                <div class="sdij-icon warning mx-auto">
+                  <i class="fas fa-question-circle"></i>
+                </div>
+                <h3 class="sdij-title">총 질문 수</h3>
+                <p class="sdij-value text-gray-800" id="totalAsk">-</p>
+              </div>
+            </div>
+
+            <!-- Personal Questions -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
+              <div class="text-center">
+                <div class="sdij-icon primary mx-auto">
+                  <i class="fas fa-user-question"></i>
+                </div>
+                <h3 class="sdij-title">개인 질문 수</h3>
+                <p class="sdij-value text-gray-800" id="personalAsk">-</p>
+              </div>
+            </div>
+
+            <!-- Focus Level -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
+              <div class="text-center">
+                <div class="sdij-icon success mx-auto">
+                  <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 class="sdij-title">집중도</h3>
+                <p class="sdij-value text-gray-800" id="focus">-</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily Schedule -->
+          <div class="text-center mb-8" data-aos="fade-up">
+            <h3 class="text-2xl font-bold sdij-title mb-8">일일 스케줄</h3>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Start Time -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-center">
+                <div class="sdij-icon info mx-auto">
+                  <i class="fas fa-sun"></i>
+                </div>
+                <h3 class="sdij-title">등원 시각</h3>
+                <p class="sdij-value text-gray-800" id="start">-</p>
+              </div>
+            </div>
+
+            <!-- End Time -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
+              <div class="text-center">
+                <div class="sdij-icon secondary mx-auto">
+                  <i class="fas fa-moon"></i>
+                </div>
+                <h3 class="sdij-title">하원 시각</h3>
+                <p class="sdij-value text-gray-800" id="end">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section id="subjects" class="py-16 sdij-section-alt">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">과목별 성취</h2>
+            <p class="sdij-subtitle">각 과목의 모의고사 성취도를 확인할 수 있습니다</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Korean -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-center">
+                <div class="sdij-icon primary mx-auto">
+                  <i class="fas fa-book"></i>
+                </div>
+                <h3 class="sdij-title">국어</h3>
+                <p class="sdij-value text-gray-800">
+                  <span id="korSimul">-</span>/<span id="korTotal">-</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Math -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
+              <div class="text-center">
+                <div class="sdij-icon secondary mx-auto">
+                  <i class="fas fa-calculator"></i>
+                </div>
+                <h3 class="sdij-title">수학</h3>
+                <p class="sdij-value text-gray-800">
+                  <span id="mathSimul">-</span>/<span id="mathTotal">-</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- English -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
+              <div class="text-center">
+                <div class="sdij-icon success mx-auto">
+                  <i class="fas fa-language"></i>
+                </div>
+                <h3 class="sdij-title">영어</h3>
+                <p class="sdij-value text-gray-800">
+                  <span id="engSimul">-</span>/<span id="engTotal">-</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Biology -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="400">
+              <div class="text-center">
+                <div class="sdij-icon accent mx-auto">
+                  <i class="fas fa-dna"></i>
+                </div>
+                <h3 class="sdij-title">생명</h3>
+                <p class="sdij-value text-gray-800">
+                  <span id="bioSimul">-</span>/<span id="bioTotal">-</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Geography -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="500">
+              <div class="text-center">
+                <div class="sdij-icon info mx-auto">
+                  <i class="fas fa-globe"></i>
+                </div>
+                <h3 class="sdij-title">지구</h3>
+                <p class="sdij-value text-gray-800">
+                  <span id="geoSimul">-</span>/<span id="geoTotal">-</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Total Questions -->
+            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="600">
+              <div class="text-center">
+                <div class="sdij-icon warning mx-auto">
+                  <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3 class="sdij-title">총 문제 수</h3>
+                <p class="sdij-value text-gray-800" id="totalQ">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Footer -->
+  <footer class="sdij-footer text-white py-8">
+    <div class="container mx-auto px-6 text-center">
+      <div class="mb-4">
+        <div class="w-12 h-12 sdij-gradient rounded-xl flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-graduation-cap text-white text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2">Memoir</h3>
+        <p class="text-gray-400">시대인재 학생 성취 대시보드</p>
+      </div>
+      <div class="border-t border-gray-700 pt-4">
+        <p class="text-gray-400 text-sm">© 2024 시대인재. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+
+    // Scroll to top functionality
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Show/hide scroll to top button
+    window.addEventListener('scroll', function() {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Glide Template Column 쿼리스트링 읽기 로직 (기존 코드 유지)
+    const params = new URLSearchParams(location.search);
+    const get = (k,d='') => {
+      const value = params.get(k) || d;
+      // 디버깅을 위한 로그
+      console.log(`Parameter ${k}:`, value);
+      // JSON 형태의 데이터를 파싱하여 실제 값 추출
+      try {
+        if (typeof value === 'string' && value.startsWith('{') && value.endsWith('}')) {
+          const parsed = JSON.parse(value);
+          // 객체에서 첫 번째 값을 추출 (예: {"캠퍼스_학생수":1500} -> 1500)
+          return Object.values(parsed)[0] || value;
+        }
+      } catch (e) {
+        // JSON 파싱 실패시 원본 값 반환
+      }
+      return value;
+    };
+    const set = (id,key,suffix='') => {
+      const el=document.getElementById(id);
+      const value = get(key) + suffix;
+      console.log(`Setting ${id}:`, value, 'Element found:', !!el);
+      if(el) el.textContent = value;
+    };
+    set('name','name');
+    set('campus','campus');
+    set('className','class');
+    // 캠퍼스와 반명은 이미 위에서 바인딩됨
+    set('totalStudents','totalStudents','명');
+    set('campusStudents','campusStudents','명');
+    set('classStudents','classStudents','명');
+    set('days','days','일');
+    set('meals','meals','끼니');
+    set('menu','menu');
+    set('time','time','시간');
+    set('self','self','시간');
+    set('classTime','classTime','시간');
+    set('totalAsk','totalAsk','개');
+    set('personalAsk','personalAsk','개');
+    set('start','start');
+    set('end','end');
+    set('focus','focus');
+    set('korSimul','korSimul'); set('korTotal','korTotal');
+    set('mathSimul','mathSimul'); set('mathTotal','mathTotal');
+    set('engSimul','engSimul'); set('engTotal','engTotal');
+    set('bioSimul','bioSimul'); set('bioTotal','bioTotal');
+    set('geoSimul','geoSimul'); set('geoTotal','geoTotal');
+    set('totalQ','totalQ','문제');
+    
+    // Timeline Section Data
+    set('startDate','startDate');
+    set('endDate','endDate');
+    // totalDays는 days 데이터에서 숫자만 추출하여 사용
+    const daysValue = get('days');
+    const daysNumber = daysValue.replace('일', '');
+    const totalDaysEl = document.getElementById('totalDays');
+    if(totalDaysEl) totalDaysEl.textContent = daysNumber;
+    
+    // Additional Text Section (Summary) Data
+    set('summaryName','name');
+    set('summaryTotalStudents','totalStudents');
+    set('summaryCampusStudents','campusStudents');
+    set('summaryCampus','campus');
+    set('summaryClassName','class');
+    set('summaryClassStudents','classStudents');
+    
+    // Total Hours Block Data
+    set('totalHours','time'); // 총 공부시간
+    set('cohortStudents','totalStudents'); // 코호트 학생 수
+    // 코호트 총 시간 계산 (학생 수 * 800)
+    const cohortHoursEl = document.getElementById('cohortHours');
+    const totalStudentsValue = parseInt(get('totalStudents') || '0');
+    if(cohortHoursEl) cohortHoursEl.textContent = (totalStudentsValue * 800).toLocaleString();
+    
+    // Meal Section Data
+    set('totalMeals','meals'); // 총 끼니 수
+    set('favMeal','menu'); // 최애 메뉴
+    set('mealCohortStudents','totalStudents'); // 식사 섹션 학생 수
+    set('mealTotalMeals','meals'); // 식사 섹션 총 끼니
+    set('mealCampus','campus'); // 식사 섹션 캠퍼스
+    set('mealFavMeal','menu'); // 식사 섹션 최애 메뉴
+  </script>
+</body>
+</html>
