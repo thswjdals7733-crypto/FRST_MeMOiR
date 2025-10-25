@@ -22,15 +22,6 @@
     body {
       background-color: #FFFFFF;
       color: #1F2937;
-      min-width: 1200px;
-      overflow-x: auto;
-    }
-    
-    @media (max-width: 768px) {
-      body {
-        min-width: 1200px;
-        overflow-x: scroll;
-      }
     }
     
     .card {
@@ -215,6 +206,72 @@
       max-width: 300px;
       height: auto;
       border-radius: 0.5rem;
+    }
+    
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+      .intro-text {
+        font-size: 1.125rem;
+      }
+      
+      .intro-text p {
+        font-size: 1rem;
+      }
+      
+      .timeline-card {
+        padding: 1rem;
+      }
+      
+      .timeline-card p {
+        font-size: 0.875rem;
+      }
+      
+      .timeline-metric {
+        font-size: 1rem;
+      }
+      
+      .check-in-out-box {
+        padding: 1.5rem;
+        min-height: 160px;
+      }
+      
+      .time-value {
+        font-size: 1.25rem;
+      }
+      
+      .time-label {
+        font-size: 0.75rem;
+      }
+      
+      .sun-icon, .moon-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      
+      .hours-title {
+        font-size: 1rem;
+      }
+      
+      .hours-number {
+        font-size: 3rem;
+      }
+      
+      .hours-text {
+        font-size: 1.5rem;
+      }
+      
+      .classroom-image {
+        height: 200px;
+      }
+      
+      .hours-header {
+        padding: 1.5rem;
+      }
+      
+      .hours-card {
+        padding: 0;
+      }
     }
   </style>
 </head>
