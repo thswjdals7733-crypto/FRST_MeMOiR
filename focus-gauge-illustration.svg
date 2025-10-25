@@ -1,0 +1,88 @@
+<svg width="400" height="450" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for the gauge -->
+    <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="450" fill="#FFFEF7"/>
+  
+  <!-- Title -->
+  <text x="200" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#002B5C">
+    평균 공부 몰입도
+  </text>
+  
+  <!-- Gauge Background (Gray Arc) -->
+  <path d="M 80 250 A 120 120 0 0 1 320 250" 
+        fill="none" 
+        stroke="#E5E7EB" 
+        stroke-width="24" 
+        stroke-linecap="round"/>
+  
+  <!-- Gauge Progress (Gradient Arc) - This will show 75% -->
+  <path d="M 80 250 A 120 120 0 0 1 290 165" 
+        fill="none" 
+        stroke="url(#gaugeGradient)" 
+        stroke-width="24" 
+        stroke-linecap="round"
+        id="gaugeProgress"/>
+  
+  <!-- Center Circle -->
+  <circle cx="200" cy="250" r="90" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Score Display -->
+  <text x="200" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="700" fill="#002B5C">
+    <tspan id="avgFocusScore">75</tspan>
+  </text>
+  <text x="200" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#6B7280">
+    / 100
+  </text>
+  
+  <!-- Min Label -->
+  <text x="60" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#6B7280">
+    <tspan id="minFocusScore">0</tspan>
+  </text>
+  
+  <!-- Max Label -->
+  <text x="340" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#6B7280">
+    <tspan id="maxFocusScore">100</tspan>
+  </text>
+  
+  <!-- Pointer/Needle -->
+  <g id="gaugePointer" transform="rotate(135 200 250)">
+    <line x1="200" y1="250" x2="200" y2="170" stroke="#002B5C" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="200" cy="250" r="8" fill="#002B5C"/>
+    <circle cx="200" cy="250" r="4" fill="#FFFFFF"/>
+  </g>
+  
+  <!-- Decorative Score Indicators -->
+  <circle cx="80" cy="250" r="4" fill="#E5E7EB"/>
+  <circle cx="140" cy="160" r="3" fill="#E5E7EB"/>
+  <circle cx="200" cy="130" r="3" fill="#E5E7EB"/>
+  <circle cx="260" cy="160" r="3" fill="#E5E7EB"/>
+  <circle cx="320" cy="250" r="4" fill="#E5E7EB"/>
+  
+  <!-- Caption Text -->
+  <text x="200" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#9CA3AF">
+    (동적 데이터)
+  </text>
+  
+  <text x="200" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#374151" style="line-height: 1.6;">
+    <tspan x="200" dy="0">그동안, 공부 몰입도는 평균적으로</tspan>
+    <tspan x="200" dy="20"><tspan font-weight="700" fill="#EF4444"><tspan id="captionMinFocus">0</tspan></tspan> ~ <tspan font-weight="700" fill="#10B981"><tspan id="captionMaxFocus">100</tspan></tspan> 중 <tspan font-weight="700" fill="#002B5C"><tspan id="captionAvgFocus">75</tspan></tspan>로</tspan>
+    <tspan x="200" dy="20">공부를 하며 일 년을 달려왔습니다.</tspan>
+  </text>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="50" r="3" fill="#002B5C" opacity="0.3"/>
+  <circle cx="350" cy="60" r="2.5" fill="#10B981" opacity="0.3"/>
+  <circle cx="60" cy="420" r="2" fill="#F59E0B" opacity="0.3"/>
+  <circle cx="340" cy="430" r="3" fill="#002B5C" opacity="0.3"/>
+  
+  <!-- Shadow under gauge -->
+  <ellipse cx="200" cy="260" rx="100" ry="10" fill="#000000" opacity="0.05"/>
+</svg>

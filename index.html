@@ -58,12 +58,57 @@
       margin-right: 0.5rem;
     }
     
+    .intro-text-new {
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .intro-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 79pt;
+      font-weight: 700;
+      font-style: italic;
+      color: #022669;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+    
+    .intro-description {
+      font-family: 'Inter', sans-serif;
+      font-size: 28pt;
+      font-weight: 700;
+      color: #000000;
+      line-height: 1.6;
+      text-align: center;
+    }
+    
+    .intro-data-period {
+      font-family: 'Inter', sans-serif;
+      font-size: 20pt;
+      font-weight: 500;
+      color: #6B7280;
+      text-align: center;
+    }
+    
+    /* Intro Background */
+    .intro-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      opacity: 0.95;
+    }
+    
     .timeline-card {
       background: #FFFFFF;
       border-radius: 0.75rem;
-      padding: 1.5rem;
+      padding: 2.4rem;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
       text-align: center;
+      transform: scale(1.2);
     }
     
     .timeline-connector {
@@ -139,6 +184,65 @@
     .time-label {
       font-size: 0.875rem;
       color: #6B7280;
+    }
+    
+    /* Check-in Section Background */
+    .checkin-section-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .checkin-section-background {
+      position: absolute;
+      top: -40%;
+      left: 0;
+      width: 100%;
+      height: 180%;
+      object-fit: cover;
+      object-position: center top;
+      z-index: 0;
+    }
+    
+    .checkin-section-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.6) 70%, rgba(255, 255, 255, 0.2) 100%);
+      z-index: 1;
+    }
+    
+    .checkin-content-overlay {
+      flex: 1;
+      padding: 4rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .checkin-title-overlay {
+      font-size: 1.365rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #1F2937;
+      margin-bottom: 1.5rem;
+    }
+    
+    .checkin-number-overlay {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .checkin-number-text {
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
     }
     
     .hours-card {
@@ -233,11 +337,11 @@
     .hours-content {
       position: relative;
       z-index: 3;
-      padding: 4rem 0;
+      padding: 8rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 2rem;
+      gap: 1.26rem;
     }
     
     .hours-title-overlay {
@@ -247,6 +351,7 @@
       color: #1F2937;
       text-align: left;
       flex: 1;
+      padding-left: 13%;
     }
     
     .hours-number-overlay {
@@ -255,6 +360,7 @@
       justify-content: flex-end;
       gap: 0.5rem;
       flex: 1;
+      padding-right: 13%;
     }
     
     .hours-number-text {
@@ -300,12 +406,14 @@
       z-index: 2;
     }
     
-    .library-card-with-bg {
+    /* Library Section Wrapper */
+    .library-section-wrapper {
       position: relative;
-      overflow: visible;
+      overflow: hidden;
     }
-    
-    .library-background {
+
+    /* Library Section Background Image */
+    .library-section-background {
       position: absolute;
       top: 0;
       left: 0;
@@ -313,44 +421,59 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      border-radius: 1rem;
       z-index: 0;
     }
-    
-    .library-overlay {
+
+    /* Library Section Background Overlay */
+    .library-section-background-overlay {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(to bottom, rgba(240, 242, 245, 0.98) 0%, rgba(240, 242, 245, 0.7) 70%, rgba(240, 242, 245, 0.3) 100%);
-      border-radius: 1rem;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
       z-index: 1;
     }
-    
-    .library-header {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.1375rem;
-      font-weight: 700;
-      line-height: 1.4;
-      text-align: right;
-      color: #1F2937;
+
+    /* Library Content Overlay (for text) */
+    .library-content-overlay {
+      position: relative;
       z-index: 3;
-      pointer-events: none;
+      flex: 1;
+      padding: 4rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
     
-    .library-time {
-      position: absolute;
-      top: 5.4rem;
-      right: 1rem;
+    .library-title-overlay {
+      font-size: 1.365rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #1F2937;
+      margin-bottom: 1.5rem;
+    }
+    
+    .library-number-overlay {
       display: flex;
       align-items: baseline;
+      justify-content: center;
       gap: 0.5rem;
-      justify-content: flex-end;
-      z-index: 3;
-      pointer-events: none;
+    }
+    
+    .library-number-text {
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .library-text-overlay {
+      font-size: 1.8rem;
+      color: #1F2937;
+      font-weight: 500;
     }
     
     .library-number {
@@ -430,8 +553,1259 @@
       z-index: 0;
     }
     
+    /* Meal Section Wrapper */
+    .meal-section-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Meal Section Background Image */
+    .meal-section-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    /* Meal Section Background Overlay */
+    .meal-section-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    /* Meal Content Overlay (for text) */
+    .meal-content-overlay {
+      position: relative;
+      z-index: 3;
+      flex: 1;
+      padding: 4rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .meal-title-overlay {
+      font-size: 1.365rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #1F2937;
+      margin-bottom: 1.5rem;
+    }
+    
+    .meal-number-overlay {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .meal-number-text {
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .meal-text-overlay {
+      font-size: 1.8rem;
+      color: #1F2937;
+      font-weight: 500;
+    }
+    
+    /* Hall Cards Carousel */
+    .hall-cards-wrapper {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      width: 100%;
+      padding: 0 1rem;
+    }
+    
+    .hall-cards-grid {
+      display: flex;
+      gap: 1rem;
+      animation: scrollCards 14s linear infinite;
+      will-change: transform;
+      width: fit-content;
+    }
+    
+    .hall-cards-grid.paused {
+      animation-play-state: paused;
+    }
+    
+    @keyframes scrollCards {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-9 * 14.28% - 0.86rem));
+      }
+    }
+    
+    .hall-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-height: 200px;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s ease;
+      box-sizing: border-box;
+      flex: 0 0 calc(100% / 7 - 0.86rem);
+      min-width: calc(100% / 7 - 0.86rem);
+    }
+    
+    .hall-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hall-card-header {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1F2937;
+      text-align: center;
+    }
+    
+    .hall-card-subheader {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #6B7280;
+      text-align: center;
+    }
+    
+    .hall-card-main {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111827;
+      text-align: center;
+      line-height: 1.2;
+      word-break: keep-all;
+      margin: 0.5rem 0;
+    }
+    
+    .hall-card-rating {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #6B7280;
+      text-align: center;
+    }
+    
+    /* Content Section */
+    .content-card {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 0;
+    }
+    
+    .content-text {
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: #000000;
+      text-align: left;
+      margin-left: -17%;
+      flex: 0 0 50%;
+      letter-spacing: -0.01em;
+    }
+    
+    .content-text span {
+      white-space: nowrap;
+    }
+    
+    .content-text br {
+      display: block;
+      content: "";
+      margin-top: 0.5em;
+    }
+    
+    .content-number {
+      flex: 0 0 40%;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      margin-right: -17%;
+      gap: 0.5rem;
+    }
+    
+    .content-number-value {
+      font-size: clamp(64px, 10vw, 120px);
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .content-number-unit {
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 700;
+      color: #000000;
+      line-height: 1;
+      margin-left: 0.5rem;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    
+    /* Personal Data Section */
+    .personal-data-card {
+      position: relative;
+      overflow: hidden;
+      background: #F0F2F5 !important;
+      min-height: 320px !important;
+    }
+    
+    .personal-data-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.2;
+      z-index: 0;
+    }
+    
+    .personal-data-card:first-child .personal-data-bg {
+      background-size: 90%;
+      background-position: center 99%;
+    }
+    
+    .personal-data-card:last-child .personal-data-bg {
+      background-size: 120%;
+    }
+    
+    .personal-data-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+      padding: 4.32rem;
+    }
+    
+    .personal-data-card .time-label {
+      font-size: 2.16rem;
+      margin-bottom: 1.44rem;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+      line-height: 1.2;
+    }
+    
+    .personal-data-card .time-label br {
+      display: block;
+      content: "";
+      margin-bottom: 0.5em;
+    }
+    
+    .personal-data-card .time-value {
+      font-size: 4.32rem;
+      margin-top: auto;
+      text-align: center;
+      width: 100%;
+    }
+    
+    /* Personal Data Section wrapper to contain scaled cards */
+    .personal-data-wrapper {
+      display: flex;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    
+    .personal-data-wrapper .personal-data-card {
+      flex: 1 1 calc(60% - 0.75rem);
+      max-width: calc(60% - 0.75rem);
+    }
+    
+    /* Bar Chart Section */
+    .bar-chart-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 4rem 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      margin-top: 2rem;
+      margin-bottom: 0;
+    }
+    
+    .bar-chart-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      margin-bottom: 0;
+    }
+    
+    .bar-chart-item {
+      flex: 0 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      position: relative;
+    }
+    
+    .bar-value {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #1F2937;
+      margin-bottom: 0.5rem;
+      order: 1;
+    }
+    
+    .bar-wrapper {
+      width: 60px;
+      height: 200px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      order: 2;
+    }
+    
+    .bar-wrapper::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -50%;
+      right: -50%;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    
+    .bar {
+      width: 100%;
+      background: #0459F0;
+      border-radius: 0.5rem 0.5rem 0 0;
+      transition: height 2s ease-out;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .bar-label {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1F2937;
+      order: 3;
+      margin-top: 0;
+    }
+    
+    .bar-chart-message {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: #1F2937;
+      padding-top: 2rem;
+      margin-top: 2rem;
+    }
+    
+    /* Favorite Content Cards Section */
+    .favorite-content-title {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      color: #1F2937;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .favorite-content-cards {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: stretch;
+    }
+    
+    .content-card-item {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      flex: 1 1 calc(33.333% - 1rem);
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .content-card-text {
+      font-size: clamp(20px, 2.5vw, 28px);
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    
+    .content-card-label {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1F2937;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content-card-title {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      color: #0459F0;
+      display: block;
+      line-height: 1.2;
+    }
+    
+    .content-card-image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      margin-top: auto;
+      opacity: 1;
+    }
+    
+    /* TA Section */
+    .ta-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      overflow: visible;
+    }
+    
+    .ta-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 150%;
+      background-position: 70% center;
+      background-repeat: no-repeat;
+      opacity: 0.4;
+      border-radius: 1rem;
+      z-index: 0;
+    }
+    
+    .ta-owl-image {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      position: absolute;
+      top: -221px;
+      margin-bottom: 0;
+      z-index: 2;
+    }
+    
+    .ta-content {
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+    
+    .ta-label {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1F2937;
+      margin-bottom: 1rem;
+    }
+    
+    .ta-number {
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    /* Personal TA Section */
+    .personal-ta-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: visible;
+    }
+    
+    .personal-ta-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 1;
+      position: relative;
+    }
+    
+    .personal-ta-label {
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 700;
+      color: #1F2937;
+      line-height: 1.4;
+    }
+    
+    .personal-ta-number-section {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    
+    .personal-ta-number {
+      font-size: clamp(56px, 8vw, 96px);
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .personal-ta-unit {
+      font-size: clamp(24px, 3vw, 40px);
+      font-weight: 700;
+      color: #1F2937;
+      line-height: 1;
+    }
+    
+    .personal-ta-owl-image {
+      position: absolute;
+      bottom: 0;
+      right: -5%;
+      width: 491px;
+      height: auto;
+      object-fit: contain;
+      z-index: 0;
+    }
+    
+    /* Personal Subject TA Section */
+    .personal-subject-ta-header {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
+      color: #1F2937;
+      text-align: left;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+    
+    .personal-subject-ta-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      margin-bottom: 0;
+    }
+    
+    .personal-subject-chart-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .personal-subject-chart-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .personal-subject-label {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1F2937;
+      min-width: 60px;
+    }
+    
+    .personal-subject-bar-wrapper {
+      position: relative;
+      flex: 1;
+      height: 32px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .personal-subject-bar {
+      height: 24px;
+      background: #0459F0;
+      border-radius: 0.25rem;
+      transition: width 2s ease-out;
+      width: 0%;
+      position: relative;
+    }
+    
+    .personal-subject-value {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    
+    .personal-subject-ta-message {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 700;
+      text-align: center;
+      color: #1F2937;
+      line-height: 1.6;
+      margin-top: 2rem;
+    }
+    
+    /* Promotion Section */
+    .promotion-header {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      color: #1F2937;
+      text-align: center;
+      margin-bottom: 3rem;
+      line-height: 1.4;
+    }
+    
+    .promotion-section {
+      margin-bottom: 4rem;
+    }
+    
+    .promotion-section:last-child {
+      margin-bottom: 0;
+    }
+    
+    .promotion-category-label {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 600;
+      color: #1F2937;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .promotion-carousel-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .promotion-carousel-track {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    #promoCarousel1 {
+      animation: promotion-scroll-1 20s linear infinite;
+    }
+    
+    #promoCarousel2 {
+      animation: promotion-scroll-2 16s linear infinite;
+    }
+    
+    #promoCarousel3 {
+      animation: promotion-scroll-3 18s linear infinite;
+    }
+    
+    @keyframes promotion-scroll-1 {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    @keyframes promotion-scroll-2 {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    @keyframes promotion-scroll-3 {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    .promotion-carousel-track:hover {
+      animation-play-state: paused;
+    }
+    
+    .promotion-item {
+      flex-shrink: 0;
+      padding: 0;
+      background: #F0F2F5;
+      border-radius: 0.75rem;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 600;
+      color: #1F2937;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: auto;
+      height: 200px;
+    }
+    
+    .promotion-section:has(.promotion-item img[alt*="SDIJN"]),
+    .promotion-section:has(.promotion-item img[alt*="CONTENTS"]),
+    .promotion-section:has(.promotion-item img[alt*="TIMER"]),
+    .promotion-section:has(.promotion-item img[alt*="TA"]),
+    .promotion-section:has(.promotion-item img[alt*="SCHEDULE"]),
+    .promotion-section:has(.promotion-item img[alt*="EBOOK"]),
+    .promotion-section:has(.promotion-item img[alt*="ebook"]) {
+      height: 150px;
+    }
+    
+    .promotion-section:has(.promotion-item img[alt*="SDIJN"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="CONTENTS"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="TIMER"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="TA"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="SCHEDULE"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="EBOOK"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="ebook"]) .promotion-item {
+      height: 150px;
+    }
+    
+    .promotion-item img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    
+    /* Monthly Subject TA Trends Section */
+    .monthly-ta-header {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
+      color: #1F2937;
+      text-align: left;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+    
+    .monthly-charts-scroll-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1rem;
+    }
+    
+    .monthly-charts-scroll-wrapper::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    .monthly-charts-scroll-wrapper::-webkit-scrollbar-track {
+      background: #F0F2F5;
+      border-radius: 4px;
+    }
+    
+    .monthly-charts-scroll-wrapper::-webkit-scrollbar-thumb {
+      background: #0459F0;
+      border-radius: 4px;
+    }
+    
+    .monthly-charts-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+      background: #0348C7;
+    }
+    
+    .monthly-charts-scroll-container {
+      display: flex;
+      gap: 2rem;
+      width: fit-content;
+    }
+    
+    .monthly-chart-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      flex-shrink: 0;
+      width: 800px;
+    }
+    
+    .monthly-chart-card canvas {
+      width: 100%;
+      height: auto;
+    }
+    
+    .monthly-ta-message {
+      font-size: 32px;
+      font-weight: 600;
+      color: #1F2937;
+      text-align: center;
+      line-height: 1.6;
+      margin-top: 2rem;
+    }
+    
+    /* Owl Badge Section */
+    .owl-badge-intro-text {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
+      color: #1F2937;
+      text-align: left;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    
+    .owl-badge-call-to-action {
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 600;
+      color: #1F2937;
+      text-align: left;
+      margin-bottom: 3rem;
+      line-height: 1.5;
+    }
+    
+    .owl-badge-cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    
+    .owl-badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .owl-badge-card {
+      background: #F5F5F5;
+      border-radius: 50%;
+      width: 280px;
+      height: 280px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: visible;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .owl-badge-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .owl-badge-image {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      z-index: 2;
+      position: relative;
+    }
+    
+    .owl-badge-shadow {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 15%;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      filter: blur(10px);
+      z-index: 1;
+    }
+    
+    .owl-badge-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1F2937;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    
+    .owl-badge-description {
+      font-size: 18px;
+      font-weight: 400;
+      color: #6B7280;
+      line-height: 1.5;
+      text-align: center;
+    }
+    
+    /* Owl Badge Mobile */
+    @media (max-width: 768px) {
+      .owl-badge-card {
+        width: 200px;
+        height: 200px;
+      }
+      .owl-badge-title {
+        font-size: 20px;
+        margin-top: 1.5rem;
+      }
+      .owl-badge-description {
+        font-size: 16px;
+      }
+      .owl-badge-cards-container {
+        gap: 2rem;
+      }
+    }
+    
+    /* Outro Section */
+    .outro-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    .outro-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .outro-header-with-bg {
+      background: transparent;
+      padding: 3rem 4rem;
+      margin: 3rem auto;
+      border-radius: 0;
+      font-size: 32px;
+      font-weight: 700;
+      color: #1F2937;
+      text-align: center;
+      line-height: 1.4;
+      max-width: 1400px;
+      position: relative;
+      z-index: 3;
+    }
+    
+    .outro-subtitle {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 600;
+      color: #1F2937;
+      text-align: center;
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+    
+    .outro-services {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .outro-service-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .outro-service-card-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    
+    .outro-service-card-content-reverse {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-direction: row-reverse;
+    }
+    
+    .outro-service-title-left {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0459F0;
+      flex: 0 0 200px;
+      transform: translateX(3%);
+    }
+    
+    .outro-service-title-right {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0459F0;
+      flex: 0 0 200px;
+      text-align: right;
+      transform: translateX(-8%);
+    }
+    
+    .outro-service-text-right {
+      font-size: 28px;
+      font-weight: 600;
+      color: #1F2937;
+      line-height: 1.6;
+      flex: 1;
+    }
+    
+    .outro-service-text-left {
+      font-size: 28px;
+      font-weight: 600;
+      color: #1F2937;
+      line-height: 1.6;
+      flex: 1;
+    }
+    
+    /* Consultation Section (수능 가채점 상담) */
+    .consultation-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    .consultation-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .consultation-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-direction: row-reverse;
+      padding: 3rem 0;
+    }
+    
+    .consultation-text-left {
+      font-size: 28px;
+      font-weight: 600;
+      color: #1F2937;
+      line-height: 1.6;
+      flex: 1;
+    }
+    
+    .consultation-title-right {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0459F0;
+      flex: 0 0 250px;
+      text-align: right;
+      transform: translateX(-8%);
+    }
+    
+    /* Afterpack Section (애프터팩) */
+    .afterpack-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    .afterpack-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .afterpack-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem 0;
+    }
+    
+    .afterpack-title-left {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0459F0;
+      flex: 0 0 200px;
+    }
+    
+    .afterpack-text-right {
+      font-size: 28px;
+      font-weight: 600;
+      color: #1F2937;
+      line-height: 1.6;
+      flex: 1;
+    }
+    
+    /* Jungsi Consulting Section (정시 컨설팅) */
+    .jungsi-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    .jungsi-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .jungsi-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem 0;
+    }
+    
+    .jungsi-title-left {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0459F0;
+      flex: 0 0 200px;
+      transform: translateX(3%);
+    }
+    
+    .jungsi-text-right {
+      font-size: 28px;
+      font-weight: 600;
+      color: #1F2937;
+      line-height: 1.6;
+      flex: 1;
+    }
+    
+    /* Timeline Mobile */
+    @media (max-width: 768px) {
+      .timeline-card {
+        transform: scale(1.1);
+      }
+    }
+    
+    /* Content Section Mobile */
+    @media (max-width: 768px) {
+      .content-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 0;
+        min-height: 400px;
+      }
+      
+      .content-text {
+        margin-left: 0;
+        flex: 1;
+        margin-bottom: 2rem;
+        font-size: clamp(20px, 4vw, 32px);
+        line-height: 1.35;
+      }
+      
+      .content-number {
+        flex: 1;
+        justify-content: flex-start;
+        align-self: flex-start;
+      }
+      
+      .content-number-value {
+        font-size: clamp(48px, 8vw, 80px);
+      }
+      
+      .content-number-unit {
+        font-size: clamp(24px, 3vw, 40px);
+        margin-left: 0.3rem;
+        white-space: nowrap;
+        display: inline-block;
+      }
+    }
+    
+    /* Hall Cards Mobile */
+    @media (max-width: 768px) {
+      .hall-card {
+        flex: 0 0 calc(100% / 7 - 0.86rem);
+        min-width: calc(100% / 7 - 0.86rem);
+        min-height: 180px;
+        padding: 1.25rem;
+      }
+      
+      .hall-card-header {
+        font-size: 1.125rem;
+      }
+      
+      .hall-card-subheader {
+        font-size: 0.8rem;
+      }
+      
+      .hall-card-main {
+        font-size: 1.25rem;
+      }
+    }
+    
+    /* Content Cards Mobile */
+    @media (max-width: 768px) {
+      .favorite-content-cards {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      
+      .content-card-item {
+        flex: 1 1 100%;
+        min-width: 100%;
+        min-height: 350px;
+        padding: 1.5rem;
+      }
+      
+      .content-card-label {
+        font-size: 1rem;
+      }
+      
+      .content-card-title {
+        font-size: clamp(20px, 4vw, 28px);
+      }
+    }
+    
     /* Meal Section Cards - 90% taller (200px * 1.9 = 380px) */
-    .meal-section .library-card {
+    .meal-section-wrapper .library-card {
       min-height: 380px;
     }
     
@@ -535,63 +1909,60 @@
 </head>
 <body>
 
-  <!-- INTRO Section -->
-  <section class="intro-section">
-    <div class="container mx-auto px-6">
-      <div class="max-w-4xl mx-auto">
-        <div class="intro-text" data-aos="fade-up">
-          <p>
-            부엉이 여러분, 수고 많으셨습니다.<br>
-            학생님이 달려온 시간을 회고하는 [Memoir]
-          </p>
-          
-          <p style="font-size: 1.25rem; opacity: 0.95;">
-            <span class="intro-emoji">📝</span>'memoir'는 유명인의 회고록이라는 뜻을 지녔습니다.
-          </p>
-          
-          <p style="font-size: 1.25rem; opacity: 0.95;">
-            시대인재는 여러분 하나하나를 존중하고, 여러분이 시대인재와 함께한 시간의 가치를 간과하지 않기에 그동안 달려온 시간을 회고해보고자 했습니다.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline Section (등원 기간) -->
-  <section class="py-16" style="background: #FFFFFF;">
-    <div class="container mx-auto px-6">
+  <!-- INTRO Section with Timeline -->
+  <section class="intro-section" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./Intro_blue.JPG" alt="Intro 배경" class="intro-background">
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
       <div class="max-w-4xl mx-auto">
         
-        <!-- Timeline Cards and Connector -->
-        <div class="flex items-center mb-8" data-aos="fade-up">
-          <!-- Start Card -->
-          <div class="timeline-card">
-            <p class="text-sm text-gray-600 mb-1">시대인재 N 처음 만난 날</p>
-            <p class="text-lg font-semibold text-gray-800" id="startDate">2024.02.15</p>
-          </div>
+        <!-- INTRO Content -->
+        <div class="intro-text-new" data-aos="fade-up">
+          <h1 class="intro-title">MeMOiR</h1>
           
-          <!-- Connector Line -->
-          <div class="timeline-connector">
-            <div class="timeline-dot"></div>
-          </div>
-          
-          <!-- End Card -->
-          <div class="timeline-card">
-            <p class="text-sm text-gray-600 mb-1">The End</p>
-            <p class="text-lg font-semibold text-gray-800" id="endDate">2024.11.13</p>
-          </div>
-        </div>
-        
-        <!-- Total Days Metric -->
-        <div class="timeline-metric" data-aos="fade-up" data-aos-delay="100">
-          총 <span class="point-color font-bold" id="totalDays">150</span>일 함께했습니다.
-        </div>
-        
-        <!-- Summary Message -->
-        <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
-          <p class="text-lg">
-            <span id="studentNameOutput" class="font-semibold">학생 이름</span>님은, <span id="campusNameOutput" class="font-semibold">고사관</span> <span id="classNameOutput" class="font-semibold">N</span>반에서 1년간 치열하게 달려왔습니다.
+          <p class="intro-description">
+            <span style="font-style: italic;">'memoir'</span> : 유명인의 회고록<br><br>
+            시대인재는 여러분 하나하나를 존중하고, 여러분이 시대인재와 함께한 시간의 가치를 소중히 여깁니다.<br>
+            그렇기에, 수능이 얼마 남지 않은 이 시점, 레이스를 성공적으로 완주할 여러분의 한 해를 Memoir을 통해 회고해보고자 합니다.
           </p>
+          
+          <p class="intro-data-period"><br><br>*데이터 집계기간 : 2/20-10/31</p>
+        </div>
+        
+        <!-- Timeline Content -->
+        <div class="py-16">
+          <!-- Timeline Cards and Connector -->
+          <div class="flex items-center mb-8" data-aos="fade-up">
+            <!-- Start Card -->
+            <div class="timeline-card">
+              <p class="text-sm text-gray-600 mb-1">시대인재 N 처음 만난 날</p>
+              <p class="text-lg font-semibold text-gray-800" id="startDate">2024.02.15</p>
+            </div>
+            
+            <!-- Connector Line -->
+            <div class="timeline-connector">
+              <div class="timeline-dot"></div>
+            </div>
+            
+            <!-- End Card -->
+            <div class="timeline-card">
+              <p class="text-sm text-gray-600 mb-1">The End</p>
+              <p class="text-lg font-semibold text-gray-800" id="endDate">2024.11.13</p>
+            </div>
+          </div>
+          
+          <!-- Total Days Metric -->
+          <div class="timeline-metric" data-aos="fade-up" data-aos-delay="100">
+            총 <span class="point-color font-bold" id="totalDays">150</span>일 함께했습니다.
+          </div>
+          
+          <!-- Summary Message -->
+          <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-lg">
+              <span id="studentNameOutput" class="font-semibold">학생 이름</span>님은, <span id="campusNameOutput" class="font-semibold">고사관</span> <span id="classNameOutput" class="font-semibold">N</span>반에서 1년간 치열하게 달려왔습니다.
+            </p>
+          </div>
         </div>
         
       </div>
@@ -599,36 +1970,33 @@
   </section>
 
   <!-- Check-in/Check-out Section (등하원 시간) -->
-  <section class="py-16" style="background: #FFFFFF;">
-    <div class="container mx-auto px-6">
+  <section class="py-16 checkin-section-wrapper" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./SDIJ background.jpeg" alt="등하원 배경" class="checkin-section-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="checkin-section-background-overlay"></div>
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
       <div class="max-w-4xl mx-auto">
         
-        <!-- Two Boxes Side by Side -->
-        <div class="flex gap-4 mb-6" data-aos="fade-up">
-          <!-- Check-in Box (Sun) -->
-          <div class="check-in-out-box">
-            <div class="sun-icon">☀️</div>
-            <div class="text-center">
-              <div class="time-label">평균 등원 시간</div>
-              <div class="time-value" id="checkInTime">08:30</div>
+        <!-- Check-in/Check-out Content -->
+        <div class="flex gap-4" data-aos="fade-up">
+          <!-- Left: Check-in Content -->
+          <div class="checkin-content-overlay">
+            <div class="checkin-title-overlay">평균 등원 시간</div>
+            <div class="checkin-number-overlay">
+              <span class="checkin-number-text" id="checkInTime">08:30</span>
             </div>
           </div>
           
-          <!-- Check-out Box (Moon) -->
-          <div class="check-in-out-box">
-            <div class="moon-icon">🌙</div>
-            <div class="text-center">
-              <div class="time-label">평균 하원 시간</div>
-              <div class="time-value" id="checkOutTime">22:00</div>
+          <!-- Right: Check-out Content -->
+          <div class="checkin-content-overlay">
+            <div class="checkin-title-overlay">평균 하원 시간</div>
+            <div class="checkin-number-overlay">
+              <span class="checkin-number-text" id="checkOutTime">22:00</span>
             </div>
           </div>
-        </div>
-        
-        <!-- Caption -->
-        <div class="text-center text-gray-700 mt-4" data-aos="fade-up" data-aos-delay="100">
-          <p class="text-lg">
-            <span id="captionStudentName" class="font-semibold">홍길동</span>님은, 평균적으로 라이브러리에 <span id="captionCheckInTime" class="font-semibold">08:30</span>에 등원하여, <span id="captionCheckOutTime" class="font-semibold">22:00</span>에 하원하였습니다.
-          </p>
         </div>
         
       </div>
@@ -660,48 +2028,42 @@
   </section>
 
   <!-- Library Time and Focus Section (라이브러리 잔류시간 & 몰입도) -->
-  <section class="py-16" style="background: #FFFFFF;">
-    <div class="container mx-auto px-6">
+  <section class="py-16 library-section-wrapper" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="Library background.jpeg" alt="라이브러리 배경" class="library-section-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="library-section-background-overlay"></div>
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
       <div class="max-w-4xl mx-auto">
         
         <!-- Library Time and Focus Cards -->
-        <div class="flex gap-4 mb-6" data-aos="fade-up" style="overflow: visible;">
-          <!-- Left Library Time Card -->
-          <div class="library-card library-card-with-bg">
-            <!-- Background Image -->
-            <img src="Library background.jpeg" alt="라이브러리 배경" class="library-background">
-            
-            <!-- Gradient Overlay -->
-            <div class="library-overlay"></div>
-            
-            <!-- Owl Image -->
-            <img src="Library time.png" alt="라이브러리" class="library-bg">
-            
-            <!-- Header Text (Right Top) -->
-            <div class="library-header">
+        <div class="flex gap-4 mb-6" data-aos="fade-up">
+          <!-- Left Library Time Content -->
+          <div class="library-content-overlay">
+            <!-- Header Text -->
+            <div class="library-title-overlay">
               2025년,<br>라이브러리에서 보낸 시간
             </div>
             
-            <!-- Time Value (Center) -->
-            <div class="library-time">
-              <span class="library-number" id="libraryHours">1,200</span>
-              <span class="library-unit">시간</span>
+            <!-- Time Value -->
+            <div class="library-number-overlay">
+              <span class="library-number-text" id="libraryHours">1,200</span>
+              <span class="library-text-overlay">시간</span>
             </div>
           </div>
           
-          <!-- Right Focus Card -->
-          <div class="library-card">
-            <!-- Background Image -->
-            <img src="Focus owl.png" alt="몰입도 부엉이" class="focus-bg">
-            
-            <!-- Header Text (Left Top) -->
-            <div class="focus-header">
+          <!-- Right Focus Content -->
+          <div class="library-content-overlay">
+            <!-- Header Text -->
+            <div class="library-title-overlay">
               그동안,<br>라이브러리에서의 몰입도
             </div>
             
-            <!-- Value (Left aligned below header) -->
-            <div class="focus-time">
-              <span class="library-number" id="focusScore" aria-label="평균 몰입도">8.7</span>
+            <!-- Value -->
+            <div class="library-number-overlay">
+              <span class="library-number-text" id="focusScore" aria-label="평균 몰입도">8.7</span>
             </div>
           </div>
         </div>
@@ -711,33 +2073,404 @@
   </section>
 
   <!-- Meal Section (급식 섹션) -->
-  <section class="py-16 meal-section" style="background: #FFFFFF;">
+  <section class="py-16 meal-section-wrapper" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="Meal room.png" alt="급식실 배경" class="meal-section-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="meal-section-background-overlay"></div>
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Meal Content -->
+        <div class="meal-content-overlay">
+          <!-- Header Text -->
+          <div class="meal-title-overlay">
+            총 식사 끼니 수
+          </div>
+          
+          <!-- Meal Count Value -->
+          <div class="meal-number-overlay">
+            <span class="meal-number-text" id="mealCount">1,234</span>
+            <span class="meal-text-overlay">회</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Bottom Caption -->
+    <div class="meal-caption" style="position: relative; z-index: 3; text-align: center; padding: 2rem 0;">
+      <div class="meal-title-overlay" style="margin-bottom: 0;">
+        <span id="mealCampusName">태성관</span> 관의 최애 메뉴는 무엇이었을까요?
+      </div>
+    </div>
+  </section>
+
+  <!-- Favorite Menu Cards Section (관별 최애 메뉴 카드) -->
+  <section class="py-16" style="background: #FFFFFF; overflow: hidden;">
+    <div style="max-width: 100%; margin: 0 auto;">
+      
+      <!-- Title -->
+      <div class="text-center mb-6 px-6" data-aos="fade-up">
+        <h2 class="text-2xl font-bold text-gray-800">관별 최애 메뉴</h2>
+      </div>
+      
+      <!-- Cards Grid -->
+      <div class="hall-cards-wrapper" data-aos="fade-up" data-aos-delay="100">
+        <div class="hall-cards-grid">
+          <!-- Cards will be generated by JavaScript -->
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Content Section (콘텐츠 섹션) -->
+  <section class="py-16 content-section" style="background: #FFFFFF; position: relative; min-height: 600px;">
     <div class="container mx-auto px-6">
       <div class="max-w-4xl mx-auto">
         
-        <!-- Meal Cards -->
-        <div class="flex gap-4 mb-6" data-aos="fade-up">
-          
-          <!-- Card A: Total Meals Count -->
-          <div class="library-card" aria-label="총 식사 끼니 수 카드, 급식 먹은 횟수 1,234회">
-            <div class="library-header" style="top: 1rem; left: 50%; transform: translateX(-50%); text-align: center;">
-              총 식사 끼니 수
-            </div>
-            <div class="library-time" style="top: 3rem; left: 50%; transform: translateX(-50%); justify-content: center;">
-              <span class="library-number" id="mealCount">1,234</span>
-              <span class="library-unit">회</span>
-            </div>
-            <!-- Bottom Image -->
-            <img src="Meal owl.png" alt="식사 부엉이" class="meal-owl-image">
+        <!-- Content Card -->
+        <div class="content-card" data-aos="fade-up">
+          <!-- Left Top: Text -->
+          <div class="content-text" style="white-space: nowrap;">
+            <span>올해 시대인재에서 학생들은,</span><br><span>총 몇 문제를 풀었을까요?</span>
           </div>
           
-          <!-- Card B: Favorite Menu -->
-          <div class="library-card" aria-label="태성관 카드, 태성관의 최애 메뉴 안내">
-            <!-- Favorite Meal Image -->
-            <img src="Favorite meal.png" alt="최애 메뉴 식사 사진" class="favorite-meal-image">
-            <div class="focus-header" style="top: 1rem; left: 1rem; text-align: left; z-index: 10;">
-              <span id="mealCampusName">태성관</span> 관의 최애 메뉴는 무엇이었을까요?
+          <!-- Right Bottom: Number -->
+          <div class="content-number">
+            <span class="content-number-value" id="totalProblems">50,000</span>
+            <span class="content-number-unit">문제</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Personal Data Section (학생별 개인 데이터) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Two Boxes Side by Side -->
+        <div class="personal-data-wrapper" data-aos="fade-up">
+          <!-- Left Card: 총 모의고사 개수 -->
+          <div class="check-in-out-box personal-data-card">
+            <div class="personal-data-bg" style="background-image: url('./survival.png');"></div>
+            <div class="personal-data-content">
+              <div class="time-label">재원 기간동안 푼<br>총 모의고사 개수</div>
+              <div class="time-value" id="totalMockTests" style="color: #0459F0;">25</div>
             </div>
+          </div>
+          
+          <!-- Right Card: 총 문제 수 -->
+          <div class="check-in-out-box personal-data-card">
+            <div class="personal-data-bg" style="background-image: url('./paperdummy.png');"></div>
+            <div class="personal-data-content">
+              <div class="time-label" style="white-space: nowrap;">재원 기간동안 푼<br>모의고사 총 문제수</div>
+              <div class="time-value" id="totalPersonalProblems" style="color: #0459F0;">500</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Subject Problems Bar Chart Section (과목별 문제 수 막대 그래프) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Bar Chart Card -->
+        <div class="bar-chart-card" data-aos="fade-up">
+          <div class="bar-chart-container">
+            <!-- Bar Charts -->
+            <div class="bar-chart-item">
+              <div class="bar-wrapper">
+                <div class="bar" id="koreanBar" style="position: relative; height: 0;">
+                  <div class="bar-value" id="koreanProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                </div>
+              </div>
+              <div class="bar-label">국어</div>
+            </div>
+            
+            <div class="bar-chart-item">
+              <div class="bar-wrapper">
+                <div class="bar" id="mathBar" style="position: relative; height: 0;">
+                  <div class="bar-value" id="mathProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                </div>
+              </div>
+              <div class="bar-label">수학</div>
+            </div>
+            
+            <div class="bar-chart-item">
+              <div class="bar-wrapper">
+                <div class="bar" id="englishBar" style="position: relative; height: 0;">
+                  <div class="bar-value" id="englishProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                </div>
+              </div>
+              <div class="bar-label">영어</div>
+            </div>
+            
+            <div class="bar-chart-item">
+              <div class="bar-wrapper">
+                <div class="bar" id="research1Bar" style="position: relative; height: 0;">
+                  <div class="bar-value" id="research1Problems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                </div>
+              </div>
+              <div class="bar-label">탐구1</div>
+            </div>
+            
+            <div class="bar-chart-item">
+              <div class="bar-wrapper">
+                <div class="bar" id="research2Bar" style="position: relative; height: 0;">
+                  <div class="bar-value" id="research2Problems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                </div>
+              </div>
+              <div class="bar-label">탐구2</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bottom Message (Outside the card) -->
+        <div class="bar-chart-message" style="text-align: center; padding-top: 2rem;">
+          이렇게 많은 문제를 풀어내며, 누구보다도 성장하는 한 해가 되었을 겁니다.
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Favorite Content Section (가장 만족도가 높았던 콘텐츠) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Title -->
+        <div class="text-center mb-8" data-aos="fade-up">
+          <h2 class="favorite-content-title">2025년, 가장 만족도가 높았던<br>시대인재 콘텐츠는 무엇이었을까요?</h2>
+        </div>
+        
+        <!-- Content Cards -->
+        <div class="favorite-content-cards" data-aos="fade-up" data-aos-delay="100">
+          <!-- Card 1: 국어 월례고사 -->
+          <div class="content-card-item">
+            <div class="content-card-text">
+              <span class="content-card-label">국어</span><br>
+              <span class="content-card-title">월례고사</span>
+            </div>
+            <img src="./Korean.png" alt="Korean" class="content-card-image">
+          </div>
+          
+          <!-- Card 2: 수학 BRIDGE -->
+          <div class="content-card-item">
+            <div class="content-card-text">
+              <span class="content-card-label">수학</span><br>
+              <span class="content-card-title">BRIDGE</span>
+            </div>
+            <img src="./Bridge.png" alt="Bridge" class="content-card-image">
+          </div>
+          
+          <!-- Card 3: 신규 배부 콘텐츠 VORTEX -->
+          <div class="content-card-item">
+            <div class="content-card-text">
+              <span class="content-card-label">신규 배부 콘텐츠</span><br>
+              <span class="content-card-title">VORTEX</span>
+            </div>
+            <img src="./Vortex.png" alt="Vortex" class="content-card-image">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- TA Section (TA 질문 수) -->
+  <section class="py-16" style="background: #FFFFFF; margin-top: 10%;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- TA Card -->
+        <div class="ta-card" data-aos="fade-up" style="background-image: url('./TA booth.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+          <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.6); border-radius: 1rem; z-index: 0;"></div>
+          <img src="./TA owl.png" alt="TA Owl" class="ta-owl-image">
+          <div class="ta-content">
+            <div class="ta-label">TA 총 질문수</div>
+            <div class="ta-number" id="totalTAQuestions">10,000</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal TA Questions Section (개인별 TA 질문 수) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Personal TA Card -->
+        <div class="personal-ta-card" data-aos="fade-up">
+          <div class="personal-ta-content">
+            <div class="personal-ta-label">올 한 해 TA앱에서<br>오고 간 질문수는</div>
+            <div class="personal-ta-number-section">
+              <span class="personal-ta-number" id="personalTAQuestions">1,200</span>
+              <span class="personal-ta-unit">회입니다.</span>
+            </div>
+          </div>
+          <img src="./Qowl.png" alt="Q Owl" class="personal-ta-owl-image">
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Subject TA Questions Section -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="personal-subject-ta-header" data-aos="fade-up">
+          <span id="studentNameForSubjects">학생님</span>의 과목별 TA앱 질문수
+        </div>
+        
+        <div class="personal-subject-ta-card" data-aos="fade-up">
+          <div class="personal-subject-chart-container">
+            <div class="personal-subject-chart-item">
+              <div class="personal-subject-label">국어</div>
+              <div class="personal-subject-bar-wrapper">
+                <div class="personal-subject-bar" id="personalKoreanBar">
+                  <div class="personal-subject-value" id="personalKoreanQuestions">0</div>
+                </div>
+              </div>
+            </div>
+            <div class="personal-subject-chart-item">
+              <div class="personal-subject-label">수학</div>
+              <div class="personal-subject-bar-wrapper">
+                <div class="personal-subject-bar" id="personalMathBar">
+                  <div class="personal-subject-value" id="personalMathQuestions">0</div>
+                </div>
+              </div>
+            </div>
+            <div class="personal-subject-chart-item">
+              <div class="personal-subject-label">영어</div>
+              <div class="personal-subject-bar-wrapper">
+                <div class="personal-subject-bar" id="personalEnglishBar">
+                  <div class="personal-subject-value" id="personalEnglishQuestions">0</div>
+                </div>
+              </div>
+            </div>
+            <div class="personal-subject-chart-item">
+              <div class="personal-subject-label">탐구1</div>
+              <div class="personal-subject-bar-wrapper">
+                <div class="personal-subject-bar" id="personalResearch1Bar">
+                  <div class="personal-subject-value" id="personalResearch1Questions">0</div>
+                </div>
+              </div>
+            </div>
+            <div class="personal-subject-chart-item">
+              <div class="personal-subject-label">탐구2</div>
+              <div class="personal-subject-bar-wrapper">
+                <div class="personal-subject-bar" id="personalResearch2Bar">
+                  <div class="personal-subject-value" id="personalResearch2Questions">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="personal-subject-ta-message" data-aos="fade-up">
+          <span id="studentNameForMessage">학생님</span>은 일 년간 질문을 통해 부족한 점을 채우려고 노력하였습니다.<br>자신의 부족한 점을 하나하나 매꾸고자 한 이 노력은, 분명 수능장에서 빛을 발할 거예요.
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Monthly Subject TA Trends Section -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="monthly-ta-header" data-aos="fade-up">
+          시대인재 부엉이 다같이 달려 왔어요
+        </div>
+        
+        <!-- Scrollable Charts Container -->
+        <div class="monthly-charts-scroll-wrapper" data-aos="fade-up">
+          <div class="monthly-charts-scroll-container">
+            <div class="monthly-chart-card">
+              <canvas id="mathChart" width="800" height="300"></canvas>
+            </div>
+            <div class="monthly-chart-card">
+              <canvas id="research1Chart" width="800" height="300"></canvas>
+            </div>
+            <div class="monthly-chart-card">
+              <canvas id="research2Chart" width="800" height="300"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        <div class="monthly-ta-message" data-aos="fade-up">
+          <span id="studentNameForMonthly">학생 데이터</span>님과 함께 수학, 탐구1, 탐구2를 선택한 학생들은 월별로 이런 질문 수 추이를 보였습니다. 학생 여러분 다같이 꾸준하게 질문하며 학습하였네요!
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Owl Badge Section -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        
+        <p class="owl-badge-intro-text" data-aos="fade-up">
+          묵묵히 이 길을 걸어온 여러분, 여러분이 의식하지 못하는 사이에, 큰 성장을 이루어냈습니다.
+        </p>
+        <p class="owl-badge-call-to-action" data-aos="fade-up">
+          그런 여러분에게 부엉이 배지를 부여합니다!
+        </p>
+        
+        <div class="owl-badge-cards-container" data-aos="fade-up">
+          
+          <!-- Gold Owl Card -->
+          <div class="owl-badge-item">
+            <div class="owl-badge-card">
+              <div class="owl-badge-image-wrapper">
+                <img src="./goldowl.png" alt="황금 부엉이" class="owl-badge-image">
+                <div class="owl-badge-shadow"></div>
+              </div>
+            </div>
+            <p class="owl-badge-title">황금 부엉이</p>
+            <p class="owl-badge-description">한 해를 완주한 챔피언</p>
+          </div>
+          
+          <!-- Study Owl Card -->
+          <div class="owl-badge-item">
+            <div class="owl-badge-card">
+              <div class="owl-badge-image-wrapper">
+                <img src="./studyowl.png" alt="성실 부엉이" class="owl-badge-image">
+                <div class="owl-badge-shadow"></div>
+              </div>
+            </div>
+            <p class="owl-badge-title">성실 부엉이</p>
+            <p class="owl-badge-description">매일매일 꾸준히 꾸준히</p>
+          </div>
+          
+          <!-- Sleep Owl Card -->
+          <div class="owl-badge-item">
+            <div class="owl-badge-card">
+              <div class="owl-badge-image-wrapper">
+                <img src="./sleepowl.png" alt="질문 부엉이" class="owl-badge-image">
+                <div class="owl-badge-shadow"></div>
+              </div>
+            </div>
+            <p class="owl-badge-title">질문 부엉이</p>
+            <p class="owl-badge-description">궁금증을 완전히 해소할 때까지</p>
           </div>
           
         </div>
@@ -745,6 +2478,177 @@
       </div>
     </div>
   </section>
+
+  <!-- Promotion Section -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="promotion-header" data-aos="fade-up">
+          그동안 시대인재는…
+        </div>
+        
+        <div class="promotion-section" data-aos="fade-up">
+          <div class="promotion-category-label">콘텐츠 제작</div>
+          <div class="promotion-carousel-wrapper">
+            <div class="promotion-carousel-track" id="promoCarousel1">
+              <div class="promotion-item"><img src="./SURVIVAL.png" alt="SURVIVAL"></div>
+              <div class="promotion-item"><img src="./BRIDGE.png" alt="BRIDGE"></div>
+              <div class="promotion-item"><img src="./ACCElERATOR.png" alt="ACCELERATER"></div>
+              <div class="promotion-item"><img src="./SHORTCUT.png" alt="SHORTCUT"></div>
+              <div class="promotion-item"><img src="./ATG.png" alt="ATG"></div>
+              <div class="promotion-item"><img src="./FLOW.png" alt="FLOW"></div>
+              <div class="promotion-item"><img src="./VORTEX.png" alt="VORTEX"></div>
+              <div class="promotion-item"><img src="./E-FFECT.png" alt="E-FFECT"></div>
+              <div class="promotion-item"><img src="./TRUSS.png" alt="TRUSS"></div>
+              <!-- Duplicate for seamless loop -->
+              <div class="promotion-item"><img src="./SURVIVAL.png" alt="SURVIVAL"></div>
+              <div class="promotion-item"><img src="./BRIDGE.png" alt="BRIDGE"></div>
+              <div class="promotion-item"><img src="./ACCElERATOR.png" alt="ACCELERATER"></div>
+              <div class="promotion-item"><img src="./SHORTCUT.png" alt="SHORTCUT"></div>
+              <div class="promotion-item"><img src="./ATG.png" alt="ATG"></div>
+              <div class="promotion-item"><img src="./FLOW.png" alt="FLOW"></div>
+              <div class="promotion-item"><img src="./VORTEX.png" alt="VORTEX"></div>
+              <div class="promotion-item"><img src="./E-FFECT.png" alt="E-FFECT"></div>
+              <div class="promotion-item"><img src="./TRUSS.png" alt="TRUSS"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="promotion-section" data-aos="fade-up">
+          <div class="promotion-category-label">시그니처 발행</div>
+          <div class="promotion-carousel-wrapper">
+            <div class="promotion-carousel-track" id="promoCarousel2">
+              <div class="promotion-item"><img src="./AFTERPACK.png" alt="AFTERPACK"></div>
+              <div class="promotion-item"><img src="./MAGAZINE.png" alt="MAGAZINE"></div>
+              <div class="promotion-item"><img src="./HANGHAE.png" alt="항해일지"></div>
+              <div class="promotion-item"><img src="./VOYAGERR.png" alt="보이저레터"></div>
+              <!-- Duplicate for seamless loop -->
+              <div class="promotion-item"><img src="./AFTERPACK.png" alt="AFTERPACK"></div>
+              <div class="promotion-item"><img src="./MAGAZINE.png" alt="MAGAZINE"></div>
+              <div class="promotion-item"><img src="./HANGHAE.png" alt="항해일지"></div>
+              <div class="promotion-item"><img src="./VOYAGERR.png" alt="보이저레터"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="promotion-section" data-aos="fade-up">
+          <div class="promotion-category-label">앱 서비스</div>
+          <div class="promotion-carousel-wrapper">
+            <div class="promotion-carousel-track" id="promoCarousel3">
+              <div class="promotion-item"><img src="./SDIJN.png" alt="SDIJN"></div>
+              <div class="promotion-item"><img src="./CONTENTS.png" alt="CONTENTS"></div>
+              <div class="promotion-item"><img src="./Timer.png" alt="TIMER"></div>
+              <div class="promotion-item"><img src="./TA.png" alt="TA"></div>
+              <div class="promotion-item"><img src="./SCHEDULE.png" alt="SCHEDULE"></div>
+              <div class="promotion-item"><img src="./ebook.png" alt="EBOOK"></div>
+              <!-- Duplicate for seamless loop -->
+              <div class="promotion-item"><img src="./SDIJN.png" alt="SDIJN"></div>
+              <div class="promotion-item"><img src="./CONTENTS.png" alt="CONTENTS"></div>
+              <div class="promotion-item"><img src="./Timer.png" alt="TIMER"></div>
+              <div class="promotion-item"><img src="./TA.png" alt="TA"></div>
+              <div class="promotion-item"><img src="./SCHEDULE.png" alt="SCHEDULE"></div>
+              <div class="promotion-item"><img src="./ebook.png" alt="EBOOK"></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Outro Section -->
+  <section class="py-16" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./Outro.JPG" alt="Outro 배경" class="outro-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="outro-background-overlay"></div>
+    
+    <div class="container mx-auto px-0" style="position: relative; z-index: 2;">
+      <div style="max-width: 100%;">
+        
+        <!-- Outro Header -->
+        <div class="outro-header-with-bg" data-aos="fade-up">
+          스스로에 대한 확신을 채워가는<br>1년이 되었길 바라며
+        </div>
+        
+        <!-- Subtitle -->
+        <div class="outro-subtitle" data-aos="fade-up">
+          앞으로도<br>여러분의 여정을 함께하겠습니다.
+        </div>
+        
+        <!-- Services Cards -->
+        <div class="outro-services">
+          
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Afterpack Section (카드 1: 애프터팩) -->
+  <section class="py-16" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./after.jpeg" alt="애프터팩 배경" class="afterpack-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="afterpack-background-overlay"></div>
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
+      <div class="max-w-6xl mx-auto">
+        <div class="afterpack-content" data-aos="fade-up">
+          <div class="afterpack-title-left">a. 애프터팩</div>
+          <div class="afterpack-text-right">
+            2025학년도 정시 모집 요강부터 컨설팅을 위한 정보,<br>그리고 선배들의 이야기 등 수능이 끝난 이후에 필요한 내용을 담아 여러분들께 전해드립니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation Section (카드 2: 수능 가채점 상담) -->
+  <section class="py-16" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./jungsi consulting.jpeg" alt="수능 가채점 상담 배경" class="consultation-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="consultation-background-overlay"></div>
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
+      <div class="max-w-6xl mx-auto">
+        <div class="consultation-content" data-aos="fade-up">
+          <div class="consultation-text-left">
+            가채점 결과를 통해 수능 직후, 학생의 성적을 분석하여, 논술 응시 여부에 대한 고민을 나누어드립니다.
+          </div>
+          <div class="consultation-title-right">
+            b. 수능 가채점 상담
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regular Admission Consulting Section (카드 3: 정시 컨설팅) -->
+  <section class="py-16" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./susi consulting.jpeg" alt="정시 컨설팅 배경" class="jungsi-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="jungsi-background-overlay"></div>
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
+      <div class="max-w-6xl mx-auto">
+        <div class="jungsi-content" data-aos="fade-up">
+          <div class="jungsi-title-left">c. 정시 컨설팅</div>
+          <div class="jungsi-text-right">
+            재원생 모두에게 맞춤형 컨설팅을 통해 최적 이상의 대학과 학과를 선택할 수 있도록 혼신의 힘을 다해 도와드리겠습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- AOS Initialization -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -775,42 +2679,564 @@
     const focusScore = get('focusScore', '87');
     const mealCount = get('mealCount', '1234');
     const favoriteMenu = get('favoriteMenu', '돈까스');
+    const totalProblems = get('totalProblems', '50000');
+    const totalMockTests = get('totalMockTests', '25');
+    const totalPersonalProblems = get('totalPersonalProblems', '500');
+    const koreanProblems = get('koreanProblems', '1500');
+    const mathProblems = get('mathProblems', '2000');
+    const englishProblems = get('englishProblems', '1200');
+    const research1Problems = get('research1Problems', '800');
+    const research2Problems = get('research2Problems', '600');
+    const totalTAQuestions = get('totalTAQuestions', '10000');
+    const personalTAQuestions = get('personalTAQuestions', '1200');
+    const personalKoreanQuestions = get('personalKoreanQuestions', '100');
+    const personalMathQuestions = get('personalMathQuestions', '150');
+    const personalEnglishQuestions = get('personalEnglishQuestions', '80');
+    const personalResearch1Questions = get('personalResearch1Questions', '60');
+    const personalResearch2Questions = get('personalResearch2Questions', '50');
     
     // Update DOM elements
-    document.getElementById('studentNameOutput').textContent = studentName;
-    document.getElementById('startDate').textContent = startDate;
-    document.getElementById('endDate').textContent = endDate;
-    document.getElementById('totalDays').textContent = totalDays;
-    document.getElementById('campusNameOutput').textContent = campusName;
-    document.getElementById('classNameOutput').textContent = className;
+    const studentNameElement = document.getElementById('studentNameOutput');
+    if (studentNameElement) studentNameElement.textContent = studentName;
+    
+    const startDateElement = document.getElementById('startDate');
+    if (startDateElement) startDateElement.textContent = startDate;
+    
+    const endDateElement = document.getElementById('endDate');
+    if (endDateElement) endDateElement.textContent = endDate;
+    
+    const totalDaysElement = document.getElementById('totalDays');
+    if (totalDaysElement) totalDaysElement.textContent = totalDays;
+    
+    const campusNameElement = document.getElementById('campusNameOutput');
+    if (campusNameElement) campusNameElement.textContent = campusName;
+    
+    const classNameElement = document.getElementById('classNameOutput');
+    if (classNameElement) classNameElement.textContent = className;
     
     // Update check-in/check-out times
-    document.getElementById('checkInTime').textContent = checkInTime;
-    document.getElementById('checkOutTime').textContent = checkOutTime;
-    document.getElementById('captionStudentName').textContent = studentName;
-    document.getElementById('captionCheckInTime').textContent = checkInTime;
-    document.getElementById('captionCheckOutTime').textContent = checkOutTime;
+    const checkInTimeElement = document.getElementById('checkInTime');
+    if (checkInTimeElement) {
+      checkInTimeElement.textContent = checkInTime;
+    }
+    const checkOutTimeElement = document.getElementById('checkOutTime');
+    if (checkOutTimeElement) {
+      checkOutTimeElement.textContent = checkOutTime;
+    }
+    
+    // These elements don't exist anymore in the current design
+    // document.getElementById('captionStudentName').textContent = studentName;
+    // document.getElementById('captionCheckInTime').textContent = checkInTime;
+    // document.getElementById('captionCheckOutTime').textContent = checkOutTime;
     
     // Update hours section with formatted number
     const formattedTotalHours = new Intl.NumberFormat('ko-KR').format(totalHours);
-    document.getElementById('totalHours').textContent = formattedTotalHours;
+    const totalHoursElement = document.getElementById('totalHours');
+    if (totalHoursElement) totalHoursElement.textContent = formattedTotalHours;
     
     // Update library hours section with formatted number
     const formattedLibraryHours = new Intl.NumberFormat('ko-KR').format(libraryHours);
-    document.getElementById('libraryHours').textContent = formattedLibraryHours;
+    const libraryHoursElement = document.getElementById('libraryHours');
+    if (libraryHoursElement) libraryHoursElement.textContent = formattedLibraryHours;
     
     // Update focus score (display as-is with one decimal place)
     const focusScoreValue = parseFloat(focusScore).toFixed(1);
-    document.getElementById('focusScore').textContent = focusScoreValue;
-    document.getElementById('focusScore').setAttribute('aria-label', `평균 몰입도 ${focusScoreValue}`);
+    const focusScoreElement = document.getElementById('focusScore');
+    if (focusScoreElement) {
+      focusScoreElement.textContent = focusScoreValue;
+      focusScoreElement.setAttribute('aria-label', `평균 몰입도 ${focusScoreValue}`);
+    }
     
     // Update meal section with formatted number
     const formattedMealCount = new Intl.NumberFormat('ko-KR').format(mealCount);
-    document.getElementById('mealCount').textContent = formattedMealCount;
+    const mealCountElement = document.getElementById('mealCount');
+    if (mealCountElement) mealCountElement.textContent = formattedMealCount;
     
     // Update favorite menu
-    document.getElementById('mealCampusName').textContent = campusName;
-    document.getElementById('favoriteMenu').textContent = favoriteMenu;
+    const mealCampusNameElement = document.getElementById('mealCampusName');
+    if (mealCampusNameElement) mealCampusNameElement.textContent = campusName;
+    const favoriteMenuElement = document.getElementById('favoriteMenu');
+    if (favoriteMenuElement) {
+      favoriteMenuElement.textContent = favoriteMenu;
+    }
+    
+    // Update content section
+    const formattedTotalProblems = new Intl.NumberFormat('ko-KR').format(totalProblems);
+    const totalProblemsElement = document.getElementById('totalProblems');
+    if (totalProblemsElement) {
+      totalProblemsElement.textContent = formattedTotalProblems;
+    }
+    
+    // Update personal data section
+    const formattedTotalMockTests = new Intl.NumberFormat('ko-KR').format(totalMockTests);
+    const totalMockTestsElement = document.getElementById('totalMockTests');
+    if (totalMockTestsElement) {
+      totalMockTestsElement.textContent = formattedTotalMockTests;
+    }
+    
+    const formattedTotalPersonalProblems = new Intl.NumberFormat('ko-KR').format(totalPersonalProblems);
+    const totalPersonalProblemsElement = document.getElementById('totalPersonalProblems');
+    if (totalPersonalProblemsElement) {
+      totalPersonalProblemsElement.textContent = formattedTotalPersonalProblems;
+    }
+    
+    // Update TA section
+    const formattedTotalTAQuestions = new Intl.NumberFormat('ko-KR').format(totalTAQuestions);
+    const totalTAQuestionsElement = document.getElementById('totalTAQuestions');
+    if (totalTAQuestionsElement) {
+      totalTAQuestionsElement.textContent = formattedTotalTAQuestions;
+    }
+    
+    // Update personal TA section
+    const formattedPersonalTAQuestions = new Intl.NumberFormat('ko-KR').format(personalTAQuestions);
+    const personalTAQuestionsElement = document.getElementById('personalTAQuestions');
+    if (personalTAQuestionsElement) {
+      personalTAQuestionsElement.textContent = formattedPersonalTAQuestions;
+    }
+    
+    // Update personal subject TA header with student name
+    const studentNameForSubjectsElement = document.getElementById('studentNameForSubjects');
+    if (studentNameForSubjectsElement) {
+      studentNameForSubjectsElement.textContent = studentName + '님';
+    }
+    
+    const studentNameForMessageElement = document.getElementById('studentNameForMessage');
+    if (studentNameForMessageElement) {
+      studentNameForMessageElement.textContent = studentName + '님';
+    }
+    
+    const studentNameForMonthlyElement = document.getElementById('studentNameForMonthly');
+    if (studentNameForMonthlyElement) {
+      studentNameForMonthlyElement.textContent = studentName;
+    }
+    
+    // Personal Subject TA Questions Animation
+    const personalSubjects = [
+      { id: 'personalKorean', value: personalKoreanQuestions, barId: 'personalKoreanBar', labelId: 'personalKoreanQuestions' },
+      { id: 'personalMath', value: personalMathQuestions, barId: 'personalMathBar', labelId: 'personalMathQuestions' },
+      { id: 'personalEnglish', value: personalEnglishQuestions, barId: 'personalEnglishBar', labelId: 'personalEnglishQuestions' },
+      { id: 'personalResearch1', value: personalResearch1Questions, barId: 'personalResearch1Bar', labelId: 'personalResearch1Questions' },
+      { id: 'personalResearch2', value: personalResearch2Questions, barId: 'personalResearch2Bar', labelId: 'personalResearch2Questions' }
+    ];
+    
+    // Find max value for scaling personal subjects
+    const maxPersonalValue = Math.max(...personalSubjects.map(s => parseInt(s.value)));
+    
+    // Function to animate personal subject bars
+    function animatePersonalBars() {
+      console.log('animatePersonalBars called');
+      personalSubjects.forEach((subject, index) => {
+        const value = parseInt(subject.value);
+        const percentage = maxPersonalValue > 0 ? (value / maxPersonalValue) * 100 : 0;
+        
+        console.log(`Animating ${subject.id}: value=${value}, percentage=${percentage}`);
+        
+        // Get elements
+        const labelElement = document.getElementById(subject.labelId);
+        const barElement = document.getElementById(subject.barId);
+        
+        console.log(`barElement for ${subject.id}:`, barElement);
+        console.log(`labelElement for ${subject.id}:`, labelElement);
+        
+        if (barElement && labelElement) {
+          // Animate bar and number after a delay
+          setTimeout(() => {
+            console.log(`Setting width for ${subject.id} to ${percentage}%`);
+            barElement.style.width = percentage + '%';
+            
+            // Animate counting up
+            let currentValue = 0;
+            const duration = 2000; // 2 seconds to match bar animation
+            const increment = value / (duration / 50); // Calculate increment based on duration
+            const counterInterval = setInterval(() => {
+              currentValue += increment;
+              if (currentValue >= value) {
+                currentValue = value;
+                clearInterval(counterInterval);
+              }
+              labelElement.textContent = new Intl.NumberFormat('ko-KR').format(Math.floor(currentValue));
+            }, 50);
+          }, index * 200); // Stagger animations
+        }
+      });
+    }
+    
+    // Initialize all personal bars to 0 width first
+    personalSubjects.forEach(subject => {
+      const barElement = document.getElementById(subject.barId);
+      if (barElement) {
+        barElement.style.width = '0%';
+        console.log(`Initialized ${subject.id} bar to 0%`);
+      }
+    });
+    
+    // Use Intersection Observer to trigger personal subject animation when section comes into view
+    const personalSubjectCard = document.querySelector('.personal-subject-ta-card');
+    if (personalSubjectCard) {
+      let personalAnimated = false;
+      const personalObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !personalAnimated) {
+            personalAnimated = true;
+            // Reset and re-animate
+            personalSubjects.forEach(subject => {
+              const barElement = document.getElementById(subject.barId);
+              if (barElement) {
+                barElement.style.width = '0%';
+              }
+            });
+            setTimeout(() => {
+              animatePersonalBars();
+            }, 100);
+          }
+          if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+            personalAnimated = false;
+          }
+        });
+      }, { threshold: 0.3 });
+      
+      personalObserver.observe(personalSubjectCard);
+    }
+    
+    // Update bar chart section
+    const subjects = [
+      { id: 'korean', value: koreanProblems, barId: 'koreanBar', labelId: 'koreanProblems' },
+      { id: 'math', value: mathProblems, barId: 'mathBar', labelId: 'mathProblems' },
+      { id: 'english', value: englishProblems, barId: 'englishBar', labelId: 'englishProblems' },
+      { id: 'research1', value: research1Problems, barId: 'research1Bar', labelId: 'research1Problems' },
+      { id: 'research2', value: research2Problems, barId: 'research2Bar', labelId: 'research2Problems' }
+    ];
+    
+    // Find max value for scaling
+    const maxValue = Math.max(...subjects.map(s => parseInt(s.value)));
+    
+    // Function to animate bars
+    function animateBars() {
+      console.log('animateBars called');
+      subjects.forEach((subject, index) => {
+        const value = parseInt(subject.value);
+        const percentage = maxValue > 0 ? (value / maxValue) * 100 : 0;
+        
+        console.log(`Animating ${subject.id}: value=${value}, percentage=${percentage}`);
+        
+        // Get elements
+        const labelElement = document.getElementById(subject.labelId);
+        const barElement = document.getElementById(subject.barId);
+        
+        console.log(`barElement for ${subject.id}:`, barElement);
+        console.log(`labelElement for ${subject.id}:`, labelElement);
+        
+        if (barElement && labelElement) {
+          // Animate bar and number after a delay
+          setTimeout(() => {
+            console.log(`Setting height for ${subject.id} to ${percentage}%`);
+            barElement.style.height = percentage + '%';
+            
+            // Animate counting up
+            let currentValue = 0;
+            const duration = 2000; // 2 seconds to match bar animation
+            const increment = value / (duration / 50); // Calculate increment based on duration
+            const counterInterval = setInterval(() => {
+              currentValue += increment;
+              if (currentValue >= value) {
+                currentValue = value;
+                clearInterval(counterInterval);
+              }
+              labelElement.textContent = new Intl.NumberFormat('ko-KR').format(Math.floor(currentValue));
+            }, 50);
+          }, index * 200); // Stagger animations
+        }
+      });
+    }
+    
+    // Initialize all bars to 0 height first
+    subjects.forEach(subject => {
+      const barElement = document.getElementById(subject.barId);
+      if (barElement) {
+        barElement.style.height = '0%';
+        console.log(`Initialized ${subject.id} bar to 0%`);
+      }
+    });
+    
+    // Use Intersection Observer to trigger animation when section comes into view
+    const barChartCard = document.querySelector('.bar-chart-card');
+    if (barChartCard) {
+      let barAnimated = false;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !barAnimated) {
+            barAnimated = true;
+            // Reset and re-animate
+            subjects.forEach(subject => {
+              const barElement = document.getElementById(subject.barId);
+              if (barElement) {
+                barElement.style.height = '0%';
+              }
+            });
+            setTimeout(() => {
+              animateBars();
+            }, 100);
+          }
+          if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+            barAnimated = false;
+          }
+        });
+      }, { threshold: 0.3 });
+      
+      observer.observe(barChartCard);
+    }
+    
+    // Carousel Data
+    const carouselItems = [
+      { hall: '기숙관', favorite: '치즈돈가스', rating: '4.6' },
+      { hall: '목동관', favorite: '소고기미역국', rating: '4.3' },
+      { hall: '목동W관', favorite: '크림파스타', rating: '4.1' },
+      { hall: '신관', favorite: '제육덮밥', rating: '4.8' },
+      { hall: 'M3관', favorite: '순살치킨마요', rating: '4.5' },
+      { hall: '3/H관', favorite: '떡볶이', rating: '4.2' },
+      { hall: 'W관', favorite: '김치볶음밥', rating: '4.0' },
+      { hall: 'N관', favorite: '불고기', rating: '4.4' },
+      { hall: '브릿지관', favorite: '우삼겹우동', rating: '4.7' }
+    ];
+    
+    const hallColors = {
+      '기숙관': '#EBECED',
+      '목동관': '#E9E5E3',
+      '목동W관': '#FAEBDD',
+      '신관': '#FBF3DB',
+      'M3관': '#DDEDEA',
+      '3/H관': '#DDEBF1',
+      'W관': '#EAE4F2',
+      'N관': '#F4DFEB',
+      '브릿지관': '#FBE4E4'
+    };
+    
+    // Generate Hall Cards
+    const hallCardsGrid = document.querySelector('.hall-cards-grid');
+    
+    console.log('hallCardsGrid:', hallCardsGrid);
+    console.log('carouselItems:', carouselItems);
+    console.log('hall-cards-grid exists:', document.querySelector('.hall-cards-grid') !== null);
+    
+    if (!hallCardsGrid) {
+      console.error('hallCardsGrid element not found!');
+      console.error('Trying to find hall cards section...');
+    } else {
+      console.log('Found hallCardsGrid, creating cards...');
+      
+      // Create cards (duplicate for seamless loop)
+      carouselItems.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'hall-card';
+        card.style.backgroundColor = hallColors[item.hall];
+        card.setAttribute('role', 'group');
+        card.setAttribute('aria-label', `${item.hall} 최애 메뉴: ${item.favorite}, 평점: ${item.rating}`);
+        
+        card.innerHTML = `
+          <div class="hall-card-header">${item.hall}</div>
+          <div class="hall-card-subheader">최애 메뉴</div>
+          <div class="hall-card-main">${item.favorite}</div>
+          <div class="hall-card-rating">★${item.rating}</div>
+        `;
+        
+        hallCardsGrid.appendChild(card);
+      });
+      
+      // Duplicate cards for seamless infinite loop
+      carouselItems.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'hall-card';
+        card.style.backgroundColor = hallColors[item.hall];
+        card.setAttribute('role', 'group');
+        card.setAttribute('aria-label', `${item.hall} 최애 메뉴: ${item.favorite}, 평점: ${item.rating}`);
+        
+        card.innerHTML = `
+          <div class="hall-card-header">${item.hall}</div>
+          <div class="hall-card-subheader">최애 메뉴</div>
+          <div class="hall-card-main">${item.favorite}</div>
+          <div class="hall-card-rating">★${item.rating}</div>
+        `;
+        
+        hallCardsGrid.appendChild(card);
+      });
+      
+      // Touch event to pause animation on mobile
+      const hallCardsWrapper = document.querySelector('.hall-cards-wrapper');
+      if (hallCardsWrapper) {
+        let touchStartTime = 0;
+        let isPaused = false;
+        
+        hallCardsWrapper.addEventListener('touchstart', function(e) {
+          touchStartTime = Date.now();
+          if (!isPaused) {
+            hallCardsGrid.classList.add('paused');
+            isPaused = true;
+          }
+        });
+        
+        hallCardsWrapper.addEventListener('touchend', function(e) {
+          const touchDuration = Date.now() - touchStartTime;
+          if (touchDuration < 300 && isPaused) {
+            // Quick tap: toggle pause/play
+            hallCardsGrid.classList.remove('paused');
+            isPaused = false;
+          } else if (touchDuration >= 300 && isPaused) {
+            // Long touch: keep paused
+            // Animation stays paused
+          }
+        });
+      }
+    }
+    
+    // Monthly Subject TA Trends Chart
+    function drawLineChart(canvasId, data, color, label) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      
+      // Get device pixel ratio for crisp rendering
+      const dpr = window.devicePixelRatio || 1;
+      const displayWidth = canvas.clientWidth;
+      const displayHeight = canvas.clientHeight;
+      
+      // Set actual canvas size accounting for device pixel ratio
+      canvas.width = displayWidth * dpr;
+      canvas.height = displayHeight * dpr;
+      canvas.style.width = displayWidth + 'px';
+      canvas.style.height = displayHeight + 'px';
+      
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+      
+      const width = displayWidth;
+      const height = displayHeight;
+      const padding = 40;
+      const chartWidth = width - 2 * padding;
+      const chartHeight = height - 2 * padding;
+      
+      // Clear canvas
+      ctx.clearRect(0, 0, width, height);
+      
+      // Draw axes
+      ctx.strokeStyle = '#D1D5DB';
+      ctx.lineWidth = 1;
+      
+      // X-axis
+      ctx.beginPath();
+      ctx.moveTo(padding, height - padding);
+      ctx.lineTo(width - padding, height - padding);
+      ctx.stroke();
+      
+      // Y-axis
+      ctx.beginPath();
+      ctx.moveTo(padding, padding);
+      ctx.lineTo(padding, height - padding);
+      ctx.stroke();
+      
+      // Find max value
+      const maxValue = Math.max(...data.values);
+      const minValue = Math.min(...data.values);
+      const range = maxValue - minValue || maxValue;
+      
+      // Draw line and points
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.fillStyle = color;
+      
+      const pointRadius = 4;
+      const points = [];
+      
+      data.values.forEach((value, index) => {
+        const x = padding + (index / (data.values.length - 1)) * chartWidth;
+        const y = height - padding - ((value - minValue) / range) * chartHeight;
+        points.push({ x, y, value });
+      });
+      
+      // Draw line
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+      }
+      ctx.stroke();
+      
+      // Draw circles
+      points.forEach(point => {
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, pointRadius, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Draw value label
+        ctx.fillStyle = '#1F2937';
+        ctx.font = 'bold 14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(point.value, point.x, point.y - 10);
+      });
+      
+      // Draw month labels
+      ctx.fillStyle = '#6B7280';
+      ctx.font = 'bold 14px sans-serif';
+      ctx.textAlign = 'center';
+      data.months.forEach((month, index) => {
+        const x = padding + (index / (data.months.length - 1)) * chartWidth;
+        ctx.fillText(month, x, height - padding + 20);
+      });
+      
+      // Draw Y-axis labels
+      ctx.fillStyle = '#6B7280';
+      ctx.font = 'bold 14px sans-serif';
+      ctx.textAlign = 'right';
+      for (let i = 0; i <= 5; i++) {
+        const value = Math.round(minValue + (range * i / 5));
+        const y = height - padding - (i / 5) * chartHeight;
+        ctx.fillText(value, padding - 10, y + 4);
+      }
+      
+      // Draw title (subject label)
+      ctx.fillStyle = '#1F2937';
+      ctx.font = 'bold 20px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(label, padding, padding - 10);
+    }
+    
+    // Sample data (placeholder - to be replaced with actual data)
+    const mathData = {
+      months: ['3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월'],
+      values: [150, 180, 200, 220, 190, 230, 250, 280, 300]
+    };
+    
+    const research1Data = {
+      months: ['3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월'],
+      values: [80, 100, 120, 110, 130, 140, 150, 160, 170]
+    };
+    
+    const research2Data = {
+      months: ['3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월'],
+      values: [60, 70, 80, 90, 85, 95, 100, 110, 120]
+    };
+    
+    // Wait for DOM to be fully loaded
+    window.addEventListener('load', () => {
+      // Use Intersection Observer to trigger chart rendering when section comes into view
+      const chartsSection = document.querySelector('.monthly-charts-scroll-wrapper');
+      if (chartsSection) {
+        let chartsRendered = false;
+        const chartsObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !chartsRendered) {
+              chartsRendered = true;
+              drawLineChart('mathChart', mathData, '#0F66F5', '수학');
+              drawLineChart('research1Chart', research1Data, '#033597', '탐구1');
+              drawLineChart('research2Chart', research2Data, '#6AA2FA', '탐구2');
+            }
+            if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+              chartsRendered = false;
+            }
+          });
+        }, { threshold: 0.3 });
+        
+        chartsObserver.observe(chartsSection);
+      }
+    });
   </script>
 
 </body>
