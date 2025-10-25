@@ -219,37 +219,33 @@
       }
       
       .timeline-metric {
-        white-space: nowrap;
+        font-size: 0.9rem;
+        line-height: 1.5;
       }
       
       .timeline-metric span {
         display: inline;
-      }
-      
-      /* Timeline summary message - prevent line breaks */
-      .timeline-metric ~ div.text-center p.text-lg {
-        white-space: nowrap;
-        overflow-x: auto;
-        padding: 0 1rem;
-      }
-      
-      /* Check-in/out caption - prevent line breaks */
-      div.flex.gap-4.mb-6 ~ div.text-center p.text-lg {
-        white-space: nowrap;
-        overflow-x: auto;
-        padding: 0 1rem;
+        font-size: 0.95rem;
       }
       
       .timeline-card {
         padding: 1rem;
+        flex: 1;
       }
       
       .timeline-card p {
-        font-size: 0.875rem;
+        font-size: 0.7rem;
       }
       
-      .timeline-metric {
-        font-size: 1rem;
+      .timeline-card .text-lg {
+        font-size: 0.8rem;
+      }
+      
+      /* Summary messages */
+      div.text-center.text-gray-700 p.text-lg {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        padding: 0 0.5rem;
       }
       
       .check-in-out-box {
