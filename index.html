@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Memoir | 시대인재</title>
   
   <!-- TailwindCSS CDN -->
@@ -103,6 +103,7 @@
       align-items: center;
       gap: 1rem;
       min-height: 200px;
+      box-sizing: border-box;
     }
     
     .sun-icon {
@@ -208,116 +209,326 @@
       border-radius: 0.5rem;
     }
     
-    /* Mobile responsive styles */
+    .hours-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+    
+    .hours-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .hours-content {
+      position: relative;
+      z-index: 3;
+      padding: 4rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .hours-title-overlay {
+      font-size: 1.365rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #1F2937;
+      text-align: left;
+      flex: 1;
+    }
+    
+    .hours-number-overlay {
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      flex: 1;
+    }
+    
+    .hours-number-text {
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .hours-text-overlay {
+      font-size: 1.8rem;
+      color: #1F2937;
+      font-weight: 500;
+    }
+    
+    /* Library Time Section */
+    .library-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      min-height: 200px;
+      position: relative;
+      overflow: visible;
+      box-sizing: border-box;
+    }
+    
+    .library-bg {
+      position: absolute;
+      width: 113.4%;
+      height: 113.4%;
+      left: -20%;
+      bottom: -20%;
+      object-fit: contain;
+      object-position: left bottom;
+      pointer-events: none;
+      z-index: 2;
+    }
+    
+    .library-card-with-bg {
+      position: relative;
+      overflow: visible;
+    }
+    
+    .library-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 1rem;
+      z-index: 0;
+    }
+    
+    .library-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(240, 242, 245, 0.98) 0%, rgba(240, 242, 245, 0.7) 70%, rgba(240, 242, 245, 0.3) 100%);
+      border-radius: 1rem;
+      z-index: 1;
+    }
+    
+    .library-header {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.1375rem;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: right;
+      color: #1F2937;
+      z-index: 3;
+      pointer-events: none;
+    }
+    
+    .library-time {
+      position: absolute;
+      top: 5.4rem;
+      right: 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      justify-content: flex-end;
+      z-index: 3;
+      pointer-events: none;
+    }
+    
+    .library-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .library-unit {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #1F2937;
+      line-height: 1;
+    }
+    
+    /* Focus Card - Left Aligned */
+    .focus-header {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 1.1375rem;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: left;
+      color: #1F2937;
+      z-index: 10;
+    }
+    
+    .focus-time {
+      position: absolute;
+      top: 5.4rem;
+      left: 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      justify-content: flex-start;
+      z-index: 10;
+    }
+    
+    .focus-bg {
+      position: absolute;
+      width: 137.21%;
+      height: 137.21%;
+      right: -35%;
+      bottom: -35%;
+      object-fit: contain;
+      object-position: right bottom;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .meal-owl-image {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 57.6%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .favorite-meal-image {
+      position: absolute;
+      top: 20%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 80%;
+      object-fit: contain;
+      object-position: center bottom;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    /* Meal Section Cards - 90% taller (200px * 1.9 = 380px) */
+    .meal-section .library-card {
+      min-height: 380px;
+    }
+    
+    /* Meal Section */
+    .meal-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      aspect-ratio: 16 / 13.5;
+      min-height: 450px;
+      flex: 1;
+      position: relative;
+      overflow: visible;
+      box-sizing: border-box;
+    }
+    
+    .meal-header {
+      font-size: clamp(28px, 2.8vw, 42.667px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      text-align: left;
+      color: #000000;
+      margin-bottom: 1.5rem;
+    }
+    
+    .meal-metric {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .meal-number {
+      font-size: clamp(56px, 6.5vw, 96px);
+      font-weight: 700;
+      line-height: 1;
+      color: #0459F0;
+    }
+    
+    .meal-unit {
+      font-size: clamp(56px, 6.5vw, 96px);
+      font-weight: 700;
+      line-height: 1;
+      color: #000000;
+    }
+    
+    .meal-text {
+      margin-bottom: 2rem;
+    }
+    
+    .meal-main-text {
+      font-size: clamp(56px, 6.5vw, 96px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #000000;
+    }
+    
+    .meal-image-container {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      max-height: 48%;
+      margin-top: auto;
+    }
+    
+    .meal-image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+    }
+    
+    /* Meal Section - Mobile */
     @media (max-width: 768px) {
-      /* Container adjustments */
-      .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      
-      /* Intro section */
-      .intro-text {
-        font-size: 1.125rem;
-      }
-      
-      .intro-text p {
-        font-size: 1rem;
-      }
-      
-      /* Timeline cards */
-      .timeline-card {
-        padding: 0.75rem;
-        min-width: 120px;
-        flex: 0 1 auto;
-      }
-      
-      .timeline-card p {
-        font-size: 0.65rem;
-        white-space: nowrap;
-      }
-      
-      .timeline-card .text-lg {
-        font-size: 0.75rem;
-        white-space: nowrap;
-      }
-      
-      /* Timeline connector */
-      .timeline-connector {
-        margin: 0 0.75rem;
-      }
-      
-      /* Timeline metric */
-      .timeline-metric {
-        font-size: 0.85rem;
-        line-height: 1.5;
-        margin: 1.5rem 0;
-      }
-      
-      .timeline-metric span {
-        display: inline;
-        font-size: 0.9rem;
-      }
-      
-      /* Summary messages */
-      div.text-center.text-gray-700 p.text-lg {
-        font-size: 0.8rem;
-        line-height: 1.4;
-        padding: 0 0.5rem;
-      }
-      
-      .check-in-out-box {
+      .meal-card {
         padding: 1.5rem;
-        min-height: 160px;
+        aspect-ratio: 16 / 10;
       }
       
-      .time-value {
-        font-size: 1.25rem;
+      .meal-header {
+        font-size: clamp(24px, 5vw, 36px);
+        margin-bottom: 1rem;
       }
       
-      .time-label {
-        font-size: 0.75rem;
+      .meal-number,
+      .meal-unit {
+        font-size: clamp(40px, 8vw, 72px);
       }
       
-      .sun-icon, .moon-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-      }
-      
-      .hours-title {
-        font-size: 0.875rem;
-        line-height: 1.4;
-        padding: 0.5rem;
-      }
-      
-      .hours-number {
-        font-size: 2rem;
-      }
-      
-      .hours-text {
-        font-size: 1.125rem;
-      }
-      
-      .classroom-image {
-        height: 200px;
-      }
-      
-      .hours-header {
-        padding: 1rem;
-      }
-      
-      .hours-title {
-        text-align: left;
-        justify-content: flex-start;
-      }
-      
-      .hours-number-section {
-        justify-content: flex-end;
-      }
-      
-      .hours-card {
-        padding: 0;
+      .meal-main-text {
+        font-size: clamp(40px, 8vw, 72px);
       }
     }
   </style>
@@ -349,7 +560,7 @@
   <!-- Timeline Section (등원 기간) -->
   <section class="py-16" style="background: #FFFFFF;">
     <div class="container mx-auto px-6">
-      <div class="max-w-5xl mx-auto">
+      <div class="max-w-4xl mx-auto">
         
         <!-- Timeline Cards and Connector -->
         <div class="flex items-center mb-8" data-aos="fade-up">
@@ -425,25 +636,110 @@
   </section>
 
   <!-- Total Hours Section (강의 시간) -->
+  <section class="py-16 hours-section-wrapper" style="position: relative; background: #FFFFFF; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./classroom.png" alt="강의실 배경" class="hours-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="hours-background-overlay"></div>
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
+      <div class="max-w-4xl mx-auto">
+        
+                  <!-- Hours Content -->
+        <div class="hours-content" data-aos="fade-up">
+          <div class="hours-title-overlay">시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
+          <div class="hours-number-overlay">
+            <span class="hours-number-text" id="totalHours">1200</span>
+            <span class="hours-text-overlay">시간</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Library Time and Focus Section (라이브러리 잔류시간 & 몰입도) -->
   <section class="py-16" style="background: #FFFFFF;">
     <div class="container mx-auto px-6">
       <div class="max-w-4xl mx-auto">
         
-        <!-- Hours Card -->
-        <div class="hours-card mb-6" data-aos="fade-up">
-          <!-- Header with Title and Number -->
-          <div class="hours-header">
-            <div class="hours-title">시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
-            <div class="hours-number-section">
-              <div class="flex items-end gap-2">
-                <span class="hours-number" id="totalHours">1200</span>
-                <span class="hours-text">시간</span>
-              </div>
+        <!-- Library Time and Focus Cards -->
+        <div class="flex gap-4 mb-6" data-aos="fade-up" style="overflow: visible;">
+          <!-- Left Library Time Card -->
+          <div class="library-card library-card-with-bg">
+            <!-- Background Image -->
+            <img src="Library background.jpeg" alt="라이브러리 배경" class="library-background">
+            
+            <!-- Gradient Overlay -->
+            <div class="library-overlay"></div>
+            
+            <!-- Owl Image -->
+            <img src="Library time.png" alt="라이브러리" class="library-bg">
+            
+            <!-- Header Text (Right Top) -->
+            <div class="library-header">
+              2025년,<br>라이브러리에서 보낸 시간
+            </div>
+            
+            <!-- Time Value (Center) -->
+            <div class="library-time">
+              <span class="library-number" id="libraryHours">1,200</span>
+              <span class="library-unit">시간</span>
             </div>
           </div>
           
-          <!-- Classroom Image -->
-          <img src="classroom.png" alt="강의실" class="classroom-image" onerror="console.error('Image failed to load:', this.src)">
+          <!-- Right Focus Card -->
+          <div class="library-card">
+            <!-- Background Image -->
+            <img src="Focus owl.png" alt="몰입도 부엉이" class="focus-bg">
+            
+            <!-- Header Text (Left Top) -->
+            <div class="focus-header">
+              그동안,<br>라이브러리에서의 몰입도
+            </div>
+            
+            <!-- Value (Left aligned below header) -->
+            <div class="focus-time">
+              <span class="library-number" id="focusScore" aria-label="평균 몰입도">8.7</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Meal Section (급식 섹션) -->
+  <section class="py-16 meal-section" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Meal Cards -->
+        <div class="flex gap-4 mb-6" data-aos="fade-up">
+          
+          <!-- Card A: Total Meals Count -->
+          <div class="library-card" aria-label="총 식사 끼니 수 카드, 급식 먹은 횟수 1,234회">
+            <div class="library-header" style="top: 1rem; left: 50%; transform: translateX(-50%); text-align: center;">
+              총 식사 끼니 수
+            </div>
+            <div class="library-time" style="top: 3rem; left: 50%; transform: translateX(-50%); justify-content: center;">
+              <span class="library-number" id="mealCount">1,234</span>
+              <span class="library-unit">회</span>
+            </div>
+            <!-- Bottom Image -->
+            <img src="Meal owl.png" alt="식사 부엉이" class="meal-owl-image">
+          </div>
+          
+          <!-- Card B: Favorite Menu -->
+          <div class="library-card" aria-label="태성관 카드, 태성관의 최애 메뉴 안내">
+            <!-- Favorite Meal Image -->
+            <img src="Favorite meal.png" alt="최애 메뉴 식사 사진" class="favorite-meal-image">
+            <div class="focus-header" style="top: 1rem; left: 1rem; text-align: left; z-index: 10;">
+              <span id="mealCampusName">태성관</span> 관의 최애 메뉴는 무엇이었을까요?
+            </div>
+          </div>
+          
         </div>
         
       </div>
@@ -475,6 +771,10 @@
     const checkInTime = get('checkInTime', '08:30');
     const checkOutTime = get('checkOutTime', '22:00');
     const totalHours = get('totalHours', '1200');
+    const libraryHours = get('libraryHours', '1200');
+    const focusScore = get('focusScore', '87');
+    const mealCount = get('mealCount', '1234');
+    const favoriteMenu = get('favoriteMenu', '돈까스');
     
     // Update DOM elements
     document.getElementById('studentNameOutput').textContent = studentName;
@@ -491,8 +791,26 @@
     document.getElementById('captionCheckInTime').textContent = checkInTime;
     document.getElementById('captionCheckOutTime').textContent = checkOutTime;
     
-    // Update hours section
-    document.getElementById('totalHours').textContent = totalHours;
+    // Update hours section with formatted number
+    const formattedTotalHours = new Intl.NumberFormat('ko-KR').format(totalHours);
+    document.getElementById('totalHours').textContent = formattedTotalHours;
+    
+    // Update library hours section with formatted number
+    const formattedLibraryHours = new Intl.NumberFormat('ko-KR').format(libraryHours);
+    document.getElementById('libraryHours').textContent = formattedLibraryHours;
+    
+    // Update focus score (display as-is with one decimal place)
+    const focusScoreValue = parseFloat(focusScore).toFixed(1);
+    document.getElementById('focusScore').textContent = focusScoreValue;
+    document.getElementById('focusScore').setAttribute('aria-label', `평균 몰입도 ${focusScoreValue}`);
+    
+    // Update meal section with formatted number
+    const formattedMealCount = new Intl.NumberFormat('ko-KR').format(mealCount);
+    document.getElementById('mealCount').textContent = formattedMealCount;
+    
+    // Update favorite menu
+    document.getElementById('mealCampusName').textContent = campusName;
+    document.getElementById('favoriteMenu').textContent = favoriteMenu;
   </script>
 
 </body>
