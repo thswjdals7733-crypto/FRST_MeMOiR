@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Memoir | 시대인재</title>
+  
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css" />
+  
+  <style>
+    * {
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    }
+    
+    body {
+      background-color: #FFFFFF;
+      color: #1F2937;
+    }
+    
+    .card {
+      background-color: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .intro-section {
+      background: linear-gradient(135deg, #B9D3FF 0%, #0459F0 60%, #2ECDF7 100%);
+      color: #FFFFFF;
+      padding: 4rem 0;
+      border-radius: 0;
+    }
+    
+    .point-color {
+      color: #0459F0;
+    }
+    
+    .intro-text {
+      font-size: 1.5rem;
+      line-height: 1.8;
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    .intro-text p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .intro-emoji {
+      font-size: 1.25rem;
+      margin-right: 0.5rem;
+    }
+    
+    .timeline-card {
+      background: #FFFFFF;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    
+    .timeline-connector {
+      height: 2px;
+      background: #E5E7EB;
+      margin: 0 2rem;
+      flex: 1;
+      position: relative;
+    }
+    
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #0459F0;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .timeline-metric {
+      font-size: 1.25rem;
+      color: #1F2937;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    
+    .check-in-out-box {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      min-height: 200px;
+    }
+    
+    .sun-icon {
+      width: 60px;
+      height: 60px;
+      background: #03A9F4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(3, 169, 244, 0.4);
+      font-size: 2rem;
+    }
+    
+    .moon-icon {
+      width: 60px;
+      height: 60px;
+      background: #1A237E;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(26, 35, 126, 0.4);
+      font-size: 2rem;
+    }
+    
+    .time-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1F2937;
+    }
+    
+    .time-label {
+      font-size: 0.875rem;
+      color: #6B7280;
+    }
+    
+    .hours-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hours-title {
+      font-size: 1.3125rem;
+      font-weight: 700;
+      color: #1F2937;
+      line-height: 1.6;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .classroom-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    
+    .hours-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to bottom, rgba(240, 242, 245, 0.98) 0%, rgba(240, 242, 245, 0.7) 70%, transparent 100%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .hours-number-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hours-number {
+      font-size: 5rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .hours-text {
+      font-size: 2rem;
+      color: #1F2937;
+      font-weight: 500;
+    }
+    
+    .hours-illustration {
+      flex: 1;
+      max-width: 300px;
+      height: auto;
+      border-radius: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- INTRO Section -->
+  <section class="intro-section">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="intro-text" data-aos="fade-up">
+          <p>
+            부엉이 여러분, 수고 많으셨습니다.<br>
+            학생님이 달려온 시간을 회고하는 [Memoir]
+          </p>
+          
+          <p style="font-size: 1.25rem; opacity: 0.95;">
+            <span class="intro-emoji">📝</span>'memoir'는 유명인의 회고록이라는 뜻을 지녔습니다.
+          </p>
+          
+          <p style="font-size: 1.25rem; opacity: 0.95;">
+            시대인재는 여러분 하나하나를 존중하고, 여러분이 시대인재와 함께한 시간의 가치를 간과하지 않기에 그동안 달려온 시간을 회고해보고자 했습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section (등원 기간) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl mx-auto">
+        
+        <!-- Timeline Cards and Connector -->
+        <div class="flex items-center mb-8" data-aos="fade-up">
+          <!-- Start Card -->
+          <div class="timeline-card">
+            <p class="text-sm text-gray-600 mb-1">시대인재 N 처음 만난 날</p>
+            <p class="text-lg font-semibold text-gray-800" id="startDate">2024.02.15</p>
+          </div>
+          
+          <!-- Connector Line -->
+          <div class="timeline-connector">
+            <div class="timeline-dot"></div>
+          </div>
+          
+          <!-- End Card -->
+          <div class="timeline-card">
+            <p class="text-sm text-gray-600 mb-1">The End</p>
+            <p class="text-lg font-semibold text-gray-800" id="endDate">2024.11.13</p>
+          </div>
+        </div>
+        
+        <!-- Total Days Metric -->
+        <div class="timeline-metric" data-aos="fade-up" data-aos-delay="100">
+          총 <span class="point-color font-bold" id="totalDays">150</span>일 함께했습니다.
+        </div>
+        
+        <!-- Summary Message -->
+        <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
+          <p class="text-lg">
+            <span id="studentNameOutput" class="font-semibold">학생 이름</span>님은, <span id="campusNameOutput" class="font-semibold">고사관</span> <span id="classNameOutput" class="font-semibold">N</span>반에서 1년간 치열하게 달려왔습니다.
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Check-in/Check-out Section (등하원 시간) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Two Boxes Side by Side -->
+        <div class="flex gap-4 mb-6" data-aos="fade-up">
+          <!-- Check-in Box (Sun) -->
+          <div class="check-in-out-box">
+            <div class="sun-icon">☀️</div>
+            <div class="text-center">
+              <div class="time-label">평균 등원 시간</div>
+              <div class="time-value" id="checkInTime">08:30</div>
+            </div>
+          </div>
+          
+          <!-- Check-out Box (Moon) -->
+          <div class="check-in-out-box">
+            <div class="moon-icon">🌙</div>
+            <div class="text-center">
+              <div class="time-label">평균 하원 시간</div>
+              <div class="time-value" id="checkOutTime">22:00</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Caption -->
+        <div class="text-center text-gray-700 mt-4" data-aos="fade-up" data-aos-delay="100">
+          <p class="text-lg">
+            <span id="captionStudentName" class="font-semibold">홍길동</span>님은, 평균적으로 라이브러리에 <span id="captionCheckInTime" class="font-semibold">08:30</span>에 등원하여, <span id="captionCheckOutTime" class="font-semibold">22:00</span>에 하원하였습니다.
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Total Hours Section (강의 시간) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Hours Card -->
+        <div class="hours-card mb-6" data-aos="fade-up">
+          <!-- Header with Title and Number -->
+          <div class="hours-header">
+            <div class="hours-title">시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
+            <div class="hours-number-section">
+              <div class="flex items-end gap-2">
+                <span class="hours-number" id="totalHours">1200</span>
+                <span class="hours-text">시간</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Classroom Image -->
+          <img src="강의실 사진.png" alt="강의실" class="classroom-image">
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- AOS Initialization -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+    
+    // URL 파라미터 읽기
+    const params = new URLSearchParams(location.search);
+    const get = (key, defaultValue = '') => {
+      return params.get(key) || defaultValue;
+    };
+    
+    // Dynamic data binding
+    const studentName = get('name', '학생 이름');
+    const startDate = get('startDate', '2024.02.15');
+    const endDate = get('endDate', '2024.11.13');
+    const totalDays = get('totalDays', '150');
+    const campusName = get('campusName', '고사관');
+    const className = get('className', 'N반');
+    const checkInTime = get('checkInTime', '08:30');
+    const checkOutTime = get('checkOutTime', '22:00');
+    const totalHours = get('totalHours', '1200');
+    
+    // Update DOM elements
+    document.getElementById('studentNameOutput').textContent = studentName;
+    document.getElementById('startDate').textContent = startDate;
+    document.getElementById('endDate').textContent = endDate;
+    document.getElementById('totalDays').textContent = totalDays;
+    document.getElementById('campusNameOutput').textContent = campusName;
+    document.getElementById('classNameOutput').textContent = className;
+    
+    // Update check-in/check-out times
+    document.getElementById('checkInTime').textContent = checkInTime;
+    document.getElementById('checkOutTime').textContent = checkOutTime;
+    document.getElementById('captionStudentName').textContent = studentName;
+    document.getElementById('captionCheckInTime').textContent = checkInTime;
+    document.getElementById('captionCheckOutTime').textContent = checkOutTime;
+    
+    // Update hours section
+    document.getElementById('totalHours').textContent = totalHours;
+  </script>
+
+</body>
+</html>
