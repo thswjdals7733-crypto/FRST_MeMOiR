@@ -210,6 +210,13 @@
     
     /* Mobile responsive styles */
     @media (max-width: 768px) {
+      /* Container adjustments */
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      /* Intro section */
       .intro-text {
         font-size: 1.125rem;
       }
@@ -218,33 +225,44 @@
         font-size: 1rem;
       }
       
+      /* Timeline cards */
+      .timeline-card {
+        padding: 0.75rem;
+        min-width: 120px;
+        flex: 0 1 auto;
+      }
+      
+      .timeline-card p {
+        font-size: 0.65rem;
+        white-space: nowrap;
+      }
+      
+      .timeline-card .text-lg {
+        font-size: 0.75rem;
+        white-space: nowrap;
+      }
+      
+      /* Timeline connector */
+      .timeline-connector {
+        margin: 0 0.75rem;
+      }
+      
+      /* Timeline metric */
       .timeline-metric {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         line-height: 1.5;
+        margin: 1.5rem 0;
       }
       
       .timeline-metric span {
         display: inline;
-        font-size: 0.95rem;
-      }
-      
-      .timeline-card {
-        padding: 1rem;
-        flex: 1;
-      }
-      
-      .timeline-card p {
-        font-size: 0.7rem;
-      }
-      
-      .timeline-card .text-lg {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
       }
       
       /* Summary messages */
       div.text-center.text-gray-700 p.text-lg {
-        font-size: 0.85rem;
-        line-height: 1.5;
+        font-size: 0.8rem;
+        line-height: 1.4;
         padding: 0 0.5rem;
       }
       
