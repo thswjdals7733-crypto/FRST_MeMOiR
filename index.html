@@ -15,8 +15,18 @@
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css" />
   
   <style>
+    :root {
+      /* 5단계 텍스트 크기 체계 */
+      --text-hero: clamp(64px, 8vw, 96px);        /* 매우 큰 텍스트 (hero title, section title) */
+      --text-large: clamp(32px, 4vw, 56px);       /* 큰 텍스트 (major heading) */
+      --text-medium: clamp(20px, 2.5vw, 28px);    /* 중간 텍스트 (본문 제목, 강조 문장) */
+      --text-small: clamp(16px, 1.8vw, 20px);     /* 작은 텍스트 (본문, 캡션) */
+      --text-tiny: clamp(12px, 1.2vw, 14px);      /* 매우 작은 텍스트 (footer, 주석) */
+    }
+    
     * {
-      font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      font-family: 'Noto Sans KR', 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      font-weight: 300;
     }
     
     body {
@@ -43,10 +53,10 @@
     }
     
     .intro-text {
-      font-size: 1.5rem;
+      font-size: var(--text-small);
       line-height: 1.8;
       text-align: center;
-      font-weight: 500;
+      font-weight: 300;
     }
     
     .intro-text p {
@@ -64,9 +74,8 @@
     }
     
     .intro-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 79pt;
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       font-style: italic;
       color: #022669;
       margin-bottom: 2rem;
@@ -74,18 +83,16 @@
     }
     
     .intro-description {
-      font-family: 'Inter', sans-serif;
-      font-size: 28pt;
-      font-weight: 700;
+      font-size: var(--text-large);
+      font-weight: 300;
       color: #000000;
       line-height: 1.6;
       text-align: center;
     }
     
     .intro-data-period {
-      font-family: 'Inter', sans-serif;
-      font-size: 20pt;
-      font-weight: 500;
+      font-size: var(--text-medium);
+      font-weight: 300;
       color: #6B7280;
       text-align: center;
     }
@@ -131,7 +138,7 @@
     }
     
     .timeline-metric {
-      font-size: 1.25rem;
+      font-size: var(--text-small);
       color: #1F2937;
       margin: 2rem 0;
       text-align: center;
@@ -176,13 +183,13 @@
     }
     
     .time-value {
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-size: var(--text-small);
+      font-weight: 300;
       color: #1F2937;
     }
     
     .time-label {
-      font-size: 0.875rem;
+      font-size: var(--text-tiny);
       color: #6B7280;
     }
     
@@ -224,8 +231,8 @@
     }
     
     .checkin-title-overlay {
-      font-size: 1.365rem;
-      font-weight: 700;
+      font-size: var(--text-medium);
+      font-weight: 300;
       line-height: 1.4;
       color: #1F2937;
       margin-bottom: 1.5rem;
@@ -239,8 +246,8 @@
     }
     
     .checkin-number-text {
-      font-size: 3.6rem;
-      font-weight: 700;
+      font-size: var(--text-large);
+      font-weight: 300;
       color: #0459F0;
       line-height: 1;
     }
@@ -256,8 +263,8 @@
     }
     
     .hours-title {
-      font-size: 1.3125rem;
-      font-weight: 700;
+      font-size: var(--text-medium);
+      font-weight: 300;
       color: #1F2937;
       line-height: 1.6;
       text-align: center;
@@ -294,16 +301,16 @@
     }
     
     .hours-number {
-      font-size: 5rem;
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       color: #0459F0;
       line-height: 1;
     }
     
     .hours-text {
-      font-size: 2rem;
+      font-size: var(--text-medium);
       color: #1F2937;
-      font-weight: 500;
+      font-weight: 300;
     }
     
     .hours-illustration {
@@ -346,7 +353,7 @@
     
     .hours-title-overlay {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       line-height: 1.4;
       color: #1F2937;
       text-align: left;
@@ -365,7 +372,7 @@
     
     .hours-number-text {
       font-size: 3.6rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #0459F0;
       line-height: 1;
     }
@@ -373,7 +380,7 @@
     .hours-text-overlay {
       font-size: 1.8rem;
       color: #1F2937;
-      font-weight: 500;
+      font-weight: 300;
     }
     
     /* Library Time Section */
@@ -449,8 +456,8 @@
     }
     
     .library-title-overlay {
-      font-size: 1.365rem;
-      font-weight: 700;
+      font-size: var(--text-medium);
+      font-weight: 300;
       line-height: 1.4;
       color: #1F2937;
       margin-bottom: 1.5rem;
@@ -464,28 +471,28 @@
     }
     
     .library-number-text {
-      font-size: 3.6rem;
-      font-weight: 700;
+      font-size: var(--text-large);
+      font-weight: 300;
       color: #0459F0;
       line-height: 1;
     }
     
     .library-text-overlay {
-      font-size: 1.8rem;
+      font-size: var(--text-small);
       color: #1F2937;
-      font-weight: 500;
+      font-weight: 300;
     }
     
     .library-number {
-      font-size: 3rem;
-      font-weight: 700;
+      font-size: var(--text-large);
+      font-weight: 300;
       color: #0459F0;
       line-height: 1;
     }
     
     .library-unit {
       font-size: 3rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #1F2937;
       line-height: 1;
     }
@@ -496,7 +503,7 @@
       top: 1rem;
       left: 1rem;
       font-size: 1.1375rem;
-      font-weight: 700;
+      font-weight: 300;
       line-height: 1.4;
       text-align: left;
       color: #1F2937;
@@ -597,7 +604,7 @@
     
     .meal-title-overlay {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       line-height: 1.4;
       color: #1F2937;
       margin-bottom: 1.5rem;
@@ -612,7 +619,7 @@
     
     .meal-number-text {
       font-size: 3.6rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #0459F0;
       line-height: 1;
     }
@@ -620,7 +627,7 @@
     .meal-text-overlay {
       font-size: 1.8rem;
       color: #1F2937;
-      font-weight: 500;
+      font-weight: 300;
     }
     
     /* Hall Cards Carousel */
@@ -677,21 +684,21 @@
     
     .hall-card-header {
       font-size: 1.25rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #1F2937;
       text-align: center;
     }
     
     .hall-card-subheader {
       font-size: 0.875rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #6B7280;
       text-align: center;
     }
     
     .hall-card-main {
       font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #111827;
       text-align: center;
       line-height: 1.2;
@@ -701,7 +708,7 @@
     
     .hall-card-rating {
       font-size: 0.875rem;
-      font-weight: 500;
+      font-weight: 300;
       color: #6B7280;
       text-align: center;
     }
@@ -717,8 +724,8 @@
     }
     
     .content-text {
-      font-size: clamp(28px, 3.5vw, 48px);
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       line-height: 1.5;
       color: #000000;
       text-align: left;
@@ -747,15 +754,15 @@
     }
     
     .content-number-value {
-      font-size: clamp(64px, 10vw, 120px);
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       color: #0459F0;
       line-height: 1;
     }
     
     .content-number-unit {
-      font-size: clamp(32px, 4vw, 56px);
-      font-weight: 700;
+      font-size: var(--text-large);
+      font-weight: 300;
       color: #000000;
       line-height: 1;
       margin-left: 0.5rem;
@@ -806,7 +813,7 @@
     .personal-data-card .time-label {
       font-size: 2.16rem;
       margin-bottom: 1.44rem;
-      font-weight: 700;
+      font-weight: 300;
       text-align: center;
       width: 100%;
       line-height: 1.2;
@@ -869,7 +876,7 @@
     
     .bar-value {
       font-size: 1.5rem;
-      font-weight: 500;
+      font-weight: 300;
       color: #1F2937;
       margin-bottom: 0.5rem;
       order: 1;
@@ -906,7 +913,7 @@
     
     .bar-label {
       font-size: 1.125rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       order: 3;
       margin-top: 0;
@@ -914,7 +921,7 @@
     
     .bar-chart-message {
       font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 300;
       text-align: center;
       color: #1F2937;
       padding-top: 2rem;
@@ -923,8 +930,8 @@
     
     /* Favorite Content Cards Section */
     .favorite-content-title {
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       color: #1F2937;
       line-height: 1.4;
       text-align: center;
@@ -954,22 +961,22 @@
     }
     
     .content-card-text {
-      font-size: clamp(20px, 2.5vw, 28px);
+      font-size: var(--text-medium);
       text-align: left;
       margin-bottom: 2rem;
     }
     
     .content-card-label {
       font-size: 1.125rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       display: block;
       margin-bottom: 0.5rem;
     }
     
     .content-card-title {
-      font-size: clamp(24px, 3vw, 36px);
-      font-weight: 700;
+      font-size: var(--text-large);
+      font-weight: 300;
       color: #0459F0;
       display: block;
       line-height: 1.2;
@@ -1033,14 +1040,14 @@
     
     .ta-label {
       font-size: 1.5rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       margin-bottom: 1rem;
     }
     
     .ta-number {
-      font-size: clamp(64px, 10vw, 120px);
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       color: #0459F0;
       line-height: 1;
     }
@@ -1069,7 +1076,7 @@
     
     .personal-ta-label {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #1F2937;
       line-height: 1.4;
     }
@@ -1081,15 +1088,15 @@
     }
     
     .personal-ta-number {
-      font-size: clamp(64px, 10vw, 120px);
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       color: #0459F0;
       line-height: 1;
     }
     
     .personal-ta-unit {
       font-size: 1.8rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #1F2937;
       line-height: 1;
     }
@@ -1107,7 +1114,7 @@
     /* Personal Subject TA Section */
     .personal-subject-ta-header {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #1F2937;
       text-align: left;
       margin-bottom: 2rem;
@@ -1136,7 +1143,7 @@
     
     .personal-subject-label {
       font-size: 1.125rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       min-width: 60px;
     }
@@ -1164,7 +1171,7 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #FFFFFF;
       white-space: nowrap;
       z-index: 10;
@@ -1172,7 +1179,7 @@
     
     .personal-subject-ta-message {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       text-align: center;
       color: #1F2937;
       line-height: 1.6;
@@ -1182,7 +1189,7 @@
     /* Promotion Section */
     .promotion-header {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #1F2937;
       text-align: center;
       margin-bottom: 3rem;
@@ -1199,7 +1206,7 @@
     
     .promotion-category-label {
       font-size: 1.125rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       text-align: center;
       margin-bottom: 1.5rem;
@@ -1264,7 +1271,7 @@
       background: #F0F2F5;
       border-radius: 0.75rem;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       white-space: nowrap;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -1307,7 +1314,7 @@
     /* Monthly Subject TA Trends Section */
     .monthly-ta-header {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #1F2937;
       text-align: left;
       margin-bottom: 2rem;
@@ -1362,7 +1369,7 @@
     
     .monthly-ta-message {
       font-size: 1.365rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       text-align: center;
       line-height: 1.6;
@@ -1372,7 +1379,7 @@
     /* Owl Badge Section */
     .owl-badge-intro-text {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #1F2937;
       text-align: left;
       margin-bottom: 1rem;
@@ -1381,7 +1388,7 @@
     
     .owl-badge-call-to-action {
       font-size: 1.365rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       text-align: left;
       margin-bottom: 3rem;
@@ -1447,7 +1454,7 @@
     
     .owl-badge-title {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #1F2937;
       margin-top: 2rem;
       margin-bottom: 0.5rem;
@@ -1507,7 +1514,7 @@
       margin: 3rem auto;
       border-radius: 0;
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #1F2937;
       text-align: center;
       line-height: 1.4;
@@ -1518,7 +1525,7 @@
     
     .outro-subtitle {
       font-size: 1.365rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       text-align: center;
       margin-bottom: 3rem;
@@ -1553,7 +1560,7 @@
     
     .outro-service-title-left {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #0459F0;
       flex: 0 0 200px;
       transform: translateX(3%);
@@ -1561,7 +1568,7 @@
     
     .outro-service-title-right {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #0459F0;
       flex: 0 0 200px;
       text-align: right;
@@ -1570,7 +1577,7 @@
     
     .outro-service-text-right {
       font-size: 1.8rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       line-height: 1.6;
       flex: 1;
@@ -1578,7 +1585,7 @@
     
     .outro-service-text-left {
       font-size: 1.8rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       line-height: 1.6;
       flex: 1;
@@ -1615,7 +1622,7 @@
     
     .consultation-text-left {
       font-size: 1.8rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       line-height: 1.6;
       flex: 1;
@@ -1623,7 +1630,7 @@
     
     .consultation-title-right {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #0459F0;
       flex: 0 0 250px;
       text-align: right;
@@ -1660,14 +1667,14 @@
     
     .afterpack-title-left {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #0459F0;
       flex: 0 0 200px;
     }
     
     .afterpack-text-right {
       font-size: 1.8rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       line-height: 1.6;
       flex: 1;
@@ -1703,7 +1710,7 @@
     
     .jungsi-title-left {
       font-size: 1.365rem;
-      font-weight: 700;
+      font-weight: 300;
       color: #0459F0;
       flex: 0 0 200px;
       transform: translateX(3%);
@@ -1711,7 +1718,7 @@
     
     .jungsi-text-right {
       font-size: 1.8rem;
-      font-weight: 600;
+      font-weight: 300;
       color: #1F2937;
       line-height: 1.6;
       flex: 1;
@@ -1737,7 +1744,7 @@
         margin-left: 0;
         flex: 1;
         margin-bottom: 2rem;
-        font-size: clamp(20px, 4vw, 32px);
+        font-size: var(--text-medium);
         line-height: 1.35;
       }
       
@@ -1748,11 +1755,11 @@
       }
       
       .content-number-value {
-        font-size: clamp(48px, 8vw, 80px);
+        font-size: var(--text-hero);
       }
       
       .content-number-unit {
-        font-size: clamp(24px, 3vw, 40px);
+        font-size: var(--text-large);
         margin-left: 0.3rem;
         white-space: nowrap;
         display: inline-block;
@@ -1800,7 +1807,7 @@
       }
       
       .content-card-title {
-        font-size: clamp(20px, 4vw, 28px);
+        font-size: var(--text-medium);
       }
     }
     
@@ -1827,8 +1834,8 @@
     }
     
     .meal-header {
-      font-size: clamp(28px, 2.8vw, 42.667px);
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       line-height: 1.15;
       letter-spacing: -0.01em;
       text-align: left;
@@ -1844,15 +1851,15 @@
     }
     
     .meal-number {
-      font-size: clamp(56px, 6.5vw, 96px);
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       line-height: 1;
       color: #0459F0;
     }
     
     .meal-unit {
-      font-size: clamp(56px, 6.5vw, 96px);
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       line-height: 1;
       color: #000000;
     }
@@ -1862,8 +1869,8 @@
     }
     
     .meal-main-text {
-      font-size: clamp(56px, 6.5vw, 96px);
-      font-weight: 700;
+      font-size: var(--text-hero);
+      font-weight: 300;
       line-height: 1.1;
       color: #000000;
     }
@@ -1892,17 +1899,17 @@
       }
       
       .meal-header {
-        font-size: clamp(24px, 5vw, 36px);
+        font-size: var(--text-large);
         margin-bottom: 1rem;
       }
       
       .meal-number,
       .meal-unit {
-        font-size: clamp(40px, 8vw, 72px);
+        font-size: var(--text-hero);
       }
       
       .meal-main-text {
-        font-size: clamp(40px, 8vw, 72px);
+        font-size: var(--text-hero);
       }
     }
   </style>
