@@ -1311,7 +1311,7 @@
     .hall-cards-grid {
       display: flex;
       gap: 1rem;
-      animation: scrollCards 20s linear infinite;
+      animation: scrollCards 40s linear infinite;
       will-change: transform;
       width: fit-content;
     }
@@ -2655,7 +2655,7 @@
             그렇기에, 수능이 얼마 남지 않은 이 시점, 레이스를 성공적으로 완주할 여러분의 한 해를 Memoir을 통해 회고해보고자 합니다.
           </p>
           
-          <p class="intro-data-period"><br><br>*데이터 집계기간 : 2/20-10/31</p>
+          <p class="intro-data-period"><br><br>*데이터 집계기간 : 2025.02.20.-2025.10.31.</p>
         </div>
         
         <!-- Timeline Content -->
@@ -3810,11 +3810,12 @@
 
         // Touch events (mobile) with drag support
         hallCardsWrapper.addEventListener('touchstart', (e) => {
+          e.preventDefault();
           pause();
           isDragging = true;
           startX = e.touches[0].clientX;
           initialTransform = getCurrentTransform();
-        }, { passive: true });
+        }, { passive: false });
         
         hallCardsWrapper.addEventListener('touchmove', (e) => {
           if (isDragging) {
@@ -3828,29 +3829,32 @@
           }
         }, { passive: false });
         
-        hallCardsWrapper.addEventListener('touchend', () => {
+        hallCardsWrapper.addEventListener('touchend', (e) => {
+          e.preventDefault();
           isDragging = false;
           setTimeout(() => {
             if (!isDragging) {
               resume();
             }
-          }, 100);
-        }, { passive: true });
+          }, 200);
+        }, { passive: false });
         
-        hallCardsWrapper.addEventListener('touchcancel', () => {
+        hallCardsWrapper.addEventListener('touchcancel', (e) => {
+          e.preventDefault();
           isDragging = false;
           resume();
-        }, { passive: true });
+        }, { passive: false });
 
         // Mouse events (desktop) with drag support
         hallCardsWrapper.addEventListener('mousedown', (e) => {
+          e.preventDefault();
           pause();
           isDragging = true;
           startX = e.clientX;
           initialTransform = getCurrentTransform();
         });
         
-        hallCardsWrapper.addEventListener('mousemove', (e) => {
+        document.addEventListener('mousemove', (e) => {
           if (isDragging) {
             e.preventDefault();
             currentX = e.clientX;
@@ -3862,13 +3866,16 @@
           }
         });
         
-        window.addEventListener('mouseup', () => {
-          isDragging = false;
-          setTimeout(() => {
-            if (!isDragging) {
-              resume();
-            }
-          }, 100);
+        document.addEventListener('mouseup', (e) => {
+          if (isDragging) {
+            e.preventDefault();
+            isDragging = false;
+            setTimeout(() => {
+              if (!isDragging) {
+                resume();
+              }
+            }, 200);
+          }
         });
 
         // Helper function to get current transform
