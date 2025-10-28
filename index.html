@@ -2,8 +2,12 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Memoir | 시대인재</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>2025 Memoir | 시대인재</title>
   
   <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -128,6 +132,466 @@
       font-size: var(--fs-sm); 
       line-height: var(--lh-normal); 
       font-weight: var(--fw-light); 
+    }
+    
+    /* 모바일 최적화 */
+    @media (max-width: 767px) {
+      /* 컨테이너 패딩 조정 */
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      /* 인트로 섹션 모바일 최적화 */
+      .intro-text-new {
+        padding: 2rem 0;
+      }
+      
+      .intro-title {
+        font-size: 4rem; /* 모바일에서 더 작게 */
+        margin-bottom: 1.5rem;
+      }
+      
+      .intro-description {
+        font-size: var(--fs-sm);
+        line-height: 1.6;
+        padding: 0 1rem;
+      }
+      
+      .intro-data-period {
+        font-size: var(--fs-sm);
+        margin-top: 1rem;
+      }
+      
+      /* 타임라인 모바일 최적화 */
+      .timeline-card {
+        transform: scale(1);
+        padding: 1.5rem;
+        margin: 0 0.5rem;
+      }
+      
+      .timeline-connector {
+        margin: 0 1rem;
+      }
+      
+      /* 등하원 섹션 모바일 최적화 */
+      .checkin-content-overlay {
+        padding: 2rem 0;
+      }
+      
+      .checkin-title-overlay {
+        font-size: var(--fs-sm);
+        margin-bottom: 1rem;
+      }
+      
+      .checkin-number-text {
+        font-size: var(--fs-xl);
+      }
+      
+      /* 시간 섹션 모바일 최적화 */
+      .hours-content {
+        padding: 2rem 0;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      
+      .hours-title-overlay {
+        font-size: var(--fs-sm);
+        margin-bottom: 1rem;
+      }
+      
+      .hours-number-text {
+        font-size: var(--fs-hero);
+      }
+      
+      /* 라이브러리 섹션 모바일 최적화 */
+      .library-content-overlay {
+        padding: 2rem 0;
+      }
+      
+      .library-title-overlay {
+        font-size: var(--fs-sm);
+        margin-bottom: 1rem;
+      }
+      
+      .library-number-text {
+        font-size: var(--fs-xl);
+      }
+      
+      /* 식사 섹션 모바일 최적화 */
+      .meal-content-overlay {
+        padding: 2rem 0;
+      }
+      
+      .meal-title-overlay {
+        font-size: var(--fs-sm);
+        margin-bottom: 1rem;
+      }
+      
+      .meal-number-text {
+        font-size: var(--fs-xl);
+      }
+      
+      /* 콘텐츠 섹션 모바일 최적화 */
+      .content-card {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        min-height: auto;
+      }
+      
+      .content-text {
+        font-size: var(--fs-lg);
+        margin-left: 0;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      
+      .content-number {
+        margin-right: 0;
+        justify-content: center;
+      }
+      
+      .content-number-value {
+        font-size: var(--fs-hero);
+      }
+      
+      .content-number-unit {
+        font-size: var(--fs-xl);
+      }
+      
+      /* 개인 데이터 카드 모바일 최적화 */
+      .personal-data-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .personal-data-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-height: 200px;
+      }
+      
+      .personal-data-content {
+        padding: 2rem;
+      }
+      
+      .time-label {
+        font-size: var(--fs-sm);
+        margin-bottom: 1rem;
+      }
+      
+      .time-value {
+        font-size: var(--fs-hero);
+      }
+      
+      /* 바 차트 모바일 최적화 */
+      .bar-chart-card {
+        padding: 2rem 1rem;
+        margin-top: 1rem;
+      }
+      
+      .bar-chart-container {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+      
+      .bar-chart-item {
+        width: 100%;
+        max-width: 200px;
+      }
+      
+      .bar-wrapper {
+        width: 100%;
+        height: 150px;
+      }
+      
+      .bar-value {
+        font-size: var(--fs-sm);
+        top: -1.5rem;
+      }
+      
+      .bar-label {
+        font-size: var(--fs-sm);
+        margin-top: 0.5rem;
+      }
+      
+      /* 콘텐츠 카드 모바일 최적화 */
+      .favorite-content-cards {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .content-card-item {
+        flex: 1 1 100%;
+        min-width: 100%;
+        min-height: 300px;
+        padding: 1.5rem;
+      }
+      
+      .content-card-label {
+        font-size: var(--fs-sm);
+      }
+      
+      .content-card-title {
+        font-size: var(--fs-lg);
+      }
+      
+      /* TA 섹션 모바일 최적화 */
+      .ta-card {
+        padding: 2rem;
+        min-height: 180px;
+      }
+      
+      .ta-owl-image {
+        top: -150px;
+        max-width: 200px;
+      }
+      
+      .ta-label {
+        font-size: var(--fs-sm);
+      }
+      
+      .ta-number {
+        font-size: var(--fs-hero);
+      }
+      
+      /* 개인 TA 섹션 모바일 최적화 */
+      .personal-ta-card {
+        padding: 2rem;
+        min-height: 250px;
+      }
+      
+      .personal-ta-label {
+        font-size: var(--fs-sm);
+      }
+      
+      .personal-ta-number {
+        font-size: var(--fs-hero);
+      }
+      
+      .personal-ta-unit {
+        font-size: var(--fs-lg);
+      }
+      
+      .personal-ta-owl-image {
+        width: 300px;
+        right: -10%;
+      }
+      
+      /* 개인 과목 TA 섹션 모바일 최적화 */
+      .personal-subject-ta-header {
+        font-size: var(--fs-sm);
+        margin-bottom: 1.5rem;
+      }
+      
+      .personal-subject-ta-card {
+        padding: 2rem;
+      }
+      
+      .personal-subject-label {
+        font-size: var(--fs-sm);
+        min-width: 50px;
+      }
+      
+      .personal-subject-bar-wrapper {
+        height: 24px;
+      }
+      
+      .personal-subject-bar {
+        height: 20px;
+      }
+      
+      .personal-subject-value {
+        font-size: var(--fs-sm);
+        right: 6px;
+      }
+      
+      /* 월별 차트 모바일 최적화 */
+      .monthly-charts-scroll-wrapper {
+        padding-bottom: 0.5rem;
+      }
+      
+      .monthly-chart-card {
+        width: 100%;
+        padding: 1.5rem;
+      }
+      
+      .monthly-ta-message {
+        font-size: var(--fs-sm);
+        margin-top: 1.5rem;
+      }
+      
+      /* 부엉이 배지 모바일 최적화 */
+      .owl-badge-cards-container {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+      }
+      
+      .owl-badge-card {
+        width: 200px;
+        height: 200px;
+      }
+      
+      .owl-badge-title {
+        font-size: var(--fs-sm);
+        margin-top: 1rem;
+      }
+      
+      .owl-badge-description {
+        font-size: var(--fs-sm);
+      }
+      
+      /* 프로모션 섹션 모바일 최적화 */
+      .promotion-header {
+        font-size: var(--fs-sm);
+        margin-bottom: 2rem;
+      }
+      
+      .promotion-category-label {
+        font-size: var(--fs-sm);
+        margin-bottom: 1rem;
+      }
+      
+      .promotion-item {
+        height: 120px;
+      }
+      
+      /* 아웃트로 섹션 모바일 최적화 */
+      .outro-header-with-bg {
+        padding: 2rem 1rem;
+        font-size: var(--fs-sm);
+      }
+      
+      .outro-subtitle {
+        font-size: var(--fs-sm);
+        margin-bottom: 2rem;
+      }
+      
+      .outro-service-card {
+        padding: 2rem;
+      }
+      
+      .outro-service-card-content,
+      .outro-service-card-content-reverse {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .outro-service-title-left,
+      .outro-service-title-right {
+        flex: none;
+        transform: none;
+        text-align: center;
+      }
+      
+      .outro-service-text-right,
+      .outro-service-text-left {
+        font-size: var(--fs-sm);
+      }
+      
+      /* 컨설팅 섹션 모바일 최적화 */
+      .consultation-content,
+      .afterpack-content,
+      .jungsi-content {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem 0;
+        text-align: center;
+      }
+      
+      .consultation-title-right,
+      .afterpack-title-left,
+      .jungsi-title-left {
+        flex: none;
+        transform: none;
+        text-align: center;
+      }
+      
+      .consultation-text-left,
+      .afterpack-text-right,
+      .jungsi-text-right {
+        font-size: var(--fs-sm);
+      }
+      
+      /* 관별 메뉴 카드 모바일 최적화 */
+      .hall-cards-wrapper {
+        padding: 0 0.5rem;
+      }
+      
+      .hall-card {
+        flex: 0 0 calc(100% / 3 - 0.67rem);
+        min-width: calc(100% / 3 - 0.67rem);
+        min-height: 150px;
+        padding: 1rem;
+      }
+      
+      .hall-card-header {
+        font-size: var(--fs-sm);
+      }
+      
+      .hall-card-subheader {
+        font-size: 0.75rem;
+      }
+      
+      .hall-card-main {
+        font-size: var(--fs-sm);
+      }
+      
+    /* 모바일 터치 최적화 */
+    @media (max-width: 767px) {
+      /* 터치 타겟 크기 최적화 */
+      .timeline-card,
+      .personal-data-card,
+      .content-card-item,
+      .ta-card,
+      .personal-ta-card,
+      .owl-badge-card,
+      .hall-card {
+        min-height: 44px; /* iOS 권장 터치 타겟 크기 */
+        touch-action: manipulation;
+      }
+      
+      /* 스크롤 최적화 */
+      .monthly-charts-scroll-container {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+      }
+      
+      /* 텍스트 선택 방지 */
+      .timeline-card,
+      .personal-data-card,
+      .content-card-item {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* 이미지 최적화 */
+      .ta-owl-image,
+      .personal-ta-owl-image,
+      .owl-badge-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+      }
+      
+      /* 폰트 렌더링 최적화 */
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+      
+      /* 뷰포트 최적화 */
+      html {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
     }
     
     body {
