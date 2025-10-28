@@ -318,17 +318,17 @@
       
       .bar-chart-container {
         flex-direction: row;
-        gap: 0.5rem;
+        gap: 1rem;
         align-items: flex-end;
-        justify-content: space-between;
+        justify-content: flex-start;
         overflow-x: auto;
-        padding: 0 0.5rem;
+        padding: 0 1rem;
       }
       
       .bar-chart-item {
         flex: 0 0 auto;
-        min-width: 60px;
-        max-width: 80px;
+        min-width: 70px;
+        max-width: 90px;
       }
       
       .bar-wrapper {
@@ -421,15 +421,16 @@
       
       .personal-subject-chart-container {
         display: flex;
-        gap: 0.5rem;
+        gap: 1rem;
         overflow-x: auto;
-        padding: 0 0.5rem;
+        padding: 0 1rem;
+        justify-content: flex-start;
       }
       
       .personal-subject-chart-item {
         flex: 0 0 auto;
-        min-width: 60px;
-        max-width: 80px;
+        min-width: 70px;
+        max-width: 90px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1518,22 +1519,48 @@
       margin-bottom: 0;
     }
     
+    /* 바 차트 스크롤 최적화 */
     .bar-chart-container {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 1.5rem;
+      gap: 2rem;
       margin-bottom: 0;
+      overflow-x: auto;
+      padding: 0 1rem;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #CBD5E0 #F7FAFC;
+    }
+    
+    .bar-chart-container::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .bar-chart-container::-webkit-scrollbar-track {
+      background: #F7FAFC;
+      border-radius: 3px;
+    }
+    
+    .bar-chart-container::-webkit-scrollbar-thumb {
+      background: #CBD5E0;
+      border-radius: 3px;
+    }
+    
+    .bar-chart-container::-webkit-scrollbar-thumb:hover {
+      background: #A0AEC0;
     }
     
     .bar-chart-item {
-      flex: 0 1 auto;
+      flex: 0 0 auto;
       min-width: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0;
       position: relative;
+      min-width: 80px;
     }
     
     .bar-value {
@@ -1794,18 +1821,21 @@
     .personal-subject-chart-container {
       display: flex;
       flex-direction: row;
-      gap: 1rem;
+      gap: 1.5rem;
       justify-content: space-between;
       align-items: flex-end;
+      overflow-x: auto;
+      padding: 0 1rem;
     }
     
     .personal-subject-chart-item {
-      flex: 0 1 auto;
+      flex: 0 0 auto;
       min-width: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
+      min-width: 80px;
     }
     
     .personal-subject-label {
