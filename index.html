@@ -153,6 +153,12 @@
       color: #0459F0;
     }
     
+    /* 파라미터 값 스타일 */
+    .param-value {
+      font-weight: 700;
+      color: #0459F0;
+    }
+    
     .intro-text {
       font-size: var(--fs-md);
       line-height: 1.8;
@@ -2057,7 +2063,7 @@
             <!-- Start Card -->
             <div class="timeline-card">
               <p class="text-sm text-gray-600 mb-1">시대인재 N 처음 만난 날</p>
-              <p class="text-lg font-semibold text-gray-800" id="startDate">2024.02.15</p>
+              <p class="text-lg font-semibold text-gray-800" id="startDate"><span class="param-value">2024.02.15</span></p>
             </div>
             
             <!-- Connector Line -->
@@ -2068,19 +2074,19 @@
             <!-- End Card -->
             <div class="timeline-card">
               <p class="text-sm text-gray-600 mb-1">The End</p>
-              <p class="text-lg font-semibold text-gray-800" id="endDate">2024.11.13</p>
+              <p class="text-lg font-semibold text-gray-800" id="endDate"><span class="param-value">2024.11.13</span></p>
             </div>
           </div>
           
           <!-- Total Days Metric -->
           <div class="timeline-metric" data-aos="fade-up" data-aos-delay="100">
-            총 <span class="point-color font-bold" id="totalDays">150</span>일 함께했습니다.
+            총 <span class="param-value" id="totalDays">150</span>일 함께했습니다.
           </div>
           
           <!-- Summary Message -->
           <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
             <p class="text-lg">
-              <span id="studentNameOutput" class="font-semibold">학생 이름</span>님은, <span id="campusNameOutput" class="font-semibold">고사관</span> <span id="classNameOutput" class="font-semibold">N</span>반에서 1년간 치열하게 달려왔습니다.
+              <span id="studentNameOutput" class="param-value">학생 이름</span>님은, <span id="campusNameOutput" class="param-value">고사관</span> <span id="classNameOutput" class="param-value">N</span>반에서 1년간 치열하게 달려왔습니다.
             </p>
           </div>
         </div>
@@ -2100,7 +2106,7 @@
           <div class="checkin-content-overlay">
             <div class="checkin-title-overlay">평균 등원 시간</div>
             <div class="checkin-number-overlay">
-              <span class="checkin-number-text" id="checkInTime">08:30</span>
+              <span class="checkin-number-text param-value" id="checkInTime">08:30</span>
             </div>
           </div>
           
@@ -2108,7 +2114,7 @@
           <div class="checkin-content-overlay">
             <div class="checkin-title-overlay">평균 하원 시간</div>
             <div class="checkin-number-overlay">
-              <span class="checkin-number-text" id="checkOutTime">22:00</span>
+              <span class="checkin-number-text param-value" id="checkOutTime">22:00</span>
             </div>
           </div>
         </div>
@@ -2126,7 +2132,7 @@
         <div class="hours-content" data-aos="fade-up">
           <div class="hours-title-overlay">시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
           <div class="hours-number-overlay">
-            <span class="hours-number-text" id="totalHours">1200</span>
+            <span class="hours-number-text param-value" id="totalHours">1200</span>
             <span class="hours-text-overlay">시간</span>
           </div>
         </div>
@@ -2151,7 +2157,7 @@
             
             <!-- Time Value -->
             <div class="library-number-overlay">
-              <span class="library-number-text" id="libraryHours">1,200</span>
+              <span class="library-number-text param-value" id="libraryHours">1,200</span>
               <span class="library-text-overlay">시간</span>
             </div>
           </div>
@@ -2165,7 +2171,7 @@
             
             <!-- Value -->
             <div class="library-number-overlay">
-              <span class="library-number-text" id="focusScore" aria-label="평균 몰입도">8.7</span>
+              <span class="library-number-text param-value" id="focusScore" aria-label="평균 몰입도">8.7</span>
             </div>
           </div>
         </div>
@@ -2188,7 +2194,7 @@
           
           <!-- Meal Count Value -->
           <div class="meal-number-overlay">
-            <span class="meal-number-text" id="mealCount">1,234</span>
+            <span class="meal-number-text param-value" id="mealCount">1,234</span>
             <span class="meal-text-overlay">회</span>
           </div>
         </div>
@@ -2199,7 +2205,7 @@
     <!-- Bottom Caption -->
     <div class="meal-caption" style="text-align: center; padding: 2rem 0;">
       <div class="meal-title-overlay" style="margin-bottom: 0;">
-        <span id="mealCampusName">태성관</span> 관의 최애 메뉴는 무엇이었을까요?
+        <span id="mealCampusName" class="param-value">태성관</span> 관의 최애 메뉴는 무엇이었을까요?
       </div>
     </div>
   </section>
@@ -2237,7 +2243,7 @@
           
           <!-- Right Bottom: Number -->
           <div class="content-number">
-            <span class="content-number-value" id="totalProblems">50,000</span>
+            <span class="content-number-value param-value" id="totalProblems">50,000</span>
             <span class="content-number-unit">문제</span>
           </div>
         </div>
@@ -2258,7 +2264,7 @@
             <div class="personal-data-bg" style="background-image: url('./SURVIVAL.png');"></div>
             <div class="personal-data-content">
               <div class="time-label">재원 기간동안 푼<br>총 모의고사 개수</div>
-              <div class="time-value" id="totalMockTests" style="color: #0459F0;">25</div>
+              <div class="time-value param-value" id="totalMockTests">25</div>
             </div>
           </div>
           
@@ -2267,7 +2273,7 @@
             <div class="personal-data-bg" style="background-image: url('./paperdummy.png');"></div>
             <div class="personal-data-content">
               <div class="time-label" style="white-space: nowrap;">재원 기간동안 푼<br>모의고사 총 문제수</div>
-              <div class="time-value" id="totalPersonalProblems" style="color: #0459F0;">500</div>
+              <div class="time-value param-value" id="totalPersonalProblems">500</div>
             </div>
           </div>
         </div>
@@ -2288,7 +2294,7 @@
             <div class="bar-chart-item">
               <div class="bar-wrapper">
                 <div class="bar" id="koreanBar" style="position: relative; height: 0;">
-                  <div class="bar-value" id="koreanProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                  <div class="bar-value param-value" id="koreanProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
                 </div>
               </div>
               <div class="bar-label">국어</div>
@@ -2297,7 +2303,7 @@
             <div class="bar-chart-item">
               <div class="bar-wrapper">
                 <div class="bar" id="mathBar" style="position: relative; height: 0;">
-                  <div class="bar-value" id="mathProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                  <div class="bar-value param-value" id="mathProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
                 </div>
               </div>
               <div class="bar-label">수학</div>
@@ -2306,7 +2312,7 @@
             <div class="bar-chart-item">
               <div class="bar-wrapper">
                 <div class="bar" id="englishBar" style="position: relative; height: 0;">
-                  <div class="bar-value" id="englishProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                  <div class="bar-value param-value" id="englishProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
                 </div>
               </div>
               <div class="bar-label">영어</div>
@@ -2315,7 +2321,7 @@
             <div class="bar-chart-item">
               <div class="bar-wrapper">
                 <div class="bar" id="research1Bar" style="position: relative; height: 0;">
-                  <div class="bar-value" id="research1Problems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                  <div class="bar-value param-value" id="research1Problems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
                 </div>
               </div>
               <div class="bar-label">탐구1</div>
@@ -2324,7 +2330,7 @@
             <div class="bar-chart-item">
               <div class="bar-wrapper">
                 <div class="bar" id="research2Bar" style="position: relative; height: 0;">
-                  <div class="bar-value" id="research2Problems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                  <div class="bar-value param-value" id="research2Problems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
                 </div>
               </div>
               <div class="bar-label">탐구2</div>
@@ -2396,7 +2402,7 @@
           <img src="./TA owl.png" alt="TA Owl" class="ta-owl-image">
           <div class="ta-content">
             <div class="ta-label">TA 총 질문수</div>
-            <div class="ta-number" id="totalTAQuestions">10,000</div>
+            <div class="ta-number param-value" id="totalTAQuestions">10,000</div>
           </div>
         </div>
         
@@ -2414,7 +2420,7 @@
           <div class="personal-ta-content">
             <div class="personal-ta-label">올 한 해 TA앱에서<br>오고 간 질문수는</div>
             <div class="personal-ta-number-section">
-              <span class="personal-ta-number" id="personalTAQuestions">1,200</span>
+              <span class="personal-ta-number param-value" id="personalTAQuestions">1,200</span>
               <span class="personal-ta-unit">회입니다.</span>
             </div>
           </div>
@@ -2431,7 +2437,7 @@
       <div class="max-w-4xl mx-auto">
         
         <div class="personal-subject-ta-header" data-aos="fade-up">
-          <span id="studentNameForSubjects">학생님</span>의 과목별 TA앱 질문수
+          <span id="studentNameForSubjects" class="param-value">학생님</span>의 과목별 TA앱 질문수
         </div>
         
         <div class="personal-subject-ta-card" data-aos="fade-up">
@@ -2440,7 +2446,7 @@
               <div class="personal-subject-label">국어</div>
               <div class="personal-subject-bar-wrapper">
                 <div class="personal-subject-bar" id="personalKoreanBar">
-                  <div class="personal-subject-value" id="personalKoreanQuestions">0</div>
+                  <div class="personal-subject-value param-value" id="personalKoreanQuestions">0</div>
                 </div>
               </div>
             </div>
@@ -2448,7 +2454,7 @@
               <div class="personal-subject-label">수학</div>
               <div class="personal-subject-bar-wrapper">
                 <div class="personal-subject-bar" id="personalMathBar">
-                  <div class="personal-subject-value" id="personalMathQuestions">0</div>
+                  <div class="personal-subject-value param-value" id="personalMathQuestions">0</div>
                 </div>
               </div>
             </div>
@@ -2456,7 +2462,7 @@
               <div class="personal-subject-label">영어</div>
               <div class="personal-subject-bar-wrapper">
                 <div class="personal-subject-bar" id="personalEnglishBar">
-                  <div class="personal-subject-value" id="personalEnglishQuestions">0</div>
+                  <div class="personal-subject-value param-value" id="personalEnglishQuestions">0</div>
                 </div>
               </div>
             </div>
@@ -2464,7 +2470,7 @@
               <div class="personal-subject-label">탐구1</div>
               <div class="personal-subject-bar-wrapper">
                 <div class="personal-subject-bar" id="personalResearch1Bar">
-                  <div class="personal-subject-value" id="personalResearch1Questions">0</div>
+                  <div class="personal-subject-value param-value" id="personalResearch1Questions">0</div>
                 </div>
               </div>
             </div>
@@ -2472,7 +2478,7 @@
               <div class="personal-subject-label">탐구2</div>
               <div class="personal-subject-bar-wrapper">
                 <div class="personal-subject-bar" id="personalResearch2Bar">
-                  <div class="personal-subject-value" id="personalResearch2Questions">0</div>
+                  <div class="personal-subject-value param-value" id="personalResearch2Questions">0</div>
                 </div>
               </div>
             </div>
@@ -2480,7 +2486,7 @@
         </div>
         
         <div class="personal-subject-ta-message" data-aos="fade-up">
-          <span id="studentNameForMessage">학생님</span>은 일 년간 질문을 통해 부족한 점을 채우려고 노력하였습니다.<br>자신의 부족한 점을 하나하나 매꾸고자 한 이 노력은, 분명 수능장에서 빛을 발할 거예요.
+          <span id="studentNameForMessage" class="param-value">학생님</span>은 일 년간 질문을 통해 부족한 점을 채우려고 노력하였습니다.<br>자신의 부족한 점을 하나하나 매꾸고자 한 이 노력은, 분명 수능장에서 빛을 발할 거예요.
         </div>
         
       </div>
@@ -2512,7 +2518,7 @@
         </div>
         
         <div class="monthly-ta-message" data-aos="fade-up">
-          <span id="studentNameForMonthly">학생 데이터</span>님과 함께 수학, 탐구1, 탐구2를 선택한 학생들은 월별로 이런 질문 수 추이를 보였습니다. 학생 여러분 다같이 꾸준하게 질문하며 학습하였네요!
+          <span id="studentNameForMonthly" class="param-value">학생 데이터</span>님과 함께 수학, 탐구1, 탐구2를 선택한 학생들은 월별로 이런 질문 수 추이를 보였습니다. 학생 여러분 다같이 꾸준하게 질문하며 학습하였네요!
         </div>
         
       </div>
