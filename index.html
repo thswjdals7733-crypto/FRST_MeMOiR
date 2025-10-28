@@ -175,12 +175,24 @@
     }
     
     .intro-title {
-      font-size: var(--fs-hero);
+      font-size: 5.625rem; /* 90px 모바일 */
       font-weight: var(--fw-light);
       font-style: italic;
       color: #022669;
       margin-bottom: 2rem;
       line-height: var(--lh-tight);
+    }
+    
+    @media (min-width: 768px) { /* 태블릿 */
+      .intro-title {
+        font-size: 6.25rem; /* 100px */
+      }
+    }
+    
+    @media (min-width: 1280px) { /* 데스크탑 */
+      .intro-title {
+        font-size: 7.5rem; /* 120px */
+      }
     }
     
     .intro-description {
