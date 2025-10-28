@@ -34,13 +34,13 @@
       color: #111827; 
     }
     
-    /* 새로운 텍스트 크기 시스템 - 모바일 기준 */
+    /* 아이폰 16 Pro 모바일 기준 텍스트 크기 시스템 */
     :root {
-      /* 모바일 (기본) - 새로운 기준 */
-      --fs-main-title: 5rem;      /* 80px - 2025 Memoir 웹 제목 */
-      --fs-section-header: 2.8125rem; /* 45px - 머리글 (섹션 나누는 key문장) */
-      --fs-subtitle: 1.5rem;      /* 24px - 소주제 제목 */
-      --fs-number: 2rem;          /* 32px - 숫자 크기 */
+      /* 아이폰 16 Pro 모바일 (기본) - 워딩 기준 */
+      --fs-web-title: 5.3125rem;  /* 85px - "2025 memoir" 웹 제목 */
+      --fs-header: 2.8125rem;     /* 45px - 머리글 */
+      --fs-subtitle-large: 1.25rem; /* 20px - 소주제대제목 */
+      --fs-number: 1.875rem;      /* 30px - 숫자 (볼드체) */
       --fs-body: 1rem;            /* 16px - 본문 */
       --fs-caption: 0.875rem;     /* 14px - 주석 */
       
@@ -56,10 +56,10 @@
     
     @media (min-width: 768px) { /* 태블릿 */
       :root {
-        --fs-main-title: 6rem;        /* 96px - 20% 증가 */
-        --fs-section-header: 3.375rem; /* 54px - 20% 증가 */
-        --fs-subtitle: 1.8rem;        /* 28.8px - 20% 증가 */
-        --fs-number: 2.4rem;          /* 38.4px - 20% 증가 */
+        --fs-web-title: 6.375rem;     /* 102px - 20% 증가 */
+        --fs-header: 3.375rem;        /* 54px - 20% 증가 */
+        --fs-subtitle-large: 1.5rem;  /* 24px - 20% 증가 */
+        --fs-number: 2.25rem;         /* 36px - 20% 증가 */
         --fs-body: 1.125rem;          /* 18px - 12.5% 증가 */
         --fs-caption: 1rem;           /* 16px - 14% 증가 */
       }
@@ -67,28 +67,28 @@
     
     @media (min-width: 1280px) { /* 데스크탑 */
       :root {
-        --fs-main-title: 7.5rem;      /* 120px - 50% 증가 */
-        --fs-section-header: 4.5rem;  /* 72px - 50% 증가 */
-        --fs-subtitle: 2.25rem;       /* 36px - 50% 증가 */
-        --fs-number: 3rem;            /* 48px - 50% 증가 */
+        --fs-web-title: 7.96875rem;   /* 127.5px - 50% 증가 */
+        --fs-header: 4.21875rem;      /* 67.5px - 50% 증가 */
+        --fs-subtitle-large: 1.875rem; /* 30px - 50% 증가 */
+        --fs-number: 2.8125rem;       /* 45px - 50% 증가 */
         --fs-body: 1.25rem;           /* 20px - 25% 증가 */
         --fs-caption: 1.125rem;       /* 18px - 28% 증가 */
       }
     }
     
-    /* 새로운 유틸리티 클래스 */
-    .text-main-title { 
-      font-size: var(--fs-main-title); 
+    /* 아이폰 16 Pro 기준 유틸리티 클래스 */
+    .text-web-title { 
+      font-size: var(--fs-web-title); 
       line-height: var(--lh-tight); 
       font-weight: var(--fw-bold); 
     }
-    .text-section-header { 
-      font-size: var(--fs-section-header); 
+    .text-header { 
+      font-size: var(--fs-header); 
       line-height: var(--lh-tight); 
       font-weight: var(--fw-bold); 
     }
-    .text-subtitle { 
-      font-size: var(--fs-subtitle); 
+    .text-subtitle-large { 
+      font-size: var(--fs-subtitle-large); 
       line-height: var(--lh-snug); 
       font-weight: var(--fw-light); 
     }
@@ -111,19 +111,19 @@
     .thin-200 { font-weight: var(--fw-thin); }
     .light-300 { font-weight: var(--fw-light); }
     
-    /* 새로운 시맨틱 매핑 */
+    /* 아이폰 16 Pro 기준 시맨틱 매핑 */
     h1, .h1 { 
-      font-size: var(--fs-main-title); 
+      font-size: var(--fs-web-title); 
       line-height: var(--lh-tight); 
       font-weight: var(--fw-bold); 
     }
     h2, .h2 { 
-      font-size: var(--fs-section-header); 
+      font-size: var(--fs-header); 
       line-height: var(--lh-tight); 
       font-weight: var(--fw-bold); 
     }
     h3, .h3 { 
-      font-size: var(--fs-subtitle); 
+      font-size: var(--fs-subtitle-large); 
       line-height: var(--lh-snug); 
       font-weight: var(--fw-light); 
     }
@@ -748,7 +748,7 @@
     }
     
     .intro-title {
-      font-size: var(--fs-main-title); /* 80px 모바일, 96px 태블릿, 120px 데스크탑 */
+      font-size: var(--fs-web-title); /* 85px 모바일, 102px 태블릿, 127.5px 데스크탑 */
       font-weight: var(--fw-bold);
       font-style: italic;
       color: #022669;
@@ -1663,7 +1663,7 @@
     
     /* Favorite Content Cards Section */
     .favorite-content-title {
-      font-size: var(--fs-section-header);
+      font-size: var(--fs-header);
       font-weight: var(--fw-bold);
       color: #1F2937;
       line-height: 1.4;
@@ -1934,7 +1934,7 @@
     
     /* Promotion Section */
     .promotion-header {
-      font-size: var(--fs-section-header);
+      font-size: var(--fs-header);
       font-weight: var(--fw-bold);
       color: #1F2937;
       text-align: center;
@@ -2259,7 +2259,7 @@
       padding: 3rem 4rem;
       margin: 3rem auto;
       border-radius: 0;
-      font-size: var(--fs-section-header);
+      font-size: var(--fs-header);
       font-weight: var(--fw-bold);
       color: #1F2937;
       text-align: center;
@@ -3982,14 +3982,19 @@
   <style>
     /* ============ FINAL OVERRIDES ============ */
     
-    /* 5-1) 타이포: 전역 유틸 매핑 */
-    .text-section-header { 
-      font-size: var(--fs-section-header); 
+    /* 5-1) 타이포: 아이폰 16 Pro 기준 전역 유틸 매핑 */
+    .text-web-title { 
+      font-size: var(--fs-web-title); 
       line-height: var(--lh-tight); 
       font-weight: var(--fw-bold); 
     }
-    .text-subtitle { 
-      font-size: var(--fs-subtitle); 
+    .text-header { 
+      font-size: var(--fs-header); 
+      line-height: var(--lh-tight); 
+      font-weight: var(--fw-bold); 
+    }
+    .text-subtitle-large { 
+      font-size: var(--fs-subtitle-large); 
       line-height: var(--lh-snug); 
       font-weight: var(--fw-light); 
     }
@@ -4029,7 +4034,7 @@
     .meal-title-overlay,
     .checkin-title-overlay,
     .content-text { 
-      font-size: var(--fs-subtitle); 
+      font-size: var(--fs-subtitle-large); 
       font-weight: var(--fw-light);
     }
 
