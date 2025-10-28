@@ -167,43 +167,7 @@
       }
     }
     
-    /* 데스크탑 레이아웃 보장 */
-    @media (min-width: 768px) {
-      .hours-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-      
-      .content-card {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-      
-      .personal-data-wrapper {
-        flex-direction: column;
-        justify-content: center;
-        gap: 2rem;
-      }
-      
-      .favorite-content-cards {
-        flex-direction: row;
-        justify-content: center;
-      }
-      
-      .owl-badge-cards-container {
-        flex-direction: row;
-        justify-content: center;
-      }
-      
-      .outro-service-card-content,
-      .outro-service-card-content-reverse {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
+    /* 모든 화면에서 모바일 레이아웃 유지 - 크기만 조절 */
 
     /* 모바일 최적화 */
     @media (max-width: 767px) {
@@ -1048,10 +1012,10 @@
       z-index: 3;
       padding: 8rem 0;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      gap: 1.26rem;
-      flex-direction: row;
+      justify-content: center;
+      gap: 1rem;
     }
     
     .hours-title-overlay {
@@ -1421,10 +1385,11 @@
       position: relative;
       min-height: 500px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       padding: 3rem 0;
-      flex-direction: row;
+      gap: 1rem;
     }
     
     .content-text {
@@ -4057,7 +4022,7 @@
       }
     }
 
-    /* 시간 섹션: 모바일 column → md이상 row */
+    /* 모든 화면에서 모바일과 동일한 레이아웃 유지 */
     .hours-content { 
       display: flex; 
       flex-direction: column; 
@@ -4065,26 +4030,11 @@
       justify-content: center; 
       gap: 1rem; 
     }
-    @media (min-width: 768px) {
-      .hours-content { 
-        flex-direction: row; 
-        justify-content: space-between; 
-        text-align: left; 
-      }
-    }
 
-    /* 콘텐츠 카드: 기본 column, md이상에서 row 정렬 */
     .content-card { 
       display: flex; 
       flex-direction: column; 
       gap: 1rem; 
-    }
-    @media (min-width: 768px) {
-      .content-card { 
-        flex-direction: row; 
-        align-items: center; 
-        min-height: 400px; 
-      }
     }
 
     /* 카드 공통: 표시 강제 */
@@ -4129,60 +4079,73 @@
       overflow-x: hidden; 
     }
 
-    /* 5-3) 특정 충돌 제거 - 하드코딩된 폰트 크기를 변수로 치환 */
-    .hours-text-overlay,
-    .meal-text-overlay { 
-      font-size: var(--fs-body); 
-    }
+    /* 5-3) 워딩 기반 폰트 크기 적용 */
     
-    .library-unit,
-    .personal-ta-unit { 
-      font-size: var(--fs-number); 
-    }
-    
-    .bar-value,
-    .ta-label { 
-      font-size: var(--fs-subtitle); 
-    }
-    
-    .bar-label,
-    .content-card-label,
-    .personal-subject-label,
-    .promotion-category-label,
-    .hall-card-header { 
-      font-size: var(--fs-body); 
-    }
-    
-    .hall-card-subheader,
-    .hall-card-rating,
+    /* 소주제대제목 (20px) */
+    .timeline-metric,
+    .checkin-title-overlay,
+    .hours-title-overlay,
+    .library-title-overlay,
+    .meal-title-overlay,
+    .content-text,
+    .personal-data-card .time-label,
+    .favorite-content-title,
+    .ta-label,
+    .personal-ta-label,
     .personal-subject-ta-header,
     .monthly-ta-header,
-    .owl-badge-intro-text,
-    .owl-badge-call-to-action,
     .owl-badge-title,
-    .outro-subtitle,
     .outro-service-title-left,
     .outro-service-title-right,
     .consultation-title-right,
     .afterpack-title-left,
-    .jungsi-title-left { 
-      font-size: var(--fs-body); 
+    .jungsi-title-left,
+    .outro-header-with-bg,
+    .promotion-header { 
+      font-size: var(--fs-subtitle-large); 
+      font-weight: var(--fw-light);
     }
     
+    /* 본문 (16px) */
+    .intro-description,
+    .hours-text-overlay,
+    .meal-text-overlay,
+    .library-unit,
+    .personal-ta-unit,
+    .bar-value,
+    .bar-label,
+    .content-card-label,
+    .personal-subject-label,
+    .promotion-category-label,
+    .hall-card-header,
+    .hall-card-subheader,
+    .hall-card-rating,
+    .owl-badge-intro-text,
+    .owl-badge-call-to-action,
+    .outro-subtitle,
     .outro-service-text-right,
     .outro-service-text-left,
     .consultation-text-left,
     .afterpack-text-right,
-    .jungsi-text-right { 
-      font-size: var(--fs-subtitle); 
-    }
-    
-    .hall-card-main { 
-      font-size: var(--fs-number); 
-    }
-    
-    .owl-badge-description { 
+    .jungsi-text-right,
+    .owl-badge-description,
+    .hall-card-main,
+    .content-card-text,
+    .content-card-title,
+    .personal-subject-ta-message,
+    .monthly-ta-message,
+    .bar-chart-message { 
       font-size: var(--fs-body); 
+      font-weight: var(--fw-light);
+    }
+    
+    /* 주석 (14px) */
+    .intro-data-period,
+    .hall-card-subheader,
+    .personal-subject-ta-header,
+    .monthly-ta-header { 
+      font-size: var(--fs-caption); 
+      font-weight: var(--fw-light);
     }
 
     /* 5-4) 모바일 전용 스타일 정리 - max-width 블록 최소화 */
