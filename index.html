@@ -154,6 +154,43 @@
       }
     }
     
+    /* 데스크탑 레이아웃 보장 */
+    @media (min-width: 768px) {
+      .hours-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .content-card {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .personal-data-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      
+      .favorite-content-cards {
+        flex-direction: row;
+        justify-content: center;
+      }
+      
+      .owl-badge-cards-container {
+        flex-direction: row;
+        justify-content: center;
+      }
+      
+      .outro-service-card-content,
+      .outro-service-card-content-reverse {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
     /* 모바일 최적화 */
     @media (max-width: 767px) {
       /* 컨테이너 패딩 조정 */
@@ -1009,6 +1046,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 1.26rem;
+      flex-direction: row;
     }
     
     .hours-title-overlay {
@@ -1381,6 +1419,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 3rem 0;
+      flex-direction: row;
     }
     
     .content-text {
@@ -1503,6 +1542,7 @@
       padding: 2rem 0;
       max-width: 100%;
       margin: 0 auto;
+      flex-direction: row;
     }
     
     .personal-data-wrapper .personal-data-card {
@@ -1628,6 +1668,7 @@
       flex-wrap: nowrap;
       justify-content: center;
       align-items: stretch;
+      flex-direction: row;
     }
     
     .content-card-item {
