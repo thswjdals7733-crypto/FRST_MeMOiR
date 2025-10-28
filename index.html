@@ -15,18 +15,119 @@
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css" />
   
   <style>
-    :root {
-      /* 5단계 텍스트 크기 체계 - 모바일/데스크탑 균형 조정 */
-      --text-hero: clamp(48px, 6vw, 72px);        /* 매우 큰 텍스트 (hero title, section title) */
-      --text-large: clamp(28px, 3.5vw, 42px);     /* 큰 텍스트 (major heading) */
-      --text-medium: clamp(18px, 2.2vw, 24px);    /* 중간 텍스트 (본문 제목, 강조 문장) */
-      --text-small: clamp(14px, 1.6vw, 18px);     /* 작은 텍스트 (본문, 캡션) */
-      --text-tiny: clamp(11px, 1.3vw, 13px);      /* 매우 작은 텍스트 (footer, 주석) */
+    /* 기본 폰트 설정 */
+    html { 
+      font-size: 16px; 
     }
     
     * {
-      font-family: 'Noto Sans KR', 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-      font-weight: 300;
+      font-family: 'Pretendard', 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    body { 
+      font-weight: var(--fw-light); 
+      letter-spacing: 0.01em; 
+      color: #111827; 
+    }
+    
+    /* 5단계 타이포그래피 시스템 - rem 고정값 + 브레이크포인트 */
+    :root {
+      /* 모바일 (기본) */
+      --fs-hero: 2.5rem;   /* 40px */
+      --fs-xl:   1.75rem;  /* 28px */
+      --fs-lg:   1.25rem;  /* 20px */
+      --fs-md:   1rem;     /* 16px */
+      --fs-sm:   0.875rem; /* 14px */
+      
+      /* line-height & weight 가이드 */
+      --lh-tight: 1.1;
+      --lh-snug:  1.25;
+      --lh-normal: 1.5;
+      --fw-thin:  200;
+      --fw-light: 300;
+      --fw-regular: 400;
+    }
+    
+    @media (min-width: 768px) { /* md */
+      :root {
+        --fs-hero: 3rem;     /* 48px */
+        --fs-xl:   2.25rem;  /* 36px */
+        --fs-lg:   1.5rem;   /* 24px */
+        --fs-md:   1.125rem; /* 18px */
+        --fs-sm:   0.95rem;  /* 15.2px */
+      }
+    }
+    
+    @media (min-width: 1280px) { /* lg */
+      :root {
+        --fs-hero: 3.75rem;  /* 60px */
+        --fs-xl:   2.5rem;   /* 40px */
+        --fs-lg:   1.6rem;   /* 25.6px */
+        --fs-md:   1.125rem; /* 18px */
+        --fs-sm:   0.95rem;  /* 15.2px */
+      }
+    }
+    
+    /* 유틸리티 클래스 */
+    .text-hero { 
+      font-size: var(--fs-hero); 
+      line-height: var(--lh-tight); 
+      font-weight: var(--fw-light); 
+    }
+    .text-xl { 
+      font-size: var(--fs-xl); 
+      line-height: var(--lh-tight); 
+      font-weight: var(--fw-light); 
+    }
+    .text-lg { 
+      font-size: var(--fs-lg); 
+      line-height: var(--lh-snug); 
+      font-weight: var(--fw-light); 
+    }
+    .text-md { 
+      font-size: var(--fs-md); 
+      line-height: var(--lh-normal); 
+      font-weight: var(--fw-light); 
+    }
+    .text-sm { 
+      font-size: var(--fs-sm); 
+      line-height: var(--lh-normal); 
+      font-weight: var(--fw-light); 
+    }
+    
+    .thin-200 { font-weight: var(--fw-thin); }
+    .light-300 { font-weight: var(--fw-light); }
+    
+    /* 시맨틱 매핑 */
+    h1, .h1 { 
+      font-size: var(--fs-hero); 
+      line-height: var(--lh-tight); 
+      font-weight: var(--fw-light); 
+    }
+    h2, .h2 { 
+      font-size: var(--fs-xl); 
+      line-height: var(--lh-tight); 
+      font-weight: var(--fw-light); 
+    }
+    h3, .h3 { 
+      font-size: var(--fs-lg); 
+      line-height: var(--lh-snug); 
+      font-weight: var(--fw-light); 
+    }
+    h4, .h4 { 
+      font-size: var(--fs-md); 
+      line-height: var(--lh-normal); 
+      font-weight: var(--fw-light); 
+    }
+    p, span, li { 
+      font-size: var(--fs-md); 
+      line-height: var(--lh-normal); 
+      font-weight: var(--fw-light); 
+    }
+    small, .caption, footer { 
+      font-size: var(--fs-sm); 
+      line-height: var(--lh-normal); 
+      font-weight: var(--fw-light); 
     }
     
     body {
@@ -53,10 +154,10 @@
     }
     
     .intro-text {
-      font-size: var(--text-small);
+      font-size: var(--fs-md);
       line-height: 1.8;
       text-align: center;
-      font-weight: 300;
+      font-weight: var(--fw-light);
     }
     
     .intro-text p {
@@ -74,25 +175,25 @@
     }
     
     .intro-title {
-      font-size: var(--text-hero);
-      font-weight: 300;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
       font-style: italic;
       color: #022669;
       margin-bottom: 2rem;
-      line-height: 1.2;
+      line-height: var(--lh-tight);
     }
     
     .intro-description {
-      font-size: var(--text-large);
-      font-weight: 300;
+      font-size: var(--fs-xl);
+      font-weight: var(--fw-light);
       color: #000000;
       line-height: 1.6;
       text-align: center;
     }
     
     .intro-data-period {
-      font-size: var(--text-medium);
-      font-weight: 300;
+      font-size: var(--fs-lg);
+      font-weight: var(--fw-light);
       color: #6B7280;
       text-align: center;
     }
@@ -138,7 +239,7 @@
     }
     
     .timeline-metric {
-      font-size: var(--text-small);
+      font-size: var(--fs-md);
       color: #1F2937;
       margin: 2rem 0;
       text-align: center;
@@ -183,13 +284,13 @@
     }
     
     .time-value {
-      font-size: var(--text-small);
-      font-weight: 300;
+      font-size: var(--fs-md);
+      font-weight: var(--fw-light);
       color: #1F2937;
     }
     
     .time-label {
-      font-size: var(--text-tiny);
+      font-size: var(--fs-sm);
       color: #6B7280;
     }
     
@@ -231,8 +332,8 @@
     }
     
     .checkin-title-overlay {
-      font-size: var(--text-medium);
-      font-weight: 300;
+      font-size: var(--fs-lg);
+      font-weight: var(--fw-light);
       line-height: 1.4;
       color: #1F2937;
       margin-bottom: 1.5rem;
@@ -246,8 +347,8 @@
     }
     
     .checkin-number-text {
-      font-size: var(--text-large);
-      font-weight: 300;
+      font-size: var(--fs-xl);
+      font-weight: var(--fw-light);
       color: #0459F0;
       line-height: 1;
     }
@@ -263,8 +364,8 @@
     }
     
     .hours-title {
-      font-size: var(--text-medium);
-      font-weight: 300;
+      font-size: var(--fs-lg);
+      font-weight: var(--fw-light);
       color: #1F2937;
       line-height: 1.6;
       text-align: center;
@@ -301,16 +402,16 @@
     }
     
     .hours-number {
-      font-size: var(--text-hero);
-      font-weight: 300;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
       color: #0459F0;
       line-height: 1;
     }
     
     .hours-text {
-      font-size: var(--text-medium);
+      font-size: var(--fs-lg);
       color: #1F2937;
-      font-weight: 300;
+      font-weight: var(--fw-light);
     }
     
     .hours-illustration {
@@ -353,7 +454,7 @@
     
     .hours-title-overlay {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       line-height: 1.4;
       color: #1F2937;
       text-align: left;
@@ -372,7 +473,7 @@
     
     .hours-number-text {
       font-size: 3.6rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #0459F0;
       line-height: 1;
     }
@@ -380,7 +481,7 @@
     .hours-text-overlay {
       font-size: 1.8rem;
       color: #1F2937;
-      font-weight: 300;
+      font-weight: var(--fw-light);
     }
     
     /* Library Time Section */
@@ -456,8 +557,8 @@
     }
     
     .library-title-overlay {
-      font-size: var(--text-medium);
-      font-weight: 300;
+      font-size: var(--fs-lg);
+      font-weight: var(--fw-light);
       line-height: 1.4;
       color: #1F2937;
       margin-bottom: 1.5rem;
@@ -471,28 +572,28 @@
     }
     
     .library-number-text {
-      font-size: var(--text-large);
-      font-weight: 300;
+      font-size: var(--fs-xl);
+      font-weight: var(--fw-light);
       color: #0459F0;
       line-height: 1;
     }
     
     .library-text-overlay {
-      font-size: var(--text-small);
+      font-size: var(--fs-md);
       color: #1F2937;
-      font-weight: 300;
+      font-weight: var(--fw-light);
     }
     
     .library-number {
-      font-size: var(--text-large);
-      font-weight: 300;
+      font-size: var(--fs-xl);
+      font-weight: var(--fw-light);
       color: #0459F0;
       line-height: 1;
     }
     
     .library-unit {
       font-size: 3rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       line-height: 1;
     }
@@ -503,7 +604,7 @@
       top: 1rem;
       left: 1rem;
       font-size: 1.1375rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       line-height: 1.4;
       text-align: left;
       color: #1F2937;
@@ -604,7 +705,7 @@
     
     .meal-title-overlay {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       line-height: 1.4;
       color: #1F2937;
       margin-bottom: 1.5rem;
@@ -619,7 +720,7 @@
     
     .meal-number-text {
       font-size: 3.6rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #0459F0;
       line-height: 1;
     }
@@ -627,7 +728,7 @@
     .meal-text-overlay {
       font-size: 1.8rem;
       color: #1F2937;
-      font-weight: 300;
+      font-weight: var(--fw-light);
     }
     
     /* Hall Cards Carousel */
@@ -684,21 +785,21 @@
     
     .hall-card-header {
       font-size: 1.25rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       text-align: center;
     }
     
     .hall-card-subheader {
       font-size: 0.875rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #6B7280;
       text-align: center;
     }
     
     .hall-card-main {
       font-size: 1.5rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #111827;
       text-align: center;
       line-height: 1.2;
@@ -708,7 +809,7 @@
     
     .hall-card-rating {
       font-size: 0.875rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #6B7280;
       text-align: center;
     }
@@ -724,9 +825,9 @@
     }
     
     .content-text {
-      font-size: var(--text-hero);
-      font-weight: 300;
-      line-height: 1.5;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
+      line-height: var(--lh-normal);
       color: #000000;
       text-align: left;
       margin-left: -17%;
@@ -754,15 +855,15 @@
     }
     
     .content-number-value {
-      font-size: var(--text-hero);
-      font-weight: 300;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
       color: #0459F0;
       line-height: 1;
     }
     
     .content-number-unit {
-      font-size: var(--text-large);
-      font-weight: 300;
+      font-size: var(--fs-xl);
+      font-weight: var(--fw-light);
       color: #000000;
       line-height: 1;
       margin-left: 0.5rem;
@@ -813,7 +914,7 @@
     .personal-data-card .time-label {
       font-size: 2.16rem;
       margin-bottom: 1.44rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       text-align: center;
       width: 100%;
       line-height: 1.2;
@@ -876,7 +977,7 @@
     
     .bar-value {
       font-size: 1.5rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       margin-bottom: 0.5rem;
       order: 1;
@@ -913,7 +1014,7 @@
     
     .bar-label {
       font-size: 1.125rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       order: 3;
       margin-top: 0;
@@ -921,7 +1022,7 @@
     
     .bar-chart-message {
       font-size: 1.5rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       text-align: center;
       color: #1F2937;
       padding-top: 2rem;
@@ -930,8 +1031,8 @@
     
     /* Favorite Content Cards Section */
     .favorite-content-title {
-      font-size: var(--text-hero);
-      font-weight: 300;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
       color: #1F2937;
       line-height: 1.4;
       text-align: center;
@@ -961,22 +1062,22 @@
     }
     
     .content-card-text {
-      font-size: var(--text-medium);
+      font-size: var(--fs-lg);
       text-align: left;
       margin-bottom: 2rem;
     }
     
     .content-card-label {
       font-size: 1.125rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       display: block;
       margin-bottom: 0.5rem;
     }
     
     .content-card-title {
-      font-size: var(--text-large);
-      font-weight: 300;
+      font-size: var(--fs-xl);
+      font-weight: var(--fw-light);
       color: #0459F0;
       display: block;
       line-height: 1.2;
@@ -1040,14 +1141,14 @@
     
     .ta-label {
       font-size: 1.5rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       margin-bottom: 1rem;
     }
     
     .ta-number {
-      font-size: var(--text-hero);
-      font-weight: 300;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
       color: #0459F0;
       line-height: 1;
     }
@@ -1076,7 +1177,7 @@
     
     .personal-ta-label {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       line-height: 1.4;
     }
@@ -1088,15 +1189,15 @@
     }
     
     .personal-ta-number {
-      font-size: var(--text-hero);
-      font-weight: 300;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
       color: #0459F0;
       line-height: 1;
     }
     
     .personal-ta-unit {
       font-size: 1.8rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       line-height: 1;
     }
@@ -1114,7 +1215,7 @@
     /* Personal Subject TA Section */
     .personal-subject-ta-header {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       text-align: left;
       margin-bottom: 2rem;
@@ -1143,7 +1244,7 @@
     
     .personal-subject-label {
       font-size: 1.125rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       min-width: 60px;
     }
@@ -1171,7 +1272,7 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #FFFFFF;
       white-space: nowrap;
       z-index: 10;
@@ -1179,7 +1280,7 @@
     
     .personal-subject-ta-message {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       text-align: center;
       color: #1F2937;
       line-height: 1.6;
@@ -1189,7 +1290,7 @@
     /* Promotion Section */
     .promotion-header {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       text-align: center;
       margin-bottom: 3rem;
@@ -1206,7 +1307,7 @@
     
     .promotion-category-label {
       font-size: 1.125rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       text-align: center;
       margin-bottom: 1.5rem;
@@ -1271,7 +1372,7 @@
       background: #F0F2F5;
       border-radius: 0.75rem;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       white-space: nowrap;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -1314,7 +1415,7 @@
     /* Monthly Subject TA Trends Section */
     .monthly-ta-header {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       text-align: left;
       margin-bottom: 2rem;
@@ -1369,7 +1470,7 @@
     
     .monthly-ta-message {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       text-align: center;
       line-height: 1.6;
@@ -1379,20 +1480,20 @@
     /* Owl Badge Section */
     .owl-badge-intro-text {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       text-align: left;
       margin-bottom: 1rem;
-      line-height: 1.5;
+      line-height: var(--lh-normal);
     }
     
     .owl-badge-call-to-action {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       text-align: left;
       margin-bottom: 3rem;
-      line-height: 1.5;
+      line-height: var(--lh-normal);
     }
     
     .owl-badge-cards-container {
@@ -1454,7 +1555,7 @@
     
     .owl-badge-title {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       margin-top: 2rem;
       margin-bottom: 0.5rem;
@@ -1465,7 +1566,7 @@
       font-size: 1.125rem;
       font-weight: 400;
       color: #6B7280;
-      line-height: 1.5;
+      line-height: var(--lh-normal);
       text-align: center;
     }
     
@@ -1514,7 +1615,7 @@
       margin: 3rem auto;
       border-radius: 0;
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       text-align: center;
       line-height: 1.4;
@@ -1525,7 +1626,7 @@
     
     .outro-subtitle {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       text-align: center;
       margin-bottom: 3rem;
@@ -1560,7 +1661,7 @@
     
     .outro-service-title-left {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #0459F0;
       flex: 0 0 200px;
       transform: translateX(3%);
@@ -1568,7 +1669,7 @@
     
     .outro-service-title-right {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #0459F0;
       flex: 0 0 200px;
       text-align: right;
@@ -1577,7 +1678,7 @@
     
     .outro-service-text-right {
       font-size: 1.8rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       line-height: 1.6;
       flex: 1;
@@ -1585,7 +1686,7 @@
     
     .outro-service-text-left {
       font-size: 1.8rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       line-height: 1.6;
       flex: 1;
@@ -1622,7 +1723,7 @@
     
     .consultation-text-left {
       font-size: 1.8rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       line-height: 1.6;
       flex: 1;
@@ -1630,7 +1731,7 @@
     
     .consultation-title-right {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #0459F0;
       flex: 0 0 250px;
       text-align: right;
@@ -1667,14 +1768,14 @@
     
     .afterpack-title-left {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #0459F0;
       flex: 0 0 200px;
     }
     
     .afterpack-text-right {
       font-size: 1.8rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       line-height: 1.6;
       flex: 1;
@@ -1710,7 +1811,7 @@
     
     .jungsi-title-left {
       font-size: 1.365rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #0459F0;
       flex: 0 0 200px;
       transform: translateX(3%);
@@ -1718,7 +1819,7 @@
     
     .jungsi-text-right {
       font-size: 1.8rem;
-      font-weight: 300;
+      font-weight: var(--fw-light);
       color: #1F2937;
       line-height: 1.6;
       flex: 1;
@@ -1744,7 +1845,7 @@
         margin-left: 0;
         flex: 1;
         margin-bottom: 2rem;
-        font-size: var(--text-medium);
+        font-size: var(--fs-lg);
         line-height: 1.35;
       }
       
@@ -1755,11 +1856,11 @@
       }
       
       .content-number-value {
-        font-size: var(--text-hero);
+        font-size: var(--fs-hero);
       }
       
       .content-number-unit {
-        font-size: var(--text-large);
+        font-size: var(--fs-xl);
         margin-left: 0.3rem;
         white-space: nowrap;
         display: inline-block;
@@ -1807,7 +1908,7 @@
       }
       
       .content-card-title {
-        font-size: var(--text-medium);
+        font-size: var(--fs-lg);
       }
     }
     
@@ -1834,8 +1935,8 @@
     }
     
     .meal-header {
-      font-size: var(--text-hero);
-      font-weight: 300;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
       line-height: 1.15;
       letter-spacing: -0.01em;
       text-align: left;
@@ -1851,15 +1952,15 @@
     }
     
     .meal-number {
-      font-size: var(--text-hero);
-      font-weight: 300;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
       line-height: 1;
       color: #0459F0;
     }
     
     .meal-unit {
-      font-size: var(--text-hero);
-      font-weight: 300;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
       line-height: 1;
       color: #000000;
     }
@@ -1869,9 +1970,9 @@
     }
     
     .meal-main-text {
-      font-size: var(--text-hero);
-      font-weight: 300;
-      line-height: 1.1;
+      font-size: var(--fs-hero);
+      font-weight: var(--fw-light);
+      line-height: var(--lh-tight);
       color: #000000;
     }
     
@@ -1899,17 +2000,17 @@
       }
       
       .meal-header {
-        font-size: var(--text-large);
+        font-size: var(--fs-xl);
         margin-bottom: 1rem;
       }
       
       .meal-number,
       .meal-unit {
-        font-size: var(--text-hero);
+        font-size: var(--fs-hero);
       }
       
       .meal-main-text {
-        font-size: var(--text-hero);
+        font-size: var(--fs-hero);
       }
     }
   </style>
