@@ -3,16 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Memoir | 시대인재 - 학생 성취 대시보드</title>
+  <title>Memoir | 시대인재</title>
   
   <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
   <!-- Pretendard Font -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css" />
@@ -22,1005 +19,3220 @@
       font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
     }
     
-    /* 검정/회색/흰색 베이스 + Deep Blue 데이터 강조 */
-    :root {
-      --sdij-primary: #00458C;        /* Deep Blue - 데이터 강조만 */
-      --sdij-black: #000000;          /* 순수 검정 */
-      --sdij-secondary: #1A1A1A;      /* 헤더/푸터 검정 */
-      --sdij-accent: #333333;         /* 어두운 회색 */
-      --sdij-white: #FFFFFF;          /* 순수 흰색 */
-      --sdij-gray-50: #FAFAFA;        /* 아주 연한 회색 배경 */
-      --sdij-gray-100: #F5F5F5;       /* 연한 회색 배경 */
-      --sdij-gray-200: #E5E5E5;       /* 라인/테두리 */
-      --sdij-gray-300: #D4D4D4;
-      --sdij-gray-400: #A3A3A3;
-      --sdij-gray-500: #737373;       /* 중간 회색 */
-      --sdij-gray-600: #525252;
-      --sdij-gray-700: #404040;       /* 부제목 회색 */
-      --sdij-gray-800: #262626;       /* 진한 회색 */
-      --sdij-gray-900: #0A0A0A;       /* 거의 검정 - 주요 텍스트 */
+    body {
+      background-color: #FFFFFF;
+      color: #1F2937;
     }
     
-    .sdij-gradient {
-      background: linear-gradient(135deg, var(--sdij-black) 0%, var(--sdij-secondary) 100%);
+    .card {
+      background-color: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
     
-    .sdij-card {
-      background: white;
-      border-radius: 12px;
-      border: 1px solid var(--sdij-gray-200);
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    .intro-section {
+      background: linear-gradient(135deg, #B9D3FF 0%, #0459F0 60%, #2ECDF7 100%);
+      color: #FFFFFF;
+      padding: 4rem 0;
+      border-radius: 0;
     }
     
-    .sdij-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      border-color: var(--sdij-gray-300);
+    .point-color {
+      color: #0459F0;
     }
     
-    .sdij-header {
-      background: white;
-      border-bottom: 1px solid var(--sdij-gray-200);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .sdij-nav-link {
-      color: var(--sdij-gray-700);
+    .intro-text {
+      font-size: 1.5rem;
+      line-height: 1.8;
+      text-align: center;
       font-weight: 500;
-      transition: color 0.3s ease;
     }
     
-    .sdij-nav-link:hover {
-      color: var(--sdij-primary);
+    .intro-text p {
+      margin-bottom: 1.5rem;
     }
     
-    .sdij-nav-link.active {
-      color: var(--sdij-primary);
+    .intro-emoji {
+      font-size: 1.25rem;
+      margin-right: 0.5rem;
     }
     
-    .sdij-hero {
-      background: linear-gradient(135deg, var(--sdij-black) 0%, var(--sdij-accent) 100%);
+    .intro-text-new {
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .intro-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 79pt;
+      font-weight: 700;
+      font-style: italic;
+      color: #022669;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+    
+    .intro-description {
+      font-family: 'Inter', sans-serif;
+      font-size: 28pt;
+      font-weight: 700;
+      color: #000000;
+      line-height: 1.6;
+      text-align: center;
+    }
+    
+    .intro-data-period {
+      font-family: 'Inter', sans-serif;
+      font-size: 20pt;
+      font-weight: 500;
+      color: #6B7280;
+      text-align: center;
+    }
+    
+    /* Intro Background */
+    .intro-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      opacity: 0.95;
+    }
+    
+    .timeline-card {
+      background: #FFFFFF;
+      border-radius: 0.75rem;
+      padding: 2.4rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transform: scale(1.2);
+    }
+    
+    .timeline-connector {
+      height: 2px;
+      background: #E5E7EB;
+      margin: 0 2rem;
+      flex: 1;
       position: relative;
     }
     
-    .sdij-hero::before {
-      content: '';
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #0459F0;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .timeline-metric {
+      font-size: 1.25rem;
+      color: #1F2937;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    
+    .check-in-out-box {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      min-height: 200px;
+      box-sizing: border-box;
+    }
+    
+    .sun-icon {
+      width: 60px;
+      height: 60px;
+      background: #03A9F4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(3, 169, 244, 0.4);
+      font-size: 2rem;
+    }
+    
+    .moon-icon {
+      width: 60px;
+      height: 60px;
+      background: #1A237E;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(26, 35, 126, 0.4);
+      font-size: 2rem;
+    }
+    
+    .time-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1F2937;
+    }
+    
+    .time-label {
+      font-size: 0.875rem;
+      color: #6B7280;
+    }
+    
+    /* Check-in Section Background */
+    .checkin-section-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .checkin-section-background {
+      position: absolute;
+      top: -40%;
+      left: 0;
+      width: 100%;
+      height: 180%;
+      object-fit: cover;
+      object-position: center top;
+      z-index: 0;
+    }
+    
+    .checkin-section-background-overlay {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-      opacity: 0.3;
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.6) 70%, rgba(255, 255, 255, 0.2) 100%);
+      z-index: 1;
     }
     
-    .sdij-section {
-      background: var(--sdij-white);
-    }
-    
-    .sdij-section-alt {
-      background: var(--sdij-gray-50);
-    }
-    
-    .sdij-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
+    .checkin-content-overlay {
+      flex: 1;
+      padding: 4rem 0;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      align-items: center;
+      text-align: center;
     }
     
-    .sdij-icon.primary { background: var(--sdij-gray-800); color: white; }
-    .sdij-icon.secondary { background: var(--sdij-gray-700); color: white; }
-    .sdij-icon.accent { background: var(--sdij-gray-600); color: white; }
-    .sdij-icon.success { background: var(--sdij-gray-500); color: white; }
-    .sdij-icon.warning { background: var(--sdij-gray-400); color: white; }
-    .sdij-icon.info { background: var(--sdij-gray-300); color: var(--sdij-gray-800); }
-    
-    .sdij-title {
-      color: var(--sdij-gray-900);
+    .checkin-title-overlay {
+      font-size: 1.365rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      line-height: 1.4;
+      color: #1F2937;
+      margin-bottom: 1.5rem;
     }
     
-    .sdij-subtitle {
-      color: var(--sdij-gray-600);
-      font-size: 1rem;
-      line-height: 1.5;
+    .checkin-number-overlay {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
     }
     
-    .sdij-value {
+    .checkin-number-text {
+      font-size: 3.6rem;
       font-weight: 700;
-      font-size: 1.875rem;
-      margin-top: 0.5rem;
-    }
-    
-    /* 통일된 메트릭 크기 */
-    .sdij-metric-xl {
-      font-size: 4rem;
-      font-weight: 800;
-      color: var(--sdij-primary);
+      color: #0459F0;
       line-height: 1;
     }
     
-    .sdij-metric-lg {
-      font-size: 3rem;
+    .hours-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hours-title {
+      font-size: 1.3125rem;
       font-weight: 700;
-      color: var(--sdij-primary);
-      line-height: 1.2;
-    }
-    
-    .sdij-metric-md {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--sdij-primary);
-      line-height: 1.2;
-    }
-    
-    .sdij-metric-unit {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--sdij-gray-800);
-      margin-left: 0.5rem;
-    }
-    
-    .scroll-to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 3rem;
-      height: 3rem;
-      background: var(--sdij-primary);
-      border-radius: 50%;
+      color: #1F2937;
+      line-height: 1.6;
+      text-align: center;
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
     }
     
-    .scroll-to-top.visible {
-      opacity: 1;
-      visibility: visible;
+    .classroom-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
     }
     
-    .scroll-to-top:hover {
-      transform: scale(1.1);
-      background: var(--sdij-secondary);
-      box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4);
-    }
-    
-    .sdij-footer {
-      background: var(--sdij-gray-800);
-      border-top: 1px solid var(--sdij-gray-700);
-    }
-    
-    .sdij-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      background: var(--sdij-gray-100);
-      color: var(--sdij-gray-700);
-      border: 1px solid var(--sdij-gray-200);
-    }
-    
-    .sdij-badge.primary {
-      background: var(--sdij-black);
-      color: white;
-      border-color: var(--sdij-black);
-    }
-    
-    .sdij-badge.secondary {
-      background: var(--sdij-gray-800);
-      color: white;
-      border-color: var(--sdij-gray-800);
-    }
-    
-    /* Timeline Section Styles */
-    .timeline-container {
-      position: relative;
-    }
-    
-    .timeline-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .timeline-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
-    
-    .timeline-connector {
-      position: relative;
-    }
-    
-    .timeline-connector::before {
-      content: '';
+    .hours-header {
       position: absolute;
-      top: 50%;
+      top: 0;
       left: 0;
       right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--sdij-gray-300), var(--sdij-gray-500), var(--sdij-gray-300));
-      transform: translateY(-50%);
+      padding: 2rem;
+      background: linear-gradient(to bottom, rgba(240, 242, 245, 0.98) 0%, rgba(240, 242, 245, 0.7) 70%, transparent 100%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      height: 100%;
     }
     
-    .timeline-dot {
+    .hours-number-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hours-number {
+      font-size: 5rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .hours-text {
+      font-size: 2rem;
+      color: #1F2937;
+      font-weight: 500;
+    }
+    
+    .hours-illustration {
+      flex: 1;
+      max-width: 300px;
+      height: auto;
+      border-radius: 0.5rem;
+    }
+    
+    .hours-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+    
+    .hours-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .hours-content {
       position: relative;
+      z-index: 3;
+      padding: 8rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.26rem;
+    }
+    
+    .hours-title-overlay {
+      font-size: 1.365rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #1F2937;
+      text-align: left;
+      flex: 1;
+      padding-left: 13%;
+    }
+    
+    .hours-number-overlay {
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      flex: 1;
+      padding-right: 13%;
+    }
+    
+    .hours-number-text {
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .hours-text-overlay {
+      font-size: 1.8rem;
+      color: #1F2937;
+      font-weight: 500;
+    }
+    
+    /* Library Time Section */
+    .library-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      min-height: 200px;
+      position: relative;
+      overflow: visible;
+      box-sizing: border-box;
+    }
+    
+    .library-bg {
+      position: absolute;
+      width: 113.4%;
+      height: 113.4%;
+      left: -20%;
+      bottom: -20%;
+      object-fit: contain;
+      object-position: left bottom;
+      pointer-events: none;
+      z-index: 2;
+    }
+    
+    /* Library Section Wrapper */
+    .library-section-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Library Section Background Image */
+    .library-section-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    /* Library Section Background Overlay */
+    .library-section-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+
+    /* Library Content Overlay (for text) */
+    .library-content-overlay {
+      position: relative;
+      z-index: 3;
+      flex: 1;
+      padding: 4rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .library-title-overlay {
+      font-size: 1.365rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #1F2937;
+      margin-bottom: 1.5rem;
+    }
+    
+    .library-number-overlay {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .library-number-text {
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .library-text-overlay {
+      font-size: 1.8rem;
+      color: #1F2937;
+      font-weight: 500;
+    }
+    
+    .library-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .library-unit {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #1F2937;
+      line-height: 1;
+    }
+    
+    /* Focus Card - Left Aligned */
+    .focus-header {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 1.1375rem;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: left;
+      color: #1F2937;
       z-index: 10;
     }
     
+    .focus-time {
+      position: absolute;
+      top: 5.4rem;
+      left: 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      justify-content: flex-start;
+      z-index: 10;
+    }
+    
+    .focus-bg {
+      position: absolute;
+      width: 137.21%;
+      height: 137.21%;
+      right: -35%;
+      bottom: -35%;
+      object-fit: contain;
+      object-position: right bottom;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .meal-owl-image {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 57.6%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .favorite-meal-image {
+      position: absolute;
+      top: 20%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 80%;
+      object-fit: contain;
+      object-position: center bottom;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    /* Meal Section Wrapper */
+    .meal-section-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Meal Section Background Image */
+    .meal-section-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    /* Meal Section Background Overlay */
+    .meal-section-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    /* Meal Content Overlay (for text) */
+    .meal-content-overlay {
+      position: relative;
+      z-index: 3;
+      flex: 1;
+      padding: 4rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .meal-title-overlay {
+      font-size: 1.365rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #1F2937;
+      margin-bottom: 1.5rem;
+    }
+    
+    .meal-number-overlay {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .meal-number-text {
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .meal-text-overlay {
+      font-size: 1.8rem;
+      color: #1F2937;
+      font-weight: 500;
+    }
+    
+    /* Hall Cards Carousel */
+    .hall-cards-wrapper {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      width: 100%;
+      padding: 0 1rem;
+    }
+    
+    .hall-cards-grid {
+      display: flex;
+      gap: 1rem;
+      animation: scrollCards 20s linear infinite;
+      will-change: transform;
+      width: fit-content;
+    }
+    
+    .hall-cards-grid.paused {
+      animation-play-state: paused;
+    }
+    
+    @keyframes scrollCards {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-9 * 14.28% - 0.86rem));
+      }
+    }
+    
+    .hall-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-height: 200px;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s ease;
+      box-sizing: border-box;
+      flex: 0 0 calc(100% / 7 - 0.86rem);
+      min-width: calc(100% / 7 - 0.86rem);
+    }
+    
+    .hall-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hall-card-header {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1F2937;
+      text-align: center;
+    }
+    
+    .hall-card-subheader {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #6B7280;
+      text-align: center;
+    }
+    
+    .hall-card-main {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111827;
+      text-align: center;
+      line-height: 1.2;
+      word-break: keep-all;
+      margin: 0.5rem 0;
+    }
+    
+    .hall-card-rating {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #6B7280;
+      text-align: center;
+    }
+    
+    /* Content Section */
+    .content-card {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 0;
+    }
+    
+    .content-text {
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: #000000;
+      text-align: left;
+      margin-left: -17%;
+      flex: 0 0 50%;
+      letter-spacing: -0.01em;
+    }
+    
+    .content-text span {
+      white-space: nowrap;
+    }
+    
+    .content-text br {
+      display: block;
+      content: "";
+      margin-top: 0.5em;
+    }
+    
+    .content-number {
+      flex: 0 0 40%;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      margin-right: -17%;
+      gap: 0.5rem;
+    }
+    
+    .content-number-value {
+      font-size: clamp(64px, 10vw, 120px);
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .content-number-unit {
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 700;
+      color: #000000;
+      line-height: 1;
+      margin-left: 0.5rem;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    
+    /* Personal Data Section */
+    .personal-data-card {
+      position: relative;
+      overflow: hidden;
+      background: #F0F2F5 !important;
+      min-height: 320px !important;
+    }
+    
+    .personal-data-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.2;
+      z-index: 0;
+    }
+    
+    .personal-data-card:first-child .personal-data-bg {
+      background-size: 90%;
+      background-position: center 99%;
+    }
+    
+    .personal-data-card:last-child .personal-data-bg {
+      background-size: 120%;
+    }
+    
+    .personal-data-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+      padding: 4.32rem;
+    }
+    
+    .personal-data-card .time-label {
+      font-size: 2.16rem;
+      margin-bottom: 1.44rem;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+      line-height: 1.2;
+    }
+    
+    .personal-data-card .time-label br {
+      display: block;
+      content: "";
+      margin-bottom: 0.5em;
+    }
+    
+    .personal-data-card .time-value {
+      font-size: 4.32rem;
+      margin-top: auto;
+      text-align: center;
+      width: 100%;
+    }
+    
+    /* Personal Data Section wrapper to contain scaled cards */
+    .personal-data-wrapper {
+      display: flex;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    
+    .personal-data-wrapper .personal-data-card {
+      flex: 1 1 calc(60% - 0.75rem);
+      max-width: calc(60% - 0.75rem);
+    }
+    
+    /* Bar Chart Section */
+    .bar-chart-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 4rem 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      margin-top: 2rem;
+      margin-bottom: 0;
+    }
+    
+    .bar-chart-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      margin-bottom: 0;
+    }
+    
+    .bar-chart-item {
+      flex: 0 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      position: relative;
+    }
+    
+    .bar-value {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #1F2937;
+      margin-bottom: 0.5rem;
+      order: 1;
+    }
+    
+    .bar-wrapper {
+      width: 60px;
+      height: 200px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      order: 2;
+    }
+    
+    .bar-wrapper::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -50%;
+      right: -50%;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    
+    .bar {
+      width: 100%;
+      background: #0459F0;
+      border-radius: 0.5rem 0.5rem 0 0;
+      transition: height 2s ease-out;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .bar-label {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1F2937;
+      order: 3;
+      margin-top: 0;
+    }
+    
+    .bar-chart-message {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: #1F2937;
+      padding-top: 2rem;
+      margin-top: 2rem;
+    }
+    
+    /* Favorite Content Cards Section */
+    .favorite-content-title {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      color: #1F2937;
+      line-height: 1.4;
+      text-align: center;
+    }
+    
+    .favorite-content-cards {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: stretch;
+    }
+    
+    .content-card-item {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      flex: 1 1 calc(33.333% - 1rem);
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .content-card-text {
+      font-size: clamp(20px, 2.5vw, 28px);
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    
+    .content-card-label {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1F2937;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content-card-title {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      color: #0459F0;
+      display: block;
+      line-height: 1.2;
+    }
+    
+    .content-card-image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      margin-top: auto;
+      opacity: 1;
+    }
+    
+    /* TA Section */
+    .ta-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      overflow: visible;
+    }
+    
+    .ta-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 150%;
+      background-position: 70% center;
+      background-repeat: no-repeat;
+      opacity: 0.4;
+      border-radius: 1rem;
+      z-index: 0;
+    }
+    
+    .ta-owl-image {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      position: absolute;
+      top: -221px;
+      margin-bottom: 0;
+      z-index: 2;
+    }
+    
+    .ta-content {
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+    
+    .ta-label {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1F2937;
+      margin-bottom: 1rem;
+    }
+    
+    .ta-number {
+      font-size: clamp(64px, 10vw, 120px);
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    /* Personal TA Section */
+    .personal-ta-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: visible;
+    }
+    
+    .personal-ta-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 1;
+      position: relative;
+    }
+    
+    .personal-ta-label {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #1F2937;
+      line-height: 1.4;
+    }
+    
+    .personal-ta-number-section {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    
+    .personal-ta-number {
+      font-size: clamp(64px, 10vw, 120px);
+      font-weight: 700;
+      color: #0459F0;
+      line-height: 1;
+    }
+    
+    .personal-ta-unit {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1F2937;
+      line-height: 1;
+    }
+    
+    .personal-ta-owl-image {
+      position: absolute;
+      bottom: 0;
+      right: -5%;
+      width: 491px;
+      height: auto;
+      object-fit: contain;
+      z-index: 0;
+    }
+    
+    /* Personal Subject TA Section */
+    .personal-subject-ta-header {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #1F2937;
+      text-align: left;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+    
+    .personal-subject-ta-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      margin-bottom: 0;
+    }
+    
+    .personal-subject-chart-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .personal-subject-chart-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .personal-subject-label {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1F2937;
+      min-width: 60px;
+    }
+    
+    .personal-subject-bar-wrapper {
+      position: relative;
+      flex: 1;
+      height: 32px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .personal-subject-bar {
+      height: 24px;
+      background: #0459F0;
+      border-radius: 0.25rem;
+      transition: width 2s ease-out;
+      width: 0%;
+      position: relative;
+    }
+    
+    .personal-subject-value {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    
+    .personal-subject-ta-message {
+      font-size: 1.365rem;
+      font-weight: 700;
+      text-align: center;
+      color: #1F2937;
+      line-height: 1.6;
+      margin-top: 2rem;
+    }
+    
+    /* Promotion Section */
+    .promotion-header {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #1F2937;
+      text-align: center;
+      margin-bottom: 3rem;
+      line-height: 1.4;
+    }
+    
+    .promotion-section {
+      margin-bottom: 4rem;
+    }
+    
+    .promotion-section:last-child {
+      margin-bottom: 0;
+    }
+    
+    .promotion-category-label {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1F2937;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .promotion-carousel-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .promotion-carousel-track {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    #promoCarousel1 {
+      animation: promotion-scroll-1 20s linear infinite;
+    }
+    
+    #promoCarousel2 {
+      animation: promotion-scroll-2 16s linear infinite;
+    }
+    
+    #promoCarousel3 {
+      animation: promotion-scroll-3 18s linear infinite;
+    }
+    
+    @keyframes promotion-scroll-1 {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    @keyframes promotion-scroll-2 {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    @keyframes promotion-scroll-3 {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    .promotion-carousel-track:hover {
+      animation-play-state: paused;
+    }
+    
+    .promotion-item {
+      flex-shrink: 0;
+      padding: 0;
+      background: #F0F2F5;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1F2937;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: auto;
+      height: 200px;
+    }
+    
+    .promotion-section:has(.promotion-item img[alt*="SDIJN"]),
+    .promotion-section:has(.promotion-item img[alt*="CONTENTS"]),
+    .promotion-section:has(.promotion-item img[alt*="TIMER"]),
+    .promotion-section:has(.promotion-item img[alt*="TA"]),
+    .promotion-section:has(.promotion-item img[alt*="SCHEDULE"]),
+    .promotion-section:has(.promotion-item img[alt*="EBOOK"]),
+    .promotion-section:has(.promotion-item img[alt*="ebook"]) {
+      height: 150px;
+    }
+    
+    .promotion-section:has(.promotion-item img[alt*="SDIJN"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="CONTENTS"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="TIMER"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="TA"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="SCHEDULE"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="EBOOK"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="ebook"]) .promotion-item {
+      height: 150px;
+    }
+    
+    .promotion-item img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    
+    /* Monthly Subject TA Trends Section */
+    .monthly-ta-header {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #1F2937;
+      text-align: left;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+    
+    .monthly-charts-scroll-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1rem;
+    }
+    
+    .monthly-charts-scroll-wrapper::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    .monthly-charts-scroll-wrapper::-webkit-scrollbar-track {
+      background: #F0F2F5;
+      border-radius: 4px;
+    }
+    
+    .monthly-charts-scroll-wrapper::-webkit-scrollbar-thumb {
+      background: #0459F0;
+      border-radius: 4px;
+    }
+    
+    .monthly-charts-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+      background: #0348C7;
+    }
+    
+    .monthly-charts-scroll-container {
+      display: flex;
+      gap: 2rem;
+      width: fit-content;
+    }
+    
+    .monthly-chart-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      flex-shrink: 0;
+      width: 800px;
+    }
+    
+    .monthly-chart-card canvas {
+      width: 100%;
+      height: auto;
+    }
+    
+    .monthly-ta-message {
+      font-size: 1.365rem;
+      font-weight: 600;
+      color: #1F2937;
+      text-align: center;
+      line-height: 1.6;
+      margin-top: 2rem;
+    }
+    
+    /* Owl Badge Section */
+    .owl-badge-intro-text {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #1F2937;
+      text-align: left;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    
+    .owl-badge-call-to-action {
+      font-size: 1.365rem;
+      font-weight: 600;
+      color: #1F2937;
+      text-align: left;
+      margin-bottom: 3rem;
+      line-height: 1.5;
+    }
+    
+    .owl-badge-cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    
+    .owl-badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .owl-badge-card {
+      background: #F5F5F5;
+      border-radius: 50%;
+      width: 280px;
+      height: 280px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: visible;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .owl-badge-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .owl-badge-image {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      z-index: 2;
+      position: relative;
+    }
+    
+    .owl-badge-shadow {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 15%;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      filter: blur(10px);
+      z-index: 1;
+    }
+    
+    .owl-badge-title {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #1F2937;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    
+    .owl-badge-description {
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: #6B7280;
+      line-height: 1.5;
+      text-align: center;
+    }
+    
+    /* Owl Badge Mobile */
     @media (max-width: 768px) {
-      .timeline-container {
-        flex-direction: column;
+      .owl-badge-card {
+        width: 200px;
+        height: 200px;
+      }
+      .owl-badge-title {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+      }
+      .owl-badge-description {
+        font-size: 1rem;
+      }
+      .owl-badge-cards-container {
         gap: 2rem;
       }
-      
-      .timeline-connector {
-        display: none;
+    }
+    
+    /* Outro Section */
+    .outro-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    .outro-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .outro-header-with-bg {
+      background: transparent;
+      padding: 3rem 4rem;
+      margin: 3rem auto;
+      border-radius: 0;
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #1F2937;
+      text-align: center;
+      line-height: 1.4;
+      max-width: 1400px;
+      position: relative;
+      z-index: 3;
+    }
+    
+    .outro-subtitle {
+      font-size: 1.365rem;
+      font-weight: 600;
+      color: #1F2937;
+      text-align: center;
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+    
+    .outro-services {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .outro-service-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .outro-service-card-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    
+    .outro-service-card-content-reverse {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-direction: row-reverse;
+    }
+    
+    .outro-service-title-left {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #0459F0;
+      flex: 0 0 200px;
+      transform: translateX(3%);
+    }
+    
+    .outro-service-title-right {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #0459F0;
+      flex: 0 0 200px;
+      text-align: right;
+      transform: translateX(-8%);
+    }
+    
+    .outro-service-text-right {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1F2937;
+      line-height: 1.6;
+      flex: 1;
+    }
+    
+    .outro-service-text-left {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1F2937;
+      line-height: 1.6;
+      flex: 1;
+    }
+    
+    /* Consultation Section (수능 가채점 상담) */
+    .consultation-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    .consultation-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .consultation-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-direction: row-reverse;
+      padding: 3rem 0;
+    }
+    
+    .consultation-text-left {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1F2937;
+      line-height: 1.6;
+      flex: 1;
+    }
+    
+    .consultation-title-right {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #0459F0;
+      flex: 0 0 250px;
+      text-align: right;
+      transform: translateX(-8%);
+    }
+    
+    /* Afterpack Section (애프터팩) */
+    .afterpack-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    .afterpack-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .afterpack-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem 0;
+    }
+    
+    .afterpack-title-left {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #0459F0;
+      flex: 0 0 200px;
+    }
+    
+    .afterpack-text-right {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1F2937;
+      line-height: 1.6;
+      flex: 1;
+    }
+    
+    /* Jungsi Consulting Section (정시 컨설팅) */
+    .jungsi-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    .jungsi-background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0.3) 100%);
+      z-index: 1;
+    }
+    
+    .jungsi-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem 0;
+    }
+    
+    .jungsi-title-left {
+      font-size: 1.365rem;
+      font-weight: 700;
+      color: #0459F0;
+      flex: 0 0 200px;
+      transform: translateX(3%);
+    }
+    
+    .jungsi-text-right {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1F2937;
+      line-height: 1.6;
+      flex: 1;
+    }
+    
+    /* Timeline Mobile */
+    @media (max-width: 768px) {
+      .timeline-card {
+        transform: scale(1.1);
+      }
+    }
+    
+    /* Content Section Mobile */
+    @media (max-width: 768px) {
+      .content-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 0;
+        min-height: 400px;
       }
       
-      .timeline-card {
+      .content-text {
+        margin-left: 0;
+        flex: 1;
+        margin-bottom: 2rem;
+        font-size: clamp(20px, 4vw, 32px);
+        line-height: 1.35;
+      }
+      
+      .content-number {
+        flex: 1;
+        justify-content: flex-start;
+        align-self: flex-start;
+      }
+      
+      .content-number-value {
+        font-size: clamp(48px, 8vw, 80px);
+      }
+      
+      .content-number-unit {
+        font-size: clamp(24px, 3vw, 40px);
+        margin-left: 0.3rem;
+        white-space: nowrap;
+        display: inline-block;
+      }
+    }
+    
+    /* Hall Cards Mobile */
+    @media (max-width: 768px) {
+      .hall-card {
+        flex: 0 0 calc(100% / 7 - 0.86rem);
+        min-width: calc(100% / 7 - 0.86rem);
+        min-height: 180px;
+        padding: 1.25rem;
+      }
+      
+      .hall-card-header {
+        font-size: 1.125rem;
+      }
+      
+      .hall-card-subheader {
+        font-size: 0.8rem;
+      }
+      
+      .hall-card-main {
+        font-size: 1.25rem;
+      }
+    }
+    
+    /* Content Cards Mobile */
+    @media (max-width: 768px) {
+      .favorite-content-cards {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      
+      .content-card-item {
+        flex: 1 1 100%;
         min-width: 100%;
+        min-height: 350px;
+        padding: 1.5rem;
+      }
+      
+      .content-card-label {
+        font-size: 1rem;
+      }
+      
+      .content-card-title {
+        font-size: clamp(20px, 4vw, 28px);
+      }
+    }
+    
+    /* Meal Section Cards - 90% taller (200px * 1.9 = 380px) */
+    .meal-section-wrapper .library-card {
+      min-height: 380px;
+    }
+    
+    /* Meal Section */
+    .meal-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      aspect-ratio: 16 / 13.5;
+      min-height: 450px;
+      flex: 1;
+      position: relative;
+      overflow: visible;
+      box-sizing: border-box;
+    }
+    
+    .meal-header {
+      font-size: clamp(28px, 2.8vw, 42.667px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      text-align: left;
+      color: #000000;
+      margin-bottom: 1.5rem;
+    }
+    
+    .meal-metric {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .meal-number {
+      font-size: clamp(56px, 6.5vw, 96px);
+      font-weight: 700;
+      line-height: 1;
+      color: #0459F0;
+    }
+    
+    .meal-unit {
+      font-size: clamp(56px, 6.5vw, 96px);
+      font-weight: 700;
+      line-height: 1;
+      color: #000000;
+    }
+    
+    .meal-text {
+      margin-bottom: 2rem;
+    }
+    
+    .meal-main-text {
+      font-size: clamp(56px, 6.5vw, 96px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #000000;
+    }
+    
+    .meal-image-container {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      max-height: 48%;
+      margin-top: auto;
+    }
+    
+    .meal-image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+    }
+    
+    /* Meal Section - Mobile */
+    @media (max-width: 768px) {
+      .meal-card {
+        padding: 1.5rem;
+        aspect-ratio: 16 / 10;
+      }
+      
+      .meal-header {
+        font-size: clamp(24px, 5vw, 36px);
+        margin-bottom: 1rem;
+      }
+      
+      .meal-number,
+      .meal-unit {
+        font-size: clamp(40px, 8vw, 72px);
+      }
+      
+      .meal-main-text {
+        font-size: clamp(40px, 8vw, 72px);
       }
     }
   </style>
 </head>
-<body class="bg-gray-50">
-  <!-- Fixed Header -->
-  <header class="fixed top-0 w-full z-50 sdij-header">
-    <nav class="container mx-auto px-6 py-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-4">
-          <div class="w-12 h-12 sdij-gradient rounded-xl flex items-center justify-center">
-            <i class="fas fa-graduation-cap text-white text-xl"></i>
-          </div>
-          <div>
-            <h1 class="text-xl font-bold text-gray-800">Memoir</h1>
-            <p class="text-sm text-gray-500">시대인재 학생 대시보드</p>
-          </div>
-        </div>
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#basic" class="sdij-nav-link">기본 정보</a>
-          <a href="#students" class="sdij-nav-link">학생 현황</a>
-          <a href="#life" class="sdij-nav-link">생활 관리</a>
-          <a href="#study" class="sdij-nav-link">학습 현황</a>
-          <a href="#subjects" class="sdij-nav-link">과목별 성취</a>
-        </div>
-        <div class="md:hidden">
-          <button class="text-gray-600 hover:text-gray-800">
-            <i class="fas fa-bars text-xl"></i>
-          </button>
-        </div>
-      </div>
-    </nav>
-  </header>
+<body>
 
-  <!-- Main Content -->
-  <main class="pt-20">
-    <!-- Hero Section -->
-    <section class="py-20 sdij-hero relative">
-      <div class="container mx-auto px-6 relative z-10">
-        <div class="max-w-5xl mx-auto text-center">
-          <div data-aos="fade-up">
-            <div class="mb-6">
-              <span class="sdij-badge primary text-sm px-4 py-2">학생 성취 대시보드</span>
-            </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6" id="name">학생 이름</h1>
-            <p class="text-xl text-white/90 mb-8">시대인재에서의 학습 현황과 성취를 한눈에 확인하세요</p>
-            <div class="flex flex-wrap justify-center gap-4 text-white/80">
-              <div class="flex items-center gap-2">
-                <i class="fas fa-building text-sm"></i>
-                <span class="text-sm">캠퍼스: <span id="campus">-</span></span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i class="fas fa-users text-sm"></i>
-                <span class="text-sm">반: <span id="className">-</span></span>
-              </div>
-            </div>
-          </div>
+  <!-- INTRO Section with Timeline -->
+  <section class="intro-section" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./Intro_blue.JPG" alt="Intro 배경" class="intro-background">
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- INTRO Content -->
+        <div class="intro-text-new" data-aos="fade-up">
+          <h1 class="intro-title">MeMOiR</h1>
+          
+          <p class="intro-description">
+            <span style="font-style: italic;">'memoir'</span> : 유명인의 회고록<br><br>
+            시대인재는 여러분 하나하나를 존중하고, 여러분이 시대인재와 함께한 시간의 가치를 소중히 여깁니다.<br>
+            그렇기에, 수능이 얼마 남지 않은 이 시점, 레이스를 성공적으로 완주할 여러분의 한 해를 Memoir을 통해 회고해보고자 합니다.
+          </p>
+          
+          <p class="intro-data-period"><br><br>*데이터 집계기간 : 2/20-10/31</p>
         </div>
-      </div>
-    </section>
-
-    <!-- Memoir Message Section -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="max-w-5xl mx-auto">
-          <div class="bg-white p-12 rounded-lg shadow-sm border border-gray-100" data-aos="fade-up">
-            <div class="text-center mb-8">
-              <h2 class="text-2xl font-bold text-gray-800 mb-4">부엉이 여러분, 수고 많으셨습니다.</h2>
-            </div>
-            
-            <div class="text-gray-700 leading-relaxed space-y-4 text-left">
-              <p class="text-lg">
-                학생님이 달려온 시간을 회고하는 <span class="font-bold text-gray-800">[Memoir]</span>
-              </p>
-              
-              <p class="text-base text-gray-600 italic">
-                📝 'memoir'는 유명인의 회고록이라는 뜻을 지녔습니다.
-              </p>
-              
-              <p class="text-base leading-lax">
-                시대인재는 여러분 하나하나를 존중하고, 여러분이 시대인재와 함께한 시간의 가치를 간과하지 않기에 그동안 달려온 시간을 회고해보고자 했습니다.
-              </p>
-            </div>
-            
-            <div class="mt-8 pt-6 border-t border-gray-100">
-              <div class="text-center">
-                <button class="px-8 py-3 rounded-lg font-semibold text-white transition-all hover:opacity-90" style="background-color: var(--sdij-black);">
-                  <i class="fas fa-heart mr-2"></i>
-                  시대인재와 함께한 소중한 시간
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-6">
-        <div class="max-w-5xl mx-auto">
-          <div class="timeline-container flex items-center justify-center" data-aos="fade-up">
+        
+        <!-- Timeline Content -->
+        <div class="py-16">
+          <!-- Timeline Cards and Connector -->
+          <div class="flex items-center mb-8" data-aos="fade-up">
             <!-- Start Card -->
-            <div class="timeline-card bg-white rounded-lg shadow-sm border border-gray-200 p-6 min-w-[200px] text-center">
-              <h3 class="text-lg font-semibold text-gray-800 mb-2">시대인재 N 처음 만난 날</h3>
-              <p class="text-2xl font-bold text-gray-900" id="startDate">2/1X일</p>
+            <div class="timeline-card">
+              <p class="text-sm text-gray-600 mb-1">시대인재 N 처음 만난 날</p>
+              <p class="text-lg font-semibold text-gray-800" id="startDate">2024.02.15</p>
             </div>
             
             <!-- Connector Line -->
-            <div class="timeline-connector flex-1 mx-8 relative">
-              <div class="timeline-dot absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-50 px-4">
-                <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
-              </div>
+            <div class="timeline-connector">
+              <div class="timeline-dot"></div>
             </div>
             
             <!-- End Card -->
-            <div class="timeline-card bg-white rounded-lg shadow-sm border border-gray-200 p-6 min-w-[200px] text-center">
-              <h3 class="text-lg font-semibold text-gray-800 mb-2">The End</h3>
-              <p class="text-2xl font-bold text-gray-900" id="endDate">11/13</p>
+            <div class="timeline-card">
+              <p class="text-sm text-gray-600 mb-1">The End</p>
+              <p class="text-lg font-semibold text-gray-800" id="endDate">2024.11.13</p>
             </div>
           </div>
           
           <!-- Total Days Metric -->
-          <div class="text-center mt-8" data-aos="fade-up" data-aos-delay="200">
-            <p class="text-xl text-gray-700">
-              총 <span class="font-bold" style="color: var(--sdij-primary);" id="totalDays">XXX</span>일 함께했습니다.
+          <div class="timeline-metric" data-aos="fade-up" data-aos-delay="100">
+            총 <span class="point-color font-bold" id="totalDays">150</span>일 함께했습니다.
+          </div>
+          
+          <!-- Summary Message -->
+          <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-lg">
+              <span id="studentNameOutput" class="font-semibold">학생 이름</span>님은, <span id="campusNameOutput" class="font-semibold">고사관</span> <span id="classNameOutput" class="font-semibold">N</span>반에서 1년간 치열하게 달려왔습니다.
             </p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Additional Text Section -->
-    <section class="py-8 px-6">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-center">
-          <p class="text-lg text-gray-700">
-            <span class="font-bold" style="color: var(--sdij-primary);" id="summaryName">-</span>님은 <span class="font-bold" style="color: var(--sdij-primary);" id="summaryTotalStudents">-</span>명 중, <span class="font-bold" style="color: var(--sdij-primary);" id="summaryCampusStudents">-</span>명의 학생과 함께 <span class="font-bold" style="color: var(--sdij-primary);" id="summaryCampus">-</span>에서, <span class="font-bold" style="color: var(--sdij-primary);" id="summaryClassName">-</span> <span class="font-bold" style="color: var(--sdij-primary);" id="summaryClassStudents">-</span>명과 함께 1년간 치열하게 달려왔습니다.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Total Hours Block -->
-    <section class="py-16 sdij-section">
-      <div class="container mx-auto px-6">
-        <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">함께한 시간</h2>
-            <p class="sdij-subtitle">시대인재와 함께 달려온 소중한 시간을 확인하세요</p>
-          </div>
-          
-          <!-- Main Stats Card -->
-          <div class="sdij-card p-12 mb-8" data-aos="fade-up" data-aos-delay="100">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <!-- Metric (Left) -->
-              <div class="text-center md:text-left">
-                <div class="flex items-baseline justify-center md:justify-start gap-3 mb-4">
-                  <div class="sdij-metric-xl" id="totalHours">0</div>
-                  <div class="sdij-metric-unit">시간</div>
-                </div>
-                <p class="sdij-subtitle text-lg">총 공부시간</p>
-              </div>
-              
-              <!-- Illustration (Right) -->
-              <div class="text-center">
-                <div class="text-8xl mb-4">🦉📝</div>
-                <p class="sdij-subtitle">함께 성장한 시간들</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Supporting Text Card -->
-          <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="sdij-card p-8">
-              <p class="text-lg" style="color: var(--sdij-gray-700);">
-                총 <span class="font-bold" style="color: var(--sdij-gray-900);" id="cohortStudents">-</span>명의 학생과 함께 
-                <span class="font-bold sdij-metric-md" id="cohortHours">-</span>시간 동안 
-                강의를 들으며 달려왔습니다
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Meal Section -->
-    <section class="py-16 sdij-section-alt">
-      <div class="container mx-auto px-6">
-        <div class="max-w-5xl mx-auto">
-          <!-- Section Title -->
-          <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">시대인재가 따뜻한 한 끼를 주었길 바라요</h2>
-          </div>
-          
-          <!-- 2x2 Grid Cards -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <!-- Top Left: Icon & Label -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
-              <div class="text-center">
-                <div class="sdij-icon primary mx-auto mb-4">
-                  <i class="fas fa-utensils"></i>
-                </div>
-                <h3 class="sdij-title text-xl">총 식사 일수</h3>
-                <p class="sdij-subtitle mt-2">시대인재와 함께한 식사</p>
-              </div>
-            </div>
-            
-            <!-- Top Right: Metric & Illustration -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
-              <div class="grid grid-cols-2 gap-4 items-center">
-                <div class="text-center">
-                  <div class="flex items-baseline justify-center gap-2">
-                    <div class="sdij-metric-lg" id="totalMeals">0</div>
-                    <div class="sdij-metric-unit">끼</div>
-                  </div>
-                </div>
-                <div class="text-center">
-                  <div class="text-7xl">🦉🍴</div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Bottom Left: Image Placeholder -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
-              <div class="flex items-center justify-center h-full">
-                <div class="text-center">
-                  <div class="text-6xl mb-4">📸</div>
-                  <p class="sdij-subtitle">최애 메뉴 사진</p>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Bottom Right: Label & Favorite Meal -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="400">
-              <div class="text-center">
-                <h3 class="sdij-title text-xl mb-4">최애 메뉴</h3>
-                <div class="sdij-metric-md mb-2" id="favMeal">-</div>
-                <p class="sdij-subtitle">가장 인기있던 메뉴</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Explanatory Text -->
-          <div class="space-y-4" data-aos="fade-up" data-aos-delay="500">
-            <div class="sdij-card p-8">
-              <p class="text-lg text-center" style="color: var(--sdij-gray-700);">
-                시대인재와 함께한 식사 일 수 동안, 총 <span class="font-bold" style="color: var(--sdij-gray-900);" id="mealCohortStudents">-</span>명의 학생과 급식 먹은 횟수 
-                <span class="font-bold" style="color: var(--sdij-primary);" id="mealTotalMeals">-</span>끼를 함께했습니다.
-              </p>
-            </div>
-            
-            <div class="sdij-card p-8">
-              <p class="text-lg text-center" style="color: var(--sdij-gray-700);">
-                • 그 중 <span class="font-bold" style="color: var(--sdij-primary);" id="mealCampus">-</span>이 가장 좋아했던 음식은 
-                <span class="font-bold" style="color: var(--sdij-primary);" id="mealFavMeal">-</span> 이었습니다.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Basic Info Section -->
-    <section id="basic" class="py-16 sdij-section-alt">
-      <div class="container mx-auto px-6">
-        <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">기본 정보</h2>
-            <p class="sdij-subtitle">학생의 기본 정보와 소속 정보를 확인할 수 있습니다</p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            <!-- Campus Card -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
-              <div class="text-center">
-                <div class="sdij-icon primary mx-auto">
-                  <i class="fas fa-building"></i>
-                </div>
-                <h3 class="sdij-title">캠퍼스</h3>
-                <p class="sdij-value text-gray-800" id="campus">-</p>
-              </div>
-            </div>
-
-            <!-- Class Card -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
-              <div class="text-center">
-                <div class="sdij-icon secondary mx-auto">
-                  <i class="fas fa-users"></i>
-                </div>
-                <h3 class="sdij-title">반명</h3>
-                <p class="sdij-value text-gray-800" id="className">-</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Students Section -->
-    <section id="students" class="py-16 sdij-section">
-      <div class="container mx-auto px-6">
-        <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">학생 현황</h2>
-            <p class="sdij-subtitle">전체, 캠퍼스, 반별 학생 수 통계를 확인할 수 있습니다</p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Total Students Card -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
-              <div class="text-center">
-                <div class="sdij-icon primary mx-auto">
-                  <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3 class="sdij-title">총 학생 수</h3>
-                <p class="sdij-value text-gray-800" id="totalStudents">-</p>
-              </div>
-            </div>
-
-            <!-- Campus Students Card -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
-              <div class="text-center">
-                <div class="sdij-icon secondary mx-auto">
-                  <i class="fas fa-school"></i>
-                </div>
-                <h3 class="sdij-title">캠퍼스 학생 수</h3>
-                <p class="sdij-value text-gray-800" id="campusStudents">-</p>
-              </div>
-            </div>
-
-            <!-- Class Students Card -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
-              <div class="text-center">
-                <div class="sdij-icon accent mx-auto">
-                  <i class="fas fa-user-friends"></i>
-                </div>
-                <h3 class="sdij-title">반 학생 수</h3>
-                <p class="sdij-value text-gray-800" id="classStudents">-</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Life Management Section -->
-    <section id="life" class="py-16 sdij-section-alt">
-      <div class="container mx-auto px-6">
-        <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">생활 관리</h2>
-            <p class="sdij-subtitle">일상 생활과 식사 관련 통계를 확인할 수 있습니다</p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <!-- Days Card -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
-              <div class="text-center">
-                <div class="sdij-icon accent mx-auto">
-                  <i class="fas fa-calendar-days"></i>
-                </div>
-                <h3 class="sdij-title">총 일수</h3>
-                <p class="sdij-value text-gray-800" id="days">-</p>
-              </div>
-            </div>
-
-            <!-- Meals Card -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
-              <div class="text-center">
-                <div class="sdij-icon success mx-auto">
-                  <i class="fas fa-utensils"></i>
-                </div>
-                <h3 class="sdij-title">총 끼니</h3>
-                <p class="sdij-value text-gray-800" id="meals">-</p>
-              </div>
-            </div>
-
-            <!-- Menu Card -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
-              <div class="text-center">
-                <div class="sdij-icon warning mx-auto">
-                  <i class="fas fa-heart"></i>
-                </div>
-                <h3 class="sdij-title">인기 메뉴</h3>
-                <p class="sdij-value text-gray-800" id="menu">-</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Time Management -->
-          <div class="text-center mb-8" data-aos="fade-up">
-            <h3 class="text-2xl font-bold sdij-title mb-8">시간 관리</h3>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Total Study Time -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
-              <div class="text-center">
-                <div class="sdij-icon primary mx-auto">
-                  <i class="fas fa-clock"></i>
-                </div>
-                <h3 class="sdij-title">총 공부 시간</h3>
-                <p class="sdij-value text-gray-800" id="time">-</p>
-              </div>
-            </div>
-
-            <!-- Self Study Time -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
-              <div class="text-center">
-                <div class="sdij-icon secondary mx-auto">
-                  <i class="fas fa-book-open"></i>
-                </div>
-                <h3 class="sdij-title">자습 시간</h3>
-                <p class="sdij-value text-gray-800" id="self">-</p>
-              </div>
-            </div>
-
-            <!-- Class Time -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
-              <div class="text-center">
-                <div class="sdij-icon info mx-auto">
-                  <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-                <h3 class="sdij-title">수업 시간</h3>
-                <p class="sdij-value text-gray-800" id="classTime">-</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Study Section -->
-    <section id="study" class="py-16 sdij-section">
-      <div class="container mx-auto px-6">
-        <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">학습 현황</h2>
-            <p class="sdij-subtitle">질문, 출석, 집중도 관련 통계를 확인할 수 있습니다</p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <!-- Total Questions -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
-              <div class="text-center">
-                <div class="sdij-icon warning mx-auto">
-                  <i class="fas fa-question-circle"></i>
-                </div>
-                <h3 class="sdij-title">총 질문 수</h3>
-                <p class="sdij-value text-gray-800" id="totalAsk">-</p>
-              </div>
-            </div>
-
-            <!-- Personal Questions -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
-              <div class="text-center">
-                <div class="sdij-icon primary mx-auto">
-                  <i class="fas fa-user-question"></i>
-                </div>
-                <h3 class="sdij-title">개인 질문 수</h3>
-                <p class="sdij-value text-gray-800" id="personalAsk">-</p>
-              </div>
-            </div>
-
-            <!-- Focus Level -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
-              <div class="text-center">
-                <div class="sdij-icon success mx-auto">
-                  <i class="fas fa-bullseye"></i>
-                </div>
-                <h3 class="sdij-title">집중도</h3>
-                <p class="sdij-value text-gray-800" id="focus">-</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Daily Schedule -->
-          <div class="text-center mb-8" data-aos="fade-up">
-            <h3 class="text-2xl font-bold sdij-title mb-8">일일 스케줄</h3>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Start Time -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
-              <div class="text-center">
-                <div class="sdij-icon info mx-auto">
-                  <i class="fas fa-sun"></i>
-                </div>
-                <h3 class="sdij-title">등원 시각</h3>
-                <p class="sdij-value text-gray-800" id="start">-</p>
-              </div>
-            </div>
-
-            <!-- End Time -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
-              <div class="text-center">
-                <div class="sdij-icon secondary mx-auto">
-                  <i class="fas fa-moon"></i>
-                </div>
-                <h3 class="sdij-title">하원 시각</h3>
-                <p class="sdij-value text-gray-800" id="end">-</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Subjects Section -->
-    <section id="subjects" class="py-16 sdij-section-alt">
-      <div class="container mx-auto px-6">
-        <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold sdij-title mb-4">과목별 성취</h2>
-            <p class="sdij-subtitle">각 과목의 모의고사 성취도를 확인할 수 있습니다</p>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <!-- Korean -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="100">
-              <div class="text-center">
-                <div class="sdij-icon primary mx-auto">
-                  <i class="fas fa-book"></i>
-                </div>
-                <h3 class="sdij-title">국어</h3>
-                <p class="sdij-value text-gray-800">
-                  <span id="korSimul">-</span>/<span id="korTotal">-</span>
-                </p>
-              </div>
-            </div>
-
-            <!-- Math -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="200">
-              <div class="text-center">
-                <div class="sdij-icon secondary mx-auto">
-                  <i class="fas fa-calculator"></i>
-                </div>
-                <h3 class="sdij-title">수학</h3>
-                <p class="sdij-value text-gray-800">
-                  <span id="mathSimul">-</span>/<span id="mathTotal">-</span>
-                </p>
-              </div>
-            </div>
-
-            <!-- English -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="300">
-              <div class="text-center">
-                <div class="sdij-icon success mx-auto">
-                  <i class="fas fa-language"></i>
-                </div>
-                <h3 class="sdij-title">영어</h3>
-                <p class="sdij-value text-gray-800">
-                  <span id="engSimul">-</span>/<span id="engTotal">-</span>
-                </p>
-              </div>
-            </div>
-
-            <!-- Biology -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="400">
-              <div class="text-center">
-                <div class="sdij-icon accent mx-auto">
-                  <i class="fas fa-dna"></i>
-                </div>
-                <h3 class="sdij-title">생명</h3>
-                <p class="sdij-value text-gray-800">
-                  <span id="bioSimul">-</span>/<span id="bioTotal">-</span>
-                </p>
-              </div>
-            </div>
-
-            <!-- Geography -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="500">
-              <div class="text-center">
-                <div class="sdij-icon info mx-auto">
-                  <i class="fas fa-globe"></i>
-                </div>
-                <h3 class="sdij-title">지구</h3>
-                <p class="sdij-value text-gray-800">
-                  <span id="geoSimul">-</span>/<span id="geoTotal">-</span>
-                </p>
-              </div>
-            </div>
-
-            <!-- Total Questions -->
-            <div class="sdij-card p-8" data-aos="fade-up" data-aos-delay="600">
-              <div class="text-center">
-                <div class="sdij-icon warning mx-auto">
-                  <i class="fas fa-chart-bar"></i>
-                </div>
-                <h3 class="sdij-title">총 문제 수</h3>
-                <p class="sdij-value text-gray-800" id="totalQ">-</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Scroll to Top Button -->
-  <div class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
-    <i class="fas fa-arrow-up"></i>
-  </div>
-
-  <!-- Footer -->
-  <footer class="sdij-footer text-white py-8">
-    <div class="container mx-auto px-6 text-center">
-      <div class="mb-4">
-        <div class="w-12 h-12 sdij-gradient rounded-xl flex items-center justify-center mx-auto mb-4">
-          <i class="fas fa-graduation-cap text-white text-xl"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2">Memoir</h3>
-        <p class="text-gray-400">시대인재 학생 성취 대시보드</p>
-      </div>
-      <div class="border-t border-gray-700 pt-4">
-        <p class="text-gray-400 text-sm">© 2024 시대인재. All rights reserved.</p>
+        
       </div>
     </div>
-  </footer>
+  </section>
 
-  <!-- Scripts -->
+  <!-- Check-in/Check-out Section (등하원 시간) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Check-in/Check-out Content -->
+        <div class="flex gap-4" data-aos="fade-up">
+          <!-- Left: Check-in Content -->
+          <div class="checkin-content-overlay">
+            <div class="checkin-title-overlay">평균 등원 시간</div>
+            <div class="checkin-number-overlay">
+              <span class="checkin-number-text" id="checkInTime">08:30</span>
+            </div>
+          </div>
+          
+          <!-- Right: Check-out Content -->
+          <div class="checkin-content-overlay">
+            <div class="checkin-title-overlay">평균 하원 시간</div>
+            <div class="checkin-number-overlay">
+              <span class="checkin-number-text" id="checkOutTime">22:00</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Total Hours Section (강의 시간) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Hours Content -->
+        <div class="hours-content" data-aos="fade-up">
+          <div class="hours-title-overlay">시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
+          <div class="hours-number-overlay">
+            <span class="hours-number-text" id="totalHours">1200</span>
+            <span class="hours-text-overlay">시간</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Library Time and Focus Section (라이브러리 잔류시간 & 몰입도) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Library Time and Focus Cards -->
+        <div class="flex gap-4 mb-6" data-aos="fade-up">
+          <!-- Left Library Time Content -->
+          <div class="library-content-overlay">
+            <!-- Header Text -->
+            <div class="library-title-overlay">
+              2025년,<br>라이브러리에서 보낸 시간
+            </div>
+            
+            <!-- Time Value -->
+            <div class="library-number-overlay">
+              <span class="library-number-text" id="libraryHours">1,200</span>
+              <span class="library-text-overlay">시간</span>
+            </div>
+          </div>
+          
+          <!-- Right Focus Content -->
+          <div class="library-content-overlay">
+            <!-- Header Text -->
+            <div class="library-title-overlay">
+              그동안,<br>라이브러리에서의 몰입도
+            </div>
+            
+            <!-- Value -->
+            <div class="library-number-overlay">
+              <span class="library-number-text" id="focusScore" aria-label="평균 몰입도">8.7</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Meal Section (급식 섹션) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Meal Content -->
+        <div class="meal-content-overlay">
+          <!-- Header Text -->
+          <div class="meal-title-overlay">
+            총 식사 끼니 수
+          </div>
+          
+          <!-- Meal Count Value -->
+          <div class="meal-number-overlay">
+            <span class="meal-number-text" id="mealCount">1,234</span>
+            <span class="meal-text-overlay">회</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Bottom Caption -->
+    <div class="meal-caption" style="text-align: center; padding: 2rem 0;">
+      <div class="meal-title-overlay" style="margin-bottom: 0;">
+        <span id="mealCampusName">태성관</span> 관의 최애 메뉴는 무엇이었을까요?
+      </div>
+    </div>
+  </section>
+
+  <!-- Favorite Menu Cards Section (관별 최애 메뉴 카드) -->
+  <section class="py-16" style="background: #FFFFFF; overflow: hidden;">
+    <div style="max-width: 100%; margin: 0 auto;">
+      
+      <!-- Title -->
+      <div class="text-center mb-6 px-6" data-aos="fade-up">
+        <h2 class="text-2xl font-bold text-gray-800">관별 최애 메뉴</h2>
+      </div>
+      
+      <!-- Cards Grid -->
+      <div class="hall-cards-wrapper" data-aos="fade-up" data-aos-delay="100">
+        <div class="hall-cards-grid">
+          <!-- Cards will be generated by JavaScript -->
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Content Section (콘텐츠 섹션) -->
+  <section class="py-16 content-section" style="background: #FFFFFF; position: relative; min-height: 600px;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Content Card -->
+        <div class="content-card" data-aos="fade-up">
+          <!-- Left Top: Text -->
+          <div class="content-text" style="white-space: nowrap;">
+            <span>올해 시대인재에서 학생들은,</span><br><span>총 몇 문제를 풀었을까요?</span>
+          </div>
+          
+          <!-- Right Bottom: Number -->
+          <div class="content-number">
+            <span class="content-number-value" id="totalProblems">50,000</span>
+            <span class="content-number-unit">문제</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Personal Data Section (학생별 개인 데이터) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Two Boxes Side by Side -->
+        <div class="personal-data-wrapper" data-aos="fade-up">
+          <!-- Left Card: 총 모의고사 개수 -->
+          <div class="check-in-out-box personal-data-card">
+            <div class="personal-data-bg" style="background-image: url('./SURVIVAL.png');"></div>
+            <div class="personal-data-content">
+              <div class="time-label">재원 기간동안 푼<br>총 모의고사 개수</div>
+              <div class="time-value" id="totalMockTests" style="color: #0459F0;">25</div>
+            </div>
+          </div>
+          
+          <!-- Right Card: 총 문제 수 -->
+          <div class="check-in-out-box personal-data-card">
+            <div class="personal-data-bg" style="background-image: url('./paperdummy.png');"></div>
+            <div class="personal-data-content">
+              <div class="time-label" style="white-space: nowrap;">재원 기간동안 푼<br>모의고사 총 문제수</div>
+              <div class="time-value" id="totalPersonalProblems" style="color: #0459F0;">500</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Subject Problems Bar Chart Section (과목별 문제 수 막대 그래프) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Bar Chart Card -->
+        <div class="bar-chart-card" data-aos="fade-up">
+          <div class="bar-chart-container">
+            <!-- Bar Charts -->
+            <div class="bar-chart-item">
+              <div class="bar-wrapper">
+                <div class="bar" id="koreanBar" style="position: relative; height: 0;">
+                  <div class="bar-value" id="koreanProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                </div>
+              </div>
+              <div class="bar-label">국어</div>
+            </div>
+            
+            <div class="bar-chart-item">
+              <div class="bar-wrapper">
+                <div class="bar" id="mathBar" style="position: relative; height: 0;">
+                  <div class="bar-value" id="mathProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                </div>
+              </div>
+              <div class="bar-label">수학</div>
+            </div>
+            
+            <div class="bar-chart-item">
+              <div class="bar-wrapper">
+                <div class="bar" id="englishBar" style="position: relative; height: 0;">
+                  <div class="bar-value" id="englishProblems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                </div>
+              </div>
+              <div class="bar-label">영어</div>
+            </div>
+            
+            <div class="bar-chart-item">
+              <div class="bar-wrapper">
+                <div class="bar" id="research1Bar" style="position: relative; height: 0;">
+                  <div class="bar-value" id="research1Problems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                </div>
+              </div>
+              <div class="bar-label">탐구1</div>
+            </div>
+            
+            <div class="bar-chart-item">
+              <div class="bar-wrapper">
+                <div class="bar" id="research2Bar" style="position: relative; height: 0;">
+                  <div class="bar-value" id="research2Problems" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap;">0</div>
+                </div>
+              </div>
+              <div class="bar-label">탐구2</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bottom Message (Outside the card) -->
+        <div class="bar-chart-message" style="text-align: center; padding-top: 2rem;">
+          이렇게 많은 문제를 풀어내며, 누구보다도 성장하는 한 해가 되었을 겁니다.
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Favorite Content Section (가장 만족도가 높았던 콘텐츠) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Title -->
+        <div class="text-center mb-8" data-aos="fade-up">
+          <h2 class="favorite-content-title">2025년, 가장 만족도가 높았던<br>시대인재 콘텐츠는 무엇이었을까요?</h2>
+        </div>
+        
+        <!-- Content Cards -->
+        <div class="favorite-content-cards" data-aos="fade-up" data-aos-delay="100">
+          <!-- Card 1: 국어 월례고사 -->
+          <div class="content-card-item">
+            <div class="content-card-text">
+              <span class="content-card-label">국어</span><br>
+              <span class="content-card-title">월례고사</span>
+            </div>
+            <img src="./Korean.png" alt="Korean" class="content-card-image">
+          </div>
+          
+          <!-- Card 2: 수학 BRIDGE -->
+          <div class="content-card-item">
+            <div class="content-card-text">
+              <span class="content-card-label">수학</span><br>
+              <span class="content-card-title">BRIDGE</span>
+            </div>
+            <img src="./BRIDGE.png" alt="Bridge" class="content-card-image">
+          </div>
+          
+          <!-- Card 3: 신규 배부 콘텐츠 VORTEX -->
+          <div class="content-card-item">
+            <div class="content-card-text">
+              <span class="content-card-label">신규 배부 콘텐츠</span><br>
+              <span class="content-card-title">VORTEX</span>
+            </div>
+            <img src="./VORTEX.png" alt="Vortex" class="content-card-image">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- TA Section (TA 질문 수) -->
+  <section class="py-16" style="background: #FFFFFF; margin-top: 10%;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- TA Card -->
+        <div class="ta-card" data-aos="fade-up" style="background-image: url('./TA booth.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+          <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.6); border-radius: 1rem; z-index: 0;"></div>
+          <img src="./TA owl.png" alt="TA Owl" class="ta-owl-image">
+          <div class="ta-content">
+            <div class="ta-label">TA 총 질문수</div>
+            <div class="ta-number" id="totalTAQuestions">10,000</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal TA Questions Section (개인별 TA 질문 수) -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Personal TA Card -->
+        <div class="personal-ta-card" data-aos="fade-up">
+          <div class="personal-ta-content">
+            <div class="personal-ta-label">올 한 해 TA앱에서<br>오고 간 질문수는</div>
+            <div class="personal-ta-number-section">
+              <span class="personal-ta-number" id="personalTAQuestions">1,200</span>
+              <span class="personal-ta-unit">회입니다.</span>
+            </div>
+          </div>
+          <img src="./Qowl.png" alt="Q Owl" class="personal-ta-owl-image">
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Subject TA Questions Section -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        
+        <div class="personal-subject-ta-header" data-aos="fade-up">
+          <span id="studentNameForSubjects">학생님</span>의 과목별 TA앱 질문수
+        </div>
+        
+        <div class="personal-subject-ta-card" data-aos="fade-up">
+          <div class="personal-subject-chart-container">
+            <div class="personal-subject-chart-item">
+              <div class="personal-subject-label">국어</div>
+              <div class="personal-subject-bar-wrapper">
+                <div class="personal-subject-bar" id="personalKoreanBar">
+                  <div class="personal-subject-value" id="personalKoreanQuestions">0</div>
+                </div>
+              </div>
+            </div>
+            <div class="personal-subject-chart-item">
+              <div class="personal-subject-label">수학</div>
+              <div class="personal-subject-bar-wrapper">
+                <div class="personal-subject-bar" id="personalMathBar">
+                  <div class="personal-subject-value" id="personalMathQuestions">0</div>
+                </div>
+              </div>
+            </div>
+            <div class="personal-subject-chart-item">
+              <div class="personal-subject-label">영어</div>
+              <div class="personal-subject-bar-wrapper">
+                <div class="personal-subject-bar" id="personalEnglishBar">
+                  <div class="personal-subject-value" id="personalEnglishQuestions">0</div>
+                </div>
+              </div>
+            </div>
+            <div class="personal-subject-chart-item">
+              <div class="personal-subject-label">탐구1</div>
+              <div class="personal-subject-bar-wrapper">
+                <div class="personal-subject-bar" id="personalResearch1Bar">
+                  <div class="personal-subject-value" id="personalResearch1Questions">0</div>
+                </div>
+              </div>
+            </div>
+            <div class="personal-subject-chart-item">
+              <div class="personal-subject-label">탐구2</div>
+              <div class="personal-subject-bar-wrapper">
+                <div class="personal-subject-bar" id="personalResearch2Bar">
+                  <div class="personal-subject-value" id="personalResearch2Questions">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="personal-subject-ta-message" data-aos="fade-up">
+          <span id="studentNameForMessage">학생님</span>은 일 년간 질문을 통해 부족한 점을 채우려고 노력하였습니다.<br>자신의 부족한 점을 하나하나 매꾸고자 한 이 노력은, 분명 수능장에서 빛을 발할 거예요.
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Monthly Subject TA Trends Section -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="monthly-ta-header" data-aos="fade-up">
+          시대인재 부엉이 다같이 달려 왔어요
+        </div>
+        
+        <!-- Scrollable Charts Container -->
+        <div class="monthly-charts-scroll-wrapper" data-aos="fade-up">
+          <div class="monthly-charts-scroll-container">
+            <div class="monthly-chart-card">
+              <canvas id="mathChart" width="800" height="300"></canvas>
+            </div>
+            <div class="monthly-chart-card">
+              <canvas id="research1Chart" width="800" height="300"></canvas>
+            </div>
+            <div class="monthly-chart-card">
+              <canvas id="research2Chart" width="800" height="300"></canvas>
+            </div>
+          </div>
+        </div>
+        
+        <div class="monthly-ta-message" data-aos="fade-up">
+          <span id="studentNameForMonthly">학생 데이터</span>님과 함께 수학, 탐구1, 탐구2를 선택한 학생들은 월별로 이런 질문 수 추이를 보였습니다. 학생 여러분 다같이 꾸준하게 질문하며 학습하였네요!
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Owl Badge Section -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        
+        <p class="owl-badge-intro-text" data-aos="fade-up">
+          묵묵히 이 길을 걸어온 여러분, 여러분이 의식하지 못하는 사이에, 큰 성장을 이루어냈습니다.
+        </p>
+        <p class="owl-badge-call-to-action" data-aos="fade-up">
+          그런 여러분에게 부엉이 배지를 부여합니다!
+        </p>
+        
+        <div class="owl-badge-cards-container" data-aos="fade-up">
+          
+          <!-- Gold Owl Card -->
+          <div class="owl-badge-item">
+            <div class="owl-badge-card">
+              <div class="owl-badge-image-wrapper">
+                <img src="./goldowl.png" alt="황금 부엉이" class="owl-badge-image">
+                <div class="owl-badge-shadow"></div>
+              </div>
+            </div>
+            <p class="owl-badge-title">황금 부엉이</p>
+            <p class="owl-badge-description">한 해를 완주한 챔피언</p>
+          </div>
+          
+          <!-- Study Owl Card -->
+          <div class="owl-badge-item">
+            <div class="owl-badge-card">
+              <div class="owl-badge-image-wrapper">
+                <img src="./studyowl.png" alt="성실 부엉이" class="owl-badge-image">
+                <div class="owl-badge-shadow"></div>
+              </div>
+            </div>
+            <p class="owl-badge-title">성실 부엉이</p>
+            <p class="owl-badge-description">매일매일 꾸준히 꾸준히</p>
+          </div>
+          
+          <!-- Sleep Owl Card -->
+          <div class="owl-badge-item">
+            <div class="owl-badge-card">
+              <div class="owl-badge-image-wrapper">
+                <img src="./sleepowl.png" alt="질문 부엉이" class="owl-badge-image">
+                <div class="owl-badge-shadow"></div>
+              </div>
+            </div>
+            <p class="owl-badge-title">질문 부엉이</p>
+            <p class="owl-badge-description">궁금증을 완전히 해소할 때까지</p>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Promotion Section -->
+  <section class="py-16" style="background: #FFFFFF;">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="promotion-header" data-aos="fade-up">
+          그동안 시대인재는…
+        </div>
+        
+        <div class="promotion-section" data-aos="fade-up">
+          <div class="promotion-category-label">콘텐츠 제작</div>
+          <div class="promotion-carousel-wrapper">
+            <div class="promotion-carousel-track" id="promoCarousel1">
+              <div class="promotion-item"><img src="./SURVIVAL.png" alt="SURVIVAL"></div>
+              <div class="promotion-item"><img src="./BRIDGE.png" alt="BRIDGE"></div>
+              <div class="promotion-item"><img src="./ACCElERATOR.png" alt="ACCELERATER"></div>
+              <div class="promotion-item"><img src="./SHORTCUT.png" alt="SHORTCUT"></div>
+              <div class="promotion-item"><img src="./ATG.png" alt="ATG"></div>
+              <div class="promotion-item"><img src="./FLOW.png" alt="FLOW"></div>
+              <div class="promotion-item"><img src="./VORTEX.png" alt="VORTEX"></div>
+              <div class="promotion-item"><img src="./E-FFECT.png" alt="E-FFECT"></div>
+              <div class="promotion-item"><img src="./TRUSS.png" alt="TRUSS"></div>
+              <!-- Duplicate for seamless loop -->
+              <div class="promotion-item"><img src="./SURVIVAL.png" alt="SURVIVAL"></div>
+              <div class="promotion-item"><img src="./BRIDGE.png" alt="BRIDGE"></div>
+              <div class="promotion-item"><img src="./ACCElERATOR.png" alt="ACCELERATER"></div>
+              <div class="promotion-item"><img src="./SHORTCUT.png" alt="SHORTCUT"></div>
+              <div class="promotion-item"><img src="./ATG.png" alt="ATG"></div>
+              <div class="promotion-item"><img src="./FLOW.png" alt="FLOW"></div>
+              <div class="promotion-item"><img src="./VORTEX.png" alt="VORTEX"></div>
+              <div class="promotion-item"><img src="./E-FFECT.png" alt="E-FFECT"></div>
+              <div class="promotion-item"><img src="./TRUSS.png" alt="TRUSS"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="promotion-section" data-aos="fade-up">
+          <div class="promotion-category-label">시그니처 발행</div>
+          <div class="promotion-carousel-wrapper">
+            <div class="promotion-carousel-track" id="promoCarousel2">
+              <div class="promotion-item"><img src="./AFTERPACK.png" alt="AFTERPACK"></div>
+              <div class="promotion-item"><img src="./MAGAZINE.png" alt="MAGAZINE"></div>
+              <div class="promotion-item"><img src="./HANGHAE.png" alt="항해일지"></div>
+              <div class="promotion-item"><img src="./VOYAGERR.png" alt="보이저레터"></div>
+              <!-- Duplicate for seamless loop -->
+              <div class="promotion-item"><img src="./AFTERPACK.png" alt="AFTERPACK"></div>
+              <div class="promotion-item"><img src="./MAGAZINE.png" alt="MAGAZINE"></div>
+              <div class="promotion-item"><img src="./HANGHAE.png" alt="항해일지"></div>
+              <div class="promotion-item"><img src="./VOYAGERR.png" alt="보이저레터"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="promotion-section" data-aos="fade-up">
+          <div class="promotion-category-label">앱 서비스</div>
+          <div class="promotion-carousel-wrapper">
+            <div class="promotion-carousel-track" id="promoCarousel3">
+              <div class="promotion-item"><img src="./SDIJN.png" alt="SDIJN"></div>
+              <div class="promotion-item"><img src="./CONTENTS.png" alt="CONTENTS"></div>
+              <div class="promotion-item"><img src="./Timer.png" alt="TIMER"></div>
+              <div class="promotion-item"><img src="./TA.png" alt="TA"></div>
+              <div class="promotion-item"><img src="./SCHEDULE.png" alt="SCHEDULE"></div>
+              <div class="promotion-item"><img src="./ebook.png" alt="EBOOK"></div>
+              <!-- Duplicate for seamless loop -->
+              <div class="promotion-item"><img src="./SDIJN.png" alt="SDIJN"></div>
+              <div class="promotion-item"><img src="./CONTENTS.png" alt="CONTENTS"></div>
+              <div class="promotion-item"><img src="./Timer.png" alt="TIMER"></div>
+              <div class="promotion-item"><img src="./TA.png" alt="TA"></div>
+              <div class="promotion-item"><img src="./SCHEDULE.png" alt="SCHEDULE"></div>
+              <div class="promotion-item"><img src="./ebook.png" alt="EBOOK"></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Outro Section -->
+  <section class="py-16" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./Outro.JPG" alt="Outro 배경" class="outro-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="outro-background-overlay"></div>
+    
+    <div class="container mx-auto px-0" style="position: relative; z-index: 2;">
+      <div style="max-width: 100%;">
+        
+        <!-- Outro Header -->
+        <div class="outro-header-with-bg" data-aos="fade-up">
+          스스로에 대한 확신을 채워가는<br>1년이 되었길 바라며
+        </div>
+        
+        <!-- Subtitle -->
+        <div class="outro-subtitle" data-aos="fade-up">
+          앞으로도<br>여러분의 여정을 함께하겠습니다.
+        </div>
+        
+        <!-- Services Cards -->
+        <div class="outro-services">
+          
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Afterpack Section (카드 1: 애프터팩) -->
+  <section class="py-16" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./after.jpeg" alt="애프터팩 배경" class="afterpack-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="afterpack-background-overlay"></div>
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
+      <div class="max-w-6xl mx-auto">
+        <div class="afterpack-content" data-aos="fade-up">
+          <div class="afterpack-title-left">a. 애프터팩</div>
+          <div class="afterpack-text-right">
+            2025학년도 정시 모집 요강부터 컨설팅을 위한 정보,<br>그리고 선배들의 이야기 등 수능이 끝난 이후에 필요한 내용을 담아 여러분들께 전해드립니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation Section (카드 2: 수능 가채점 상담) -->
+  <section class="py-16" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./jungsi consulting.jpeg" alt="수능 가채점 상담 배경" class="consultation-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="consultation-background-overlay"></div>
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
+      <div class="max-w-6xl mx-auto">
+        <div class="consultation-content" data-aos="fade-up">
+          <div class="consultation-text-left">
+            가채점 결과를 통해 수능 직후, 학생의 성적을 분석하여, 논술 응시 여부에 대한 고민을 나누어드립니다.
+          </div>
+          <div class="consultation-title-right">
+            b. 수능 가채점 상담
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regular Admission Consulting Section (카드 3: 정시 컨설팅) -->
+  <section class="py-16" style="position: relative; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="./susi consulting.jpeg" alt="정시 컨설팅 배경" class="jungsi-background">
+    
+    <!-- Gradient Overlay -->
+    <div class="jungsi-background-overlay"></div>
+    
+    <div class="container mx-auto px-6" style="position: relative; z-index: 2;">
+      <div class="max-w-6xl mx-auto">
+        <div class="jungsi-content" data-aos="fade-up">
+          <div class="jungsi-title-left">c. 정시 컨설팅</div>
+          <div class="jungsi-text-right">
+            재원생 모두에게 맞춤형 컨설팅을 통해 최적 이상의 대학과 학과를 선택할 수 있도록 혼신의 힘을 다해 도와드리겠습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- AOS Initialization -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Initialize AOS
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
-      once: true,
-      offset: 100
+      once: true
     });
-
-    // Scroll to top functionality
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    
+    // 실시간 자동 새로고침 기능
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      // 외부에서 접근할 때만 자동 새로고침 활성화
+      setInterval(() => {
+        fetch(window.location.href, { method: 'HEAD' })
+          .then(response => {
+            if (response.status === 200) {
+              // 파일이 변경되었는지 확인하는 로직
+              const lastModified = response.headers.get('last-modified');
+              if (window.lastModifiedTime && lastModified !== window.lastModifiedTime) {
+                window.location.reload();
+              }
+              window.lastModifiedTime = lastModified;
+            }
+          })
+          .catch(() => {
+            // 에러가 발생해도 무시
+          });
+      }, 2000); // 2초마다 확인
+    }
+    
+    // URL 파라미터 읽기
+    const params = new URLSearchParams(location.search);
+    const get = (key, defaultValue = '') => {
+      return params.get(key) || defaultValue;
+    };
+    
+    // Dynamic data binding
+    const studentName = get('name', '학생 이름');
+    const startDate = get('startDate', '2024.02.15');
+    const endDate = get('endDate', '2024.11.13');
+    const totalDays = get('totalDays', '150');
+    const campusName = get('campusName', '고사관');
+    const className = get('className', 'N반');
+    const checkInTime = get('checkInTime', '08:30');
+    const checkOutTime = get('checkOutTime', '22:00');
+    const totalHours = get('totalHours', '1200');
+    const libraryHours = get('libraryHours', '1200');
+    const focusScore = get('focusScore', '87');
+    const mealCount = get('mealCount', '1234');
+    const favoriteMenu = get('favoriteMenu', '돈까스');
+    const totalProblems = get('totalProblems', '50000');
+    const totalMockTests = get('totalMockTests', '25');
+    const totalPersonalProblems = get('totalPersonalProblems', '500');
+    const koreanProblems = get('koreanProblems', '1500');
+    const mathProblems = get('mathProblems', '2000');
+    const englishProblems = get('englishProblems', '1200');
+    const research1Problems = get('research1Problems', '800');
+    const research2Problems = get('research2Problems', '600');
+    const totalTAQuestions = get('totalTAQuestions', '10000');
+    const personalTAQuestions = get('personalTAQuestions', '1200');
+    const personalKoreanQuestions = get('personalKoreanQuestions', '100');
+    const personalMathQuestions = get('personalMathQuestions', '150');
+    const personalEnglishQuestions = get('personalEnglishQuestions', '80');
+    const personalResearch1Questions = get('personalResearch1Questions', '60');
+    const personalResearch2Questions = get('personalResearch2Questions', '50');
+    
+    // Update DOM elements
+    const studentNameElement = document.getElementById('studentNameOutput');
+    if (studentNameElement) studentNameElement.textContent = studentName;
+    
+    const startDateElement = document.getElementById('startDate');
+    if (startDateElement) startDateElement.textContent = startDate;
+    
+    const endDateElement = document.getElementById('endDate');
+    if (endDateElement) endDateElement.textContent = endDate;
+    
+    const totalDaysElement = document.getElementById('totalDays');
+    if (totalDaysElement) totalDaysElement.textContent = totalDays;
+    
+    const campusNameElement = document.getElementById('campusNameOutput');
+    if (campusNameElement) campusNameElement.textContent = campusName;
+    
+    const classNameElement = document.getElementById('classNameOutput');
+    if (classNameElement) classNameElement.textContent = className;
+    
+    // Update check-in/check-out times
+    const checkInTimeElement = document.getElementById('checkInTime');
+    if (checkInTimeElement) {
+      checkInTimeElement.textContent = checkInTime;
+    }
+    const checkOutTimeElement = document.getElementById('checkOutTime');
+    if (checkOutTimeElement) {
+      checkOutTimeElement.textContent = checkOutTime;
+    }
+    
+    // These elements don't exist anymore in the current design
+    // document.getElementById('captionStudentName').textContent = studentName;
+    // document.getElementById('captionCheckInTime').textContent = checkInTime;
+    // document.getElementById('captionCheckOutTime').textContent = checkOutTime;
+    
+    // Update hours section with formatted number
+    const formattedTotalHours = new Intl.NumberFormat('ko-KR').format(totalHours);
+    const totalHoursElement = document.getElementById('totalHours');
+    if (totalHoursElement) totalHoursElement.textContent = formattedTotalHours;
+    
+    // Update library hours section with formatted number
+    const formattedLibraryHours = new Intl.NumberFormat('ko-KR').format(libraryHours);
+    const libraryHoursElement = document.getElementById('libraryHours');
+    if (libraryHoursElement) libraryHoursElement.textContent = formattedLibraryHours;
+    
+    // Update focus score (display as-is with one decimal place)
+    const focusScoreValue = parseFloat(focusScore).toFixed(1);
+    const focusScoreElement = document.getElementById('focusScore');
+    if (focusScoreElement) {
+      focusScoreElement.textContent = focusScoreValue;
+      focusScoreElement.setAttribute('aria-label', `평균 몰입도 ${focusScoreValue}`);
+    }
+    
+    // Update meal section with formatted number
+    const formattedMealCount = new Intl.NumberFormat('ko-KR').format(mealCount);
+    const mealCountElement = document.getElementById('mealCount');
+    if (mealCountElement) mealCountElement.textContent = formattedMealCount;
+    
+    // Update favorite menu
+    const mealCampusNameElement = document.getElementById('mealCampusName');
+    if (mealCampusNameElement) mealCampusNameElement.textContent = campusName;
+    const favoriteMenuElement = document.getElementById('favoriteMenu');
+    if (favoriteMenuElement) {
+      favoriteMenuElement.textContent = favoriteMenu;
+    }
+    
+    // Update content section
+    const formattedTotalProblems = new Intl.NumberFormat('ko-KR').format(totalProblems);
+    const totalProblemsElement = document.getElementById('totalProblems');
+    if (totalProblemsElement) {
+      totalProblemsElement.textContent = formattedTotalProblems;
+    }
+    
+    // Update personal data section
+    const formattedTotalMockTests = new Intl.NumberFormat('ko-KR').format(totalMockTests);
+    const totalMockTestsElement = document.getElementById('totalMockTests');
+    if (totalMockTestsElement) {
+      totalMockTestsElement.textContent = formattedTotalMockTests;
+    }
+    
+    const formattedTotalPersonalProblems = new Intl.NumberFormat('ko-KR').format(totalPersonalProblems);
+    const totalPersonalProblemsElement = document.getElementById('totalPersonalProblems');
+    if (totalPersonalProblemsElement) {
+      totalPersonalProblemsElement.textContent = formattedTotalPersonalProblems;
+    }
+    
+    // Update TA section
+    const formattedTotalTAQuestions = new Intl.NumberFormat('ko-KR').format(totalTAQuestions);
+    const totalTAQuestionsElement = document.getElementById('totalTAQuestions');
+    if (totalTAQuestionsElement) {
+      totalTAQuestionsElement.textContent = formattedTotalTAQuestions;
+    }
+    
+    // Update personal TA section
+    const formattedPersonalTAQuestions = new Intl.NumberFormat('ko-KR').format(personalTAQuestions);
+    const personalTAQuestionsElement = document.getElementById('personalTAQuestions');
+    if (personalTAQuestionsElement) {
+      personalTAQuestionsElement.textContent = formattedPersonalTAQuestions;
+    }
+    
+    // Update personal subject TA header with student name
+    const studentNameForSubjectsElement = document.getElementById('studentNameForSubjects');
+    if (studentNameForSubjectsElement) {
+      studentNameForSubjectsElement.textContent = studentName + '님';
+    }
+    
+    const studentNameForMessageElement = document.getElementById('studentNameForMessage');
+    if (studentNameForMessageElement) {
+      studentNameForMessageElement.textContent = studentName + '님';
+    }
+    
+    const studentNameForMonthlyElement = document.getElementById('studentNameForMonthly');
+    if (studentNameForMonthlyElement) {
+      studentNameForMonthlyElement.textContent = studentName;
+    }
+    
+    // Personal Subject TA Questions Animation
+    const personalSubjects = [
+      { id: 'personalKorean', value: personalKoreanQuestions, barId: 'personalKoreanBar', labelId: 'personalKoreanQuestions' },
+      { id: 'personalMath', value: personalMathQuestions, barId: 'personalMathBar', labelId: 'personalMathQuestions' },
+      { id: 'personalEnglish', value: personalEnglishQuestions, barId: 'personalEnglishBar', labelId: 'personalEnglishQuestions' },
+      { id: 'personalResearch1', value: personalResearch1Questions, barId: 'personalResearch1Bar', labelId: 'personalResearch1Questions' },
+      { id: 'personalResearch2', value: personalResearch2Questions, barId: 'personalResearch2Bar', labelId: 'personalResearch2Questions' }
+    ];
+    
+    // Find max value for scaling personal subjects
+    const maxPersonalValue = Math.max(...personalSubjects.map(s => parseInt(s.value)));
+    
+    // Function to animate personal subject bars
+    function animatePersonalBars() {
+      console.log('animatePersonalBars called');
+      personalSubjects.forEach((subject, index) => {
+        const value = parseInt(subject.value);
+        const percentage = maxPersonalValue > 0 ? (value / maxPersonalValue) * 100 : 0;
+        
+        console.log(`Animating ${subject.id}: value=${value}, percentage=${percentage}`);
+        
+        // Get elements
+        const labelElement = document.getElementById(subject.labelId);
+        const barElement = document.getElementById(subject.barId);
+        
+        console.log(`barElement for ${subject.id}:`, barElement);
+        console.log(`labelElement for ${subject.id}:`, labelElement);
+        
+        if (barElement && labelElement) {
+          // Animate bar and number after a delay
+          setTimeout(() => {
+            console.log(`Setting width for ${subject.id} to ${percentage}%`);
+            barElement.style.width = percentage + '%';
+            
+            // Animate counting up
+            let currentValue = 0;
+            const duration = 2000; // 2 seconds to match bar animation
+            const increment = value / (duration / 50); // Calculate increment based on duration
+            const counterInterval = setInterval(() => {
+              currentValue += increment;
+              if (currentValue >= value) {
+                currentValue = value;
+                clearInterval(counterInterval);
+              }
+              labelElement.textContent = new Intl.NumberFormat('ko-KR').format(Math.floor(currentValue));
+            }, 50);
+          }, index * 200); // Stagger animations
+        }
       });
     }
-
-    // Show/hide scroll to top button
-    window.addEventListener('scroll', function() {
-      const scrollToTopBtn = document.getElementById('scrollToTop');
-      if (window.pageYOffset > 300) {
-        scrollToTopBtn.classList.add('visible');
-      } else {
-        scrollToTopBtn.classList.remove('visible');
+    
+    // Initialize all personal bars to 0 width first
+    personalSubjects.forEach(subject => {
+      const barElement = document.getElementById(subject.barId);
+      if (barElement) {
+        barElement.style.width = '0%';
+        console.log(`Initialized ${subject.id} bar to 0%`);
       }
     });
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+    
+    // Use Intersection Observer to trigger personal subject animation when section comes into view
+    const personalSubjectCard = document.querySelector('.personal-subject-ta-card');
+    if (personalSubjectCard) {
+      let personalAnimated = false;
+      const personalObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !personalAnimated) {
+            personalAnimated = true;
+            // Reset and re-animate
+            personalSubjects.forEach(subject => {
+              const barElement = document.getElementById(subject.barId);
+              if (barElement) {
+                barElement.style.width = '0%';
+              }
+            });
+            setTimeout(() => {
+              animatePersonalBars();
+            }, 100);
+          }
+          if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+            personalAnimated = false;
+          }
+        });
+      }, { threshold: 0.3 });
+      
+      personalObserver.observe(personalSubjectCard);
+    }
+    
+    // Update bar chart section
+    const subjects = [
+      { id: 'korean', value: koreanProblems, barId: 'koreanBar', labelId: 'koreanProblems' },
+      { id: 'math', value: mathProblems, barId: 'mathBar', labelId: 'mathProblems' },
+      { id: 'english', value: englishProblems, barId: 'englishBar', labelId: 'englishProblems' },
+      { id: 'research1', value: research1Problems, barId: 'research1Bar', labelId: 'research1Problems' },
+      { id: 'research2', value: research2Problems, barId: 'research2Bar', labelId: 'research2Problems' }
+    ];
+    
+    // Find max value for scaling
+    const maxValue = Math.max(...subjects.map(s => parseInt(s.value)));
+    
+    // Function to animate bars
+    function animateBars() {
+      console.log('animateBars called');
+      subjects.forEach((subject, index) => {
+        const value = parseInt(subject.value);
+        const percentage = maxValue > 0 ? (value / maxValue) * 100 : 0;
+        
+        console.log(`Animating ${subject.id}: value=${value}, percentage=${percentage}`);
+        
+        // Get elements
+        const labelElement = document.getElementById(subject.labelId);
+        const barElement = document.getElementById(subject.barId);
+        
+        console.log(`barElement for ${subject.id}:`, barElement);
+        console.log(`labelElement for ${subject.id}:`, labelElement);
+        
+        if (barElement && labelElement) {
+          // Animate bar and number after a delay
+          setTimeout(() => {
+            console.log(`Setting height for ${subject.id} to ${percentage}%`);
+            barElement.style.height = percentage + '%';
+            
+            // Animate counting up
+            let currentValue = 0;
+            const duration = 2000; // 2 seconds to match bar animation
+            const increment = value / (duration / 50); // Calculate increment based on duration
+            const counterInterval = setInterval(() => {
+              currentValue += increment;
+              if (currentValue >= value) {
+                currentValue = value;
+                clearInterval(counterInterval);
+              }
+              labelElement.textContent = new Intl.NumberFormat('ko-KR').format(Math.floor(currentValue));
+            }, 50);
+          }, index * 200); // Stagger animations
         }
       });
-    });
-
-    // Glide Template Column 쿼리스트링 읽기 로직 (기존 코드 유지)
-    const params = new URLSearchParams(location.search);
-    const get = (k,d='') => {
-      const value = params.get(k) || d;
-      // 디버깅을 위한 로그
-      console.log(`Parameter ${k}:`, value);
-      // JSON 형태의 데이터를 파싱하여 실제 값 추출
-      try {
-        if (typeof value === 'string' && value.startsWith('{') && value.endsWith('}')) {
-          const parsed = JSON.parse(value);
-          // 객체에서 첫 번째 값을 추출 (예: {"캠퍼스_학생수":1500} -> 1500)
-          return Object.values(parsed)[0] || value;
-        }
-      } catch (e) {
-        // JSON 파싱 실패시 원본 값 반환
+    }
+    
+    // Initialize all bars to 0 height first
+    subjects.forEach(subject => {
+      const barElement = document.getElementById(subject.barId);
+      if (barElement) {
+        barElement.style.height = '0%';
+        console.log(`Initialized ${subject.id} bar to 0%`);
       }
-      return value;
+    });
+    
+    // Use Intersection Observer to trigger animation when section comes into view
+    const barChartCard = document.querySelector('.bar-chart-card');
+    if (barChartCard) {
+      let barAnimated = false;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !barAnimated) {
+            barAnimated = true;
+            // Reset and re-animate
+            subjects.forEach(subject => {
+              const barElement = document.getElementById(subject.barId);
+              if (barElement) {
+                barElement.style.height = '0%';
+              }
+            });
+            setTimeout(() => {
+              animateBars();
+            }, 100);
+          }
+          if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+            barAnimated = false;
+          }
+        });
+      }, { threshold: 0.3 });
+      
+      observer.observe(barChartCard);
+    }
+    
+    // Carousel Data
+    const carouselItems = [
+      { hall: '기숙관', favorite: '치즈돈가스', rating: '4.6' },
+      { hall: '목동관', favorite: '소고기미역국', rating: '4.3' },
+      { hall: '목동W관', favorite: '크림파스타', rating: '4.1' },
+      { hall: '신관', favorite: '제육덮밥', rating: '4.8' },
+      { hall: 'M3관', favorite: '순살치킨마요', rating: '4.5' },
+      { hall: '3/H관', favorite: '떡볶이', rating: '4.2' },
+      { hall: 'W관', favorite: '김치볶음밥', rating: '4.0' },
+      { hall: 'N관', favorite: '불고기', rating: '4.4' },
+      { hall: '브릿지관', favorite: '우삼겹우동', rating: '4.7' }
+    ];
+    
+    const hallColors = {
+      '기숙관': '#EBECED',
+      '목동관': '#E9E5E3',
+      '목동W관': '#FAEBDD',
+      '신관': '#FBF3DB',
+      'M3관': '#DDEDEA',
+      '3/H관': '#DDEBF1',
+      'W관': '#EAE4F2',
+      'N관': '#F4DFEB',
+      '브릿지관': '#FBE4E4'
     };
-    const set = (id,key,suffix='') => {
-      const el=document.getElementById(id);
-      const value = get(key) + suffix;
-      console.log(`Setting ${id}:`, value, 'Element found:', !!el);
-      if(el) el.textContent = value;
+    
+    // Generate Hall Cards
+    const hallCardsGrid = document.querySelector('.hall-cards-grid');
+    
+    console.log('hallCardsGrid:', hallCardsGrid);
+    console.log('carouselItems:', carouselItems);
+    console.log('hall-cards-grid exists:', document.querySelector('.hall-cards-grid') !== null);
+    
+    if (!hallCardsGrid) {
+      console.error('hallCardsGrid element not found!');
+      console.error('Trying to find hall cards section...');
+    } else {
+      console.log('Found hallCardsGrid, creating cards...');
+      
+      // Create cards (duplicate for seamless loop)
+      carouselItems.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'hall-card';
+        card.style.backgroundColor = hallColors[item.hall];
+        card.setAttribute('role', 'group');
+        card.setAttribute('aria-label', `${item.hall} 최애 메뉴: ${item.favorite}, 평점: ${item.rating}`);
+        
+        card.innerHTML = `
+          <div class="hall-card-header">${item.hall}</div>
+          <div class="hall-card-subheader">최애 메뉴</div>
+          <div class="hall-card-main">${item.favorite}</div>
+          <div class="hall-card-rating">★${item.rating}</div>
+        `;
+        
+        hallCardsGrid.appendChild(card);
+      });
+      
+      // Duplicate cards for seamless infinite loop
+      carouselItems.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'hall-card';
+        card.style.backgroundColor = hallColors[item.hall];
+        card.setAttribute('role', 'group');
+        card.setAttribute('aria-label', `${item.hall} 최애 메뉴: ${item.favorite}, 평점: ${item.rating}`);
+        
+        card.innerHTML = `
+          <div class="hall-card-header">${item.hall}</div>
+          <div class="hall-card-subheader">최애 메뉴</div>
+          <div class="hall-card-main">${item.favorite}</div>
+          <div class="hall-card-rating">★${item.rating}</div>
+        `;
+        
+        hallCardsGrid.appendChild(card);
+      });
+      
+      // Touch and scroll events to control animation
+      const hallCardsWrapper = document.querySelector('.hall-cards-wrapper');
+      if (hallCardsWrapper) {
+        // Pause on touch/mouse down
+        const pause = () => {
+          document.querySelector('.hall-cards-grid')?.classList.add('paused');
+        };
+        // Resume on touch/mouse up or any scroll
+        const resume = () => {
+          document.querySelector('.hall-cards-grid')?.classList.remove('paused');
+        };
+
+        // Touch events (mobile)
+        hallCardsWrapper.addEventListener('touchstart', pause, { passive: true });
+        hallCardsWrapper.addEventListener('touchend', resume, { passive: true });
+        hallCardsWrapper.addEventListener('touchcancel', resume, { passive: true });
+
+        // Mouse events (desktop)
+        hallCardsWrapper.addEventListener('mousedown', pause);
+        window.addEventListener('mouseup', resume);
+
+        // Page scroll -> immediately resume
+        window.addEventListener('scroll', resume, { passive: true });
+      }
+    }
+    
+    // Monthly Subject TA Trends Chart
+    function drawLineChart(canvasId, data, color, label) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      
+      // Get device pixel ratio for crisp rendering
+      const dpr = window.devicePixelRatio || 1;
+      const displayWidth = canvas.clientWidth;
+      const displayHeight = canvas.clientHeight;
+      
+      // Set actual canvas size accounting for device pixel ratio
+      canvas.width = displayWidth * dpr;
+      canvas.height = displayHeight * dpr;
+      canvas.style.width = displayWidth + 'px';
+      canvas.style.height = displayHeight + 'px';
+      
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+      
+      const width = displayWidth;
+      const height = displayHeight;
+      const padding = 40;
+      const chartWidth = width - 2 * padding;
+      const chartHeight = height - 2 * padding;
+      
+      // Clear canvas
+      ctx.clearRect(0, 0, width, height);
+      
+      // Draw axes
+      ctx.strokeStyle = '#D1D5DB';
+      ctx.lineWidth = 1;
+      
+      // X-axis
+      ctx.beginPath();
+      ctx.moveTo(padding, height - padding);
+      ctx.lineTo(width - padding, height - padding);
+      ctx.stroke();
+      
+      // Y-axis
+      ctx.beginPath();
+      ctx.moveTo(padding, padding);
+      ctx.lineTo(padding, height - padding);
+      ctx.stroke();
+      
+      // Find max value
+      const maxValue = Math.max(...data.values);
+      const minValue = Math.min(...data.values);
+      const range = maxValue - minValue || maxValue;
+      
+      // Draw line and points
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.fillStyle = color;
+      
+      const pointRadius = 4;
+      const points = [];
+      
+      data.values.forEach((value, index) => {
+        const x = padding + (index / (data.values.length - 1)) * chartWidth;
+        const y = height - padding - ((value - minValue) / range) * chartHeight;
+        points.push({ x, y, value });
+      });
+      
+      // Draw line
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+      }
+      ctx.stroke();
+      
+      // Draw circles
+      points.forEach(point => {
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, pointRadius, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Draw value label
+        ctx.fillStyle = '#1F2937';
+        ctx.font = 'bold 14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(point.value, point.x, point.y - 10);
+      });
+      
+      // Draw month labels
+      ctx.fillStyle = '#6B7280';
+      ctx.font = 'bold 14px sans-serif';
+      ctx.textAlign = 'center';
+      data.months.forEach((month, index) => {
+        const x = padding + (index / (data.months.length - 1)) * chartWidth;
+        ctx.fillText(month, x, height - padding + 20);
+      });
+      
+      // Draw Y-axis labels
+      ctx.fillStyle = '#6B7280';
+      ctx.font = 'bold 14px sans-serif';
+      ctx.textAlign = 'right';
+      for (let i = 0; i <= 5; i++) {
+        const value = Math.round(minValue + (range * i / 5));
+        const y = height - padding - (i / 5) * chartHeight;
+        ctx.fillText(value, padding - 10, y + 4);
+      }
+      
+      // Draw title (subject label)
+      ctx.fillStyle = '#1F2937';
+      ctx.font = 'bold 20px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(label, padding, padding - 10);
+    }
+    
+    // Sample data (placeholder - to be replaced with actual data)
+    const mathData = {
+      months: ['3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월'],
+      values: [150, 180, 200, 220, 190, 230, 250, 280, 300]
     };
-    set('name','name');
-    set('campus','campus');
-    set('className','class');
-    // 캠퍼스와 반명은 이미 위에서 바인딩됨
-    set('totalStudents','totalStudents','명');
-    set('campusStudents','campusStudents','명');
-    set('classStudents','classStudents','명');
-    set('days','days','일');
-    set('meals','meals','끼니');
-    set('menu','menu');
-    set('time','time','시간');
-    set('self','self','시간');
-    set('classTime','classTime','시간');
-    set('totalAsk','totalAsk','개');
-    set('personalAsk','personalAsk','개');
-    set('start','start');
-    set('end','end');
-    set('focus','focus');
-    set('korSimul','korSimul'); set('korTotal','korTotal');
-    set('mathSimul','mathSimul'); set('mathTotal','mathTotal');
-    set('engSimul','engSimul'); set('engTotal','engTotal');
-    set('bioSimul','bioSimul'); set('bioTotal','bioTotal');
-    set('geoSimul','geoSimul'); set('geoTotal','geoTotal');
-    set('totalQ','totalQ','문제');
     
-    // Timeline Section Data
-    set('startDate','startDate');
-    set('endDate','endDate');
-    // totalDays는 days 데이터에서 숫자만 추출하여 사용
-    const daysValue = get('days');
-    const daysNumber = daysValue.replace('일', '');
-    const totalDaysEl = document.getElementById('totalDays');
-    if(totalDaysEl) totalDaysEl.textContent = daysNumber;
+    const research1Data = {
+      months: ['3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월'],
+      values: [80, 100, 120, 110, 130, 140, 150, 160, 170]
+    };
     
-    // Additional Text Section (Summary) Data
-    set('summaryName','name');
-    set('summaryTotalStudents','totalStudents');
-    set('summaryCampusStudents','campusStudents');
-    set('summaryCampus','campus');
-    set('summaryClassName','class');
-    set('summaryClassStudents','classStudents');
+    const research2Data = {
+      months: ['3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월'],
+      values: [60, 70, 80, 90, 85, 95, 100, 110, 120]
+    };
     
-    // Total Hours Block Data
-    set('totalHours','time'); // 총 공부시간
-    set('cohortStudents','totalStudents'); // 코호트 학생 수
-    // 코호트 총 시간 계산 (학생 수 * 800)
-    const cohortHoursEl = document.getElementById('cohortHours');
-    const totalStudentsValue = parseInt(get('totalStudents') || '0');
-    if(cohortHoursEl) cohortHoursEl.textContent = (totalStudentsValue * 800).toLocaleString();
-    
-    // Meal Section Data
-    set('totalMeals','meals'); // 총 끼니 수
-    set('favMeal','menu'); // 최애 메뉴
-    set('mealCohortStudents','totalStudents'); // 식사 섹션 학생 수
-    set('mealTotalMeals','meals'); // 식사 섹션 총 끼니
-    set('mealCampus','campus'); // 식사 섹션 캠퍼스
-    set('mealFavMeal','menu'); // 식사 섹션 최애 메뉴
+    // Wait for DOM to be fully loaded
+    window.addEventListener('load', () => {
+      // Use Intersection Observer to trigger chart rendering when section comes into view
+      const chartsSection = document.querySelector('.monthly-charts-scroll-wrapper');
+      if (chartsSection) {
+        let chartsRendered = false;
+        const chartsObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !chartsRendered) {
+              chartsRendered = true;
+              drawLineChart('mathChart', mathData, '#0F66F5', '수학');
+              drawLineChart('research1Chart', research1Data, '#033597', '탐구1');
+              drawLineChart('research2Chart', research2Data, '#6AA2FA', '탐구2');
+            }
+            if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+              chartsRendered = false;
+            }
+          });
+        }, { threshold: 0.3 });
+        
+        chartsObserver.observe(chartsSection);
+      }
+    });
   </script>
+
 </body>
 </html>

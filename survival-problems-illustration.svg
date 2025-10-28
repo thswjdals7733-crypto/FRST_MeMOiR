@@ -1,0 +1,114 @@
+<svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="500" fill="#FFFFFF"/>
+  
+  <!-- Card Container -->
+  <rect x="30" y="40" width="340" height="380" rx="16" fill="#FFFEF7" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Text Section (Left) -->
+  <text x="60" y="90" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#002B5C">
+    푼 서바이벌 문제 수
+  </text>
+  
+  <text x="60" y="130" font-family="Arial, sans-serif" font-size="48" font-weight="700" fill="#F59E0B">
+    <tspan id="solvedProblems">0</tspan>
+  </text>
+  
+  <text x="60" y="155" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#6B7280">
+    문제
+  </text>
+  
+  <!-- Stack of Papers (Center-Right) -->
+  <!-- Bottom papers (slightly offset to create stack effect) -->
+  <rect x="180" y="250" width="80" height="120" rx="3" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1.5"/>
+  <line x1="190" y1="265" x2="250" y2="265" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="190" y1="280" x2="250" y2="280" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="190" y1="295" x2="250" y2="295" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  
+  <rect x="183" y="245" width="80" height="120" rx="3" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+  <line x1="193" y1="260" x2="253" y2="260" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="193" y1="275" x2="253" y2="275" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="193" y1="290" x2="253" y2="290" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Middle papers -->
+  <rect x="186" y="240" width="80" height="120" rx="3" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+  <line x1="196" y1="255" x2="256" y2="255" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="196" y1="270" x2="256" y2="270" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="196" y1="285" x2="256" y2="285" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="196" y1="300" x2="256" y2="300" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="196" y1="315" x2="256" y2="315" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="196" y1="330" x2="256" y2="330" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Top papers (tallest stack) -->
+  <rect x="189" y="180" width="80" height="180" rx="3" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+  <line x1="199" y1="200" x2="259" y2="200" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="199" y1="220" x2="259" y2="220" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="199" y1="240" x2="259" y2="240" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="199" y1="260" x2="259" y2="260" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="199" y1="280" x2="259" y2="280" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="199" y1="300" x2="259" y2="300" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="199" y1="320" x2="259" y2="320" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  <line x1="199" y1="340" x2="259" y2="340" stroke="#9CA3AF" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Paper title/header on top sheet -->
+  <rect x="199" y="190" width="60" height="8" rx="2" fill="#F59E0B" opacity="0.3"/>
+  
+  <!-- Owl (Right side - surprised expression) -->
+  <!-- Body -->
+  <ellipse cx="300" cy="290" rx="35" ry="40" fill="#F97316" stroke="#EA580C" stroke-width="2"/>
+  
+  <!-- Head -->
+  <circle cx="300" cy="250" r="30" fill="#FB923C" stroke="#EA580C" stroke-width="2"/>
+  
+  <!-- Eyes (WIDE with surprise) -->
+  <ellipse cx="290" cy="245" rx="10" ry="14" fill="#FFFFFF" stroke="#1F2937" stroke-width="1.5"/>
+  <ellipse cx="310" cy="245" rx="10" ry="14" fill="#FFFFFF" stroke="#1F2937" stroke-width="1.5"/>
+  <circle cx="290" cy="247" r="6" fill="#1F2937"/>
+  <circle cx="310" cy="247" r="6" fill="#1F2937"/>
+  <circle cx="288" cy="244" r="2" fill="#FFFFFF"/>
+  <circle cx="308" cy="244" r="2" fill="#FFFFFF"/>
+  
+  <!-- Beak (small open - surprised) -->
+  <ellipse cx="300" cy="260" rx="4" ry="6" fill="#1F2937"/>
+  <path d="M 296 258 Q 300 262 304 258" fill="#FFFFFF" opacity="0.3"/>
+  
+  <!-- Eyebrows (raised in surprise) -->
+  <path d="M 282 235 Q 288 232 294 235" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 306 235 Q 312 232 318 235" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Wings (slightly up in surprise) -->
+  <ellipse cx="270" cy="280" rx="18" ry="28" fill="#FB923C" stroke="#EA580C" stroke-width="1.5" opacity="0.9" transform="rotate(-15 270 280)"/>
+  <ellipse cx="330" cy="280" rx="18" ry="28" fill="#FB923C" stroke="#EA580C" stroke-width="1.5" opacity="0.9" transform="rotate(15 330 280)"/>
+  
+  <!-- Feet -->
+  <ellipse cx="290" cy="325" rx="6" ry="8" fill="#FBBF24"/>
+  <ellipse cx="310" cy="325" rx="6" ry="8" fill="#FBBF24"/>
+  
+  <!-- Surprise effect lines -->
+  <line x1="265" y1="230" x2="258" y2="220" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <line x1="270" y1="235" x2="265" y2="223" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <line x1="335" y1="230" x2="342" y2="220" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <line x1="330" y1="235" x2="335" y2="223" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  
+  <!-- Exclamation marks -->
+  <text x="255" y="215" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#F59E0B">!</text>
+  <text x="338" y="215" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#F59E0B">!</text>
+  
+  <!-- Shadow under stack -->
+  <ellipse cx="229" cy="372" rx="45" ry="8" fill="#000000" opacity="0.08"/>
+  
+  <!-- Shadow under owl -->
+  <ellipse cx="300" cy="332" rx="25" ry="6" fill="#000000" opacity="0.08"/>
+  
+  <!-- Caption Text -->
+  <text x="200" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#374151">
+    <tspan x="200" dy="0"><tspan font-weight="700" fill="#002B5C">학생 데이터</tspan>님! 재원 기간동안</tspan>
+    <tspan x="200" dy="20"><tspan font-weight="700" fill="#F59E0B">서바이벌</tspan> 총 <tspan font-weight="700" fill="#002B5C">0</tspan>나 풀었군요!</tspan>
+  </text>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="60" r="3" fill="#F59E0B" opacity="0.4"/>
+  <circle cx="350" cy="70" r="2.5" fill="#F97316" opacity="0.4"/>
+  <circle cx="60" cy="470" r="2" fill="#002B5C" opacity="0.3"/>
+  <circle cx="340" cy="480" r="3" fill="#F59E0B" opacity="0.4"/>
+</svg>

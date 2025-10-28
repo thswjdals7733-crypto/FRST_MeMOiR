@@ -1,0 +1,65 @@
+<svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="500" fill="#FFFFFF"/>
+  
+  <!-- Top Text -->
+  <text x="200" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#002B5C">
+    <tspan x="200" dy="0">올 한 해, 학생들이 TA에게</tspan>
+    <tspan x="200" dy="25">얼마나 많은 질문을 했을까요?</tspan>
+  </text>
+  
+  <!-- Owl Body -->
+  <ellipse cx="200" cy="280" rx="80" ry="70" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Owl Head -->
+  <circle cx="200" cy="220" r="50" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Owl Eyes -->
+  <circle cx="185" cy="210" r="12" fill="#002B5C"/>
+  <circle cx="215" cy="210" r="12" fill="#002B5C"/>
+  <circle cx="185" cy="208" r="4" fill="#FFFFFF"/>
+  <circle cx="215" cy="208" r="4" fill="#FFFFFF"/>
+  
+  <!-- Owl Beak -->
+  <polygon points="200,220 195,235 205,235" fill="#F59E0B"/>
+  
+  <!-- Owl Wings -->
+  <ellipse cx="170" cy="280" rx="25" ry="40" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="1.5"/>
+  <ellipse cx="230" cy="280" rx="25" ry="40" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="1.5"/>
+  
+  <!-- Owl Feet -->
+  <ellipse cx="185" cy="340" rx="8" ry="12" fill="#F59E0B"/>
+  <ellipse cx="215" cy="340" rx="8" ry="12" fill="#F59E0B"/>
+  
+  <!-- Question Card -->
+  <rect x="100" y="160" width="200" height="80" rx="12" fill="#FFFFFF" stroke="#002B5C" stroke-width="2"/>
+  
+  <!-- Card Content -->
+  <text x="200" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="500" fill="#002B5C">
+    총 질문 수
+  </text>
+  <text x="200" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#002B5C">
+    0개
+  </text>
+  <text x="200" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#6B7280">
+    (동적 데이터)
+  </text>
+  
+  <!-- Question Marks around the card -->
+  <text x="70" y="190" font-family="Arial, sans-serif" font-size="20" fill="#002B5C" opacity="0.7">?</text>
+  <text x="330" y="190" font-family="Arial, sans-serif" font-size="20" fill="#002B5C" opacity="0.7">?</text>
+  <text x="90" y="140" font-family="Arial, sans-serif" font-size="16" fill="#002B5C" opacity="0.5">?</text>
+  <text x="310" y="140" font-family="Arial, sans-serif" font-size="16" fill="#002B5C" opacity="0.5">?</text>
+  
+  <!-- Bottom Caption -->
+  <text x="200" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#374151">
+    <tspan x="200" dy="0">총 <tspan font-weight="600" fill="#002B5C">0</tspan>명의 학생과</tspan>
+    <tspan x="200" dy="20"><tspan font-weight="600" fill="#002B5C">0</tspan>개의 질문을 하며 달려왔습니다.</tspan>
+  </text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="80" cy="80" r="3" fill="#002B5C" opacity="0.3"/>
+  <circle cx="320" cy="100" r="2" fill="#002B5C" opacity="0.3"/>
+  <circle cx="60" cy="400" r="2" fill="#002B5C" opacity="0.3"/>
+  <circle cx="340" cy="380" r="3" fill="#002B5C" opacity="0.3"/>
+</svg>

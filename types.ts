@@ -23,6 +23,7 @@ export interface Person {
   
   // 질문 및 학습
   totalTAQuestions?: number;
+  questions?: number;
   
   // 개인 패턴
   avgCheckIn?: string;
@@ -61,6 +62,7 @@ export interface Person {
 //   
 //   // 질문 및 학습
 //   totalTAQuestions: 150,
+//   questions: 150,
 //   
 //   // 개인 패턴
 //   avgCheckIn: "08:00",
