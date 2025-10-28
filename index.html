@@ -2635,25 +2635,44 @@
       once: true
     });
     
-    // 실시간 자동 새로고침 기능
-    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-      // 외부에서 접근할 때만 자동 새로고침 활성화
+    // GitHub Pages 실시간 자동 새로고침 기능
+    if (window.location.hostname.includes('github.io') || window.location.hostname.includes('netlify.app')) {
+      // GitHub Pages나 Netlify에서 접근할 때만 자동 새로고침 활성화
+      let lastCheckTime = Date.now();
+      
       setInterval(() => {
-        fetch(window.location.href, { method: 'HEAD' })
+        fetch(window.location.href, { 
+          method: 'HEAD',
+          cache: 'no-cache',
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
+          }
+        })
           .then(response => {
             if (response.status === 200) {
-              // 파일이 변경되었는지 확인하는 로직
               const lastModified = response.headers.get('last-modified');
-              if (window.lastModifiedTime && lastModified !== window.lastModifiedTime) {
+              const etag = response.headers.get('etag');
+              
+              // ETag나 Last-Modified가 변경되었으면 새로고침
+              if (window.lastETag && etag && etag !== window.lastETag) {
+                console.log('🔄 사이트가 업데이트되었습니다! 새로고침 중...');
+                window.location.reload();
+              } else if (window.lastModifiedTime && lastModified && lastModified !== window.lastModifiedTime) {
+                console.log('🔄 사이트가 업데이트되었습니다! 새로고침 중...');
                 window.location.reload();
               }
+              
+              window.lastETag = etag;
               window.lastModifiedTime = lastModified;
             }
           })
           .catch(() => {
             // 에러가 발생해도 무시
           });
-      }, 2000); // 2초마다 확인
+      }, 3000); // 3초마다 확인
+      
+      console.log('🚀 실시간 동기화가 활성화되었습니다!');
     }
     
     // URL 파라미터 읽기
