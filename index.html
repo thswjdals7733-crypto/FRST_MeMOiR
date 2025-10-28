@@ -3787,23 +3787,102 @@
       // Touch and scroll events to control animation
       const hallCardsWrapper = document.querySelector('.hall-cards-wrapper');
       if (hallCardsWrapper) {
-        // Pause on touch/mouse down
+        let isDragging = false;
+        let startX = 0;
+        let currentX = 0;
+        let initialTransform = 0;
+        
+        const grid = document.querySelector('.hall-cards-grid');
+        
+        // Pause animation
         const pause = () => {
-          document.querySelector('.hall-cards-grid')?.classList.add('paused');
+          if (grid) {
+            grid.classList.add('paused');
+          }
         };
-        // Resume on touch/mouse up or any scroll
+        
+        // Resume animation
         const resume = () => {
-          document.querySelector('.hall-cards-grid')?.classList.remove('paused');
+          if (grid && !isDragging) {
+            grid.classList.remove('paused');
+          }
         };
 
-        // Touch events (mobile)
-        hallCardsWrapper.addEventListener('touchstart', pause, { passive: true });
-        hallCardsWrapper.addEventListener('touchend', resume, { passive: true });
-        hallCardsWrapper.addEventListener('touchcancel', resume, { passive: true });
+        // Touch events (mobile) with drag support
+        hallCardsWrapper.addEventListener('touchstart', (e) => {
+          pause();
+          isDragging = true;
+          startX = e.touches[0].clientX;
+          initialTransform = getCurrentTransform();
+        }, { passive: true });
+        
+        hallCardsWrapper.addEventListener('touchmove', (e) => {
+          if (isDragging) {
+            e.preventDefault();
+            currentX = e.touches[0].clientX;
+            const deltaX = currentX - startX;
+            const newTransform = initialTransform + deltaX;
+            if (grid) {
+              grid.style.transform = `translateX(${newTransform}px)`;
+            }
+          }
+        }, { passive: false });
+        
+        hallCardsWrapper.addEventListener('touchend', () => {
+          isDragging = false;
+          setTimeout(() => {
+            if (!isDragging) {
+              resume();
+            }
+          }, 100);
+        }, { passive: true });
+        
+        hallCardsWrapper.addEventListener('touchcancel', () => {
+          isDragging = false;
+          resume();
+        }, { passive: true });
 
-        // Mouse events (desktop)
-        hallCardsWrapper.addEventListener('mousedown', pause);
-        window.addEventListener('mouseup', resume);
+        // Mouse events (desktop) with drag support
+        hallCardsWrapper.addEventListener('mousedown', (e) => {
+          pause();
+          isDragging = true;
+          startX = e.clientX;
+          initialTransform = getCurrentTransform();
+        });
+        
+        hallCardsWrapper.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            e.preventDefault();
+            currentX = e.clientX;
+            const deltaX = currentX - startX;
+            const newTransform = initialTransform + deltaX;
+            if (grid) {
+              grid.style.transform = `translateX(${newTransform}px)`;
+            }
+          }
+        });
+        
+        window.addEventListener('mouseup', () => {
+          isDragging = false;
+          setTimeout(() => {
+            if (!isDragging) {
+              resume();
+            }
+          }, 100);
+        });
+
+        // Helper function to get current transform
+        function getCurrentTransform() {
+          if (grid) {
+            const style = window.getComputedStyle(grid);
+            const transform = style.transform;
+            if (transform && transform !== 'none') {
+              const matrix = transform.match(/matrix\(([^,]+),/);
+              return matrix ? parseFloat(matrix[1]) : 0;
+            }
+          }
+          return 0;
+        }
 
         // Page scroll -> immediately resume
         window.addEventListener('scroll', resume, { passive: true });
