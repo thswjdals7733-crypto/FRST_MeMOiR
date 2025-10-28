@@ -147,15 +147,19 @@
     @media (max-width: 1024px) and (min-width: 768px) {
       /* 태블릿에서 적절한 크기 조정 */
       .personal-data-card {
-        min-height: 220px !important;
+        min-height: 300px !important;
+        padding: 2.5rem;
       }
       
       .personal-data-card .time-label {
-        font-size: var(--fs-md);
+        font-size: var(--fs-subtitle);
+        margin-bottom: 1.5rem;
       }
       
       .personal-data-card .time-value {
-        font-size: var(--fs-xl);
+        font-size: var(--fs-number);
+        font-weight: var(--fw-bold);
+        color: #0459F0;
       }
       
       .personal-data-content {
@@ -178,8 +182,9 @@
       }
       
       .personal-data-wrapper {
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
       }
       
       .favorite-content-cards {
@@ -333,14 +338,15 @@
       /* 개인 데이터 카드 모바일 최적화 - 개선 */
       .personal-data-wrapper {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
         padding: 1rem 0;
       }
       
       .personal-data-card {
         flex: 1 1 100%;
         max-width: 100%;
-        min-height: 180px;
+        min-height: 250px;
+        padding: 2rem;
       }
       
       .personal-data-content {
@@ -348,12 +354,14 @@
       }
       
       .personal-data-card .time-label {
-        font-size: var(--fs-md);
-        margin-bottom: 0.75rem;
+        font-size: var(--fs-subtitle);
+        margin-bottom: 1.5rem;
       }
       
       .personal-data-card .time-value {
-        font-size: var(--fs-xl);
+        font-size: var(--fs-number);
+        font-weight: var(--fw-bold);
+        color: #0459F0;
       }
       
       /* 바 차트 모바일 최적화 - 가로 일렬 유지 */
@@ -1471,9 +1479,10 @@
       position: relative;
       overflow: hidden;
       background: #F0F2F5 !important;
-      min-height: 250px !important;
+      min-height: 350px !important;
       border-radius: 1rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 3rem;
     }
     
     .personal-data-bg {
@@ -1510,12 +1519,12 @@
     }
     
     .personal-data-card .time-label {
-      font-size: var(--fs-lg);
-      margin-bottom: 1rem;
+      font-size: var(--fs-subtitle);
+      margin-bottom: 2rem;
       font-weight: var(--fw-light);
       text-align: center;
       width: 100%;
-      line-height: 1.3;
+      line-height: 1.4;
     }
     
     .personal-data-card .time-label br {
@@ -1525,26 +1534,28 @@
     }
     
     .personal-data-card .time-value {
-      font-size: var(--fs-hero);
+      font-size: var(--fs-number);
       margin-top: auto;
       text-align: center;
       width: 100%;
-      font-weight: var(--fw-light);
+      font-weight: var(--fw-bold);
+      color: #0459F0;
     }
     
     /* Personal Data Section wrapper */
     .personal-data-wrapper {
       display: flex;
-      gap: 1rem;
+      gap: 2rem;
       padding: 2rem 0;
       max-width: 100%;
       margin: 0 auto;
-      flex-direction: row;
+      flex-direction: column;
     }
     
     .personal-data-wrapper .personal-data-card {
-      flex: 1 1 calc(50% - 0.5rem);
-      max-width: calc(50% - 0.5rem);
+      flex: 1 1 100%;
+      max-width: 100%;
+      min-height: 300px;
     }
     
     /* Bar Chart Section */
