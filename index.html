@@ -183,7 +183,7 @@
       }
       
       .intro-title {
-        font-size: 4rem; /* 모바일에서 더 작게 */
+        font-size: 5.3125rem; /* 85px - 2025 memoir 웹 제목 */
         margin-bottom: 1.5rem;
       }
       
@@ -3784,13 +3784,14 @@
         hallCardsGrid.appendChild(card);
       });
       
-      // Touch and scroll events to control animation
+      // Touch and scroll events to control animation with improved drag
       const hallCardsWrapper = document.querySelector('.hall-cards-wrapper');
       if (hallCardsWrapper) {
         let isDragging = false;
         let startX = 0;
         let currentX = 0;
         let initialTransform = 0;
+        let animationId = null;
         
         const grid = document.querySelector('.hall-cards-grid');
         
@@ -3798,6 +3799,10 @@
         const pause = () => {
           if (grid) {
             grid.classList.add('paused');
+            if (animationId) {
+              cancelAnimationFrame(animationId);
+              animationId = null;
+            }
           }
         };
         
@@ -3805,80 +3810,12 @@
         const resume = () => {
           if (grid && !isDragging) {
             grid.classList.remove('paused');
+            // Reset transform to let CSS animation take over
+            grid.style.transform = '';
           }
         };
 
-        // Touch events (mobile) with drag support
-        hallCardsWrapper.addEventListener('touchstart', (e) => {
-          e.preventDefault();
-          pause();
-          isDragging = true;
-          startX = e.touches[0].clientX;
-          initialTransform = getCurrentTransform();
-        }, { passive: false });
-        
-        hallCardsWrapper.addEventListener('touchmove', (e) => {
-          if (isDragging) {
-            e.preventDefault();
-            currentX = e.touches[0].clientX;
-            const deltaX = currentX - startX;
-            const newTransform = initialTransform + deltaX;
-            if (grid) {
-              grid.style.transform = `translateX(${newTransform}px)`;
-            }
-          }
-        }, { passive: false });
-        
-        hallCardsWrapper.addEventListener('touchend', (e) => {
-          e.preventDefault();
-          isDragging = false;
-          setTimeout(() => {
-            if (!isDragging) {
-              resume();
-            }
-          }, 200);
-        }, { passive: false });
-        
-        hallCardsWrapper.addEventListener('touchcancel', (e) => {
-          e.preventDefault();
-          isDragging = false;
-          resume();
-        }, { passive: false });
-
-        // Mouse events (desktop) with drag support
-        hallCardsWrapper.addEventListener('mousedown', (e) => {
-          e.preventDefault();
-          pause();
-          isDragging = true;
-          startX = e.clientX;
-          initialTransform = getCurrentTransform();
-        });
-        
-        document.addEventListener('mousemove', (e) => {
-          if (isDragging) {
-            e.preventDefault();
-            currentX = e.clientX;
-            const deltaX = currentX - startX;
-            const newTransform = initialTransform + deltaX;
-            if (grid) {
-              grid.style.transform = `translateX(${newTransform}px)`;
-            }
-          }
-        });
-        
-        document.addEventListener('mouseup', (e) => {
-          if (isDragging) {
-            e.preventDefault();
-            isDragging = false;
-            setTimeout(() => {
-              if (!isDragging) {
-                resume();
-              }
-            }, 200);
-          }
-        });
-
-        // Helper function to get current transform
+        // Get current transform value
         function getCurrentTransform() {
           if (grid) {
             const style = window.getComputedStyle(grid);
@@ -3890,6 +3827,80 @@
           }
           return 0;
         }
+
+        // Update transform during drag
+        function updateTransform() {
+          if (isDragging && grid) {
+            const deltaX = currentX - startX;
+            const newTransform = initialTransform + deltaX;
+            grid.style.transform = `translateX(${newTransform}px)`;
+            animationId = requestAnimationFrame(updateTransform);
+          }
+        }
+
+        // Touch events (mobile)
+        hallCardsWrapper.addEventListener('touchstart', (e) => {
+          pause();
+          isDragging = true;
+          startX = e.touches[0].clientX;
+          currentX = startX;
+          initialTransform = getCurrentTransform();
+          updateTransform();
+        }, { passive: true });
+        
+        hallCardsWrapper.addEventListener('touchmove', (e) => {
+          if (isDragging) {
+            currentX = e.touches[0].clientX;
+          }
+        }, { passive: true });
+        
+        hallCardsWrapper.addEventListener('touchend', () => {
+          isDragging = false;
+          if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+          }
+          setTimeout(resume, 300);
+        }, { passive: true });
+        
+        hallCardsWrapper.addEventListener('touchcancel', () => {
+          isDragging = false;
+          if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+          }
+          resume();
+        }, { passive: true });
+
+        // Mouse events (desktop)
+        hallCardsWrapper.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          pause();
+          isDragging = true;
+          startX = e.clientX;
+          currentX = startX;
+          initialTransform = getCurrentTransform();
+          updateTransform();
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            e.preventDefault();
+            currentX = e.clientX;
+          }
+        });
+        
+        document.addEventListener('mouseup', (e) => {
+          if (isDragging) {
+            e.preventDefault();
+            isDragging = false;
+            if (animationId) {
+              cancelAnimationFrame(animationId);
+              animationId = null;
+            }
+            setTimeout(resume, 300);
+          }
+        });
 
         // Page scroll -> immediately resume
         window.addEventListener('scroll', resume, { passive: true });
