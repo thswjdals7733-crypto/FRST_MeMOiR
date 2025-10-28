@@ -320,15 +320,15 @@
         flex-direction: row;
         gap: 0.5rem;
         align-items: flex-end;
-        justify-content: flex-start;
-        overflow-x: auto;
+        justify-content: space-between;
+        overflow-x: hidden;
         padding: 0 1rem;
       }
       
       .bar-chart-item {
-        flex: 0 0 auto;
-        min-width: 40px;
-        max-width: 60px;
+        flex: 1 1 0%;
+        min-width: 0;
+        max-width: none;
       }
       
       .bar-wrapper {
@@ -422,15 +422,15 @@
       .personal-subject-chart-container {
         display: flex;
         gap: 0.5rem;
-        overflow-x: auto;
+        overflow-x: hidden;
         padding: 0 1rem;
-        justify-content: flex-start;
+        justify-content: space-between;
       }
       
       .personal-subject-chart-item {
-        flex: 0 0 auto;
-        min-width: 40px;
-        max-width: 60px;
+        flex: 1 1 0%;
+        min-width: 0;
+        max-width: none;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1527,12 +1527,8 @@
       align-items: flex-end;
       gap: 1rem;
       margin-bottom: 0;
-      overflow-x: auto;
+      overflow-x: hidden;
       padding: 0 1rem;
-      -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
-      scrollbar-width: thin;
-      scrollbar-color: #CBD5E0 #F7FAFC;
     }
     
     .bar-chart-container::-webkit-scrollbar {
@@ -1554,14 +1550,13 @@
     }
     
     .bar-chart-item {
-      flex: 0 0 auto;
+      flex: 1 1 0%;
       min-width: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0;
       position: relative;
-      min-width: 50px;
     }
     
     .bar-value {
@@ -1825,18 +1820,17 @@
       gap: 1rem;
       justify-content: space-between;
       align-items: flex-end;
-      overflow-x: auto;
+      overflow-x: hidden;
       padding: 0 1rem;
     }
     
     .personal-subject-chart-item {
-      flex: 0 0 auto;
+      flex: 1 1 0%;
       min-width: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      min-width: 50px;
     }
     
     .personal-subject-label {
