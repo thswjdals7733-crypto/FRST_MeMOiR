@@ -568,9 +568,10 @@
       .afterpack-content,
       .jungsi-content {
         flex-direction: column;
-        gap: 1rem;
-        padding: 2rem 0;
-        text-align: center;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+        text-align: left;
+        align-items: flex-start;
       }
       
       .consultation-title-right,
@@ -578,13 +579,21 @@
       .jungsi-title-left {
         flex: none;
         transform: none;
-        text-align: center;
+        text-align: left;
+        font-size: var(--fs-subtitle-large);
+        font-weight: var(--fw-light);
+        color: #0459F0;
+        margin-bottom: 0.5rem;
       }
       
       .consultation-text-left,
       .afterpack-text-right,
       .jungsi-text-right {
-        font-size: var(--fs-sm);
+        font-size: var(--fs-body);
+        font-weight: var(--fw-light);
+        color: #1F2937;
+        line-height: 1.6;
+        text-align: left;
       }
       
       /* 관별 메뉴 카드 모바일 최적화 */
