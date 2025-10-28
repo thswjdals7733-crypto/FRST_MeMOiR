@@ -34,14 +34,15 @@
       color: #111827; 
     }
     
-    /* 5단계 타이포그래피 시스템 - rem 고정값 + 브레이크포인트 */
+    /* 새로운 텍스트 크기 시스템 - 모바일 기준 */
     :root {
-      /* 모바일 (기본) */
-      --fs-hero: 2.5rem;   /* 40px */
-      --fs-xl:   1.75rem;  /* 28px */
-      --fs-lg:   1.25rem;  /* 20px */
-      --fs-md:   1rem;     /* 16px */
-      --fs-sm:   0.875rem; /* 14px */
+      /* 모바일 (기본) - 새로운 기준 */
+      --fs-main-title: 5rem;      /* 80px - 2025 Memoir 웹 제목 */
+      --fs-section-header: 2.8125rem; /* 45px - 머리글 (섹션 나누는 key문장) */
+      --fs-subtitle: 2rem;        /* 32px - 소주제 제목 */
+      --fs-number: 1.5rem;        /* 24px - 숫자 크기 */
+      --fs-body: 1rem;            /* 16px - 본문 */
+      --fs-caption: 0.875rem;     /* 14px - 주석 */
       
       /* line-height & weight 가이드 */
       --lh-tight: 1.1;
@@ -50,51 +51,59 @@
       --fw-thin:  200;
       --fw-light: 300;
       --fw-regular: 400;
+      --fw-bold: 700;
     }
     
     @media (min-width: 768px) { /* 태블릿 */
       :root {
-        --fs-hero: 3rem;     /* 48px */
-        --fs-xl:   2.25rem;  /* 36px */
-        --fs-lg:   1.5rem;   /* 24px */
-        --fs-md:   1.125rem; /* 18px */
-        --fs-sm:   0.95rem;  /* 15.2px */
+        --fs-main-title: 6rem;        /* 96px - 20% 증가 */
+        --fs-section-header: 3.375rem; /* 54px - 20% 증가 */
+        --fs-subtitle: 2.4rem;        /* 38.4px - 20% 증가 */
+        --fs-number: 1.8rem;          /* 28.8px - 20% 증가 */
+        --fs-body: 1.125rem;          /* 18px - 12.5% 증가 */
+        --fs-caption: 1rem;           /* 16px - 14% 증가 */
       }
     }
     
     @media (min-width: 1280px) { /* 데스크탑 */
       :root {
-        --fs-hero: 3.75rem;  /* 60px */
-        --fs-xl:   2.5rem;   /* 40px */
-        --fs-lg:   1.6rem;   /* 25.6px */
-        --fs-md:   1.125rem; /* 18px */
-        --fs-sm:   0.95rem;  /* 15.2px */
+        --fs-main-title: 7.5rem;      /* 120px - 50% 증가 */
+        --fs-section-header: 4.5rem;  /* 72px - 50% 증가 */
+        --fs-subtitle: 3rem;          /* 48px - 50% 증가 */
+        --fs-number: 2.25rem;         /* 36px - 50% 증가 */
+        --fs-body: 1.25rem;           /* 20px - 25% 증가 */
+        --fs-caption: 1.125rem;       /* 18px - 28% 증가 */
       }
     }
     
-    /* 유틸리티 클래스 */
-    .text-hero { 
-      font-size: var(--fs-hero); 
+    /* 새로운 유틸리티 클래스 */
+    .text-main-title { 
+      font-size: var(--fs-main-title); 
       line-height: var(--lh-tight); 
-      font-weight: var(--fw-light); 
+      font-weight: var(--fw-bold); 
     }
-    .text-xl { 
-      font-size: var(--fs-xl); 
+    .text-section-header { 
+      font-size: var(--fs-section-header); 
       line-height: var(--lh-tight); 
-      font-weight: var(--fw-light); 
+      font-weight: var(--fw-bold); 
     }
-    .text-lg { 
-      font-size: var(--fs-lg); 
+    .text-subtitle { 
+      font-size: var(--fs-subtitle); 
       line-height: var(--lh-snug); 
       font-weight: var(--fw-light); 
     }
-    .text-md { 
-      font-size: var(--fs-md); 
+    .text-number { 
+      font-size: var(--fs-number); 
+      line-height: var(--lh-tight); 
+      font-weight: var(--fw-bold); 
+    }
+    .text-body { 
+      font-size: var(--fs-body); 
       line-height: var(--lh-normal); 
       font-weight: var(--fw-light); 
     }
-    .text-sm { 
-      font-size: var(--fs-sm); 
+    .text-caption { 
+      font-size: var(--fs-caption); 
       line-height: var(--lh-normal); 
       font-weight: var(--fw-light); 
     }
@@ -102,34 +111,34 @@
     .thin-200 { font-weight: var(--fw-thin); }
     .light-300 { font-weight: var(--fw-light); }
     
-    /* 시맨틱 매핑 */
+    /* 새로운 시맨틱 매핑 */
     h1, .h1 { 
-      font-size: var(--fs-hero); 
+      font-size: var(--fs-main-title); 
       line-height: var(--lh-tight); 
-      font-weight: var(--fw-light); 
+      font-weight: var(--fw-bold); 
     }
     h2, .h2 { 
-      font-size: var(--fs-xl); 
+      font-size: var(--fs-section-header); 
       line-height: var(--lh-tight); 
-      font-weight: var(--fw-light); 
+      font-weight: var(--fw-bold); 
     }
     h3, .h3 { 
-      font-size: var(--fs-lg); 
+      font-size: var(--fs-subtitle); 
       line-height: var(--lh-snug); 
       font-weight: var(--fw-light); 
     }
     h4, .h4 { 
-      font-size: var(--fs-md); 
+      font-size: var(--fs-body); 
       line-height: var(--lh-normal); 
       font-weight: var(--fw-light); 
     }
     p, span, li { 
-      font-size: var(--fs-md); 
+      font-size: var(--fs-body); 
       line-height: var(--lh-normal); 
       font-weight: var(--fw-light); 
     }
     small, .caption, footer { 
-      font-size: var(--fs-sm); 
+      font-size: var(--fs-caption); 
       line-height: var(--lh-normal); 
       font-weight: var(--fw-light); 
     }
@@ -731,28 +740,16 @@
     }
     
     .intro-title {
-      font-size: 5.625rem; /* 90px 모바일 */
-      font-weight: var(--fw-light);
+      font-size: var(--fs-main-title); /* 80px 모바일, 96px 태블릿, 120px 데스크탑 */
+      font-weight: var(--fw-bold);
       font-style: italic;
       color: #022669;
       margin-bottom: 2rem;
       line-height: var(--lh-tight);
     }
     
-    @media (min-width: 768px) { /* 태블릿 */
-      .intro-title {
-        font-size: 6.25rem; /* 100px */
-      }
-    }
-    
-    @media (min-width: 1280px) { /* 데스크탑 */
-      .intro-title {
-        font-size: 7.5rem; /* 120px */
-      }
-    }
-    
     .intro-description {
-      font-size: var(--fs-md);
+      font-size: var(--fs-body);
       font-weight: var(--fw-light);
       color: #000000;
       line-height: 1.6;
@@ -760,7 +757,7 @@
     }
     
     .intro-data-period {
-      font-size: var(--fs-sm);
+      font-size: var(--fs-caption);
       font-weight: var(--fw-light);
       color: #6B7280;
       text-align: center;
@@ -928,7 +925,7 @@
     }
     
     .checkin-title-overlay {
-      font-size: var(--fs-lg);
+      font-size: var(--fs-subtitle);
       font-weight: var(--fw-light);
       line-height: 1.4;
       color: #1F2937;
@@ -943,8 +940,8 @@
     }
     
     .checkin-number-text {
-      font-size: var(--fs-xl);
-      font-weight: var(--fw-light);
+      font-size: var(--fs-number);
+      font-weight: var(--fw-bold);
       color: #0459F0;
       line-height: 1;
     }
@@ -1050,7 +1047,7 @@
     }
     
     .hours-title-overlay {
-      font-size: 1.365rem;
+      font-size: var(--fs-subtitle);
       font-weight: var(--fw-light);
       line-height: 1.4;
       color: #1F2937;
@@ -1069,8 +1066,8 @@
     }
     
     .hours-number-text {
-      font-size: 3.6rem;
-      font-weight: var(--fw-light);
+      font-size: var(--fs-number);
+      font-weight: var(--fw-bold);
       color: #0459F0;
       line-height: 1;
     }
@@ -1154,7 +1151,7 @@
     }
     
     .library-title-overlay {
-      font-size: var(--fs-lg);
+      font-size: var(--fs-subtitle);
       font-weight: var(--fw-light);
       line-height: 1.4;
       color: #1F2937;
@@ -1169,8 +1166,8 @@
     }
     
     .library-number-text {
-      font-size: var(--fs-xl);
-      font-weight: var(--fw-light);
+      font-size: var(--fs-number);
+      font-weight: var(--fw-bold);
       color: #0459F0;
       line-height: 1;
     }
@@ -1301,7 +1298,7 @@
     }
     
     .meal-title-overlay {
-      font-size: 1.365rem;
+      font-size: var(--fs-subtitle);
       font-weight: var(--fw-light);
       line-height: 1.4;
       color: #1F2937;
@@ -1316,8 +1313,8 @@
     }
     
     .meal-number-text {
-      font-size: 3.6rem;
-      font-weight: var(--fw-light);
+      font-size: var(--fs-number);
+      font-weight: var(--fw-bold);
       color: #0459F0;
       line-height: 1;
     }
@@ -1423,7 +1420,7 @@
     }
     
     .content-text {
-      font-size: var(--fs-hero);
+      font-size: var(--fs-body);
       font-weight: var(--fw-light);
       line-height: var(--lh-normal);
       color: #000000;
@@ -1655,8 +1652,8 @@
     
     /* Favorite Content Cards Section */
     .favorite-content-title {
-      font-size: var(--fs-hero);
-      font-weight: var(--fw-light);
+      font-size: var(--fs-section-header);
+      font-weight: var(--fw-bold);
       color: #1F2937;
       line-height: 1.4;
       text-align: center;
@@ -1926,8 +1923,8 @@
     
     /* Promotion Section */
     .promotion-header {
-      font-size: 1.365rem;
-      font-weight: var(--fw-light);
+      font-size: var(--fs-section-header);
+      font-weight: var(--fw-bold);
       color: #1F2937;
       text-align: center;
       margin-bottom: 3rem;
@@ -2251,8 +2248,8 @@
       padding: 3rem 4rem;
       margin: 3rem auto;
       border-radius: 0;
-      font-size: 1.365rem;
-      font-weight: var(--fw-light);
+      font-size: var(--fs-section-header);
+      font-weight: var(--fw-bold);
       color: #1F2937;
       text-align: center;
       line-height: 1.4;
