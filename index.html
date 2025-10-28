@@ -364,10 +364,12 @@
         margin-top: 0.25rem;
       }
       
-      /* 콘텐츠 카드 모바일 최적화 */
+      /* 콘텐츠 카드 모바일 최적화 - 가로 스크롤 유지 */
       .favorite-content-cards {
-        flex-direction: column;
+        flex-direction: row;
         gap: 1rem;
+        overflow-x: auto;
+        padding: 0 1rem;
       }
       
       .content-card-item {
@@ -2506,13 +2508,17 @@
     /* Content Cards Mobile */
     @media (max-width: 768px) {
       .favorite-content-cards {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         gap: 1rem;
+        overflow-x: auto;
+        padding: 0 1rem;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
       }
       
       .content-card-item {
-        flex: 1 1 100%;
-        min-width: 100%;
+        flex: 0 0 auto;
+        width: 280px;
         min-height: 350px;
         padding: 1.5rem;
       }
