@@ -2713,20 +2713,20 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Check-in/Check-out Content -->
-        <div class="metrics-row" data-aos="fade-up">
+        <div class="flex gap-4" data-aos="fade-up">
           <!-- Left: Check-in Content -->
-          <div class="metric">
-            <div class="metric-title" data-typo="소주제대제목">평균 등원 시간</div>
-            <div class="metric-row">
-              <div class="metric-value" id="checkInTime" data-typo="숫자">08:30</div>
+          <div class="checkin-content-overlay">
+            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 등원 시간</div>
+            <div class="checkin-number-overlay">
+              <span class="checkin-number-text param-value" id="checkInTime" data-typo="숫자">08:30</span>
             </div>
           </div>
           
           <!-- Right: Check-out Content -->
-          <div class="metric">
-            <div class="metric-title" data-typo="소주제대제목">평균 하원 시간</div>
-            <div class="metric-row">
-              <div class="metric-value" id="checkOutTime" data-typo="숫자">22:00</div>
+          <div class="checkin-content-overlay">
+            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 하원 시간</div>
+            <div class="checkin-number-overlay">
+              <span class="checkin-number-text param-value" id="checkOutTime" data-typo="숫자">22:00</span>
             </div>
           </div>
         </div>
@@ -2759,25 +2759,31 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Library Time and Focus Cards -->
-        <div class="metrics-row mb-6" data-aos="fade-up">
+        <div class="flex gap-4 mb-6" data-aos="fade-up">
           <!-- Left Library Time Content -->
-          <div class="metric">
-            <div class="metric-title" data-typo="소주제대제목">
+          <div class="library-content-overlay">
+            <!-- Header Text -->
+            <div class="library-title-overlay" data-typo="소주제대제목">
               2025년,<br>라이브러리에서 보낸 시간
             </div>
-            <div class="metric-row">
-              <div class="metric-value" id="libraryHours" data-typo="숫자">1,200</div>
-              <div class="metric-unit" data-typo="본문">시간</div>
+            
+            <!-- Time Value -->
+            <div class="library-number-overlay">
+              <span class="library-number-text param-value" id="libraryHours" data-typo="숫자">1,200</span>
+              <span class="library-text-overlay" data-typo="본문">시간</span>
             </div>
           </div>
           
           <!-- Right Focus Content -->
-          <div class="metric">
-            <div class="metric-title" data-typo="소주제대제목">
+          <div class="library-content-overlay">
+            <!-- Header Text -->
+            <div class="library-title-overlay" data-typo="소주제대제목">
               그동안,<br>라이브러리에서의 몰입도
             </div>
-            <div class="metric-row">
-              <div class="metric-value" id="focusScore" aria-label="평균 몰입도" data-typo="숫자">8.7</div>
+            
+            <!-- Value -->
+            <div class="library-number-overlay">
+              <span class="library-number-text param-value" id="focusScore" aria-label="평균 몰입도" data-typo="숫자">8.7</span>
             </div>
           </div>
         </div>
@@ -2792,15 +2798,16 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Meal Content -->
-        <div class="card meals-block">
-          <div class="metric">
-            <div class="metric-title" data-typo="소주제대제목">
-              총 식사 끼니 수
-            </div>
-            <div class="metric-row">
-              <div class="metric-value" id="mealCount" data-typo="숫자">1,234</div>
-              <div class="metric-unit" data-typo="본문">회</div>
-            </div>
+        <div class="meal-content-overlay">
+          <!-- Header Text -->
+          <div class="meal-title-overlay" data-typo="소주제대제목">
+            총 식사 끼니 수
+          </div>
+          
+          <!-- Meal Count Value -->
+          <div class="meal-number-overlay">
+            <span class="meal-number-text param-value" id="mealCount" data-typo="숫자">1,234</span>
+            <span class="meal-text-overlay" data-typo="본문">회</span>
           </div>
         </div>
         
@@ -2840,15 +2847,16 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Content Card -->
-        <div class="problems-block" data-aos="fade-up">
-          <p class="section-header">올해 시대인재에서 학생들은,<br>총 몇 문제를 풀었을까요?</p>
-          <div class="card">
-            <div class="metric">
-              <div class="metric-row">
-                <div class="metric-value" id="totalProblems" data-typo="숫자">50,000</div>
-                <div class="metric-unit" data-typo="본문">문제</div>
-              </div>
-            </div>
+        <div class="content-card" data-aos="fade-up">
+          <!-- Left Top: Text -->
+          <div class="content-text" style="white-space: nowrap; text-align: center !important;">
+            <span>올해 시대인재에서 학생들은,</span><br><span>총 몇 문제를 풀었을까요?</span>
+          </div>
+          
+          <!-- Right Bottom: Number -->
+          <div class="content-number" style="text-align: center !important;">
+            <span class="content-number-value param-value" id="totalProblems">50,000</span>
+            <span class="content-number-unit">문제</span>
           </div>
         </div>
         
