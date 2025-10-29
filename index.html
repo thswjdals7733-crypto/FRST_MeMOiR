@@ -2713,9 +2713,9 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Check-in/Check-out Content -->
-        <div class="flex gap-4" data-aos="fade-up">
+        <div class="metrics-row" data-aos="fade-up">
           <!-- Left: Check-in Content -->
-          <div class="checkin-content-overlay">
+          <div class="checkin-content-overlay metric axis-center">
             <div class="checkin-title-overlay" data-typo="소주제대제목">평균 등원 시간</div>
             <div class="checkin-number-overlay">
               <span class="checkin-number-text param-value" id="checkInTime" data-typo="숫자">08:30</span>
@@ -2723,7 +2723,7 @@
           </div>
           
           <!-- Right: Check-out Content -->
-          <div class="checkin-content-overlay">
+          <div class="checkin-content-overlay metric axis-center">
             <div class="checkin-title-overlay" data-typo="소주제대제목">평균 하원 시간</div>
             <div class="checkin-number-overlay">
               <span class="checkin-number-text param-value" id="checkOutTime" data-typo="숫자">22:00</span>
@@ -2759,9 +2759,9 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Library Time and Focus Cards -->
-        <div class="flex gap-4 mb-6" data-aos="fade-up">
+        <div class="metrics-row mb-6" data-aos="fade-up">
           <!-- Left Library Time Content -->
-          <div class="library-content-overlay">
+          <div class="library-content-overlay metric axis-center">
             <!-- Header Text -->
             <div class="library-title-overlay" data-typo="소주제대제목">
               2025년,<br>라이브러리에서 보낸 시간
@@ -2775,7 +2775,7 @@
           </div>
           
           <!-- Right Focus Content -->
-          <div class="library-content-overlay">
+          <div class="library-content-overlay metric axis-center">
             <!-- Header Text -->
             <div class="library-title-overlay" data-typo="소주제대제목">
               그동안,<br>라이브러리에서의 몰입도
@@ -2798,7 +2798,7 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Meal Content -->
-        <div class="meal-content-overlay">
+        <div class="meal-content-overlay metric axis-center">
           <!-- Header Text -->
           <div class="meal-title-overlay" data-typo="소주제대제목">
             총 식사 끼니 수
@@ -4587,6 +4587,39 @@
       console.log('Debug alignment overlay:', document.body.classList.contains('debug-align') ? 'ON' : 'OFF');
     };
   </script>
+
+  <!-- Axis center alignment overrides -->
+  <style id="axis-center-align">
+    .axis-center { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+    .axis-center .metric-title { text-align: center; text-wrap: balance; word-break: keep-all; }
+    .axis-center .metric-row { display: inline-flex; align-items: baseline; justify-content: center; gap: 8px; }
+    .axis-center .metric-value { font-weight: 700; line-height: 1.1; }
+    .axis-center .metric-unit { font-weight: 300; opacity: .9; }
+
+    .metrics-row { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+    .metrics-row .metric { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+    .metrics-row .metric .metric-row { justify-content: center; align-items: baseline; }
+
+    body.debug-axis .axis-center,
+    body.debug-axis .metric { position: relative; }
+    body.debug-axis .axis-center::after,
+    body.debug-axis .metric::after { content: ""; position: absolute; top: -24px; bottom: -24px; left: 50%; width: 1px; transform: translateX(-0.5px); background: rgba(0,120,255,.45); pointer-events: none; }
+
+    .main-title, .section-header, .intro-text-new, .intro-description,
+    .intro-data-period, .favorite-content-title, .promotion-header,
+    .outro-header-with-bg, .outro-subtitle { text-align: center; }
+
+    .section, .container { padding-inline: 16px; margin-inline: auto; }
+
+    /* compatibility: 기존 구조 매핑(숫자+단위 baseline) */
+    .axis-center .library-number-overlay,
+    .axis-center .checkin-number-overlay,
+    .axis-center .content-number,
+    .axis-center .meal-number-overlay { display: inline-flex; align-items: baseline; justify-content: center; gap: 8px; text-align: center; }
+    .axis-center .library-text-overlay,
+    .axis-center .meal-text-overlay,
+    .axis-center .content-number-unit { font-weight: 300; opacity: .9; }
+  </style>
 
 </body>
 </html>
