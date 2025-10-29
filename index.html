@@ -222,9 +222,6 @@
         margin-bottom: 1rem;
       }
       
-      .checkin-number-text {
-        font-size: var(--fs-xl);
-      }
       
       /* 시간 섹션 모바일 최적화 */
       .hours-content {
@@ -4622,8 +4619,12 @@
 
     /* 콜론 중앙 정렬: 시간 값에서 콜론이 가상의 중앙선에 위치하도록 */
     .checkin-number-text, .checkout-number-text {
+      font-size: var(--fs-number) !important;
+      font-weight: var(--fw-bold) !important;
+      color: #0459F0 !important;
       font-variant-numeric: tabular-nums; /* 숫자 폭 통일 */
-      letter-spacing: 0.1em; /* 콜론 주변 간격 조정 */
+      letter-spacing: 0.05em; /* 콜론 주변 간격 조정 */
+      font-family: 'Noto Sans KR', 'Pretendard', system-ui, sans-serif;
     }
     
     /* 시간 값 중앙 정렬 강화 */
