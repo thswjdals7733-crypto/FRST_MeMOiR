@@ -768,7 +768,6 @@
       border-radius: 0.75rem;
       padding: 1.5rem;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-      text-align: center;
       transform: scale(1);
       flex: 0 0 auto;
       min-width: 120px;
@@ -1369,21 +1368,18 @@
       font-size: 1.25rem;
       font-weight: var(--fw-light);
       color: #1F2937;
-      text-align: center;
     }
     
     .hall-card-subheader {
       font-size: 0.875rem;
       font-weight: var(--fw-light);
       color: #6B7280;
-      text-align: center;
     }
     
     .hall-card-main {
       font-size: 1.5rem;
       font-weight: var(--fw-light);
       color: #111827;
-      text-align: center;
       line-height: 1.2;
       word-break: keep-all;
       margin: 0.5rem 0;
@@ -1393,7 +1389,6 @@
       font-size: 0.875rem;
       font-weight: var(--fw-light);
       color: #6B7280;
-      text-align: center;
     }
     
     /* Content Section */
@@ -1517,7 +1512,6 @@
     .personal-data-card .time-value {
       font-size: var(--fs-number);
       margin-top: auto;
-      text-align: center;
       width: 100%;
       font-weight: var(--fw-bold);
       color: #0459F0;
@@ -4357,6 +4351,84 @@
       .content-card-label {
         font-size: var(--fs-body);
       }
+    }
+
+    /* ============ TEXT ALIGNMENT UNIFICATION ============ */
+    
+    /* 카드 내부: 왼쪽 정렬 */
+    .check-in-out-box,
+    .library-card,
+    .meal-card,
+    .content-card-item,
+    .content-card,
+    .ta-card,
+    .personal-ta-card,
+    .personal-data-card,
+    .hall-card,
+    .badge-card,
+    .chart-card,
+    .afterpack-card,
+    .table,
+    .chart,
+    .graph,
+    .timeline-card,
+    .checkin-content-overlay,
+    .library-content-overlay,
+    .meal-content-overlay,
+    .personal-data-wrapper,
+    .content-card-item,
+    .ta-content,
+    .personal-ta-content,
+    .owl-badge-card,
+    .bar-chart-item,
+    .personal-subject-chart-item {
+      text-align: left !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+    }
+
+    /* 카드 밖 주요 문장: 가운데 정렬 */
+    .intro-text-new,
+    .intro-description,
+    .intro-data-period,
+    .timeline-metric,
+    .favorite-content-title,
+    .promotion-header,
+    .outro-header-with-bg,
+    .outro-subtitle,
+    .main-title,
+    .section-header,
+    .subsection-header,
+    .summary-text,
+    .bar-chart-message,
+    .personal-subject-ta-message,
+    .monthly-ta-message,
+    .outro-service-title-left,
+    .outro-service-title-right,
+    .afterpack-title-left,
+    .jungsi-title-left,
+    .consultation-title-right {
+      text-align: center !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-inline: auto;
+    }
+
+    /* 그래프, 표 속 텍스트: 왼쪽 정렬 유지 */
+    .chart *,
+    .table *,
+    .graph *,
+    .bar-chart-container *,
+    .personal-subject-chart-container * {
+      text-align: left !important;
+    }
+
+    /* 컨테이너 여백: 균형 유지용 (정렬에는 영향 없음) */
+    .container,
+    .section {
+      padding-inline: 1.25rem;
+      max-width: 100%;
+      margin-inline: auto;
     }
 
     /* ============ /FINAL OVERRIDES ============ */
