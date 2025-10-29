@@ -3806,6 +3806,7 @@
         let currentX = 0;
         let initialTransform = 0;
         let animationId = null;
+        let autoResumeTimer = null;
         
         const grid = document.querySelector('.hall-cards-grid');
         
@@ -3827,6 +3828,16 @@
             // Reset transform to let CSS animation take over
             grid.style.transform = '';
           }
+        };
+
+        // Schedule safe auto-resume in case pointer events are lost
+        const scheduleAutoResume = (delayMs = 1500) => {
+          if (autoResumeTimer) clearTimeout(autoResumeTimer);
+          autoResumeTimer = setTimeout(() => {
+            if (!isDragging) {
+              resume();
+            }
+          }, delayMs);
         };
 
         // Get current transform value
@@ -3874,7 +3885,7 @@
             cancelAnimationFrame(animationId);
             animationId = null;
           }
-          setTimeout(resume, 300);
+          scheduleAutoResume(300);
         }, { passive: true });
         
         hallCardsWrapper.addEventListener('touchcancel', () => {
@@ -3883,8 +3894,12 @@
             cancelAnimationFrame(animationId);
             animationId = null;
           }
-          resume();
+          scheduleAutoResume(300);
         }, { passive: true });
+
+        // Safety: if touch ends/cancels outside the wrapper
+        window.addEventListener('touchend', () => scheduleAutoResume(300), { passive: true });
+        window.addEventListener('touchcancel', () => scheduleAutoResume(300), { passive: true });
 
         // Mouse events (desktop)
         hallCardsWrapper.addEventListener('mousedown', (e) => {
@@ -3912,12 +3927,19 @@
               cancelAnimationFrame(animationId);
               animationId = null;
             }
-            setTimeout(resume, 300);
+            scheduleAutoResume(300);
           }
         });
 
+        // Additional safety hooks
+        hallCardsWrapper.addEventListener('mouseleave', () => scheduleAutoResume(300));
+        window.addEventListener('blur', () => scheduleAutoResume(300));
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') scheduleAutoResume(300);
+        });
+
         // Page scroll -> immediately resume
-        window.addEventListener('scroll', resume, { passive: true });
+        window.addEventListener('scroll', () => scheduleAutoResume(0), { passive: true });
       }
     }
     
