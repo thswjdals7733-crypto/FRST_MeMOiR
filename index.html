@@ -2716,29 +2716,17 @@
         <div class="metrics-row" data-aos="fade-up">
           <!-- Left: Check-in Content -->
           <div class="checkin-content-overlay metric axis-center">
-            <div class="checkin-title-overlay axis-split" data-typo="소주제대제목">
-              <span class="split-left">평균 등</span>
-              <span class="split-axis">|</span>
-              <span class="split-right">원 시간</span>
-            </div>
-            <div class="checkin-number-overlay axis-split">
-              <span class="split-left checkin-number-text param-value" aria-hidden="false">08</span>
-              <span class="split-axis param-value">:</span>
-              <span class="split-right checkin-number-text param-value" id="checkInTimeRight" aria-hidden="false">30</span>
+            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 등원 시간</div>
+            <div class="checkin-number-overlay">
+              <span class="checkin-number-text param-value" id="checkInTime" data-typo="숫자">08:30</span>
             </div>
           </div>
           
           <!-- Right: Check-out Content -->
           <div class="checkin-content-overlay metric axis-center">
-            <div class="checkin-title-overlay axis-split" data-typo="소주제대제목">
-              <span class="split-left">평균 하</span>
-              <span class="split-axis">|</span>
-              <span class="split-right">원 시간</span>
-            </div>
-            <div class="checkin-number-overlay axis-split">
-              <span class="split-left checkin-number-text param-value" aria-hidden="false">22</span>
-              <span class="split-axis param-value">:</span>
-              <span class="split-right checkin-number-text param-value" id="checkOutTimeRight" aria-hidden="false">00</span>
+            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 하원 시간</div>
+            <div class="checkin-number-overlay">
+              <span class="checkin-number-text param-value" id="checkOutTime" data-typo="숫자">22:00</span>
             </div>
           </div>
         </div>
@@ -2775,35 +2763,27 @@
           <!-- Left Library Time Content -->
           <div class="library-content-overlay metric axis-center">
             <!-- Header Text -->
-            <div class="library-title-overlay axis-split" data-typo="소주제대제목">
-              <span class="split-left">2025년, 라이브러리에서</span>
-              <span class="split-axis">|</span>
-              <span class="split-right">보낸 시간</span>
+            <div class="library-title-overlay" data-typo="소주제대제목">
+              2025년,<br>라이브러리에서 보낸 시간
             </div>
             
             <!-- Time Value -->
-            <div class="library-number-overlay axis-split">
-              <span class="split-left library-number-text param-value" id="libraryHoursLeft">1,</span>
-              <span class="split-axis param-value"> </span>
-              <span class="split-right library-number-text param-value" id="libraryHoursRight">200</span>
-              <span class="library-text-overlay split-right" data-typo="본문">시간</span>
+            <div class="library-number-overlay">
+              <span class="library-number-text param-value" id="libraryHours" data-typo="숫자">1,200</span>
+              <span class="library-text-overlay" data-typo="본문">시간</span>
             </div>
           </div>
           
           <!-- Right Focus Content -->
           <div class="library-content-overlay metric axis-center">
             <!-- Header Text -->
-            <div class="library-title-overlay axis-split" data-typo="소주제대제목">
-              <span class="split-left">그동안, 라이브러리에서의</span>
-              <span class="split-axis">|</span>
-              <span class="split-right">몰입도</span>
+            <div class="library-title-overlay" data-typo="소주제대제목">
+              그동안,<br>라이브러리에서의 몰입도
             </div>
             
             <!-- Value -->
-            <div class="library-number-overlay axis-split">
-              <span class="split-left library-number-text param-value">7</span>
-              <span class="split-axis param-value">.</span>
-              <span class="split-right library-number-text param-value" id="focusScore" aria-label="평균 몰입도" data-typo="숫자">6</span>
+            <div class="library-number-overlay">
+              <span class="library-number-text param-value" id="focusScore" aria-label="평균 몰입도" data-typo="숫자">8.7</span>
             </div>
           </div>
         </div>
@@ -2820,17 +2800,14 @@
         <!-- Meal Content -->
         <div class="meal-content-overlay metric axis-center">
           <!-- Header Text -->
-          <div class="meal-title-overlay axis-split" data-typo="소주제대제목">
-            <span class="split-left">총 식사 끼니</span>
-            <span class="split-axis">|</span>
-            <span class="split-right">수</span>
+          <div class="meal-title-overlay" data-typo="소주제대제목">
+            총 식사 끼니 수
           </div>
           
           <!-- Meal Count Value -->
-          <div class="meal-number-overlay axis-split">
-            <span class="split-left meal-number-text param-value" id="mealCountLeft">1,234</span>
-            <span class="split-axis"></span>
-            <span class="split-right meal-text-overlay" data-typo="본문">회</span>
+          <div class="meal-number-overlay">
+            <span class="meal-number-text param-value" id="mealCount" data-typo="숫자">1,234</span>
+            <span class="meal-text-overlay" data-typo="본문">회</span>
           </div>
         </div>
         
@@ -4643,12 +4620,32 @@
     .axis-center .meal-text-overlay,
     .axis-center .content-number-unit { font-weight: 300; opacity: .9; }
 
-    /* axis split: 중앙 세로축 기준 좌/우 분할 레이아웃 */
-    .axis-split { position: relative; display: grid; grid-template-columns: 1fr auto 1fr; align-items: baseline; column-gap: 8px; text-align: center; }
-    .axis-split .split-left { grid-column: 1; text-align: right; }
-    .axis-split .split-axis { grid-column: 2; }
-    .axis-split .split-right { grid-column: 3; text-align: left; }
-    body.debug-axis .axis-split::after { content: ""; position: absolute; top: -24px; bottom: -24px; left: 50%; width: 1px; transform: translateX(-0.5px); background: rgba(0,120,255,.45); pointer-events: none; }
+    /* 콜론 중앙 정렬: 시간 값에서 콜론이 가상의 중앙선에 위치하도록 */
+    .checkin-number-text, .checkout-number-text {
+      font-variant-numeric: tabular-nums; /* 숫자 폭 통일 */
+      letter-spacing: 0.1em; /* 콜론 주변 간격 조정 */
+    }
+    
+    /* 시간 값 중앙 정렬 강화 */
+    .checkin-number-overlay, .library-number-overlay, .meal-number-overlay {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.25em;
+    }
+    
+    /* 디버그: 가상 중앙선 표시 */
+    body.debug-axis .checkin-content-overlay::after,
+    body.debug-axis .library-content-overlay::after,
+    body.debug-axis .meal-content-overlay::after {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 1px;
+      transform: translateX(-0.5px);
+      background: rgba(0,120,255,.3);
+      pointer-events: none;
+    }
   </style>
 
 </body>
