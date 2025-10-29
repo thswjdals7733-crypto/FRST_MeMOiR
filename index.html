@@ -2713,20 +2713,20 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Check-in/Check-out Content -->
-        <div class="flex gap-4" data-aos="fade-up">
+        <div class="metrics-row" data-aos="fade-up">
           <!-- Left: Check-in Content -->
-          <div class="checkin-content-overlay">
-            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 등원 시간</div>
-            <div class="checkin-number-overlay">
-              <span class="checkin-number-text param-value" id="checkInTime" data-typo="숫자">08:30</span>
+          <div class="metric">
+            <div class="metric-title" data-typo="소주제대제목">평균 등원 시간</div>
+            <div class="metric-row">
+              <div class="metric-value" id="checkInTime" data-typo="숫자">08:30</div>
             </div>
           </div>
           
           <!-- Right: Check-out Content -->
-          <div class="checkin-content-overlay">
-            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 하원 시간</div>
-            <div class="checkin-number-overlay">
-              <span class="checkin-number-text param-value" id="checkOutTime" data-typo="숫자">22:00</span>
+          <div class="metric">
+            <div class="metric-title" data-typo="소주제대제목">평균 하원 시간</div>
+            <div class="metric-row">
+              <div class="metric-value" id="checkOutTime" data-typo="숫자">22:00</div>
             </div>
           </div>
         </div>
@@ -2759,31 +2759,25 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Library Time and Focus Cards -->
-        <div class="flex gap-4 mb-6" data-aos="fade-up">
+        <div class="metrics-row mb-6" data-aos="fade-up">
           <!-- Left Library Time Content -->
-          <div class="library-content-overlay">
-            <!-- Header Text -->
-            <div class="library-title-overlay" data-typo="소주제대제목">
+          <div class="metric">
+            <div class="metric-title" data-typo="소주제대제목">
               2025년,<br>라이브러리에서 보낸 시간
             </div>
-            
-            <!-- Time Value -->
-            <div class="library-number-overlay">
-              <span class="library-number-text param-value" id="libraryHours" data-typo="숫자">1,200</span>
-              <span class="library-text-overlay" data-typo="본문">시간</span>
+            <div class="metric-row">
+              <div class="metric-value" id="libraryHours" data-typo="숫자">1,200</div>
+              <div class="metric-unit" data-typo="본문">시간</div>
             </div>
           </div>
           
           <!-- Right Focus Content -->
-          <div class="library-content-overlay">
-            <!-- Header Text -->
-            <div class="library-title-overlay" data-typo="소주제대제목">
+          <div class="metric">
+            <div class="metric-title" data-typo="소주제대제목">
               그동안,<br>라이브러리에서의 몰입도
             </div>
-            
-            <!-- Value -->
-            <div class="library-number-overlay">
-              <span class="library-number-text param-value" id="focusScore" aria-label="평균 몰입도" data-typo="숫자">8.7</span>
+            <div class="metric-row">
+              <div class="metric-value" id="focusScore" aria-label="평균 몰입도" data-typo="숫자">8.7</div>
             </div>
           </div>
         </div>
@@ -2798,16 +2792,15 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Meal Content -->
-        <div class="meal-content-overlay">
-          <!-- Header Text -->
-          <div class="meal-title-overlay" data-typo="소주제대제목">
-            총 식사 끼니 수
-          </div>
-          
-          <!-- Meal Count Value -->
-          <div class="meal-number-overlay">
-            <span class="meal-number-text param-value" id="mealCount" data-typo="숫자">1,234</span>
-            <span class="meal-text-overlay" data-typo="본문">회</span>
+        <div class="card meals-block">
+          <div class="metric">
+            <div class="metric-title" data-typo="소주제대제목">
+              총 식사 끼니 수
+            </div>
+            <div class="metric-row">
+              <div class="metric-value" id="mealCount" data-typo="숫자">1,234</div>
+              <div class="metric-unit" data-typo="본문">회</div>
+            </div>
           </div>
         </div>
         
@@ -2847,16 +2840,15 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Content Card -->
-        <div class="content-card" data-aos="fade-up">
-          <!-- Left Top: Text -->
-          <div class="content-text" style="white-space: nowrap; text-align: center !important;">
-            <span>올해 시대인재에서 학생들은,</span><br><span>총 몇 문제를 풀었을까요?</span>
-          </div>
-          
-          <!-- Right Bottom: Number -->
-          <div class="content-number" style="text-align: center !important;">
-            <span class="content-number-value param-value" id="totalProblems">50,000</span>
-            <span class="content-number-unit">문제</span>
+        <div class="problems-block" data-aos="fade-up">
+          <p class="section-header">올해 시대인재에서 학생들은,<br>총 몇 문제를 풀었을까요?</p>
+          <div class="card">
+            <div class="metric">
+              <div class="metric-row">
+                <div class="metric-value" id="totalProblems" data-typo="숫자">50,000</div>
+                <div class="metric-unit" data-typo="본문">문제</div>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -4435,6 +4427,83 @@
     }
 
     /* ============ /FINAL OVERRIDES ============ */
+
+    /* ===== Alignment Enforcement & Baseline Utilities ===== */
+    /* 0) 공통 리셋(정렬 오염 제거) */
+    .card *, .metric * { text-align: inherit; }
+
+    /* 1) 카드 내부 = 왼쪽 정렬(모바일 기준) */
+    .card,
+    .check-in-out-box,
+    .library-card,
+    .meal-card,
+    .content-card,
+    .content-card-item,
+    .ta-card,
+    .personal-ta-card,
+    .personal-data-card,
+    .hall-card {
+      text-align: left !important;
+    }
+
+    /* 2) 카드 외부 큰 문구 = 가운데 정렬 */
+    .main-title, .section-header, .intro-text-new, .intro-description,
+    .intro-data-period, .favorite-content-title, .promotion-header,
+    .outro-header-with-bg, .outro-subtitle {
+      text-align: center !important;
+      margin-inline: auto;
+    }
+
+    /* 3) metric 표준 레이아웃 */
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 8px; /* 제목-값 간격(8px 배수 권장) */
+      align-items: flex-start; /* 왼쪽 기준선 고정 */
+    }
+    .metric-title { /* 소주제대제목(20px) 가정 - 이미 폰트 시스템 있으면 그대로 사용 */
+      text-align: left;
+    }
+
+    /* 숫자+단위 한 줄: baseline 정렬 */
+    .metric-row {
+      display: inline-flex;
+      align-items: baseline;  /* 핵심: 숫자와 단위 베이스라인 맞춤 */
+      gap: 8px;               /* 숫자와 단위 간 간격 */
+    }
+    .metric-value { font-weight: 700; } /* 숫자 볼드(30px 규칙은 폰트 시스템에서) */
+    .metric-unit  { font-weight: 300; opacity: .9; }
+
+    /* 4) 2컬럼 묶음(예: '평균 등원/하원', '라이브러리 시간/몰입도') 가로간격/좌측정렬 유지 */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* 모바일에서도 2칸이면 좌측 정렬 유지 */
+      column-gap: 24px;               /* 두 카드 간 고정 간격 */
+    }
+    .metrics-row .metric { align-items: flex-start; }
+
+    /* 5) 여백은 '정렬 보조'일 뿐: 좌우 균형만 맞춤(정렬은 text-align/flex가 담당) */
+    .section, .container { padding-inline: 16px; }
+
+    /* 6) 디버그: 정렬/그리드 확인용 오버레이 (토글: body.debug-align) */
+    body.debug-align .container, body.debug-align .section, body.debug-align .card {
+      background-image:
+        repeating-linear-gradient(to right, rgba(0,120,255,.12) 0 1px, transparent 1px 8px),
+        repeating-linear-gradient(to bottom, rgba(0,0,0,.06) 0 1px, transparent 1px 8px);
+      background-size: 8px 8px; /* 8px 베이스라인 */
+    }
+    body.debug-align .left-gutter::before {
+      content: "";
+      position: absolute; inset: 0 auto 0 16px; width: 1px;
+      background: rgba(0,120,255,.6);
+      pointer-events: none;
+    }
+
+    /* 7) 스크린샷 케이스 교정 가이드(선택적 강화) */
+    /* "총 몇 문제?" 블록: 질문(본문)은 카드 밖 center, 숫자/단위는 카드 내 left로 분리 */
+    .problems-block .metric { text-align:left; }
+    /* "총 식사 끼니 수" 블록: 숫자와 '회' baseline 정확히 맞춤 */
+    .meals-block .metric-row .metric-unit { transform: translateY(.5px); } /* 글꼴 opt 튜닝 */
   </style>
 
   <script>
@@ -4502,6 +4571,13 @@
       const mo = new MutationObserver(() => applyTypo());
       mo.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
     })();
+
+    /* 디버그 토글 헬퍼(개발 중 F12에서 실행 가능)
+       document.body.classList.toggle('debug-align'); */
+    window.toggleDebugAlign = function() {
+      document.body.classList.toggle('debug-align');
+      console.log('Debug alignment overlay:', document.body.classList.contains('debug-align') ? 'ON' : 'OFF');
+    };
   </script>
 
 </body>
