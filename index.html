@@ -567,23 +567,26 @@
       .consultation-content,
       .afterpack-content,
       .jungsi-content {
-        flex-direction: column;
+        flex-direction: column !important;
         gap: 1.5rem;
         padding: 2rem 1rem;
         text-align: left;
         align-items: flex-start;
+        width: 100%;
       }
       
       .consultation-title-right,
       .afterpack-title-left,
       .jungsi-title-left {
-        flex: none;
-        transform: none;
-        text-align: left;
+        flex: none !important;
+        transform: none !important;
+        text-align: left !important;
         font-size: var(--fs-subtitle-large);
         font-weight: var(--fw-light);
         color: #0459F0;
         margin-bottom: 0.5rem;
+        width: 100%;
+        order: 1;
       }
       
       .consultation-text-left,
@@ -593,7 +596,9 @@
         font-weight: var(--fw-light);
         color: #1F2937;
         line-height: 1.6;
-        text-align: left;
+        text-align: left !important;
+        width: 100%;
+        order: 2;
       }
       
       /* 관별 메뉴 카드 모바일 최적화 */
