@@ -2866,10 +2866,10 @@
     <div class="container mx-auto px-6">
       <div class="max-w-4xl mx-auto">
         
-        <!-- Two Boxes Side by Side -->
-        <div class="personal-data-wrapper" data-aos="fade-up">
-          <!-- Left Card: 총 모의고사 개수 -->
-          <div class="check-in-out-box personal-data-card">
+        <!-- Mock Test Cards with Horizontal Scroll -->
+        <div class="mock-test-cards" data-aos="fade-up">
+          <!-- Card 1: 총 모의고사 개수 -->
+          <div class="mock-test-card">
             <div class="personal-data-bg" style="background-image: url('./SURVIVAL.png');"></div>
             <div class="personal-data-content">
               <div class="time-label">재원 기간동안 푼<br>총 모의고사 개수</div>
@@ -2877,8 +2877,8 @@
             </div>
           </div>
           
-          <!-- Right Card: 총 문제 수 -->
-          <div class="check-in-out-box personal-data-card">
+          <!-- Card 2: 총 문제 수 -->
+          <div class="mock-test-card">
             <div class="personal-data-bg" style="background-image: url('./paperdummy.png');"></div>
             <div class="personal-data-content">
               <div class="time-label" style="white-space: nowrap;">재원 기간동안 푼<br>모의고사 총 문제수</div>
@@ -4646,6 +4646,48 @@
       transform: translateX(-0.5px);
       background: rgba(0,120,255,.3);
       pointer-events: none;
+    }
+
+    /* 모의고사 카드 가로 스크롤 */
+    .mock-test-cards {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: stretch;
+      overflow-x: auto;
+      padding: 0 1rem;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #CBD5E0 #F7FAFC;
+    }
+
+    .mock-test-cards::-webkit-scrollbar { height: 6px; }
+    .mock-test-cards::-webkit-scrollbar-track { background: #F7FAFC; border-radius: 3px; }
+    .mock-test-cards::-webkit-scrollbar-thumb { background: #CBD5E0; border-radius: 3px; }
+    .mock-test-cards::-webkit-scrollbar-thumb:hover { background: #A0AEC0; }
+
+    .mock-test-card {
+      flex: 0 0 auto;
+      width: 100vw;
+      max-width: 400px;
+      min-width: 300px;
+      min-height: 350px;
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 모바일에서 카드 크기 조정 */
+    @media (max-width: 768px) {
+      .mock-test-card {
+        width: 90vw;
+        max-width: 350px;
+        min-width: 280px;
+        min-height: 300px;
+      }
     }
   </style>
 
