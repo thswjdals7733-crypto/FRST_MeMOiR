@@ -1057,12 +1057,14 @@
       font-weight: var(--fw-bold);
       color: #0459F0;
       line-height: 1;
+      text-align: center !important;
     }
     
     .hours-text-overlay {
       font-size: 1.8rem;
       color: #1F2937;
       font-weight: var(--fw-light);
+      text-align: center !important;
     }
     
     /* Library Time Section */
@@ -1304,12 +1306,14 @@
       font-weight: var(--fw-bold);
       color: #0459F0;
       line-height: 1;
+      text-align: center !important;
     }
     
     .meal-text-overlay {
       font-size: 1.8rem;
       color: #1F2937;
       font-weight: var(--fw-light);
+      text-align: center !important;
     }
     
     /* Hall Cards Carousel */
@@ -1524,13 +1528,13 @@
       padding: 2rem 0;
       max-width: 100%;
       margin: 0 auto;
-      flex-direction: column;
+      flex-direction: row;
     }
     
     .personal-data-wrapper .personal-data-card {
-      flex: 1 1 100%;
-      max-width: 100%;
-      min-height: 300px;
+      flex: 1 1 50%;
+      max-width: 50%;
+      min-height: 350px;
     }
     
     /* Bar Chart Section */
@@ -2847,12 +2851,12 @@
         <!-- Content Card -->
         <div class="content-card" data-aos="fade-up">
           <!-- Left Top: Text -->
-          <div class="content-text" style="white-space: nowrap;">
+          <div class="content-text" style="white-space: nowrap; text-align: center !important;">
             <span>올해 시대인재에서 학생들은,</span><br><span>총 몇 문제를 풀었을까요?</span>
           </div>
           
           <!-- Right Bottom: Number -->
-          <div class="content-number">
+          <div class="content-number" style="text-align: center !important;">
             <span class="content-number-value param-value" id="totalProblems">50,000</span>
             <span class="content-number-unit">문제</span>
           </div>
@@ -4179,6 +4183,7 @@
     .content-text { 
       font-size: var(--fs-subtitle-large); 
       font-weight: var(--fw-light);
+      text-align: center !important;
     }
 
     /* 5-2) 레이아웃: 모바일 기본 → md/lg 확장 */
