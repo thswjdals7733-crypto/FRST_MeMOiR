@@ -4221,6 +4221,49 @@
     });
   </script>
 
+  <!-- FORCE MOBILE MODE (optional): 모든 화면을 모바일 레이아웃/타이포로 강제 -->
+  <style id="force-mobile-mode">
+    /* 활성화: html 요소에 .force-mobile 클래스 추가 */
+    html.force-mobile body { width: 430px; margin: 0 auto; }
+    html.force-mobile .container, html.force-mobile .section { max-width: 430px; padding-inline: 16px; }
+
+    /* 타이포 변수: 항상 모바일 값으로 고정 */
+    html.force-mobile {
+      --fs-main-title: 5rem;         /* 80px */
+      --fs-section-header: 2.8125rem;/* 45px */
+      --fs-subtitle: 1.5rem;         /* 24px */
+      --fs-number: 2rem;             /* 32px */
+      --fs-body: 1rem;               /* 16px */
+      --fs-caption: 0.875rem;        /* 14px */
+    }
+
+    /* 레이아웃: 주요 래퍼들을 모바일 column으로 고정 */
+    html.force-mobile .hours-content,
+    html.force-mobile .library-content-overlay,
+    html.force-mobile .content-card,
+    html.force-mobile .personal-data-wrapper,
+    html.force-mobile .favorite-content-cards,
+    html.force-mobile .mock-test-cards { 
+      display: flex !important; flex-direction: column !important; gap: 1rem;
+    }
+
+    /* 가로 캐러셀 유지 대상은 원래 규칙 존중 */
+    html.force-mobile .favorite-content-cards,
+    html.force-mobile .mock-test-cards { flex-direction: row !important; overflow-x: auto !important; }
+  </style>
+
+  <script>
+    // URL에 ?mobile=1 혹은 #force-mobile 가 있으면 강제 모바일 모드
+    (function(){
+      try {
+        var q = location.search;
+        if (q.indexOf('mobile=1') !== -1 || location.hash.indexOf('force-mobile') !== -1) {
+          document.documentElement.classList.add('force-mobile');
+          console.log('[ForceMobile] enabled');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <style>
     /* ============ TYPOGRAPHY SYSTEM ============ */
     :root {
