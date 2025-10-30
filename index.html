@@ -4493,12 +4493,16 @@
   <style id="mobile-canvas-lock">
     :root{ --mobile-canvas-w: 393px; }
     body[data-force-mobile="true"] #mobile-canvas{
-      width: var(--mobile-canvas-w);
+      width: 100%;
+      max-width: var(--mobile-canvas-w);
       margin: 0 auto;
-      padding-inline: 0;
+      padding-inline: max(env(safe-area-inset-left, 0px), 0px) max(env(safe-area-inset-right, 0px), 0px);
+      box-sizing: border-box;
     }
     body[data-force-mobile="true"] #mobile-canvas img,
     body[data-force-mobile="true"] #mobile-canvas video{ max-width: 100%; height: auto; display: block; }
+    /* 글라이드/웹뷰 컨테이너가 더 좁을 때도 내부 콘텐츠가 넘치지 않도록 */
+    body[data-force-mobile="true"] { overflow-x: hidden; }
     body[data-force-mobile="true"] .horizontal-scroll,
     body[data-force-mobile="true"] .carousel,
     body[data-force-mobile="true"] .snap-x{ overflow: visible !important; }
