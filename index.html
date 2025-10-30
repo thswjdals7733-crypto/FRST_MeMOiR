@@ -2966,7 +2966,7 @@
           <p class="k-note" data-typo="주석" style="margin-top:.5rem;">*실제 SDIJ서랍장 앱 집계 결과입니다.</p>
           <p class="k-body" data-typo="본문" style="margin-top: .75rem;">따뜻한 한 끼로 마음을 채운 뒤,<br>다시 책상 앞에서 또 한 문제, 한 페이지를 채워갔습니다.</p>
         </div>
-
+        
         <!-- Content Card -->
         <div class="content-card" data-aos="fade-up">
           <!-- Left Top: Text -->
@@ -3132,14 +3132,37 @@
   <section class="py-16" style="background: #FFFFFF; margin-top: 10%;">
     <div class="container mx-auto px-6">
       <div class="max-w-4xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center mb-6" data-aos="fade-up">
+          <p class="section-header" data-typo="머리글">Q? A!</p>
+          <p class="k-body" data-typo="본문" style="margin-top:.5rem;">수많은 문항을 풀며 쌓은 고민의 흔적들.<br>그 순간마다, 질문은 또 다른 배움의 시작이 되었습니다.</p>
+          <p class="k-note" data-typo="주석" style="margin-top:.5rem;">*실제 TA앱에 등록된 데이터 기반입니다.</p>
+        </div>
         
-        <!-- TA Card -->
-        <div class="ta-card" data-aos="fade-up" style="background-image: url('./TA booth.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-          <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.6); border-radius: 1rem; z-index: 0;"></div>
-          <img src="./TA owl.png" alt="TA Owl" class="ta-owl-image">
-          <div class="ta-content">
-            <div class="ta-label">TA 총 질문수</div>
-            <div class="ta-number param-value" id="totalTAQuestions">10,000</div>
+        <!-- Total TA questions (centered, no card) -->
+        <div class="text-center" data-aos="fade-up">
+          <p class="k-sub" data-typo="소주제대제목">2025년, TA앱에서 오고간 전체 질문 수</p>
+          <p style="margin-top:.5rem;">
+            <span class="param-value" id="totalTAQuestions" data-typo="숫자">10,000</span>
+          </p>
+          <p class="k-body" data-typo="본문" style="margin-top:.75rem;">김채이님과 함께, 많은 부엉이들이 TA앱을 통해 새롭게 배워 나갔습니다.</p>
+        </div>
+
+        <!-- TA/SA Meet summary -->
+        <div class="metrics-row mb-4" data-aos="fade-up">
+          <div class="metric axis-center">
+            <div class="metric-title" data-typo="소주제대제목">TA Meet</div>
+            <div class="metric-row">
+              <div class="metric-value" id="taMeetHours" data-typo="숫자">nn</div>
+              <div class="metric-unit" data-typo="본문">시간</div>
+            </div>
+          </div>
+          <div class="metric axis-center">
+            <div class="metric-title" data-typo="소주제대제목">SA Meet</div>
+            <div class="metric-row">
+              <div class="metric-value" id="saMeetHours" data-typo="숫자">nn</div>
+              <div class="metric-unit" data-typo="본문">시간</div>
+            </div>
           </div>
         </div>
         
@@ -3155,7 +3178,7 @@
         <!-- Personal TA Card -->
         <div class="personal-ta-card" data-aos="fade-up">
           <div class="personal-ta-content">
-            <div class="personal-ta-label">올 한 해 TA앱에서<br>오고 간 질문수는</div>
+            <div class="personal-ta-label" data-typo="소주제대제목">올 한 해 김채이님이 TA앱에서 한 질문 수는</div>
             <div class="personal-ta-number-section">
               <span class="personal-ta-number param-value" id="personalTAQuestions">1,200</span>
               <span class="personal-ta-unit">회입니다.</span>
@@ -3235,8 +3258,8 @@
     <div class="container mx-auto px-6">
       <div class="max-w-6xl mx-auto">
         
-        <div class="monthly-ta-header" data-aos="fade-up">
-          시대인재 부엉이 다같이 달려 왔어요
+        <div class="monthly-ta-header" data-aos="fade-up" data-typo="소주제대제목">
+          부엉이들 다함께 질문하며 달려왔어요.
         </div>
         
         <!-- Scrollable Charts Container -->
