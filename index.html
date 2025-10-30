@@ -4241,6 +4241,13 @@
       values: [60, 70, 80, 90, 85, 95, 100, 110, 120]
     };
     
+    // Utility: render all monthly charts once
+    function renderMonthlyCharts() {
+      drawLineChart('mathChart', mathData, '#0F66F5', '수학');
+      drawLineChart('research1Chart', research1Data, '#033597', '탐구1');
+      drawLineChart('research2Chart', research2Data, '#6AA2FA', '탐구2');
+    }
+    
     // Wait for DOM to be fully loaded
     window.addEventListener('load', () => {
       // Use Intersection Observer to trigger chart rendering when section comes into view
@@ -4251,9 +4258,7 @@
           entries.forEach(entry => {
             if (entry.isIntersecting && !chartsRendered) {
               chartsRendered = true;
-              drawLineChart('mathChart', mathData, '#0F66F5', '수학');
-              drawLineChart('research1Chart', research1Data, '#033597', '탐구1');
-              drawLineChart('research2Chart', research2Data, '#6AA2FA', '탐구2');
+              renderMonthlyCharts();
             }
             if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
               chartsRendered = false;
@@ -4266,12 +4271,19 @@
         // 안전망: 1초 내 렌더 안되면 강제 1회 렌더
         setTimeout(() => {
           if (!chartsRendered) {
-            drawLineChart('mathChart', mathData, '#0F66F5', '수학');
-            drawLineChart('research1Chart', research1Data, '#033597', '탐구1');
-            drawLineChart('research2Chart', research2Data, '#6AA2FA', '탐구2');
+            renderMonthlyCharts();
             chartsRendered = true;
           }
         }, 1000);
+
+        // 창 리사이즈 시 재그리기(디바운스)
+        let __resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(__resizeTimer);
+          __resizeTimer = setTimeout(() => {
+            renderMonthlyCharts();
+          }, 150);
+        });
       }
     });
   </script>
