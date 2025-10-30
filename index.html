@@ -54,6 +54,30 @@
       --fw-bold: 700;
     }
     
+    /* 데스크탑/태블릿 업스케일은 모바일 강제 모드에선 비활성화 */
+    @media (min-width: 768px) {
+      body:not([data-viewport="mobile"]) :root {
+        /* 태블릿: 약 20% 확대 */
+        --fs-web-title: 6rem;
+        --fs-header: 3.375rem;
+        --fs-subtitle-large: 1.5rem;
+        --fs-number: 2.25rem;
+        --fs-body: 1.125rem;
+        --fs-caption: 1rem;
+      }
+    }
+    @media (min-width: 1280px) {
+      body:not([data-viewport="mobile"]) :root {
+        /* 데스크탑: 더 큰 단계 */
+        --fs-web-title: 7.5rem;
+        --fs-header: 4.5rem;
+        --fs-subtitle-large: 2rem;
+        --fs-number: 3rem;
+        --fs-body: 1.25rem;
+        --fs-caption: 1.125rem;
+      }
+    }
+    
     /* 태블릿/데스크탑 증분 삭제: 모바일 고정 */
     
     /* 아이폰 16 Pro 기준 유틸리티 클래스 */
@@ -4236,7 +4260,7 @@
   </script>
 
   <!-- === TEXT BOX ALIGNMENT SYSTEM (AUTO APPLY) === -->
-  <style id="text-box-align-system" disabled>
+  <style id="text-box-align-system">
     /* 1) 기본 박스 구조 */
     .text-box {
       display: flex;
@@ -4259,6 +4283,11 @@
 
     /* 4) 텍스트 자체 스타일 */
     .text-box > * { margin: 0; text-align: inherit; }
+
+    /* 사용자 가이드 유틸 - 텍스트 박스 정렬(요구안) */
+    .text-box { max-width: 72ch; margin-left: auto; margin-right: auto; padding: 0 1rem; }
+    .text-box.text-left  { text-align: left;  margin-left: 0; margin-right: 0; }
+    .text-box.text-center{ text-align: center; }
 
     /* 5) 디버그용 */
     body.debug-align-box .text-box {
@@ -4293,11 +4322,6 @@
      - 섹션/카드 클래스명에 따라 자동 정렬 방향 지정
   */
   (function() {
-    // 비상 중단: 자동 래핑이 레이아웃을 깨는 케이스가 있어 일시 비활성화
-    if (true) {
-      console.log('[TextBoxAlign] disabled for stability');
-      return;
-    }
     const candidates = document.querySelectorAll('h1,h2,h3,h4,h5,h6,p,span,small,label');
 
     candidates.forEach(el => {
@@ -4307,6 +4331,7 @@
       // 특정 영역별 자동 정렬 규칙
       let hAlign = 'align-center';
       let vAlign = 'align-middle';
+      let leftRightClass = 'text-center';
 
       const parent = el.closest('.card, .personal-data-card, .content-card, .library-card, .meal-card, .hall-card');
       const header = el.closest('.intro-section, .section-header, .promotion-section, .outro-section');
@@ -4315,14 +4340,16 @@
       if (parent && !header) {
         hAlign = 'align-left';
         vAlign = 'align-middle';
+        leftRightClass = 'text-left';
       } else if (header) {
         hAlign = 'align-center';
         vAlign = 'align-middle';
+        leftRightClass = 'text-center';
       }
 
       // 감싸는 div 생성
       const wrapper = document.createElement('div');
-      wrapper.classList.add('text-box', hAlign, vAlign);
+      wrapper.classList.add('text-box', hAlign, vAlign, leftRightClass);
 
       // 요소 이동
       el.parentNode.insertBefore(wrapper, el);
@@ -4420,6 +4447,34 @@
       .hall-cards-wrapper,
       .mock-test-cards { display: flex !important; }
     }
+  </style>
+  
+  <!-- VIEWPORT OVERRIDES: 모바일 강제 모드에서 데스크탑 변화를 무력화 -->
+  <style id="viewport-mobile-overrides">
+    /* 모바일 강제 모드: 어떤 폭에서도 모바일 레이아웃 유지 */
+    [data-viewport="mobile"] .content-card { flex-direction: column !important; }
+    [data-viewport="mobile"] .personal-data-wrapper { flex-direction: column !important; }
+    [data-viewport="mobile"] .favorite-content-cards,
+    [data-viewport="mobile"] .hall-cards-wrapper,
+    [data-viewport="mobile"] .mock-test-cards { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; gap: 1rem !important; }
+    [data-viewport="mobile"] .content-card-item { flex: 0 0 280px !important; min-width: 280px !important; }
+    [data-viewport="mobile"] .mock-test-card { flex: 0 0 90vw !important; min-width: 280px !important; }
+    [data-viewport="mobile"] .grid-cols-2 { grid-template-columns: 1fr !important; }
+    /* Tailwind 유틸 방어 (있을 경우) */
+    [data-viewport="mobile"] .md\:flex { display: block !important; }
+    [data-viewport="mobile"] .md\:flex-row { flex-direction: column !important; }
+    [data-viewport="mobile"] .md\:grid-cols-2 { grid-template-columns: 1fr !important; }
+  </style>
+  
+  <!-- AOS/애니메이션 잘림 방지: 필요한 상위 컨테이너는 visible -->
+  <style id="aos-overflow-fix">
+    .outro-services,
+    .promotion-carousel-wrapper,
+    .hours-card,
+    .content-card,
+    .personal-data-card,
+    .ta-card,
+    .personal-ta-card { overflow: visible; }
   </style>
   <!-- FORCE MOBILE MODE (optional): 모든 화면을 모바일 레이아웃/타이포로 강제 -->
   <style id="force-mobile-mode">
