@@ -4241,15 +4241,28 @@
     html.force-mobile .hours-content,
     html.force-mobile .library-content-overlay,
     html.force-mobile .content-card,
-    html.force-mobile .personal-data-wrapper,
-    html.force-mobile .favorite-content-cards,
-    html.force-mobile .mock-test-cards { 
+    html.force-mobile .personal-data-wrapper { 
       display: flex !important; flex-direction: column !important; gap: 1rem;
     }
 
-    /* 가로 캐러셀 유지 대상은 원래 규칙 존중 */
+    /* 캐러셀/가로 스크롤 섹션: 모바일 방식 유지 (사라짐/깨짐 방지) */
     html.force-mobile .favorite-content-cards,
-    html.force-mobile .mock-test-cards { flex-direction: row !important; overflow-x: auto !important; }
+    html.force-mobile .mock-test-cards,
+    html.force-mobile .hall-cards-wrapper { 
+      display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; 
+      overflow-x: auto !important; gap: 1rem;
+      -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
+    }
+    html.force-mobile .content-card-item { flex: 0 0 auto !important; width: 280px !important; }
+    html.force-mobile .mock-test-card { flex: 0 0 auto !important; width: 90vw !important; min-width: 280px !important; }
+    html.force-mobile .hall-cards-grid { display: flex !important; gap: 1rem !important; }
+
+    /* 카드 배경 이미지 시인성(강화) */
+    html.force-mobile .mock-test-card .personal-data-bg { background-size: 60% !important; opacity: 0.3 !important; }
+
+    /* 그래프 섹션: 모바일과 동일하게 가로 스크롤 허용 */
+    html.force-mobile .bar-chart-container,
+    html.force-mobile .personal-subject-chart-container { overflow-x: auto !important; gap: 0.75rem; }
   </style>
 
   <script>
