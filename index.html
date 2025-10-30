@@ -54,27 +54,7 @@
       --fw-bold: 700;
     }
     
-    @media (min-width: 768px) { /* 태블릿 */
-      :root {
-        --fs-web-title: 6.375rem;     /* 102px - 20% 증가 */
-        --fs-header: 3.375rem;        /* 54px - 20% 증가 */
-        --fs-subtitle-large: 1.5rem;  /* 24px - 20% 증가 */
-        --fs-number: 2.25rem;         /* 36px - 20% 증가 */
-        --fs-body: 1.125rem;          /* 18px - 12.5% 증가 */
-        --fs-caption: 1rem;           /* 16px - 14% 증가 */
-      }
-    }
-    
-    @media (min-width: 1280px) { /* 데스크탑 */
-      :root {
-        --fs-web-title: 7.96875rem;   /* 127.5px - 50% 증가 */
-        --fs-header: 4.21875rem;      /* 67.5px - 50% 증가 */
-        --fs-subtitle-large: 1.875rem; /* 30px - 50% 증가 */
-        --fs-number: 2.8125rem;       /* 45px - 50% 증가 */
-        --fs-body: 1.25rem;           /* 20px - 25% 증가 */
-        --fs-caption: 1.125rem;       /* 18px - 28% 증가 */
-      }
-    }
+    /* 태블릿/데스크탑 증분 삭제: 모바일 고정 */
     
     /* 아이폰 16 Pro 기준 유틸리티 클래스 */
     .text-web-title { 
@@ -2644,8 +2624,8 @@
     }
   </style>
 
-  <!-- === DESKTOP LAYOUT FIXES (≥1024px / ≥1280px) === -->
-  <style id="desktop-fixes">
+  <!-- === DESKTOP LAYOUT FIXES 삭제 === -->
+  <style id="desktop-fixes" disabled>
     /* 1) 컨테이너 최대폭 & 중앙 정렬 */
     @media (min-width: 1024px) {
       .container { max-width: 1100px; margin-left: auto; margin-right: auto; }
@@ -4964,8 +4944,8 @@
     };
   </script>
 
-  <!-- DESKTOP RESCUE PACK -->
-  <style id="desktop-rescue-pack">
+  <!-- DESKTOP RESCUE PACK 삭제 -->
+  <style id="desktop-rescue-pack" disabled>
     /* 0) 공통 안전장치 */
     * { box-sizing: border-box; }
     html, body { overflow-x: hidden; }
