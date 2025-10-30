@@ -1546,6 +1546,7 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       margin-top: 2rem;
       margin-bottom: 0;
+      min-height: 260px;
     }
     
     /* 바 차트 스크롤 최적화 */
@@ -1555,8 +1556,9 @@
       align-items: flex-end;
       gap: 1rem;
       margin-bottom: 0;
-      overflow-x: hidden;
+      overflow-x: auto;
       padding: 0 1rem;
+      min-height: 180px;
     }
     
     .bar-chart-container::-webkit-scrollbar {
@@ -2102,6 +2104,8 @@
     .monthly-chart-card canvas {
       width: 100%;
       height: auto;
+      display: block;
+      min-height: 220px;
     }
     
     .monthly-ta-message {
@@ -4115,8 +4119,11 @@
       
       // Get device pixel ratio for crisp rendering
       const dpr = window.devicePixelRatio || 1;
-      const displayWidth = canvas.clientWidth;
-      const displayHeight = canvas.clientHeight;
+      let displayWidth = canvas.clientWidth;
+      let displayHeight = canvas.clientHeight;
+      // Fallback: if client size is 0 (e.g., not yet laid out), use attributes
+      if (!displayWidth) displayWidth = canvas.getAttribute('width') ? parseInt(canvas.getAttribute('width'), 10) : 800;
+      if (!displayHeight) displayHeight = canvas.getAttribute('height') ? parseInt(canvas.getAttribute('height'), 10) : 300;
       
       // Set actual canvas size accounting for device pixel ratio
       canvas.width = displayWidth * dpr;
@@ -4255,6 +4262,16 @@
         }, { threshold: 0.3 });
         
         chartsObserver.observe(chartsSection);
+
+        // 안전망: 1초 내 렌더 안되면 강제 1회 렌더
+        setTimeout(() => {
+          if (!chartsRendered) {
+            drawLineChart('mathChart', mathData, '#0F66F5', '수학');
+            drawLineChart('research1Chart', research1Data, '#033597', '탐구1');
+            drawLineChart('research2Chart', research2Data, '#6AA2FA', '탐구2');
+            chartsRendered = true;
+          }
+        }, 1000);
       }
     });
   </script>
