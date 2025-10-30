@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" class="force-mobile">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -4504,6 +4504,10 @@
     body[data-force-mobile="true"] #mobile-canvas video{ max-width: 100%; height: auto; display: block; }
     /* 글라이드/웹뷰 컨테이너가 더 좁을 때도 내부 콘텐츠가 넘치지 않도록 */
     body[data-force-mobile="true"] { overflow-x: hidden; }
+
+    /* force-mobile(class)와의 충돌 방지: data-force-mobile이 우선 */
+    html.force-mobile body[data-force-mobile="true"] { width: auto !important; max-width: none !important; margin: 0 auto !important; }
+    html, body { margin: 0; padding: 0; }
 
     /* 오른쪽 잘림 유발 요소들(음수 마진/절대 위치) 무력화 */
     body[data-force-mobile="true"] .content-text{ margin-left: 0 !important; }
