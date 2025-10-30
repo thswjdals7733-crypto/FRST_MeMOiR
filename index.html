@@ -772,12 +772,13 @@
     }
     
     .timeline-connector {
-      height: 2px;
-      background: #E5E7EB;
-      margin: 0 1rem;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(2,38,105,0.15), rgba(4,89,240,0.35), rgba(2,38,105,0.15));
+      margin: 0 1.25rem;
       flex: 1;
       position: relative;
-      min-width: 60px;
+      min-width: 80px;
+      border-radius: 2px;
     }
     
     .timeline-dot {
@@ -809,9 +810,10 @@
       
       .timeline-connector {
         width: 2px;
-        height: 20px;
-        margin: 0.5rem 0;
+        height: 24px;
+        margin: 0.75rem 0;
         transform: rotate(90deg);
+        background: linear-gradient(180deg, rgba(2,38,105,0.15), rgba(4,89,240,0.35), rgba(2,38,105,0.15));
       }
     }
     
@@ -2671,7 +2673,7 @@
           <div class="timeline-container flex items-center mb-8" data-aos="fade-up">
             <!-- Start Card -->
             <div class="timeline-card">
-              <p class="text-sm text-gray-600 mb-1" data-typo="본문">시대인재 N 처음 만난 날</p>
+              <p class="text-sm text-gray-600 mb-1" data-typo="본문">처음의 기록</p>
               <p class="text-lg font-semibold text-gray-800" id="startDate"><span class="param-value" data-typo="숫자">2024.02.15</span></p>
             </div>
             
@@ -2682,20 +2684,15 @@
             
             <!-- End Card -->
             <div class="timeline-card">
-              <p class="text-sm text-gray-600 mb-1" data-typo="본문">The End</p>
+              <p class="text-sm text-gray-600 mb-1" data-typo="본문">마지막 페이지</p>
               <p class="text-lg font-semibold text-gray-800" id="endDate"><span class="param-value" data-typo="숫자">2024.11.13</span></p>
             </div>
           </div>
           
-          <!-- Total Days Metric -->
-          <div class="timeline-metric" data-aos="fade-up" data-aos-delay="100">
-            총 <span class="param-value" id="totalDays" data-typo="숫자">150</span>일 함께했습니다.
-          </div>
-          
           <!-- Summary Message -->
           <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
-            <p class="text-lg" data-typo="본문">
-              <span id="studentNameOutput" class="param-value">학생 이름</span>님은, <span id="campusNameOutput" class="param-value">고사관</span> <span id="classNameOutput" class="param-value">N</span>반에서 1년간 치열하게 달려왔습니다.
+            <p class="text-lg" data-typo="본문" style="text-align:center;">
+              <span id="studentNameOutput" class="param-value">김채이</span>님은 총 <span id="totalDays" class="param-value" data-typo="숫자">150</span>일 동안 <span id="campusNameOutput" class="param-value">N</span>관 <span id="classNameOutput" class="param-value">S</span>반에서 치열하게 달려왔습니다.
             </p>
           </div>
         </div>
@@ -2720,7 +2717,7 @@
         <div class="metrics-row" data-aos="fade-up">
           <!-- Left: Check-in Content -->
           <div class="checkin-content-overlay metric axis-center">
-            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 등원 시간</div>
+            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 등원 시각</div>
             <div class="checkin-number-overlay">
               <span class="checkin-number-text param-value" id="checkInTime" data-typo="숫자">08:30</span>
             </div>
@@ -2728,7 +2725,7 @@
           
           <!-- Right: Check-out Content -->
           <div class="checkin-content-overlay metric axis-center">
-            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 하원 시간</div>
+            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 하원 시각</div>
             <div class="checkin-number-overlay">
               <span class="checkin-number-text param-value" id="checkOutTime" data-typo="숫자">22:00</span>
             </div>
