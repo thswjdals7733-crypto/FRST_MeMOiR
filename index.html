@@ -4599,6 +4599,18 @@
       } catch (e) {}
     })();
   </script>
+  <script>
+    // ?view=mobile 이면 body에 data-force-mobile="true" 적용
+    (function(){
+      try {
+        var params = new URLSearchParams(location.search);
+        if (params.get('view') === 'mobile') {
+          document.body && document.body.setAttribute('data-force-mobile','true');
+          console.log('[ForceMobile] body data-force-mobile enabled via URL');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <style>
     /* ============ TYPOGRAPHY SYSTEM ============ */
     :root {
