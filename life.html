@@ -1,0 +1,61 @@
+<section class="py-16" style="background: #FFF;">
+  <div class="container">
+    <div class="max-w-4xl mx-auto">
+      <!-- Timeline : 가로 배치 -->
+      <div style="display:flex;justify-content:center;align-items:center;gap:24px;margin:24px 0;">
+        <div>
+          <p class="k-body" data-typo="본문">처음의 기록</p>
+          <p class="k-body" style="font-weight:700;" id="startDate">2024.02.15</p>
+        </div>
+        <div style="width:40px;height:2px;background:#bbb;"></div>
+        <div>
+          <p class="k-body" data-typo="본문">마지막 페이지</p>
+          <p class="k-body" style="font-weight:700;" id="endDate">2024.11.13</p>
+        </div>
+      </div>
+      <!-- 요약 멘트 -->
+      <div class="text-center" style="margin-bottom:8px;">
+        <p class="k-body" data-typo="본문">
+          <span id="studentNameOutput">{이름}</span>님은 총 <span id="totalDays">{총 일수}</span>일 동안 <span id="campusNameOutput">{관 명}</span> <span id="classNameOutput">{반 명}</span>에서 치열하게 달려왔습니다.
+        </p>
+      </div>
+      <!-- 등하원시간 설명 멘트 -->
+      <div class="text-center" style="margin-bottom:32px;">
+        <p class="k-body" data-typo="본문">김채이님은, 평균적으로 하루를 <strong>07:43</strong>에 시작해, <strong>22:03</strong>에 하루를 마무리하였습니다.</p>
+      </div>
+      <!-- 강의 시간 -->
+      <div class="hours-content" data-aos="fade-up">
+        <div class="hours-title-overlay" data-typo="소주제대제목">김채이님이,<br>시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
+        <div class="hours-number-overlay">
+          <span class="hours-number-text param-value" id="totalHours" data-typo="숫자">1200</span>
+          <span class="hours-text-overlay" data-typo="본문">시간</span>
+        </div>
+        <div class="hours-note" style="margin-top: 0.5rem; text-align: center;" data-aos="fade-up" data-aos-delay="50">
+          <p class="k-body" data-typo="본문">노래를 평균적으로 <span id="avgSongs">nnnn</span>곡 들을 수 있는 시간이에요.<br>그 시간을 유익한 강의로 채운 만큼, 더 많은 것을 배웠을 거에요.</p>
+        </div>
+      </div>
+      <!-- 라이브러리 시간 & 몰입도 -->
+      <div class="metrics-row mb-6" data-aos="fade-up">
+        <div class="library-content-overlay metric axis-center">
+          <div class="library-title-overlay" data-typo="소주제대제목">2025년,<br>라이브러리에서 보낸 시간</div>
+          <div class="library-number-overlay">
+            <span class="library-number-text param-value" id="libraryHours" data-typo="숫자">1,200</span>
+            <span class="library-text-overlay" data-typo="본문">시간</span>
+          </div>
+          <div class="text-center text-gray-700 mt-2" data-aos="fade-up" data-aos-delay="40">
+            <p class="k-body" data-typo="본문">수능을 무려 <span id="examCount" class="param-value">nnn</span>회 치룬 시간이에요</p>
+          </div>
+        </div>
+        <div class="library-content-overlay metric axis-center">
+          <div class="library-title-overlay" data-typo="소주제대제목">그동안,<br>라이브러리에서의 평균 몰입도</div>
+          <div class="library-number-overlay">
+            <span class="library-number-text param-value" id="focusScore" aria-label="평균 몰입도" data-typo="숫자">8.7</span>
+          </div>
+          <div class="text-center text-gray-700 mt-2" data-aos="fade-up" data-aos-delay="40">
+            <p class="k-note" data-typo="주석">*김채이님의 실제 몰입도 리포트 데이터에 기반을 둔 결과입니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
