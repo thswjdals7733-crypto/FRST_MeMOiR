@@ -4253,6 +4253,25 @@
     }
   </style>
 
+  <!-- Carousel visibility + infinite loop (hall cards) -->
+  <style id="hall-cards-carousel">
+    .hall-cards-wrapper { overflow: hidden; }
+    .hall-cards-grid {
+      display: flex !important;
+      gap: 1rem;
+      flex-wrap: nowrap;
+      will-change: transform;
+      animation: hallMarquee 40s linear infinite;
+    }
+    @keyframes hallMarquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hall-cards-grid { animation: none; }
+    }
+  </style>
+
   <script>
   /* === AUTO-WRAP SCRIPT ===
      - 모든 텍스트 요소를 감싸 Figma처럼 정렬 제어 가능하게 함
@@ -4297,6 +4316,51 @@
   /* 디버그 토글 (개발자 콘솔에서 실행)
      document.body.classList.toggle('debug-align-box');
   */
+  </script>
+
+  <script>
+    // Robust infinite loop for hall cards (duplicates until >= 2x wrapper width)
+    (function() {
+      function setupHallCarousel() {
+        const wrapper = document.querySelector('.hall-cards-wrapper');
+        const grid = document.querySelector('.hall-cards-grid');
+        if (!wrapper || !grid) return;
+
+        // Reset previous clones
+        Array.from(grid.querySelectorAll('[data-clone="1"]').values()).forEach(n => n.remove());
+
+        const wrapperWidth = wrapper.getBoundingClientRect().width || 0;
+        let contentWidth = Array.from(grid.children).reduce((w, el) => w + el.getBoundingClientRect().width, 0);
+
+        if (contentWidth === 0) return;
+
+        // Duplicate nodes until content width >= 2x wrapper width (for seamless loop)
+        let safety = 0;
+        while (contentWidth < wrapperWidth * 2 && safety < 50) {
+          for (const el of Array.from(grid.children)) {
+            const clone = el.cloneNode(true);
+            clone.setAttribute('data-clone', '1');
+            grid.appendChild(clone);
+          }
+          contentWidth = Array.from(grid.children).reduce((w, el) => w + el.getBoundingClientRect().width, 0);
+          safety++;
+        }
+
+        // Restart animation
+        grid.style.animation = 'none';
+        // Force reflow
+        // eslint-disable-next-line no-unused-expressions
+        grid.offsetHeight;
+        grid.style.animation = '';
+      }
+
+      window.addEventListener('load', setupHallCarousel);
+      window.addEventListener('resize', () => {
+        // Debounce resize
+        clearTimeout(window.__hallResizeTimer);
+        window.__hallResizeTimer = setTimeout(setupHallCarousel, 150);
+      });
+    })();
   </script>
   <!-- === /TEXT BOX ALIGNMENT SYSTEM === -->
 
