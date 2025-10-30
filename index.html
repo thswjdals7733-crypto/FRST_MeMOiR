@@ -4202,7 +4202,7 @@
   </script>
 
   <!-- === TEXT BOX ALIGNMENT SYSTEM (AUTO APPLY) === -->
-  <style id="text-box-align-system">
+  <style id="text-box-align-system" disabled>
     /* 1) 기본 박스 구조 */
     .text-box {
       display: flex;
@@ -4259,6 +4259,11 @@
      - 섹션/카드 클래스명에 따라 자동 정렬 방향 지정
   */
   (function() {
+    // 비상 중단: 자동 래핑이 레이아웃을 깨는 케이스가 있어 일시 비활성화
+    if (true) {
+      console.log('[TextBoxAlign] disabled for stability');
+      return;
+    }
     const candidates = document.querySelectorAll('h1,h2,h3,h4,h5,h6,p,span,small,label');
 
     candidates.forEach(el => {
@@ -4365,6 +4370,15 @@
     .content-card-item { flex: 0 0 280px !important; min-width: 280px !important; }
     .hall-card { flex: 0 0 280px !important; min-width: 280px !important; }
     .mock-test-card { flex: 0 0 90vw !important; min-width: 280px !important; }
+
+    /* 그래프 기본 가시성 복구 */
+    .bar-chart-container,
+    .personal-subject-chart-container { 
+      display: flex !important; flex-direction: row !important; gap: 0.75rem !important; 
+      overflow-x: auto !important; align-items: flex-end !important;
+      min-height: 140px; 
+    }
+    .bar-chart-item, .personal-subject-chart-item { flex: 0 0 auto !important; }
 
     /* 4) 데스크탑에서도 캐러셀을 유지하고 싶을 때 강제 (문제 구간 우선 해결) */
     @media (min-width: 1024px) {
