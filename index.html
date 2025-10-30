@@ -4221,6 +4221,35 @@
     });
   </script>
 
+  <!-- Cards visibility/layout hardening -->
+  <style id="cards-visibility-fix">
+    /* 1) 카드 요소는 항상 표시되도록 보장 */
+    .card,
+    .personal-data-card,
+    .content-card-item,
+    .mock-test-card,
+    .hall-card,
+    .ta-card,
+    .owl-badge-card { display: block !important; visibility: visible !important; opacity: 1 !important; }
+
+    /* 2) 캐러셀/가로 리스트는 어떤 화면에서도 한 줄 유지 */
+    .favorite-content-cards,
+    .hall-cards-wrapper,
+    .mock-test-cards { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto; gap: 1rem; }
+    .hall-cards-grid { display: flex !important; gap: 1rem !important; }
+
+    /* 3) 아이템 최소 너비 보장(사라짐 방지) */
+    .content-card-item { flex: 0 0 280px !important; min-width: 280px !important; }
+    .hall-card { flex: 0 0 280px !important; min-width: 280px !important; }
+    .mock-test-card { flex: 0 0 90vw !important; min-width: 280px !important; }
+
+    /* 4) 데스크탑에서도 캐러셀을 유지하고 싶을 때 강제 (문제 구간 우선 해결) */
+    @media (min-width: 1024px) {
+      .favorite-content-cards,
+      .hall-cards-wrapper,
+      .mock-test-cards { display: flex !important; }
+    }
+  </style>
   <!-- FORCE MOBILE MODE (optional): 모든 화면을 모바일 레이아웃/타이포로 강제 -->
   <style id="force-mobile-mode">
     /* 활성화: html 요소에 .force-mobile 클래스 추가 */
