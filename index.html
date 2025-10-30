@@ -4221,6 +4221,85 @@
     });
   </script>
 
+  <!-- === TEXT BOX ALIGNMENT SYSTEM (AUTO APPLY) === -->
+  <style id="text-box-align-system">
+    /* 1) 기본 박스 구조 */
+    .text-box {
+      display: flex;
+      width: 100%;
+      height: auto;
+      min-height: 1.5em;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 2) 수평 정렬 */
+    .align-left   { justify-content: flex-start; }
+    .align-center { justify-content: center; }
+    .align-right  { justify-content: flex-end; }
+
+    /* 3) 수직 정렬 */
+    .align-top    { align-items: flex-start; }
+    .align-middle { align-items: center; }
+    .align-bottom { align-items: flex-end; }
+
+    /* 4) 텍스트 자체 스타일 */
+    .text-box > * { margin: 0; text-align: inherit; }
+
+    /* 5) 디버그용 */
+    body.debug-align-box .text-box {
+      outline: 1px dashed rgba(0,120,255,0.4);
+      background-color: rgba(0,120,255,0.04);
+    }
+  </style>
+
+  <script>
+  /* === AUTO-WRAP SCRIPT ===
+     - 모든 텍스트 요소를 감싸 Figma처럼 정렬 제어 가능하게 함
+     - 기본값: 중앙 정렬(.align-center.align-middle)
+     - 섹션/카드 클래스명에 따라 자동 정렬 방향 지정
+  */
+  (function() {
+    const candidates = document.querySelectorAll('h1,h2,h3,h4,h5,h6,p,span,small,label');
+
+    candidates.forEach(el => {
+      // 이미 text-box 안이면 스킵
+      if (el.closest('.text-box')) return;
+
+      // 특정 영역별 자동 정렬 규칙
+      let hAlign = 'align-center';
+      let vAlign = 'align-middle';
+
+      const parent = el.closest('.card, .personal-data-card, .content-card, .library-card, .meal-card, .hall-card');
+      const header = el.closest('.intro-section, .section-header, .promotion-section, .outro-section');
+
+      // 카드 내부는 좌정렬, 섹션 헤더/인트로/아웃트로는 중앙정렬
+      if (parent && !header) {
+        hAlign = 'align-left';
+        vAlign = 'align-middle';
+      } else if (header) {
+        hAlign = 'align-center';
+        vAlign = 'align-middle';
+      }
+
+      // 감싸는 div 생성
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('text-box', hAlign, vAlign);
+
+      // 요소 이동
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.appendChild(el);
+    });
+
+    console.log('[TextBoxAlign] 모든 텍스트를 .text-box로 래핑 완료.');
+  })();
+
+  /* 디버그 토글 (개발자 콘솔에서 실행)
+     document.body.classList.toggle('debug-align-box');
+  */
+  </script>
+  <!-- === /TEXT BOX ALIGNMENT SYSTEM === -->
+
   <!-- Cards visibility/layout hardening -->
   <style id="cards-visibility-fix">
     /* 1) 카드 요소는 항상 표시되도록 보장 */
