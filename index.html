@@ -203,15 +203,26 @@
       /* 라이브러리 섹션 모바일 최적화 */
       .library-content-overlay {
         padding: 2rem 0;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
       }
       
       .library-title-overlay {
         font-size: var(--fs-sm);
         margin-bottom: 1rem;
+        text-align: center !important;
       }
       
       .library-number-text {
         font-size: var(--fs-xl);
+      }
+      
+      .library-number-overlay {
+        display: flex !important;
+        justify-content: center !important;
       }
       
       /* 식사 섹션 모바일 최적화 */
@@ -1149,7 +1160,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: center !important;
       text-align: center;
     }
     
@@ -1165,7 +1176,7 @@
     .library-number-overlay {
       display: flex;
       align-items: baseline;
-      justify-content: center;
+      justify-content: center !important;
       gap: 0;
       white-space: nowrap;
     }
