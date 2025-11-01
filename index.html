@@ -2827,13 +2827,12 @@
           <div class="library-content-overlay metric axis-center">
             <!-- Header Text -->
             <div class="library-title-overlay" data-typo="소주제대제목">
-              2025년,<br>라이브러리에서<br>보낸 시간
+              그동안,<br>라이브러리에서의<br>평균 몰입도
             </div>
             
             <!-- Time Value -->
             <div class="library-number-overlay">
-              <span class="library-number-text param-value" id="libraryHours" data-typo="숫자">1,200</span>
-              <span class="library-text-overlay">시간</span>
+              <span class="library-number-text param-value" id="libraryHours" data-typo="숫자">1,200시간</span>
             </div>
           <!-- Library time body text -->
           <div class="text-center text-gray-700 mt-2" data-aos="fade-up" data-aos-delay="40">
@@ -3590,7 +3589,7 @@
     const formattedLibraryHours = new Intl.NumberFormat('ko-KR').format(libraryHours);
     const libraryHoursElement = document.getElementById('libraryHours');
     if (libraryHoursElement) {
-      libraryHoursElement.textContent = formattedLibraryHours;
+      libraryHoursElement.textContent = formattedLibraryHours + '시간';
     }
     
     // Update focus score (display as-is with one decimal place)
