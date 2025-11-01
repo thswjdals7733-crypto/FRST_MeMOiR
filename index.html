@@ -4418,6 +4418,19 @@
     body[data-force-mobile="true"] .library-bg{ left: 0 !important; width: 100% !important; }
     body[data-force-mobile="true"] .hall-cards-wrapper{ overflow-x: auto !important; }
 
+    /* 타임라인 세로 배치 - 모바일 강제 모드 */
+    body[data-force-mobile="true"] .timeline-container {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    body[data-force-mobile="true"] .timeline-connector {
+      width: 3px;
+      height: 40px;
+      margin: 1.5rem 0;
+      background: linear-gradient(180deg, rgba(2,38,105,0.3), rgba(4,89,240,0.7), rgba(2,38,105,0.3));
+    }
+    
     /* 컨테이너 폭/패딩 강제 통일(모바일 기준) */
     body[data-force-mobile="true"] .container,
     body[data-force-mobile="true"] .section {
