@@ -738,13 +738,12 @@
     }
     
     .timeline-connector {
-      height: 3px;
-      background: linear-gradient(90deg, rgba(2,38,105,0.15), rgba(4,89,240,0.35), rgba(2,38,105,0.15));
       margin: 0 1.25rem;
-      flex: 1;
+      flex: 0 0 auto;
       position: relative;
-      min-width: 80px;
-      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .timeline-dot {
@@ -756,6 +755,12 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+    }
+    
+    .sandglass-image {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
     }
     
     /* 타임라인 컨테이너 반응형 */
@@ -775,10 +780,12 @@
       }
       
       .timeline-connector {
-        width: 3px;
-        height: 40px;
         margin: 1.5rem 0;
-        background: linear-gradient(180deg, rgba(2,38,105,0.3), rgba(4,89,240,0.7), rgba(2,38,105,0.3));
+      }
+      
+      .sandglass-image {
+        width: 32px;
+        height: 32px;
       }
     }
     
@@ -2739,9 +2746,9 @@
               <p class="text-lg font-semibold text-gray-800" id="startDate"><span class="param-value" data-typo="숫자">2024.02.15</span></p>
             </div>
             
-            <!-- Connector Line -->
+            <!-- Sandglass Image -->
             <div class="timeline-connector">
-              <div class="timeline-dot"></div>
+              <img src="Timer.png" alt="모래시계" class="sandglass-image" />
             </div>
             
             <!-- End Card -->
