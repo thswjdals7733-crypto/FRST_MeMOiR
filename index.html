@@ -1254,7 +1254,7 @@
       display: flex;
       align-items: baseline;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0;
     }
     
     .meal-number-text {
@@ -2782,8 +2782,7 @@
         <div class="hours-content" data-aos="fade-up">
           <div class="hours-title-overlay" data-typo="소주제대제목">김채이님이,<br>시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
           <div class="hours-number-overlay">
-            <span class="hours-number-text param-value" id="totalHours" data-typo="숫자">1200</span>
-            <span class="hours-text-overlay" data-typo="본문">시간</span>
+            <span class="hours-number-text param-value" id="totalHours" data-typo="숫자">1200<span style="margin-left: 0;">시간</span></span>
           </div>
           <div class="hours-note" style="margin-top: 0.5rem; text-align: center;" data-aos="fade-up" data-aos-delay="50">
             <p class="k-body" data-typo="본문">노래를 평균적으로 <span id="avgSongs">nnnn</span>곡 들을 수 있는 시간이에요.<br>그 시간을 유익한 강의로 채운 만큼, 더 많은 것을 배웠을 거에요.</p>
@@ -2805,13 +2804,12 @@
           <div class="library-content-overlay metric axis-center">
             <!-- Header Text -->
             <div class="library-title-overlay" data-typo="소주제대제목">
-              2025년,<br>라이브러리에서 보낸 시간
+              그동안,<br>라이브러리에서의<br>평균 몰입도
             </div>
             
             <!-- Time Value -->
             <div class="library-number-overlay">
-              <span class="library-number-text param-value" id="libraryHours" data-typo="숫자">1,200</span>
-              <span class="library-text-overlay" data-typo="본문">시간</span>
+              <span class="library-number-text param-value" id="libraryHours" data-typo="숫자">1,200<span style="margin-left: 0;">시간</span></span>
             </div>
           <!-- Library time body text -->
           <div class="text-center text-gray-700 mt-2" data-aos="fade-up" data-aos-delay="40">
@@ -2858,8 +2856,7 @@
           
           <!-- Meal Count Value -->
           <div class="meal-number-overlay">
-            <span class="meal-number-text param-value" id="mealCount" data-typo="숫자">1,234</span>
-            <span class="meal-text-overlay" data-typo="본문">회</span>
+            <span class="meal-number-text param-value" id="mealCount" data-typo="숫자">1,234<span style="margin-left: 0;">회</span></span>
           </div>
           <!-- Meal notes/body -->
           <div class="text-center text-gray-700 mt-2">
@@ -3560,12 +3557,16 @@
     // Update hours section with formatted number
     const formattedTotalHours = new Intl.NumberFormat('ko-KR').format(totalHours);
     const totalHoursElement = document.getElementById('totalHours');
-    if (totalHoursElement) totalHoursElement.textContent = formattedTotalHours;
+    if (totalHoursElement) {
+      totalHoursElement.innerHTML = formattedTotalHours + '<span style="margin-left: 0;">시간</span>';
+    }
     
     // Update library hours section with formatted number
     const formattedLibraryHours = new Intl.NumberFormat('ko-KR').format(libraryHours);
     const libraryHoursElement = document.getElementById('libraryHours');
-    if (libraryHoursElement) libraryHoursElement.textContent = formattedLibraryHours;
+    if (libraryHoursElement) {
+      libraryHoursElement.innerHTML = formattedLibraryHours + '<span style="margin-left: 0;">시간</span>';
+    }
     
     // Update focus score (display as-is with one decimal place)
     const focusScoreValue = parseFloat(focusScore).toFixed(1);
@@ -3578,7 +3579,9 @@
     // Update meal section with formatted number
     const formattedMealCount = new Intl.NumberFormat('ko-KR').format(mealCount);
     const mealCountElement = document.getElementById('mealCount');
-    if (mealCountElement) mealCountElement.textContent = formattedMealCount;
+    if (mealCountElement) {
+      mealCountElement.innerHTML = formattedMealCount + '<span style="margin-left: 0;">회</span>';
+    }
     
     // Update favorite menu
     const mealCampusNameElement = document.getElementById('mealCampusName');
