@@ -1006,6 +1006,7 @@
       justify-content: center;
       gap: 0;
       flex: 1 1 100%;
+      white-space: nowrap;
     }
     
     .hours-number-text {
@@ -1116,6 +1117,7 @@
       align-items: baseline;
       justify-content: center;
       gap: 0;
+      white-space: nowrap;
     }
     
     .library-number-text {
@@ -1270,6 +1272,7 @@
       align-items: baseline;
       justify-content: center;
       gap: 0;
+      white-space: nowrap;
     }
     
     .meal-number-text {
@@ -5266,7 +5269,14 @@
     .axis-center .library-number-overlay,
     .axis-center .checkin-number-overlay,
     .axis-center .content-number,
-    .axis-center .meal-number-overlay { display: inline-flex; align-items: baseline; justify-content: center; gap: 8px; text-align: center; }
+    .axis-center .meal-number-overlay {
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+      white-space: nowrap;
+    }
     .axis-center .library-text-overlay,
     .axis-center .meal-text-overlay,
     .axis-center .content-number-unit { font-weight: 300; opacity: .9; }
@@ -5287,6 +5297,7 @@
       align-items: baseline;
       justify-content: center;
       gap: 0.25em;
+      white-space: nowrap;
     }
     
     /* 디버그: 가상 중앙선 표시 */
@@ -5384,23 +5395,16 @@
         min-height: 300px;
       }
     }
+    
     body[data-force-mobile="true"] .intro-title {
-  font-size: 3.75rem !important;
-  max-width: 100vw;
-  margin-bottom: 1rem !important;
-  word-break: keep-all;
-  line-height: 1.05;
-}
+      font-size: 3.75rem !important;
+      max-width: 100vw;
+      margin-bottom: 1rem !important;
+      word-break: keep-all;
+      line-height: 1.05;
+    }
   </style>
 
   </div>
 </body>
 </html>
-<div data-include="./partials/intro.html"></div>
-<div data-include="./partials/life.html"></div>
-<div data-include="./partials/meal.html"></div>
-<div data-include="./partials/ta.html"></div>
-<div data-include="./partials/contents.html"></div>
-<div data-include="./partials/owl-badge.html"></div>
-<div data-include="./partials/outro.html"></div>
-<script src="./js/include.js"></script>
