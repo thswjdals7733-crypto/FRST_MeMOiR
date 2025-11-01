@@ -2114,6 +2114,23 @@
       height: 120px;
     }
     
+    /* 시그니처 발행 및 앱 서비스 섹션 - 카드 없이 이미지만 표시 */
+    .promotion-section:has(.promotion-item img[alt*="AFTERPACK"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="MAGAZINE"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="항해일지"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="보이저레터"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="SDIJN"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="CONTENTS"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="TIMER"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="TA"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="SCHEDULE"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="EBOOK"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="ebook"]) .promotion-item {
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    
     .promotion-item img {
       height: 100%;
       width: auto;
