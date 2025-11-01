@@ -2779,7 +2779,7 @@
       <a href="#hours" class="nav-item">강의실</a>
       <a href="#library" class="nav-item">라이브러리</a>
       <a href="#meal" class="nav-item">급식</a>
-      <a href="#personal" class="nav-item">개인 데이터</a>
+      <a href="#personal" class="nav-item">콘텐츠</a>
       <a href="#ta" class="nav-item">TA</a>
       <a href="#badges" class="nav-item">배지</a>
       <a href="#outro" class="nav-item">마무리</a>
@@ -2820,7 +2820,14 @@
             
             <!-- Sandglass Image -->
             <div class="timeline-connector">
-              <img src="Timer.png" alt="모래시계" class="sandglass-image" />
+              <svg class="sandglass-image" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 15 L70 15 L65 40 L35 40 Z" fill="#0459F0" opacity="0.3"/>
+                <path d="M30 15 L70 15 L65 20 L35 20 Z" fill="#0459F0"/>
+                <path d="M35 40 L65 40 L65 45 L35 45 Z" fill="#0459F0"/>
+                <path d="M30 85 L70 85 L65 60 L35 60 Z" fill="#0459F0" opacity="0.3"/>
+                <path d="M30 85 L70 85 L65 80 L35 80 Z" fill="#0459F0"/>
+                <path d="M35 60 L65 60 L65 55 L35 55 Z" fill="#0459F0"/>
+              </svg>
             </div>
             
             <!-- End Card -->
@@ -2833,7 +2840,7 @@
           <!-- Summary Message -->
           <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
             <p class="k-body" data-typo="본문" style="text-align:center;">
-              <span id="studentNameOutput" class="student-name-bold">김채이</span>님은 총 <span id="totalDays" class="param-value">150</span>일 동안 <span id="campusNameOutput" class="param-value">N</span>관 <span id="classNameOutput" class="param-value">S</span>반에서 치열하게 달려왔습니다.
+              <span id="studentNameOutput" class="student-name-bold">김채이</span>님은 총 <span id="totalDays" class="param-value">150</span>일 동안 <span id="campusNameOutput" class="param-value">N</span><span id="classNameOutput" class="param-value">S</span>반에서 치열하게 달려왔습니다.
             </p>
           </div>
 
@@ -2909,7 +2916,7 @@
       <div class="max-w-4xl mx-auto">
         
         <!-- Library Time and Focus Cards -->
-        <div class="metrics-row mb-6" data-aos="fade-up">
+        <div class="mb-6" data-aos="fade-up" style="display: flex; flex-direction: column; gap: 2rem;">
           <!-- Left Library Time Content -->
           <div class="library-content-overlay metric axis-center">
             <!-- Header Text -->
