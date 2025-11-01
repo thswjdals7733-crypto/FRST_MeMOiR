@@ -412,8 +412,8 @@
         flex-direction: column;
         gap: 0.75rem;
         overflow-y: auto;
-        overflow-x: hidden;
-        padding: 0 1rem;
+        overflow-x: visible;
+        padding: 1rem;
         max-height: 400px;
         scrollbar-width: thin;
         scrollbar-color: #CBD5E0 #F7FAFC;
@@ -440,6 +440,8 @@
         flex-direction: row;
         align-items: center;
         gap: 0.75rem;
+        min-height: 40px;
+        padding: 0.5rem 0;
       }
       
       .personal-subject-label {
@@ -460,7 +462,9 @@
       
       .personal-subject-value {
         font-size: 0.75rem;
-        right: 4px;
+        min-width: 60px;
+        text-align: right;
+        flex-shrink: 0;
       }
       
       /* 월별 차트 모바일 최적화 */
@@ -1926,8 +1930,8 @@
       justify-content: center;
       align-items: stretch;
       overflow-y: auto;
-      overflow-x: hidden;
-      padding: 0 1rem;
+      overflow-x: visible;
+      padding: 1rem;
       max-height: 400px;
       scrollbar-width: thin;
       scrollbar-color: #CBD5E0 #F7FAFC;
@@ -1958,6 +1962,8 @@
       flex-direction: row;
       align-items: center;
       gap: 0.5rem;
+      min-height: 50px;
+      padding: 0.75rem 0;
     }
     
     .personal-subject-label {
@@ -1994,8 +2000,9 @@
       font-weight: var(--fw-light);
       color: #1F2937;
       white-space: nowrap;
-      min-width: 60px;
+      min-width: 80px;
       text-align: right;
+      flex-shrink: 0;
     }
     
     .personal-subject-ta-message {
