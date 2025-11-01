@@ -593,8 +593,8 @@
       }
       
       .hall-card {
-        flex: 0 0 200px;
-        min-width: 200px;
+        flex: 0 0 calc(50% - 1rem);
+        min-width: calc(50% - 1rem);
         min-height: 220px;
         padding: 1.5rem;
       }
@@ -1385,7 +1385,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-9 * 200px - 9rem));
+        transform: translateX(calc(-9 * 50% - 9rem));
       }
     }
     
@@ -1420,8 +1420,8 @@
       align-items: center;
       transition: transform 0.2s ease;
       box-sizing: border-box;
-      flex: 0 0 200px;
-      min-width: 200px;
+      flex: 0 0 calc(50% - 1rem);
+      min-width: calc(50% - 1rem);
     }
     
     .hall-card:hover {
