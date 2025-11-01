@@ -1988,15 +1988,12 @@
     }
     
     .personal-subject-value {
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translateY(-50%);
       font-size: 1rem;
       font-weight: var(--fw-light);
-      color: #FFFFFF;
+      color: #1F2937;
       white-space: nowrap;
-      z-index: 10;
+      min-width: 60px;
+      text-align: right;
     }
     
     .personal-subject-ta-message {
@@ -2137,6 +2134,18 @@
       background: transparent;
       box-shadow: none;
       border-radius: 0;
+      height: 150px !important;
+    }
+    
+    /* 시그니처 발행 섹션 - 카드 없이 이미지만 표시 */
+    .promotion-section:has(.promotion-item img[alt*="AFTERPACK"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="MAGAZINE"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="항해일지"]) .promotion-item,
+    .promotion-section:has(.promotion-item img[alt*="보이저레터"]) .promotion-item {
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+      height: 150px !important;
     }
     
     .promotion-item img {
@@ -3235,7 +3244,8 @@
           <p style="margin-top:.5rem;">
             <span class="param-value" id="totalTAQuestions" data-typo="숫자">10,000</span>
           </p>
-          <p class="k-body" data-typo="본문" style="margin-top:.75rem;"><span class="student-name-bold">김채이</span>님과 함께, 많은 부엉이들이 TA앱을 통해 새롭게 배워 나갔습니다.</p>
+          <br><br>
+          <p class="k-body" data-typo="본문"><span class="student-name-bold">김채이</span>님과 함께, 많은 부엉이들이 TA앱을 통해 새롭게 배워 나갔습니다.</p>
         </div>
 
 
@@ -3296,42 +3306,37 @@
             <div class="personal-subject-chart-item">
               <div class="personal-subject-label">국어</div>
               <div class="personal-subject-bar-wrapper">
-                <div class="personal-subject-bar" id="personalKoreanBar">
-                  <div class="personal-subject-value param-value" id="personalKoreanQuestions">0</div>
-                </div>
+                <div class="personal-subject-bar" id="personalKoreanBar"></div>
               </div>
+              <div class="personal-subject-value param-value" id="personalKoreanQuestions">0</div>
             </div>
             <div class="personal-subject-chart-item">
               <div class="personal-subject-label">수학</div>
               <div class="personal-subject-bar-wrapper">
-                <div class="personal-subject-bar" id="personalMathBar">
-                  <div class="personal-subject-value param-value" id="personalMathQuestions">0</div>
-                </div>
+                <div class="personal-subject-bar" id="personalMathBar"></div>
               </div>
+              <div class="personal-subject-value param-value" id="personalMathQuestions">0</div>
             </div>
             <div class="personal-subject-chart-item">
               <div class="personal-subject-label">영어</div>
               <div class="personal-subject-bar-wrapper">
-                <div class="personal-subject-bar" id="personalEnglishBar">
-                  <div class="personal-subject-value param-value" id="personalEnglishQuestions">0</div>
-                </div>
+                <div class="personal-subject-bar" id="personalEnglishBar"></div>
               </div>
+              <div class="personal-subject-value param-value" id="personalEnglishQuestions">0</div>
             </div>
             <div class="personal-subject-chart-item">
               <div class="personal-subject-label">탐구1</div>
               <div class="personal-subject-bar-wrapper">
-                <div class="personal-subject-bar" id="personalResearch1Bar">
-                  <div class="personal-subject-value param-value" id="personalResearch1Questions">0</div>
-                </div>
+                <div class="personal-subject-bar" id="personalResearch1Bar"></div>
               </div>
+              <div class="personal-subject-value param-value" id="personalResearch1Questions">0</div>
             </div>
             <div class="personal-subject-chart-item">
               <div class="personal-subject-label">탐구2</div>
               <div class="personal-subject-bar-wrapper">
-                <div class="personal-subject-bar" id="personalResearch2Bar">
-                  <div class="personal-subject-value param-value" id="personalResearch2Questions">0</div>
-                </div>
+                <div class="personal-subject-bar" id="personalResearch2Bar"></div>
               </div>
+              <div class="personal-subject-value param-value" id="personalResearch2Questions">0</div>
             </div>
           </div>
         </div>
@@ -3684,6 +3689,8 @@
     const personalEnglishQuestions = get('personalEnglishQuestions', '80');
     const personalResearch1Questions = get('personalResearch1Questions', '60');
     const personalResearch2Questions = get('personalResearch2Questions', '50');
+    const taMeetHours = get('taMeetHours', '40');
+    const saMeetHours = get('saMeetHours', '20');
     
     // Update DOM elements
     const studentNameElement = document.getElementById('studentNameOutput');
@@ -3804,6 +3811,16 @@
     const studentNameForMonthlyElement = document.getElementById('studentNameForMonthly');
     if (studentNameForMonthlyElement) {
       studentNameForMonthlyElement.textContent = studentName;
+    }
+    
+    // Update TA/SA Meet hours
+    const taMeetHoursElement = document.getElementById('taMeetHours');
+    if (taMeetHoursElement) {
+      taMeetHoursElement.textContent = taMeetHours;
+    }
+    const saMeetHoursElement = document.getElementById('saMeetHours');
+    if (saMeetHoursElement) {
+      saMeetHoursElement.textContent = saMeetHours;
     }
     
     // Personal Subject TA Questions Animation
