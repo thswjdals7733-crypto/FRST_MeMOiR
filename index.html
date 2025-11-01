@@ -38,7 +38,7 @@
     :root {
       /* 아이폰 16 Pro 모바일 (기본) - 워딩 기준 */
       --fs-web-title: 5.3125rem;  /* 85px - "2025 memoir" 웹 제목 */
-      --fs-header: 2.8125rem;     /* 45px - 머리글 */
+      --fs-header: 2.25rem;       /* 36px - 머리글 (45px의 80%) */
       --fs-subtitle-large: 1.25rem; /* 20px - 소주제대제목 */
       --fs-number: 1.875rem;      /* 30px - 숫자 (볼드체) */
       --fs-body: 1rem;            /* 16px - 본문 */
@@ -2722,18 +2722,13 @@
           
           <!-- Summary Message -->
           <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
-            <p class="text-lg" data-typo="본문" style="text-align:center;">
+            <p class="k-body" data-typo="본문" style="text-align:center;">
               <span id="studentNameOutput" class="param-value">김채이</span>님은 총 <span id="totalDays" class="param-value" data-typo="숫자">150</span>일 동안 <span id="campusNameOutput" class="param-value">N</span>관 <span id="classNameOutput" class="param-value">S</span>반에서 치열하게 달려왔습니다.
             </p>
           </div>
 
         </div>
         
-        <!-- Check-in/out section body text -->
-        <div class="text-center text-gray-700 mt-4" data-aos="fade-up" data-aos-delay="120">
-          <p class="k-body" data-typo="본문">김채이님은, 평균적으로 하루를 <strong>07:43</strong>에 시작해, <strong>22:03</strong>에 하루를 마무리하였습니다.</p>
-        </div>
-
       </div>
     </div>
   </section>
@@ -2771,7 +2766,7 @@
         
         <!-- Check-in/out section body text -->
         <div class="text-center text-gray-700 mt-4" data-aos="fade-up" data-aos-delay="120">
-          <p class="k-body" data-typo="본문">김채이님은, 평균적으로 하루를 <strong>07:43</strong>에 시작해, <strong>22:03</strong>에 하루를 마무리하였습니다.</p>
+          <p class="k-body" data-typo="본문">김채이님은, 평균적으로 하루를 <strong class="param-value">07:43</strong>에 시작해, <strong class="param-value">22:03</strong>에 하루를 마무리하였습니다.</p>
         </div>
         
       </div>
@@ -4620,7 +4615,7 @@
     /* ============ TYPOGRAPHY SYSTEM ============ */
     :root {
       /* iPhone 16 Pro (모바일) 기준 사이즈 */
-      --fs-head:   45px;  /* 머리글 */
+      --fs-head:   36px;  /* 머리글 (45px의 80%) */
       --fs-sub:    20px;  /* 소주제대제목 */
       --fs-num:    30px;  /* 숫자(볼드) */
       --fs-body:   16px;  /* 본문 */
