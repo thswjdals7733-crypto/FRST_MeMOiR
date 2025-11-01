@@ -2734,20 +2734,20 @@
         </div>
         
         <!-- Check-in/Check-out Content -->
-        <div class="metrics-row" data-aos="fade-up">
+        <div class="checkin-out-container" data-aos="fade-up">
           <!-- Left: Check-in Content -->
-          <div class="checkin-content-overlay metric axis-center">
-            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 등원 시각</div>
-            <div class="checkin-number-overlay">
-              <span class="checkin-number-text param-value" id="checkInTime" data-typo="숫자">08:30</span>
+          <div class="checkin-out-box">
+            <div class="checkin-out-title" data-typo="소주제대제목">평균 등원 시각</div>
+            <div class="checkin-out-value">
+              <span class="param-value" id="checkInTime" data-typo="숫자">08:30</span>
             </div>
           </div>
           
           <!-- Right: Check-out Content -->
-          <div class="checkin-content-overlay metric axis-center">
-            <div class="checkin-title-overlay" data-typo="소주제대제목">평균 하원 시각</div>
-            <div class="checkin-number-overlay">
-              <span class="checkin-number-text param-value" id="checkOutTime" data-typo="숫자">22:00</span>
+          <div class="checkin-out-box">
+            <div class="checkin-out-title" data-typo="소주제대제목">평균 하원 시각</div>
+            <div class="checkin-out-value">
+              <span class="param-value" id="checkOutTime" data-typo="숫자">22:00</span>
             </div>
           </div>
         </div>
@@ -5106,6 +5106,40 @@
      document.body.classList.toggle('debug-grid');
   */
   </script>
+
+  <!-- 등하원 시간 섹션 스타일 -->
+  <style id="checkin-out-section">
+    .checkin-out-container {
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      width: 100%;
+    }
+    
+    .checkin-out-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    
+    .checkin-out-title {
+      font-size: var(--fs-subtitle-large);
+      font-weight: var(--fw-light);
+      line-height: 1.4;
+      color: #1F2937;
+      margin-bottom: 1.5rem;
+    }
+    
+    .checkin-out-value {
+      font-size: var(--fs-number);
+      font-weight: var(--fw-bold);
+      color: #0459F0;
+      line-height: 1;
+    }
+  </style>
 
   <!-- Axis center alignment overrides -->
   <style id="axis-center-align">
