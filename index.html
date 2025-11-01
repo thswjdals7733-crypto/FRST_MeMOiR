@@ -1371,7 +1371,7 @@
     .hall-cards-grid {
       display: flex;
       gap: 1rem;
-      animation: scrollCards 40s linear infinite;
+      animation: scrollCards 15s linear infinite;
       will-change: transform;
       width: fit-content;
     }
@@ -1385,7 +1385,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-9 * 14.28% - 0.86rem));
+        transform: translateX(calc(-4 * 50% - 1rem));
       }
     }
     
@@ -1420,8 +1420,8 @@
       align-items: center;
       transition: transform 0.2s ease;
       box-sizing: border-box;
-      flex: 0 0 300px;
-      min-width: 300px;
+      flex: 0 0 calc(50% - 0.5rem);
+      min-width: calc(50% - 0.5rem);
     }
     
     .hall-card:hover {
@@ -1473,10 +1473,11 @@
       font-weight: var(--fw-light);
       line-height: var(--lh-normal);
       color: #000000;
-      text-align: left;
-      margin-left: -17%;
+      text-align: center;
+      margin-left: 0;
       flex: 0 0 50%;
       letter-spacing: -0.01em;
+      width: 100%;
     }
     
     .content-text span {
@@ -2973,7 +2974,7 @@
             </div>
             <!-- Library focus note -->
             <div class="text-center text-gray-700 mt-2" data-aos="fade-up" data-aos-delay="40">
-              <p class="k-note" data-typo="주석">*<span class="student-name-bold">김채이</span>님의 실제 몰입도 리포트 데이터에 기반을 둔 결과입니다.</p>
+              <p class="k-note" data-typo="주석">*김채이님의 실제 몰입도 리포트 데이터에 기반을 둔 결과입니다.</p>
             </div>
           </div>
         </div>
@@ -3226,6 +3227,7 @@
           <p class="k-note" data-typo="주석" style="margin-top:.5rem;">*실제 TA앱에 등록된 데이터 기반입니다.</p>
         </div>
 
+        <br><br>
         
         <!-- Total TA questions (centered, no card) -->
         <div class="text-center" data-aos="fade-up">
@@ -3247,7 +3249,7 @@
             </div>
           </div>
           <div class="metric axis-center">
-            <div class="metric-title" data-typo="소주제대제목">SA Meet</div>
+            <div class="metric-title" data-typo="소주제대제목">SA</div>
             <div class="metric-row">
               <div class="metric-value" id="saMeetHours" data-typo="숫자">nn</div>
               <div class="metric-unit" data-typo="본문">시간</div>
