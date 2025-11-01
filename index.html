@@ -3878,12 +3878,17 @@
       });
     }
     
-    // Initialize all personal bars to 0 width first
+    // Initialize all personal bars to 0 width first and set initial values
     personalSubjects.forEach(subject => {
       const barElement = document.getElementById(subject.barId);
+      const labelElement = document.getElementById(subject.labelId);
       if (barElement) {
         barElement.style.width = '0%';
         console.log(`Initialized ${subject.id} bar to 0%`);
+      }
+      if (labelElement) {
+        labelElement.textContent = new Intl.NumberFormat('ko-KR').format(parseInt(subject.value));
+        console.log(`Initialized ${subject.id} value to ${subject.value}`);
       }
     });
     
