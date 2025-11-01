@@ -52,6 +52,9 @@
       --fw-light: 300;
       --fw-regular: 400;
       --fw-bold: 700;
+      
+      /* 컨테이너 패딩 */
+      --container-padding: 16px;
     }
     
   
@@ -4921,11 +4924,21 @@
       display: grid;
       grid-template-columns: 1fr 1fr; /* 모바일에서도 2칸이면 좌측 정렬 유지 */
       column-gap: 24px;               /* 두 카드 간 고정 간격 */
+      width: 100%;                    /* 전체 너비 사용 */
     }
     /* .metrics-row .metric { align-items: flex-start; } - 삭제: axis-center에서 중앙 정렬 적용 */
 
     /* 5) 여백은 '정렬 보조'일 뿐: 좌우 균형만 맞춤(정렬은 text-align/flex가 담당) */
     .section, .container { padding-inline: 16px; }
+    
+    /* 5-1) metrics-row를 위한 컨테이너 조정: 양쪽 간격 균등화 */
+    .metrics-row {
+      margin-left: calc(-1 * var(--container-padding, 16px));
+      margin-right: calc(-1 * var(--container-padding, 16px));
+      width: calc(100% + 2 * var(--container-padding, 16px));
+      padding-left: var(--container-padding, 16px);
+      padding-right: var(--container-padding, 16px);
+    }
 
     /* 6) 디버그: 정렬/그리드 확인용 오버레이 (토글: body.debug-align) */
     body.debug-align .container, body.debug-align .section, body.debug-align .card {
@@ -5102,7 +5115,16 @@
     .axis-center .metric-value { font-weight: 700; line-height: 1.1; }
     .axis-center .metric-unit { font-weight: 300; opacity: .9; }
 
-    .metrics-row { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+    .metrics-row { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      column-gap: 24px;
+      margin-left: calc(-1 * var(--container-padding, 16px));
+      margin-right: calc(-1 * var(--container-padding, 16px));
+      width: calc(100% + 2 * var(--container-padding, 16px));
+      padding-left: var(--container-padding, 16px);
+      padding-right: var(--container-padding, 16px);
+    }
     .metrics-row .metric { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
     .metrics-row .metric .metric-row { justify-content: center; align-items: baseline; }
 
