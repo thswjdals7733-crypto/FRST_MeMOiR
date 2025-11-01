@@ -663,6 +663,12 @@
       color: #0459F0;
     }
     
+    /* 학생이름 볼드 스타일 */
+    .student-name-bold {
+      font-weight: 700;
+      color: #1F2937;
+    }
+    
     .intro-text {
       font-size: var(--fs-md);
       line-height: 1.8;
@@ -2748,7 +2754,7 @@
           <!-- Summary Message -->
           <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
             <p class="k-body" data-typo="본문" style="text-align:center;">
-              <span id="studentNameOutput" class="param-value">김채이</span>님은 총 <span id="totalDays" class="param-value">150</span>일 동안 <span id="campusNameOutput" class="param-value">N</span>관 <span id="classNameOutput" class="param-value">S</span>반에서 치열하게 달려왔습니다.
+              <span id="studentNameOutput" class="student-name-bold">김채이</span>님은 총 <span id="totalDays" class="param-value">150</span>일 동안 <span id="campusNameOutput" class="param-value">N</span>관 <span id="classNameOutput" class="param-value">S</span>반에서 치열하게 달려왔습니다.
             </p>
           </div>
 
@@ -2765,9 +2771,9 @@
         
         <!-- 생활 섹션 머리말/본문/주석 -->
         <div class="text-center mb-10" data-aos="fade-up">
-          <p class="section-header" data-typo="머리글">시대인재N과 함께한 시간들</p>
+          <p class="section-header" data-typo="머리글">The Trace of Owl Days</p>
           <p class="k-body" data-typo="본문" style="margin-top: 0.5rem;">레이스의 시작, 그리고 마지막에 도래하며</p>
-          <p class="k-note" data-typo="주석" style="margin-top: 0.75rem;">*김채이님의 실제 카드태깅 데이터에 기반을 둔 결과입니다.</p>
+          <p class="k-note" data-typo="주석" style="margin-top: 0.75rem;">*<span class="student-name-bold">김채이</span>님의 실제 카드태깅 데이터에 기반을 둔 결과입니다.</p>
         </div>
         
         <!-- Check-in/Check-out Content -->
@@ -2791,7 +2797,7 @@
         
         <!-- Check-in/out section body text -->
         <div class="text-center text-gray-700 mt-4" data-aos="fade-up" data-aos-delay="120">
-          <p class="k-body" data-typo="본문">김채이님은, 평균적으로 하루를 <strong class="param-value">07:43</strong>에 시작해, <strong class="param-value">22:03</strong>에 하루를 마무리하였습니다.</p>
+          <p class="k-body" data-typo="본문"><span class="student-name-bold">김채이</span>님은, 평균적으로 하루를 <strong class="param-value">07:43</strong>에 시작해, <strong class="param-value">22:03</strong>에 하루를 마무리하였습니다.</p>
         </div>
         
       </div>
@@ -2805,12 +2811,12 @@
         
         <!-- Hours Content -->
         <div class="hours-content" data-aos="fade-up">
-          <div class="hours-title-overlay" data-typo="소주제대제목">김채이님이,<br>시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
+          <div class="hours-title-overlay" data-typo="소주제대제목"><span class="student-name-bold">김채이</span>님이,<br>시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
           <div class="hours-number-overlay">
             <span class="hours-number-text param-value" id="totalHours" data-typo="숫자">1200</span> <span class="hours-text-overlay" data-typo="본문">시간</span>
           </div>
           <div class="hours-note" style="margin-top: 0.5rem; text-align: center;" data-aos="fade-up" data-aos-delay="50">
-            <p class="k-body" data-typo="본문">노래를 평균적으로 <span id="avgSongs">nnnn</span>곡 들을 수 있는 시간이에요.<br>그 시간을 유익한 강의로 채운 만큼, 더 많은 것을 배웠을 거에요.</p>
+            <p class="k-body" data-typo="본문">노래를 <span id="avgSongs">nnnn</span>곡 들을 수 있는 시간이에요.<br>그 시간을 유익한 강의로 채운 만큼,<br>더 많은 것을 배웠을 거예요.</p>
           </div>
         </div>
         
@@ -2855,7 +2861,7 @@
             </div>
             <!-- Library focus note -->
             <div class="text-center text-gray-700 mt-2" data-aos="fade-up" data-aos-delay="40">
-              <p class="k-note" data-typo="주석">*김채이님의 실제 몰입도 리포트 데이터에 기반을 둔 결과입니다.</p>
+              <p class="k-note" data-typo="주석">*<span class="student-name-bold">김채이</span>님의 실제 몰입도 리포트 데이터에 기반을 둔 결과입니다.</p>
             </div>
           </div>
         </div>
@@ -2962,7 +2968,7 @@
     <div class="container mx-auto px-6">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-4" data-aos="fade-up">
-          <p class="k-body" data-typo="본문">김채이님, 재원 기간동안 이만큼 해냈어요</p>
+          <p class="k-body" data-typo="본문"><span class="student-name-bold">김채이</span>님, 재원 기간동안 이만큼 해냈어요</p>
         </div>
         
         <!-- Mock Test Cards with Horizontal Scroll -->
@@ -3117,7 +3123,7 @@
           <p style="margin-top:.5rem;">
             <span class="param-value" id="totalTAQuestions" data-typo="숫자">10,000</span>
           </p>
-          <p class="k-body" data-typo="본문" style="margin-top:.75rem;">김채이님과 함께, 많은 부엉이들이 TA앱을 통해 새롭게 배워 나갔습니다.</p>
+          <p class="k-body" data-typo="본문" style="margin-top:.75rem;"><span class="student-name-bold">김채이</span>님과 함께, 많은 부엉이들이 TA앱을 통해 새롭게 배워 나갔습니다.</p>
         </div>
 
         <!-- TA/SA Meet summary -->
@@ -3150,7 +3156,7 @@
         <!-- Personal TA Card -->
         <div class="personal-ta-card" data-aos="fade-up">
           <div class="personal-ta-content">
-            <div class="personal-ta-label" data-typo="소주제대제목">올 한 해 김채이님이 TA앱에서 한 질문 수는</div>
+            <div class="personal-ta-label" data-typo="소주제대제목">올 한 해 <span class="student-name-bold">김채이</span>님이 TA앱에서 한 질문 수는</div>
             <div class="personal-ta-number-section">
               <span class="personal-ta-number param-value" id="personalTAQuestions">1,200</span>
               <span class="personal-ta-unit">회입니다.</span>
@@ -3263,7 +3269,7 @@
       <div class="max-w-6xl mx-auto">
         
         <p class="section-header" data-typo="머리글" style="text-align:center;" data-aos="fade-up">Badges for the champiOWL</p>
-        <p class="k-body" data-typo="본문" style="text-align:center; margin-top:.5rem;" data-aos="fade-up">김채이님, 묵묵히 이 길을 걸어오며 큰 성장을 이루어 냈습니다. 올 한 해 최고의 부엉이었어요.</p>
+        <p class="k-body" data-typo="본문" style="text-align:center; margin-top:.5rem;" data-aos="fade-up"><span class="student-name-bold">김채이</span>님, 묵묵히 이 길을 걸어오며 큰 성장을 이루어 냈습니다. 올 한 해 최고의 부엉이었어요.</p>
         
         <div class="owl-badge-cards-container" data-aos="fade-up">
           
@@ -5057,6 +5063,7 @@
       font-weight: 700 !important;
       line-height: var(--lh-tight);
       text-align: center !important;
+      color: #022669 !important;
     }
   </style>
 
