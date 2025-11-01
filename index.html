@@ -593,8 +593,8 @@
       }
       
       .hall-card {
-        flex: 0 0 280px;
-        min-width: 280px;
+        flex: 0 0 200px;
+        min-width: 200px;
         min-height: 220px;
         padding: 1.5rem;
       }
@@ -1385,7 +1385,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-8 * 50% - 8rem));
+        transform: translateX(calc(-9 * 200px - 9rem));
       }
     }
     
@@ -1420,8 +1420,8 @@
       align-items: center;
       transition: transform 0.2s ease;
       box-sizing: border-box;
-      flex: 0 0 calc(50% - 0.5rem);
-      min-width: calc(50% - 0.5rem);
+      flex: 0 0 200px;
+      min-width: 200px;
     }
     
     .hall-card:hover {
@@ -4109,8 +4109,10 @@
         const resume = () => {
           if (grid && !isDragging) {
             grid.classList.remove('paused');
-            // Reset transform to let CSS animation take over
+            // Reset transform to let CSS animation take over from current position
             grid.style.transform = '';
+            // Force reflow to ensure animation restarts from current visual position
+            void grid.offsetWidth;
           }
         };
 
@@ -4127,6 +4129,22 @@
         // Get current transform value
         function getCurrentTransform() {
           if (grid) {
+            // First check inline style
+            const inlineTransform = grid.style.transform;
+            if (inlineTransform && inlineTransform !== 'none') {
+              const match = inlineTransform.match(/translateX\(([^)]+)\)/);
+              if (match) {
+                const value = match[1];
+                // Handle calc() expressions
+                if (value.includes('calc')) {
+                  // For now, try to extract numeric value from calc
+                  const numericMatch = value.match(/-?\d+/);
+                  return numericMatch ? parseFloat(numericMatch[0]) : 0;
+                }
+                return parseFloat(value);
+              }
+            }
+            // Fallback: check computed style (includes CSS animations)
             const style = window.getComputedStyle(grid);
             const transform = style.transform;
             if (transform && transform !== 'none') {
