@@ -398,32 +398,49 @@
       
       .personal-subject-chart-container {
         display: flex;
-        gap: 0.5rem;
+        flex-direction: column;
+        gap: 0.75rem;
+        overflow-y: auto;
         overflow-x: hidden;
         padding: 0 1rem;
-        justify-content: space-between;
+        max-height: 400px;
+        scrollbar-width: thin;
+        scrollbar-color: #CBD5E0 #F7FAFC;
+      }
+      
+      .personal-subject-chart-container::-webkit-scrollbar {
+        width: 8px;
+        display: block;
+      }
+      
+      .personal-subject-chart-container::-webkit-scrollbar-track {
+        background: #F7FAFC;
+        border-radius: 4px;
+      }
+      
+      .personal-subject-chart-container::-webkit-scrollbar-thumb {
+        background: #CBD5E0;
+        border-radius: 4px;
       }
       
       .personal-subject-chart-item {
-        flex: 1 1 0%;
-        min-width: 0;
-        max-width: none;
+        flex: 0 0 auto;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        gap: 0.75rem;
       }
       
       .personal-subject-label {
-        font-size: 0.75rem;
-        min-width: auto;
-        margin-bottom: 0.5rem;
-        text-align: center;
+        font-size: 0.875rem;
+        min-width: 60px;
+        text-align: left;
       }
       
       .personal-subject-bar-wrapper {
         height: 20px;
-        width: 40px;
-        min-width: 40px;
+        flex: 1;
+        min-width: 60px;
       }
       
       .personal-subject-bar {
@@ -483,7 +500,7 @@
       }
       
       .promotion-item {
-        height: 120px;
+        height: 100px;
       }
       
       /* 아웃트로 섹션 모바일 최적화 */
@@ -1888,28 +1905,50 @@
     
     .personal-subject-chart-container {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       gap: 1rem;
-      justify-content: space-between;
-      align-items: flex-end;
+      justify-content: center;
+      align-items: stretch;
+      overflow-y: auto;
       overflow-x: hidden;
       padding: 0 1rem;
+      max-height: 400px;
+      scrollbar-width: thin;
+      scrollbar-color: #CBD5E0 #F7FAFC;
+    }
+    
+    .personal-subject-chart-container::-webkit-scrollbar {
+      width: 8px;
+      display: block;
+    }
+    
+    .personal-subject-chart-container::-webkit-scrollbar-track {
+      background: #F7FAFC;
+      border-radius: 4px;
+    }
+    
+    .personal-subject-chart-container::-webkit-scrollbar-thumb {
+      background: #CBD5E0;
+      border-radius: 4px;
+    }
+    
+    .personal-subject-chart-container::-webkit-scrollbar-thumb:hover {
+      background: #A0AEC0;
     }
     
     .personal-subject-chart-item {
-      flex: 1 1 0%;
-      min-width: 0;
+      flex: 0 0 auto;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      gap: 0.5rem;
+      gap: 1rem;
     }
     
     .personal-subject-label {
       font-size: 1.125rem;
       font-weight: var(--fw-light);
       color: #1F2937;
-      min-width: 60px;
+      min-width: 80px;
     }
     
     .personal-subject-bar-wrapper {
@@ -2050,7 +2089,7 @@
       justify-content: center;
       position: relative;
       width: auto;
-      height: 200px;
+      height: 150px;
     }
     
     .promotion-section:has(.promotion-item img[alt*="SDIJN"]),
@@ -2060,7 +2099,7 @@
     .promotion-section:has(.promotion-item img[alt*="SCHEDULE"]),
     .promotion-section:has(.promotion-item img[alt*="EBOOK"]),
     .promotion-section:has(.promotion-item img[alt*="ebook"]) {
-      height: 150px;
+      height: 120px;
     }
     
     .promotion-section:has(.promotion-item img[alt*="SDIJN"]) .promotion-item,
@@ -2070,7 +2109,7 @@
     .promotion-section:has(.promotion-item img[alt*="SCHEDULE"]) .promotion-item,
     .promotion-section:has(.promotion-item img[alt*="EBOOK"]) .promotion-item,
     .promotion-section:has(.promotion-item img[alt*="ebook"]) .promotion-item {
-      height: 150px;
+      height: 120px;
     }
     
     .promotion-item img {
@@ -2225,7 +2264,7 @@
     
     .owl-badge-title {
       font-size: 1.365rem;
-      font-weight: var(--fw-light);
+      font-weight: var(--fw-regular);
       color: #1F2937;
       margin-top: 2rem;
       margin-bottom: 0.5rem;
@@ -3266,7 +3305,7 @@
         </div>
         
         <div class="personal-subject-ta-message" data-aos="fade-up">
-          <span id="studentNameForMessage" class="param-value">학생님</span>은 일 년간 질문을 통해 부족한 점을 채우려고 노력하였습니다.<br>자신의 부족한 점을 하나하나 매꾸고자 한 이 노력은, 분명 수능장에서 빛을 발할 거예요.
+          <span id="studentNameForMessage" class="param-value">학생님</span>은, 일 년간 질문을 통해<br>부족한 점을 채우려고 노력하였습니다.<br>자신의 부족한 점을 하나하나 메꾸고자 한 이 노력은,<br>분명 수능장에서 빛을 발할 거예요.
         </div>
         
       </div>
@@ -3310,7 +3349,7 @@
     <div class="container mx-auto px-6">
       <div class="max-w-6xl mx-auto">
         
-        <p class="section-header" data-typo="머리글" style="text-align:center;" data-aos="fade-up">Badges for the champiOWL</p>
+        <p class="section-header" data-typo="머리글" style="text-align:center;" data-aos="fade-up">Badges for<br>the champiOWL</p>
         <p class="k-body" data-typo="본문" style="text-align:center; margin-top:.5rem;" data-aos="fade-up"><span class="student-name-bold">김채이</span>님, 묵묵히 이 길을 걸어오며 큰 성장을 이루어 냈습니다. 올 한 해 최고의 부엉이었어요.</p>
         
         <div class="owl-badge-cards-container" data-aos="fade-up">
@@ -3445,7 +3484,6 @@
         <div class="outro-header-with-bg" data-aos="fade-up">
           스스로에 대한 확신을 채워가는<br>1년이 되었길 바라며
         </div>
-        
         <!-- Subtitle -->
         <div class="outro-subtitle" data-typo="소주제대제목" style="text-align:center;" data-aos="fade-up">
           앞으로도 여러분의 여정을 함께하겠습니다
@@ -3468,8 +3506,8 @@
         <div class="afterpack-content" data-aos="fade-up">
           <div class="afterpack-title-left" data-typo="소주제대제목">애프터팩</div>
           <div class="afterpack-text-right" data-typo="본문" style="text-align:center;">
-            2026학년도 정시를 위한 핵심 정보, 그리고 입시 그 이후 이야기까지.<br><br>
-            수능이 끝난 이후에 필요한 내용을 한껏 담아 여러분들께 전합니다.
+            2026학년도 정시를 위한 핵심 정보,<br>그리고 입시 그 이후 이야기까지.<br><br>
+            수능이 끝난 이후에 필요한 내용을 한껏 담아<br>여러분들께 전합니다.
           </div>
         </div>
       </div>
@@ -3484,7 +3522,7 @@
         <div class="consultation-content" data-aos="fade-up">
           <div class="consultation-title-right" data-typo="소주제대제목">수능 가채점 상담</div>
           <div class="consultation-text-left" data-typo="본문" style="text-align:center;">
-            수능 직후, 가채점 결과를 바탕으로 학생의 성적을 분석하여,<br><br>
+            수능 직후, 가채점 결과를 바탕으로<br>학생의 성적을 분석하여,<br><br>
             논술 응시 여부에 대해 빠르게 알려드립니다.
           </div>
         </div>
@@ -3500,8 +3538,7 @@
         <div class="jungsi-content" data-aos="fade-up">
           <div class="jungsi-title-left" data-typo="소주제대제목">정시 컨설팅</div>
           <div class="jungsi-text-right" data-typo="본문" style="text-align:center;">
-            재원생 모두가 맞춤형 컨설팅을 통해 최적 이상의 대학과 학과를 선택할 수 있도록,<br><br>
-            도와드리겠습니다.
+            재원생 모두가 맞춤형 컨설팅으로 통해,<br>최적 이상의 대학과 학과를<br>선택할 수 있도록 도와드리겠습니다.
           </div>
         </div>
       </div>
@@ -4735,7 +4772,7 @@
     .k-sub  { font-size: var(--fs-sub);  line-height: var(--lh-tight); font-weight: var(--fw-light); }
     .k-num  { font-size: var(--fs-num);  line-height: var(--lh-tight); font-weight: var(--fw-bold); }
     .k-body { font-size: var(--fs-body); line-height: var(--lh-normal); font-weight: var(--fw-light); }
-    .k-note { font-size: var(--fs-note); line-height: var(--lh-normal); font-weight: var(--fw-light); }
+    .k-note { font-size: var(--fs-note); line-height: var(--lh-normal); font-weight: var(--fw-light); color: #6B7280; }
 
     /* 웹 제목 전용 (명확한 식별을 위해 별도 클래스) */
     .k-webtitle { font-size: var(--fs-webtit); line-height: 1.05; font-weight: var(--fw-bold); }
