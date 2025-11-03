@@ -1488,9 +1488,7 @@
       width: 100%;
     }
     
-    .content-text span {
-      white-space: nowrap;
-    }
+    /* 제거됨: 광역 nowrap */
     
     .content-text br {
       display: block;
@@ -2900,7 +2898,7 @@
           <!-- Summary Message -->
           <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
             <p class="k-body" data-typo="본문" style="text-align:center;">
-              <span id="studentNameOutput" class="student-name-bold">김채이</span>님은 총 <span id="totalDays" class="param-value">150</span>일 동안 <span id="campusNameOutput" class="param-value">N</span> <span id="classNameOutput" class="param-value">S</span><span class="param-value">반</span>에서 치열하게 달려왔습니다.
+              <span class="nowrap"><span id="studentNameOutput" class="student-name-bold">김채이</span>님</span>은 총 <span id="totalDays" class="param-value">150</span>일 동안 <span id="campusNameOutput" class="param-value">N</span> <span id="classNameOutput" class="param-value">S</span><span class="param-value">반</span>에서 치열하게 달려왔습니다.
             </p>
           </div>
 
@@ -5620,6 +5618,20 @@
       word-break: keep-all;
       line-height: 1.05;
     }
+    
+    /* metric no-wrap 전용 */
+    .metric-row .metric-value,
+    .metric-row .metric-unit { white-space: nowrap; }
+    
+    /* 이름+접미어 묶음 유틸 */
+    .nowrap { white-space: nowrap; }
+    /* 모바일에서만 줄바꿈 */
+    .br-only-mobile { display:none; }
+    @media (max-width:480px){
+      .br-only-mobile::after { content: "\A"; white-space: pre; }
+    }
+    /* 이름 span이 광역 nowrap 상속받지 않도록 */
+    .param-value { white-space: normal; }
   </style>
 
   </div>
