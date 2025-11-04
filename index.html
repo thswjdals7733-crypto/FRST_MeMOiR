@@ -586,11 +586,13 @@
       }
       
       .hall-card {
-        flex: 0 0 calc(50% - 0.5rem);
-        min-width: calc(50% - 0.5rem);
-        max-width: calc(50% - 0.5rem);
+        flex: 0 0 calc(50% - 0.5rem) !important;
+        min-width: calc(50% - 0.5rem) !important;
+        max-width: calc(50% - 0.5rem) !important;
+        width: calc(50% - 0.5rem) !important;
         min-height: 220px;
         padding: 1.5rem;
+        flex-shrink: 0;
       }
       
       .hall-card-header {
@@ -1425,6 +1427,8 @@
       flex: 0 0 calc(50% - 0.5rem);
       min-width: calc(50% - 0.5rem);
       max-width: calc(50% - 0.5rem);
+      width: calc(50% - 0.5rem);
+      flex-shrink: 0;
     }
     
     .hall-card:hover {
@@ -4414,7 +4418,13 @@
 
     /* 3) 아이템 최소 너비 보장(사라짐 방지) */
     .content-card-item { flex: 0 0 280px !important; min-width: 280px !important; }
-    .hall-card { flex: 0 0 calc(50% - 0.5rem) !important; min-width: calc(50% - 0.5rem) !important; max-width: calc(50% - 0.5rem) !important; }
+    .hall-card { 
+      flex: 0 0 calc(50% - 0.5rem) !important; 
+      min-width: calc(50% - 0.5rem) !important; 
+      max-width: calc(50% - 0.5rem) !important; 
+      width: calc(50% - 0.5rem) !important;
+      flex-shrink: 0 !important;
+    }
     .mock-test-card { flex: 0 0 90vw !important; min-width: 280px !important; }
 
     /* 그래프 기본 가시성 복구 */
@@ -4544,7 +4554,14 @@
     body[data-force-mobile="true"] .snap-x{ overflow: visible !important; }
     body[data-force-mobile="true"] .content-card{ flex-direction: column !important; }
     body[data-force-mobile="true"] .personal-data-wrapper{ display: flex !important; flex-direction: column !important; gap: 16px !important; }
-    body[data-force-mobile="true"] .hall-cards-grid{ display: grid !important; grid-template-columns: 1fr !important; gap: 16px !important; }
+    body[data-force-mobile="true"] .hall-cards-grid{ display: flex !important; gap: 1rem !important; overflow-x: auto !important; }
+    body[data-force-mobile="true"] .hall-card { 
+      flex: 0 0 calc(50% - 0.5rem) !important; 
+      min-width: calc(50% - 0.5rem) !important; 
+      max-width: calc(50% - 0.5rem) !important;
+      width: calc(50% - 0.5rem) !important;
+      flex-shrink: 0 !important;
+    }
     body[data-force-mobile="true"] .promotion-carousel-wrapper,
     body[data-force-mobile="true"] .owl-badge-cards-container { display: grid !important; grid-template-columns: 1fr !important; gap: 16px !important; }
     body[data-force-mobile="true"] .card,
@@ -4618,6 +4635,13 @@
     html.force-mobile .content-card-item { flex: 0 0 auto !important; width: 280px !important; }
     html.force-mobile .mock-test-card { flex: 0 0 auto !important; width: 90vw !important; min-width: 280px !important; }
     html.force-mobile .hall-cards-grid { display: flex !important; gap: 1rem !important; }
+    html.force-mobile .hall-card { 
+      flex: 0 0 calc(50% - 0.5rem) !important; 
+      min-width: calc(50% - 0.5rem) !important; 
+      max-width: calc(50% - 0.5rem) !important;
+      width: calc(50% - 0.5rem) !important;
+      flex-shrink: 0 !important;
+    }
 
     /* 카드 배경 이미지 시인성(강화) */
     html.force-mobile .mock-test-card .personal-data-bg { background-size: 60% !important; opacity: 0.3 !important; }
