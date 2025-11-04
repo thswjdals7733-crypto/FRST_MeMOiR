@@ -132,7 +132,7 @@
   <div class="embed-root">
     <div class="embed-stage" id="stage">
       <!-- 웹 제목 -->
-      <h1 class="text-web-title" style="text-align: center; margin: 0; padding: 2rem 0; font-style: italic !important;">
+      <h1 class="text-web-title" style="text-align: center; margin: 0; padding: 3rem 0 2rem 0; font-style: italic !important; letter-spacing: -0.02em;">
         2025<br>memoir
       </h1>
     </div>
@@ -277,6 +277,62 @@
   const numObserver = new MutationObserver(numberTboxes);
   numObserver.observe(document.getElementById("stage"), { childList: true });
 </script>
+  <!-- 권장: /fonts 폴더에 PretendardVariable.woff2, NotoSansKR-Regular.woff2 등 넣고 아래로 교체 -->
+<style>
+  @font-face{
+    font-family:"PretendardVar";
+    src:url("/fonts/PretendardVariable.woff2") format("woff2");
+    font-display:swap;
+    font-weight:100 900; /* variable 축 */
+    /* 메트릭 고정(필요 시 조정) */
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 100%;
+  }
+  @font-face{
+    font-family:"NotoSansKR";
+    src:url("/fonts/NotoSansKR-Regular.woff2") format("woff2");
+    font-display:swap;
+    font-weight:400;
+  }
+  html,body{
+    font-family:"PretendardVar","NotoSansKR",system-ui,sans-serif;
+    font-synthesis:none; /* 가짜 Bold/Italic 금지 */
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  </style>
+<style>
+  :root{
+    --c-point:#0459F0; --c-h:#022669; --c-main:#111827; --c-sub:#1F2937; --c-note:#6B7280;
+    --fs-h1:85px; --fs-h2:36px; --fs-body:16px; --fs-cap:14px; --fs-num:30px;
+    --lh-tight:1.1; --lh-snug:1.25; --lh-normal:1.5;
+  }
+  *{ text-rendering:optimizeLegibility }
+  :lang(ko){ word-break:keep-all }
+  h1,h2,h3{ text-wrap:balance; margin:0 }
+  body{ text-wrap:pretty; color:var(--c-main); background:#fff }
   
+  .embed-root{
+    width:100vw; height:100dvh;
+    display:flex; justify-content:center; align-items:flex-start;
+    overflow:auto; background:#F7FAFC;
+  }
+  .embed-stage{
+    width:390px; transform-origin:top left; box-sizing:border-box; padding:24px;
+    background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.06);
+  }
+  .k-header{ font-size:var(--fs-h2); line-height:var(--lh-tight); font-weight:700; color:var(--c-h) }
+  .text-web-title{ font-size:var(--fs-h1); line-height:var(--lh-tight); font-weight:700; color:var(--c-h) }
+  .k-body{ font-size:var(--fs-body); line-height:var(--lh-normal); font-weight:300; color:var(--c-main) }
+  .k-note{ font-size:var(--fs-cap); line-height:var(--lh-normal); font-weight:300; color:var(--c-note) }
+  .k-num{ font-size:var(--fs-num); line-height:var(--lh-snug); font-weight:700; color:var(--c-point) }
+  .nowrap-chunk{ white-space:nowrap; display:inline-block }
+  .can-break{ overflow-wrap:anywhere; word-break:break-word; hyphens:auto }
+  img{ max-width:100%; height:auto; display:block; image-rendering:auto }
+  .hr{ height:2px; background:#e5e7eb; margin:24px 0 }
+  </style>
+    
 </body>
 </html>
