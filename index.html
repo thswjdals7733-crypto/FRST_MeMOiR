@@ -3662,6 +3662,7 @@
     const checkOutTime = get('checkOutTime', '22:00');
     const totalHours = get('totalHours', '1200');
     const libraryHours = get('libraryHours', '1200');
+    const examCount = get('examCount', '3');
     const focusScore = get('focusScore', '87');
     const mealCount = get('mealCount', '1234');
     const favoriteMenu = get('favoriteMenu', '돈까스');
@@ -3732,6 +3733,13 @@
     const libraryHoursElement = document.getElementById('libraryHours');
     if (libraryHoursElement) {
       libraryHoursElement.textContent = formattedLibraryHours;
+    }
+    
+    // Update exam count
+    const formattedExamCount = new Intl.NumberFormat('ko-KR').format(parseInt(examCount));
+    const examCountElement = document.getElementById('examCount');
+    if (examCountElement) {
+      examCountElement.textContent = formattedExamCount;
     }
     
     // Update focus score (display as-is with one decimal place)
