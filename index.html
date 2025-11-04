@@ -2929,7 +2929,7 @@
             <span class="nowrap"><span class="hours-number-text param-value" id="totalHours" data-typo="숫자">1200</span><span class="hours-text-overlay" data-typo="본문">시간</span></span>
           </div>
           <div class="hours-note" style="margin-top: 0.5rem; text-align: center;" data-aos="fade-up" data-aos-delay="50">
-            <p class="k-body" data-typo="본문">노래를 <span class="nowrap"><span id="avgSongs">nnnn</span>곡</span> 들을 수 있는 시간이에요.<br>그 시간을 유익한 강의로 채운 만큼,<br>더 많은 것을 배웠을 거예요.</p>
+            <p class="k-body" data-typo="본문">노래를 <span class="nowrap"><span id="avgSongs" class="param-value" style="font-size: var(--fs-body); color: #0459F0;">nnnn</span><span class="param-value" style="font-size: var(--fs-body); color: #0459F0;">곡</span></span> 들을 수 있는 시간이에요.<br>그 시간을 유익한 강의로 채운 만큼,<br>더 많은 것을 배웠을 거예요.</p>
           </div>
         </div>
         
@@ -2962,7 +2962,7 @@
             </div>
             <!-- Library time body text -->
             <div class="text-center text-gray-700 mt-2" data-aos="fade-up" data-aos-delay="40">
-              <p class="k-body" data-typo="본문">수능을 무려 <span class="nowrap"><span id="examCount" class="param-value" data-typo="숫자">nnn</span><span class="param-value" data-typo="숫자">회</span></span> 치룬 시간이에요</p>
+              <p class="k-body" data-typo="본문">수능을 무려 <span class="nowrap"><span id="examCount" class="param-value" style="font-size: var(--fs-body); color: #0459F0;">nnn</span><span class="param-value" style="font-size: var(--fs-body); color: #0459F0;">회</span></span> 치룬 시간이에요</p>
             </div>
           </div>
           
@@ -3663,6 +3663,7 @@
     const totalHours = get('totalHours', '1200');
     const libraryHours = get('libraryHours', '1200');
     const examCount = get('examCount', '3');
+    const avgSongs = get('avgSongs', '300');
     const focusScore = get('focusScore', '87');
     const mealCount = get('mealCount', '1234');
     const favoriteMenu = get('favoriteMenu', '돈까스');
@@ -3761,6 +3762,13 @@
     const examCountElement = document.getElementById('examCount');
     if (examCountElement) {
       examCountElement.textContent = formattedExamCount;
+    }
+    
+    // Update avg songs
+    const formattedAvgSongs = new Intl.NumberFormat('ko-KR').format(parseInt(avgSongs));
+    const avgSongsElement = document.getElementById('avgSongs');
+    if (avgSongsElement) {
+      avgSongsElement.textContent = formattedAvgSongs;
     }
     
     // Update focus score (display as-is with one decimal place)
