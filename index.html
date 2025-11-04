@@ -192,5 +192,25 @@
     window.visualViewport?.addEventListener("resize", resize);
     window.addEventListener("orientationchange", resize);
   </script>
+
+  <script>
+    /* -----------------------------
+       URL 파라미터 읽기 및 값 설정
+    ----------------------------- */
+    function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // 평균 등원 시각 설정
+    window.addEventListener("DOMContentLoaded", () => {
+      const avgArrivalTime = getUrlParameter("avgArrivalTime");
+      const timeElement = document.getElementById("avg-arrival-time");
+      
+      if (avgArrivalTime && timeElement) {
+        timeElement.textContent = avgArrivalTime;
+      }
+    });
+  </script>
 </body>
 </html>
