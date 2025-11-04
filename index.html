@@ -2910,7 +2910,7 @@
         
         <!-- Check-in/out section body text -->
         <div class="text-center text-gray-700 mt-4" data-aos="fade-up" data-aos-delay="120">
-          <p class="k-body" data-typo="본문"><span class="student-name-bold">김채이</span>님은, 평균적으로 하루를 <strong class="param-value">07:43</strong>에 시작해, <strong class="param-value">22:03</strong>에 하루를 마무리하였습니다.</p>
+          <p class="k-body" data-typo="본문"><span class="nowrap"><span id="studentNameForCheckinMessage" class="student-name-bold">김채이</span>님</span>은, 평균적으로 하루를 <strong class="param-value">07:43</strong>에 시작해, <strong class="param-value">22:03</strong>에 하루를 마무리하였습니다.</p>
         </div>
         
       </div>
@@ -2924,7 +2924,7 @@
         
         <!-- Hours Content -->
         <div class="hours-content" data-aos="fade-up">
-          <div class="hours-title-overlay" data-typo="소주제대제목"><span class="nowrap"><span class="student-name-bold">김채이</span>님이,</span><br>시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
+          <div class="hours-title-overlay" data-typo="소주제대제목"><span class="nowrap"><span id="studentNameForHoursTitle" class="student-name-bold">김채이</span>님이,</span><br>시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
           <div class="hours-number-overlay">
             <span class="nowrap"><span class="hours-number-text param-value" id="totalHours" data-typo="숫자">1200</span><span class="hours-text-overlay" data-typo="본문">시간</span></span>
           </div>
@@ -2979,7 +2979,7 @@
             </div>
             <!-- Library focus note -->
             <div class="text-center text-gray-700 mt-2" data-aos="fade-up" data-aos-delay="40">
-              <p class="k-note" data-typo="주석">*김채이님의 실제 몰입도 리포트 데이터에 기반을 둔 결과입니다.</p>
+              <p class="k-note" data-typo="주석">*<span class="nowrap"><span id="studentNameForLibraryNote" style="font-size: var(--fs-caption);">김채이</span><span style="font-size: var(--fs-caption);">님의</span></span> 실제 몰입도 리포트 데이터에 기반을 둔 결과입니다.</p>
             </div>
           </div>
         </div>
@@ -3081,7 +3081,7 @@
     <div class="container mx-auto px-6">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-4" data-aos="fade-up">
-          <p class="k-body" data-typo="본문"><span class="student-name-bold">김채이</span>님, 재원 기간동안 이만큼 해냈어요</p>
+          <p class="k-body" data-typo="본문"><span class="nowrap"><span id="studentNameForPersonalData" class="student-name-bold">김채이</span>님</span>, 재원 기간동안 이만큼 해냈어요</p>
         </div>
         
         <!-- Mock Test Cards with Horizontal Scroll -->
@@ -3241,7 +3241,7 @@
             <span class="param-value" id="totalTAQuestions" data-typo="숫자">10,000</span>
           </p>
           <br><br>
-          <p class="k-body" data-typo="본문"><span class="student-name-bold">김채이</span>님과 함께, 많은 부엉이들이 TA앱을 통해 새롭게 배워 나갔습니다.</p>
+          <p class="k-body" data-typo="본문"><span class="nowrap"><span id="studentNameForTASection" class="student-name-bold">김채이</span>님</span>과 함께, 많은 부엉이들이 TA앱을 통해 새롭게 배워 나갔습니다.</p>
         </div>
 
 
@@ -3275,7 +3275,7 @@
         <!-- Personal TA Card -->
         <div class="personal-ta-card" data-aos="fade-up">
           <div class="personal-ta-content">
-            <div class="personal-ta-label" data-typo="소주제대제목">올 한 해,<br><span class="nowrap"><span class="student-name-bold">김채이</span>님의</span> TA앱 질문 수는</div>
+            <div class="personal-ta-label" data-typo="소주제대제목">올 한 해,<br><span class="nowrap"><span id="studentNameForTALabel" class="student-name-bold">김채이</span>님의</span> TA앱 질문 수는</div>
             <div class="personal-ta-number-section">
               <span class="nowrap"><span class="personal-ta-number param-value" id="personalTAQuestions">1,200</span><span class="personal-ta-unit">회입니다.</span></span>
             </div>
@@ -3382,7 +3382,7 @@
       <div class="max-w-6xl mx-auto">
         
         <p class="section-header" data-typo="머리글" style="text-align:center;" data-aos="fade-up">Badges for champiOWL</p>
-        <p class="k-body" data-typo="본문" style="text-align:center; margin-top:.5rem;" data-aos="fade-up"><span class="student-name-bold">김채이</span>님, 묵묵히 이 길을 걸어오며 큰 성장을 이루어 냈습니다. 올 한 해 최고의 부엉이었어요.</p>
+        <p class="k-body" data-typo="본문" style="text-align:center; margin-top:.5rem;" data-aos="fade-up"><span class="nowrap"><span id="studentNameForBadges" class="student-name-bold">김채이</span>님</span>, 묵묵히 이 길을 걸어오며 큰 성장을 이루어 냈습니다. 올 한 해 최고의 부엉이었어요.</p>
         
         <div class="owl-badge-cards-container" data-aos="fade-up">
           
@@ -3690,6 +3690,27 @@
     
     const studentNameForCheckinNoteElement = document.getElementById('studentNameForCheckinNote');
     if (studentNameForCheckinNoteElement) studentNameForCheckinNoteElement.textContent = studentName;
+    
+    const studentNameForCheckinMessageElement = document.getElementById('studentNameForCheckinMessage');
+    if (studentNameForCheckinMessageElement) studentNameForCheckinMessageElement.textContent = studentName;
+    
+    const studentNameForHoursTitleElement = document.getElementById('studentNameForHoursTitle');
+    if (studentNameForHoursTitleElement) studentNameForHoursTitleElement.textContent = studentName;
+    
+    const studentNameForLibraryNoteElement = document.getElementById('studentNameForLibraryNote');
+    if (studentNameForLibraryNoteElement) studentNameForLibraryNoteElement.textContent = studentName;
+    
+    const studentNameForPersonalDataElement = document.getElementById('studentNameForPersonalData');
+    if (studentNameForPersonalDataElement) studentNameForPersonalDataElement.textContent = studentName;
+    
+    const studentNameForTASectionElement = document.getElementById('studentNameForTASection');
+    if (studentNameForTASectionElement) studentNameForTASectionElement.textContent = studentName;
+    
+    const studentNameForTALabelElement = document.getElementById('studentNameForTALabel');
+    if (studentNameForTALabelElement) studentNameForTALabelElement.textContent = studentName;
+    
+    const studentNameForBadgesElement = document.getElementById('studentNameForBadges');
+    if (studentNameForBadgesElement) studentNameForBadgesElement.textContent = studentName;
     
     const startDateElement = document.getElementById('startDate');
     if (startDateElement) startDateElement.textContent = startDate;
