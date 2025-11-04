@@ -82,23 +82,31 @@
     ----------------------------- */
     .embed-root {
       width: 100vw;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
       overflow: auto;
+      background: #F7FAFC;
     }
     .embed-stage {
-      width: 390px; /* 기준 폭 고정 */
+      width: 390px;
       transform-origin: top left;
       backface-visibility: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       box-sizing: border-box;
       padding: 24px;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     }
 
     /* -----------------------------
        BASIC TYPOGRAPHY CLASSES
        (아직 사용 안 하지만 기본 제공)
     ----------------------------- */
-    .text-web-title { font-size: var(--fs-web-title); font-weight: var(--fw-bold); line-height: var(--lh-tight); color: var(--c-section-header); }
+    .text-web-title { font-size: var(--fs-web-title); font-weight: var(--fw-bold); line-height: var(--lh-tight); color: var(--c-section-header); font-style: italic !important; }
     .k-header { font-size: var(--fs-header); font-weight: var(--fw-bold); line-height: var(--lh-tight); color: var(--c-section-header); }
     .k-sub { font-size: var(--fs-subtitle-large); font-weight: var(--fw-light); line-height: var(--lh-snug); color: var(--c-text-sub); }
     .k-body { font-size: var(--fs-body); font-weight: var(--fw-light); line-height: var(--lh-normal); color: var(--c-text-main); }
@@ -124,7 +132,7 @@
   <div class="embed-root">
     <div class="embed-stage" id="stage">
       <!-- 웹 제목 -->
-      <h1 class="text-web-title" style="text-align: center; margin: 0; padding: 2rem 0; font-style: italic;">
+      <h1 class="text-web-title" style="text-align: center; margin: 0; padding: 2rem 0; font-style: italic !important;">
         2025<br>memoir
       </h1>
     </div>
@@ -140,9 +148,15 @@
 
     function resize() {
       const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-      const scale = vw / DESIGN_WIDTH;
+      // 작은 화면(모바일·좁은 임베드)에서는 축소, 넓은 데스크탑에서는 1배 고정
+      const scale = Math.min(vw, DESIGN_WIDTH) / DESIGN_WIDTH;
+
       stage.style.transform = `scale(${scale})`;
-      root.style.height = stage.offsetHeight * scale + "px";
+
+      // 루트 높이는 스케일 반영해 스크롤 정상화
+      const scaledH = stage.offsetHeight * scale;
+      // 화면보다 짧으면 화면 높이 유지, 길면 콘텐츠 높이 사용
+      root.style.height = Math.max(scaledH, window.innerHeight) + "px";
     }
 
     window.addEventListener("load", resize);
