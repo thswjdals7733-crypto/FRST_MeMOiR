@@ -586,8 +586,9 @@
       }
       
       .hall-card {
-        flex: 0 0 calc(50% - 1rem);
-        min-width: calc(50% - 1rem);
+        flex: 0 0 calc(50% - 0.5rem);
+        min-width: calc(50% - 0.5rem);
+        max-width: calc(50% - 0.5rem);
         min-height: 220px;
         padding: 1.5rem;
       }
@@ -1357,31 +1358,37 @@
     /* Hall Cards Carousel */
     .hall-cards-wrapper {
       position: relative;
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
       margin-bottom: 2rem;
       width: 100%;
       padding: 0 1rem;
+      scrollbar-width: thin;
+      scrollbar-color: #CBD5E0 #F7FAFC;
+    }
+    
+    .hall-cards-wrapper::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    .hall-cards-wrapper::-webkit-scrollbar-track {
+      background: #F7FAFC;
+      border-radius: 4px;
+    }
+    
+    .hall-cards-wrapper::-webkit-scrollbar-thumb {
+      background: #CBD5E0;
+      border-radius: 4px;
+    }
+    
+    .hall-cards-wrapper::-webkit-scrollbar-thumb:hover {
+      background: #A0AEC0;
     }
     
     .hall-cards-grid {
       display: flex;
       gap: 1rem;
-      animation: scrollCards 15s linear infinite;
-      will-change: transform;
       width: fit-content;
-    }
-    
-    .hall-cards-grid.paused {
-      animation-play-state: paused;
-    }
-    
-    @keyframes scrollCards {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(calc(-9 * 50% - 9rem));
-      }
     }
     
     @keyframes timelineFlow {
@@ -1415,8 +1422,9 @@
       align-items: center;
       transition: transform 0.2s ease;
       box-sizing: border-box;
-      flex: 0 0 calc(50% - 1rem);
-      min-width: calc(50% - 1rem);
+      flex: 0 0 calc(50% - 0.5rem);
+      min-width: calc(50% - 0.5rem);
+      max-width: calc(50% - 0.5rem);
     }
     
     .hall-card:hover {
@@ -2929,7 +2937,7 @@
             <span class="nowrap"><span class="hours-number-text param-value" id="totalHours" data-typo="숫자">1200</span>  <span class="hours-text-overlay" data-typo="본문">시간</span></span>
           </div>
           <div class="hours-note" style="margin-top: 0.5rem; text-align: center;" data-aos="fade-up" data-aos-delay="50">
-            <p class="k-body" data-typo="본문">노래를 <span class="nowrap"><span id="avgSongs" class="param-value" style="font-size: var(--fs-body); color: #0459F0;">nnnn</span><span class="param-value" style="font-size: var(--fs-body); color: #0459F0;">곡</span></span> 들을 수 있는 시간이에요.<br>그 시간을 유익한 강의로 채운 만큼,<br>더 많은 것을 배웠을 거예요.</p>
+            <p class="k-body" data-typo="본문">노래를 <span class="nowrap"><span id="avgSongs" class="param-value" style="font-size: var(--fs-body); color: #0459F0;">nnnn</span><span style="font-size: var(--fs-body); color: #1F2937;">곡</span></span> 들을 수 있는 시간이에요.<br>그 시간을 유익한 강의로 채운 만큼,<br>더 많은 것을 배웠을 거예요.</p>
           </div>
         </div>
         
@@ -2962,7 +2970,7 @@
             </div>
             <!-- Library time body text -->
             <div class="text-center text-gray-700 mt-2" data-aos="fade-up" data-aos-delay="40">
-              <p class="k-body" data-typo="본문">수능을 무려 <span class="nowrap"><span id="examCount" class="param-value" style="font-size: var(--fs-body); color: #0459F0;">nnn</span><span class="param-value" style="font-size: var(--fs-body); color: #0459F0;">회</span></span> 치룬 시간이에요</p>
+              <p class="k-body" data-typo="본문">수능을 무려 <span class="nowrap"><span id="examCount" class="param-value" style="font-size: var(--fs-body); color: #0459F0;">nnn</span><span style="font-size: var(--fs-body); color: #1F2937;">회</span></span> 치룬 시간이에요</p>
             </div>
           </div>
           
@@ -4101,185 +4109,8 @@
         hallCardsGrid.appendChild(card);
       });
       
-      // Duplicate cards for seamless infinite loop
-      carouselItems.forEach((item) => {
-        const card = document.createElement('div');
-        card.className = 'hall-card';
-        card.style.backgroundColor = hallColors[item.hall];
-        card.setAttribute('role', 'group');
-        card.setAttribute('aria-label', `${item.hall} 최애 메뉴: ${item.favorite}, 평점: ${item.rating}`);
-        
-        card.innerHTML = `
-          <div class="hall-card-header">${item.hall}</div>
-          <div class="hall-card-subheader">최애 메뉴</div>
-          <div class="hall-card-main">${item.favorite}</div>
-          <div class="hall-card-rating">★${item.rating}</div>
-        `;
-        
-        hallCardsGrid.appendChild(card);
-      });
-      
-      // Touch and scroll events to control animation with improved drag
-      const hallCardsWrapper = document.querySelector('.hall-cards-wrapper');
-      if (hallCardsWrapper) {
-        let isDragging = false;
-        let startX = 0;
-        let currentX = 0;
-        let initialTransform = 0;
-        let animationId = null;
-        let autoResumeTimer = null;
-        
-        const grid = document.querySelector('.hall-cards-grid');
-        
-        // Pause animation
-        const pause = () => {
-          if (grid) {
-            grid.classList.add('paused');
-            if (animationId) {
-              cancelAnimationFrame(animationId);
-              animationId = null;
-            }
-          }
-        };
-        
-        // Resume animation
-        const resume = () => {
-          if (grid && !isDragging) {
-            grid.classList.remove('paused');
-            // Reset transform to let CSS animation take over from current position
-            grid.style.transform = '';
-            // Force reflow to ensure animation restarts from current visual position
-            void grid.offsetWidth;
-          }
-        };
-
-        // Schedule safe auto-resume in case pointer events are lost
-        const scheduleAutoResume = (delayMs = 1500) => {
-          if (autoResumeTimer) clearTimeout(autoResumeTimer);
-          autoResumeTimer = setTimeout(() => {
-            if (!isDragging) {
-              resume();
-            }
-          }, delayMs);
-        };
-
-        // Get current transform value
-        function getCurrentTransform() {
-          if (grid) {
-            // First check inline style
-            const inlineTransform = grid.style.transform;
-            if (inlineTransform && inlineTransform !== 'none') {
-              const match = inlineTransform.match(/translateX\(([^)]+)\)/);
-              if (match) {
-                const value = match[1];
-                // Handle calc() expressions
-                if (value.includes('calc')) {
-                  // For now, try to extract numeric value from calc
-                  const numericMatch = value.match(/-?\d+/);
-                  return numericMatch ? parseFloat(numericMatch[0]) : 0;
-                }
-                return parseFloat(value);
-              }
-            }
-            // Fallback: check computed style (includes CSS animations)
-            const style = window.getComputedStyle(grid);
-            const transform = style.transform;
-            if (transform && transform !== 'none') {
-              const matrix = transform.match(/matrix\(([^,]+),/);
-              return matrix ? parseFloat(matrix[1]) : 0;
-            }
-          }
-          return 0;
-        }
-
-        // Update transform during drag
-        function updateTransform() {
-          if (isDragging && grid) {
-            const deltaX = currentX - startX;
-            const newTransform = initialTransform + deltaX;
-            grid.style.transform = `translateX(${newTransform}px)`;
-            animationId = requestAnimationFrame(updateTransform);
-          }
-        }
-
-        // Touch events (mobile)
-        hallCardsWrapper.addEventListener('touchstart', (e) => {
-          pause();
-          isDragging = true;
-          startX = e.touches[0].clientX;
-          currentX = startX;
-          initialTransform = getCurrentTransform();
-          updateTransform();
-        }, { passive: true });
-        
-        hallCardsWrapper.addEventListener('touchmove', (e) => {
-          if (isDragging) {
-            currentX = e.touches[0].clientX;
-          }
-        }, { passive: true });
-        
-        hallCardsWrapper.addEventListener('touchend', () => {
-          isDragging = false;
-          if (animationId) {
-            cancelAnimationFrame(animationId);
-            animationId = null;
-          }
-          scheduleAutoResume(300);
-        }, { passive: true });
-        
-        hallCardsWrapper.addEventListener('touchcancel', () => {
-          isDragging = false;
-          if (animationId) {
-            cancelAnimationFrame(animationId);
-            animationId = null;
-          }
-          scheduleAutoResume(300);
-        }, { passive: true });
-
-        // Safety: if touch ends/cancels outside the wrapper
-        window.addEventListener('touchend', () => scheduleAutoResume(300), { passive: true });
-        window.addEventListener('touchcancel', () => scheduleAutoResume(300), { passive: true });
-
-        // Mouse events (desktop)
-        hallCardsWrapper.addEventListener('mousedown', (e) => {
-          e.preventDefault();
-          pause();
-          isDragging = true;
-          startX = e.clientX;
-          currentX = startX;
-          initialTransform = getCurrentTransform();
-          updateTransform();
-        });
-        
-        document.addEventListener('mousemove', (e) => {
-          if (isDragging) {
-            e.preventDefault();
-            currentX = e.clientX;
-          }
-        });
-        
-        document.addEventListener('mouseup', (e) => {
-          if (isDragging) {
-            e.preventDefault();
-            isDragging = false;
-            if (animationId) {
-              cancelAnimationFrame(animationId);
-              animationId = null;
-            }
-            scheduleAutoResume(300);
-          }
-        });
-
-        // Additional safety hooks
-        hallCardsWrapper.addEventListener('mouseleave', () => scheduleAutoResume(300));
-        window.addEventListener('blur', () => scheduleAutoResume(300));
-        document.addEventListener('visibilitychange', () => {
-          if (document.visibilityState === 'visible') scheduleAutoResume(300);
-        });
-
-        // Page scroll -> immediately resume
-        window.addEventListener('scroll', () => scheduleAutoResume(0), { passive: true });
-      }
+      // Cards are created once (no duplication for scroll)
+      // Animation removed - using horizontal scroll instead
     }
     
     // Monthly Subject TA Trends Chart
@@ -4497,20 +4328,12 @@
 
   <!-- Carousel visibility + infinite loop (hall cards) -->
   <style id="hall-cards-carousel">
-    .hall-cards-wrapper { overflow: hidden; }
+    .hall-cards-wrapper { overflow-x: auto; overflow-y: hidden; }
     .hall-cards-grid {
       display: flex !important;
       gap: 1rem;
       flex-wrap: nowrap;
-      will-change: transform;
-      animation: hallMarquee 40s linear infinite;
-    }
-    @keyframes hallMarquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hall-cards-grid { animation: none; }
+      width: fit-content;
     }
   </style>
 
@@ -4566,45 +4389,8 @@
   <script>
     // Robust infinite loop for hall cards (duplicates until >= 2x wrapper width)
     (function() {
-      function setupHallCarousel() {
-        const wrapper = document.querySelector('.hall-cards-wrapper');
-        const grid = document.querySelector('.hall-cards-grid');
-        if (!wrapper || !grid) return;
-
-        // Reset previous clones
-        Array.from(grid.querySelectorAll('[data-clone="1"]').values()).forEach(n => n.remove());
-
-        const wrapperWidth = wrapper.getBoundingClientRect().width || 0;
-        let contentWidth = Array.from(grid.children).reduce((w, el) => w + el.getBoundingClientRect().width, 0);
-
-        if (contentWidth === 0) return;
-
-        // Duplicate nodes until content width >= 2x wrapper width (for seamless loop)
-        let safety = 0;
-        while (contentWidth < wrapperWidth * 2 && safety < 50) {
-          for (const el of Array.from(grid.children)) {
-            const clone = el.cloneNode(true);
-            clone.setAttribute('data-clone', '1');
-            grid.appendChild(clone);
-          }
-          contentWidth = Array.from(grid.children).reduce((w, el) => w + el.getBoundingClientRect().width, 0);
-          safety++;
-        }
-
-        // Restart animation
-        grid.style.animation = 'none';
-        // Force reflow
-        // eslint-disable-next-line no-unused-expressions
-        grid.offsetHeight;
-        grid.style.animation = '';
-      }
-
-      window.addEventListener('load', setupHallCarousel);
-      window.addEventListener('resize', () => {
-        // Debounce resize
-        clearTimeout(window.__hallResizeTimer);
-        window.__hallResizeTimer = setTimeout(setupHallCarousel, 150);
-      });
+      // Animation removed - using horizontal scroll instead
+      // No setup needed for scroll
     })();
   </script>
   <!-- === /TEXT BOX ALIGNMENT SYSTEM === -->
@@ -4628,7 +4414,7 @@
 
     /* 3) 아이템 최소 너비 보장(사라짐 방지) */
     .content-card-item { flex: 0 0 280px !important; min-width: 280px !important; }
-    .hall-card { flex: 0 0 280px !important; min-width: 280px !important; }
+    .hall-card { flex: 0 0 calc(50% - 0.5rem) !important; min-width: calc(50% - 0.5rem) !important; max-width: calc(50% - 0.5rem) !important; }
     .mock-test-card { flex: 0 0 90vw !important; min-width: 280px !important; }
 
     /* 그래프 기본 가시성 복구 */
