@@ -124,12 +124,12 @@
   <div class="embed-root">
     <div class="embed-stage" id="stage">
       <!-- 웹 제목 -->
-      <h1 class="text-web-title" style="text-align: center; margin: 0; padding: 2rem 0;">
+      <h1 class="text-web-title" style="text-align: center; margin: 0; padding: 2rem 0; font-style: italic;">
         2025<br>memoir
       </h1>
-        </div>
-            </div>
-            
+    </div>
+  </div>
+
   <script>
     /* -----------------------------
        SCALE SCRIPT (390px 고정)
@@ -150,5 +150,119 @@
     window.visualViewport?.addEventListener("resize", resize);
     window.addEventListener("orientationchange", resize);
   </script>
+  <script>
+    // === 자동 텍스트박스 모드 ===
+    const AUTO_TBOX = true;
+  
+    // 텍스트박스 기본 클래스 (필요하면 여기서 바꿔)
+    const TBOX_CLASS = "tbox k-body can-break";
+    const IGNORE_PARENTS = new Set(["SCRIPT","STYLE","TITLE","NOSCRIPT"]);
+  
+    // 텍스트 노드 → .tbox 래핑
+    function wrapTextNode(textNode) {
+      const txt = textNode.nodeValue;
+      if (!txt || !txt.trim()) return;
+  
+      const parent = textNode.parentNode;
+      if (!parent || parent.closest(".tbox") || IGNORE_PARENTS.has(parent.nodeName)) return;
+  
+      // 연속 공백/개행 정리: 두 줄 이상 연속 개행은 <br>로 유지
+      const sanitized = txt.replace(/\s+/g, " ").trim();
+  
+      const box = document.createElement("div");
+      box.className = TBOX_CLASS; // 중앙정렬 + 멀티라인 안전 줄바꿈
+      box.style.setProperty("--tb-p", "8px"); // 기본 패딩 (원하면 제거)
+      box.textContent = sanitized;
+  
+      parent.insertBefore(box, textNode);
+      parent.removeChild(textNode);
+    }
+  
+    // 엘리먼트가 텍스트만 가진다면 통째로 교체 (예: <p>그냥 텍스트</p>)
+    function wrapElementIfPlain(el) {
+      if (el.closest(".tbox")) return;
+      if (IGNORE_PARENTS.has(el.nodeName)) return;
+  
+      // 자식 중 텍스트 외에 다른 요소가 없고, 텍스트가 의미 있을 때
+      const onlyText =
+        Array.from(el.childNodes).every(n => n.nodeType === 3 || (n.nodeType === 8 /*comment*/));
+      const text = el.textContent ?? "";
+      if (onlyText && text.trim()) {
+        const box = document.createElement("div");
+        box.className = TBOX_CLASS;
+        box.style.setProperty("--tb-p", "8px");
+        box.textContent = text.replace(/\s+/g, " ").trim();
+        el.replaceWith(box);
+      }
+    }
+  
+    // 초기 스캔: #stage 하위의 텍스트 노드/단순 엘리먼트 자동 래핑
+    function applyAutoTbox(root = document.getElementById("stage")) {
+      if (!AUTO_TBOX || !root) return;
+  
+      // 1) raw 텍스트 노드 래핑
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          const p = node.parentNode;
+          if (!p || IGNORE_PARENTS.has(p.nodeName) || p.closest(".tbox")) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      const textNodes = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+      textNodes.forEach(wrapTextNode);
+  
+      // 2) <p>, <h1> 등 “텍스트만 가진” 엘리먼트 통째 래핑
+      root.querySelectorAll("p,h1,h2,h3,h4,div,span").forEach(wrapElementIfPlain);
+    }
+  
+    // 초기 적용
+    window.addEventListener("DOMContentLoaded", () => applyAutoTbox());
+  
+    // 이후 DOM 변경(붙여넣기/스크립트 생성)도 자동 처리
+    const mo = new MutationObserver(muts => {
+      for (const m of muts) {
+        m.addedNodes.forEach(n => {
+          if (n.nodeType === 3) {            // 텍스트 노드
+            wrapTextNode(n);
+          } else if (n.nodeType === 1) {     // 엘리먼트
+            applyAutoTbox(n);
+          }
+        });
+      }
+    });
+    mo.observe(document.getElementById("stage"), { childList: true, subtree: true });
+  
+    // 참고: .tbox 생성 후 높이 변했을 수 있으니 스케일 높이 재계산
+    const reflow = () => {
+      const stage = document.getElementById("stage");
+      const root = document.querySelector(".embed-root");
+      const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      const scale = vw / 390;
+      if (stage && root) root.style.height = stage.offsetHeight * scale + "px";
+    };
+    // 초기/변경 시 몇 번 재계산
+    document.addEventListener("DOMContentLoaded", () => setTimeout(reflow, 0));
+    const reflowObserver = new ResizeObserver(reflow);
+    reflowObserver.observe(document.getElementById("stage"));
+  </script>
+<script>
+  /* === 자동 텍스트박스에 ID 부여 === */
+  function numberTboxes() {
+    document.querySelectorAll("#stage .tbox").forEach((box, i) => {
+      box.dataset.index = i + 1; // data-index="1", "2", ...
+    });
+  }
+
+  // 초기 번호 부여
+  window.addEventListener("DOMContentLoaded", numberTboxes);
+  // MutationObserver와 연결 (새로 추가될 때마다 재번호)
+  const numObserver = new MutationObserver(numberTboxes);
+  numObserver.observe(document.getElementById("stage"), { childList: true });
+</script>
+  
 </body>
 </html>
