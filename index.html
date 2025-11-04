@@ -2867,7 +2867,7 @@
           <!-- Summary Message -->
           <div class="text-center text-gray-700 mt-8" data-aos="fade-up" data-aos-delay="200">
             <p class="k-body" data-typo="본문" style="text-align:center;">
-              <span class="nowrap"><span id="studentNameOutput" class="student-name-bold">김채이</span>님</span>은 총 <span class="nowrap"><span id="totalDays" class="param-value">150</span>일</span> 동안 <span id="campusNameOutput" class="param-value">N</span> <span id="classNameOutput" class="param-value">S</span><span class="param-value">반</span>에서 치열하게 달려왔습니다.
+              <span class="nowrap"><span id="studentNameOutput" class="student-name-bold">김채이님</span></span>은 총 <span class="nowrap"><span id="totalDays" class="param-value">150</span>일</span> 동안 <span id="campusNameOutput" class="param-value">N</span> <span id="classNameOutput" class="param-value">S</span><span class="param-value">반</span>에서 치열하게 달려왔습니다.
             </p>
           </div>
 
@@ -3293,7 +3293,7 @@
       <div class="max-w-4xl mx-auto">
         
         <div class="personal-subject-ta-header" data-aos="fade-up">
-          <span class="nowrap"><span id="studentNameForSubjects" class="param-value">학생님</span>의</span> 과목별 TA앱 질문수
+          <span class="nowrap"><span id="studentNameForSubjects" class="student-name-bold">학생님</span>의</span> 과목별 TA앱 질문수
         </div>
         
         <div class="personal-subject-ta-card" data-aos="fade-up">
@@ -3686,7 +3686,7 @@
     
     // Update DOM elements
     const studentNameElement = document.getElementById('studentNameOutput');
-    if (studentNameElement) studentNameElement.textContent = studentName;
+    if (studentNameElement) studentNameElement.textContent = studentName + '님';
     
     const studentNameForCheckinNoteElement = document.getElementById('studentNameForCheckinNote');
     if (studentNameForCheckinNoteElement) studentNameForCheckinNoteElement.textContent = studentName;
@@ -3802,19 +3802,19 @@
     // Update personal subject TA header with student name
     const studentNameForSubjectsElement = document.getElementById('studentNameForSubjects');
     if (studentNameForSubjectsElement) {
-      studentNameForSubjectsElement.textContent = studentName;
+      studentNameForSubjectsElement.textContent = studentName + '님';
       // 부모의 nowrap 클래스가 이미 적용되어 있음
     }
     
     const studentNameForMessageElement = document.getElementById('studentNameForMessage');
     if (studentNameForMessageElement) {
-      studentNameForMessageElement.textContent = studentName;
+      studentNameForMessageElement.textContent = studentName + '님';
       // 부모의 nowrap 클래스가 이미 적용되어 있음
     }
     
     const studentNameForMonthlyElement = document.getElementById('studentNameForMonthly');
     if (studentNameForMonthlyElement) {
-      studentNameForMonthlyElement.textContent = studentName;
+      studentNameForMonthlyElement.textContent = studentName + '님';
     }
     
     // Update TA/SA Meet hours
