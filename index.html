@@ -2926,7 +2926,7 @@
         <div class="hours-content" data-aos="fade-up">
           <div class="hours-title-overlay" data-typo="소주제대제목"><span class="nowrap"><span id="studentNameForHoursTitle" class="student-name-bold">김채이</span>님이,</span><br>시대인재 강의실에서,<br>강의를 들으며 보낸 시간</div>
           <div class="hours-number-overlay">
-            <span class="nowrap"><span class="hours-number-text param-value" id="totalHours" data-typo="숫자">1200</span><span class="hours-text-overlay" data-typo="본문">시간</span></span>
+            <span class="nowrap"><span class="hours-number-text param-value" id="totalHours" data-typo="숫자">1200</span>  <span class="hours-text-overlay" data-typo="본문">시간</span></span>
           </div>
           <div class="hours-note" style="margin-top: 0.5rem; text-align: center;" data-aos="fade-up" data-aos-delay="50">
             <p class="k-body" data-typo="본문">노래를 <span class="nowrap"><span id="avgSongs" class="param-value" style="font-size: var(--fs-body); color: #0459F0;">nnnn</span><span class="param-value" style="font-size: var(--fs-body); color: #0459F0;">곡</span></span> 들을 수 있는 시간이에요.<br>그 시간을 유익한 강의로 채운 만큼,<br>더 많은 것을 배웠을 거예요.</p>
@@ -2958,7 +2958,7 @@
             
             <!-- Time Value -->
             <div style="display: flex; align-items: baseline; justify-content: center; white-space: nowrap;">
-              <span class="nowrap"><span class="library-number-text param-value" id="libraryHours" data-typo="숫자">1,200</span><span class="library-text-overlay" data-typo="본문">시간</span></span>
+              <span class="nowrap"><span class="library-number-text param-value" id="libraryHours" data-typo="숫자">1,200</span> <span class="library-text-overlay" data-typo="본문">시간</span></span>
             </div>
             <!-- Library time body text -->
             <div class="text-center text-gray-700 mt-2" data-aos="fade-up" data-aos-delay="40">
@@ -3005,7 +3005,7 @@
           
           <!-- Meal Count Value -->
           <div style="display: flex; align-items: baseline; justify-content: center; white-space: nowrap;">
-              <span class="nowrap"><span class="meal-number-text param-value" id="mealCount" data-typo="숫자">1,234</span><span class="meal-text-overlay">회</span></span>
+              <span class="nowrap"><span class="meal-number-text param-value" id="mealCount" data-typo="숫자">1,234</span> <span class="meal-text-overlay">회</span></span>
           </div>
           <!-- Meal notes/body -->
           <div class="text-center text-gray-700 mt-2">
@@ -3101,7 +3101,7 @@
             <div class="personal-data-content">
               <div class="time-label" style="white-space: nowrap;">풀어낸 모의고사의 총 문항수</div>
               <div class="time-value param-value" id="totalPersonalProblems">500</div>
-              <p class="k-body" data-typo="본문" style="margin-top:.5rem;">무려 숏컷 <span class="nowrap"><span id="shortcutBooks" class="param-value">n</span>권</span>을 풀어낸 것과 같아요</p>
+              <p class="k-body" data-typo="본문" style="margin-top:.5rem;">무려 숏컷 <span class="nowrap"><span id="shortcutBooks" class="param-value" style="font-size: var(--fs-body); color: #0459F0;">n</span>권</span>을 풀어낸 것과 같아요</p>
           </div>
         </div>
         
@@ -3250,14 +3250,14 @@
           <div class="metric axis-center">
             <div class="metric-title" data-typo="소주제대제목">TA Meet</div>
             <div class="metric-row">
-              <div class="metric-value" id="taMeetHours" style="color: #0459F0;">nn</div>
+              <div class="metric-value param-value" id="taMeetHours" data-typo="숫자" style="color: #0459F0;">nn</div>
               <div class="metric-unit" data-typo="본문">시간</div>
             </div>
           </div>
           <div class="metric axis-center">
             <div class="metric-title" data-typo="소주제대제목">SA</div>
             <div class="metric-row">
-              <div class="metric-value" id="saMeetHours" style="color: #0459F0;">nn</div>
+              <div class="metric-value param-value" id="saMeetHours" data-typo="숫자" style="color: #0459F0;">nn</div>
               <div class="metric-unit" data-typo="본문">시간</div>
             </div>
           </div>
@@ -3670,6 +3670,7 @@
     const totalProblems = get('totalProblems', '50000');
     const totalMockTests = get('totalMockTests', '25');
     const totalPersonalProblems = get('totalPersonalProblems', '500');
+    const shortcutBooks = get('shortcutBooks', '10');
     const koreanProblems = get('koreanProblems', '1500');
     const mathProblems = get('mathProblems', '2000');
     const englishProblems = get('englishProblems', '1200');
@@ -3812,6 +3813,13 @@
     const totalPersonalProblemsElement = document.getElementById('totalPersonalProblems');
     if (totalPersonalProblemsElement) {
       totalPersonalProblemsElement.textContent = formattedTotalPersonalProblems;
+    }
+    
+    // Update shortcut books
+    const formattedShortcutBooks = new Intl.NumberFormat('ko-KR').format(parseInt(shortcutBooks));
+    const shortcutBooksElement = document.getElementById('shortcutBooks');
+    if (shortcutBooksElement) {
+      shortcutBooksElement.textContent = formattedShortcutBooks;
     }
     
     // Update TA section
