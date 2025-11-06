@@ -80,15 +80,19 @@
     /* -----------------------------
        FIXED CANVAS LAYOUT (390px)
     ----------------------------- */
-    .embed-root {
-      width: 100vw;
-      height: 100dvh;            /* 화면 높이 꽉 채움 */
-      display: flex;             /* 가운데 정렬 */
-      justify-content: center;   /* 가로 중앙 */
-      align-items: flex-start;   /* 세로는 위에서 시작(길면 스크롤) */
-      overflow: auto;            /* 스크롤은 이 컨테이너에서 */
-      background: #F7FAFC;       /* (선택) 배경 */
-    }
+    .embed-root{
+  width:100vw;
+  height:100vh;   /* <- 추가 */
+  height:100dvh;  /* <- 최신 브라우저 보완 */
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  overflow:auto;  /* 스크롤은 여기서 */
+  background:#F7FAFC;
+  overscroll-behavior:contain;
+}
+
+
     .embed-stage {
       width: 390px;
       transform-origin: center top;
@@ -215,15 +219,13 @@
     const root = document.querySelector(".embed-root");
 
     function resize() {
-      const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-      const scale = Math.min(vw, DESIGN_WIDTH) / DESIGN_WIDTH; // 데스크탑은 1배, 좁은 화면은 축소
+  const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  const scale = Math.min(vw, DESIGN_WIDTH) / DESIGN_WIDTH; // 데스크탑=1, 좁은 화면은 축소
+  stage.style.transform = `scale(${scale})`;
+}
 
-      stage.style.transform = `scale(${scale})`;
 
-      // 스케일 반영된 높이 계산 후, 뷰포트보다 작으면 최소 뷰포트 높이 유지
-      const scaledH = stage.offsetHeight * scale;
-      root.style.height = Math.max(scaledH, window.innerHeight) + "px";
-    }
+
 
     window.addEventListener("load", resize);
     window.addEventListener("resize", resize);
