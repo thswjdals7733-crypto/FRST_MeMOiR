@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;700&display=swap" />
-
+  
   <style>
     /* -----------------------------
        ROOT VARIABLES (Design Tokens)
@@ -153,6 +153,175 @@
     .card-value {
       margin-top: auto;
     }
+    
+    /* -----------------------------
+       PROMOTION CAROUSEL STYLES
+    ----------------------------- */
+    .promotion-section {
+      margin-bottom: 2rem;
+    }
+    
+    .promotion-category-label {
+      font-size: var(--fs-body);
+      font-weight: var(--fw-light);
+      color: var(--c-text-main);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .promotion-carousel-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .promotion-carousel-track {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    #promoCarousel1 {
+      animation: promotion-scroll-1 20s linear infinite;
+    }
+    
+    @keyframes promotion-scroll-1 {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        /* 첫 번째 세트(9개 아이템)의 너비만큼 이동 - JavaScript로 동적 계산 */
+        transform: translateX(var(--carousel-offset, -300%));
+      }
+    }
+    
+    .promotion-carousel-track:hover {
+      animation-play-state: paused;
+    }
+    
+    .promotion-item {
+      flex-shrink: 0;
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+      font-size: 1rem;
+      font-weight: var(--fw-light);
+      color: var(--c-text-main);
+      white-space: nowrap;
+      box-shadow: none;
+      overflow: visible;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: calc(33.333% - 1.33rem);
+      min-width: calc(33.333% - 1.33rem);
+      height: 150px;
+    }
+    
+    .promotion-item img {
+      max-height: 100%;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+    
+    /* -----------------------------
+       PERSONAL SUBJECT TA CHART STYLES
+    ----------------------------- */
+    .personal-subject-ta-header {
+      font-size: var(--fs-subtitle-large);
+      font-weight: var(--fw-light);
+      color: var(--c-text-main);
+      text-align: center;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+    
+    .personal-subject-ta-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      margin: 2rem 0;
+      max-width: 100%;
+    }
+    
+    .personal-subject-chart-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      justify-content: center;
+      align-items: stretch;
+      overflow: visible;
+      padding: 1rem;
+      width: 100%;
+      margin: 0 auto;
+    }
+    
+    .personal-subject-chart-item {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12;
+      min-height: 40px;
+      padding: 0.5rem 0;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .personal-subject-label {
+      font-size: var(--fs-body);
+      font-weight: var(--fw-light);
+      color: var(--c-text-main);
+      flex: 0 0 48px;
+      min-width: 60px;
+    }
+    
+    .personal-subject-bar-wrapper {
+      position: relative;
+      flex: 1 1 0;
+      min-width: 140px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      background: #E5E7EB;
+      border-radius: 15px;
+      overflow: hidden;
+      width: 180px;
+    }
+    
+    .personal-subject-bar {
+      height: 24px;
+      background: var(--c-point);
+      border-radius: 12px;
+      transition: width 2s ease-out;
+      width: 0%;
+      position: relative;
+      min-width: 15px;
+    }
+    
+    .personal-subject-value {
+      font-size: var(--fs-body);
+      font-weight: var(--fw-light);
+      color: var(--c-text-main);
+      white-space: nowrap;
+      flex: 0 0 auto;
+      margin-left: 8px;
+      min-width: 0px;
+      text-align: left;
+      flex-shrink: 0;
+    }
+    
+    .personal-subject-ta-message {
+      font-size: var(--fs-body);
+      font-weight: var(--fw-light);
+      text-align: center;
+      color: var(--c-text-main);
+      line-height: var(--lh-normal);
+      margin-top: 2rem;
+    }
 
     /* -----------------------------
        FORM 기본 설정
@@ -199,7 +368,7 @@
       <div class="card-container">
         <div class="card">
           <div class="card-label k-body">기록의 시작</div>
-          <div class="card-value k-body" id="first-arrival-date">--/--</div>
+          <div class="card-value k-num" id="first-arrival-date" style="color: var(--c-point);">--/--</div>
         </div>
         <div class="card">
           <div class="card-label k-body">기록의 끝</div>
@@ -209,8 +378,8 @@
       
       <!-- 개인화된 메시지 -->
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
-        <span id="student-name">--</span>님,<br>
-        <span id="first-arrival-date-text">--/--</span>에 시대인재와 만나 <span id="branch-name">--</span> <span id="class-name">--</span>반에서 <span id="total-days">--</span>간 함께했어요.<br>
+        <span id="student-name" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님,<br>
+        <span id="first-arrival-date-text" style="color: var(--c-point); font-weight: var(--fw-bold);">--/--</span>에 시대인재와 만나 <span id="branch-name" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span> <span id="class-name" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>에서 <span id="total-days" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>간 함께했어요.<br>
         비가 오나 눈이 오나 묵묵히 자신의 길을 걸어 온 시간들,<br>
         그리고 그 시간들이 모여 완주한 올해의 레이스는<br>
         그것 자체만으로 성공적입니다.
@@ -219,14 +388,138 @@
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         하루의 시작은 카드 태깅으로부터
       </h2>
+      
+      <!-- 평균 등원 시각 메시지 -->
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        <span id="student-name-arrival" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님, 시대인재에서의 하루는 평균적으로 <span id="avg-arrival-time-text" style="color: var(--c-point); font-weight: var(--fw-bold);">--:--</span>에 시작했어요.
+      </p>
+      
+      <!-- 주석 -->
+      <p class="k-note" style="text-align: center; margin: 0; padding-top: 1rem;">
+        *실제 <span id="student-name-note">--</span>님의 카드태깅data에 기반한 결과입니다.
+      </p>
+      
+      <!-- 등원길 메시지 -->
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        동이 트는 시간, 아침의 산뜻한 공기를 마시며 매일매일 걸어온 그 등원길을 기억나시나요?<br>
+        어둑하다가도 밝아진 하늘을 보며 계절을 체감하곤 하죠.<br>
+        다양한 온기를 느낀 만큼, 더 단단한 <span id="student-name-strength" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님이 되셨을 거예요.
+      </p>
 
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         하루의 몰입은 부엉이 라이브러리에서
       </h2>
-
-      <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
-        하루의 배움은 강의실에서
+      
+      <!-- 라이브러리 본문 -->
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        일 년 중 가장 많은 시간을 보냈을 여러분의 작은 둥지, 부엉이 라이브러리.<br>
+        그 공간 속에서 여러분은 시대인재 콘텐츠를 풀며, 엄청난 성장을 이뤘어요.
+      </p>
+      
+      <!-- 콘텐츠 제작 캐러셀 -->
+      <div class="promotion-section">
+        <div class="promotion-carousel-wrapper">
+          <div class="promotion-carousel-track" id="promoCarousel1">
+            <div class="promotion-item"><img src="./SURVIVAL.png" alt="SURVIVAL"></div>
+            <div class="promotion-item"><img src="./BRIDGE.png" alt="BRIDGE"></div>
+            <div class="promotion-item"><img src="./ACCElERATOR.png" alt="ACCELERATER"></div>
+            <div class="promotion-item"><img src="./SHORTCUT.png" alt="SHORTCUT"></div>
+            <div class="promotion-item"><img src="./ATG.png" alt="ATG"></div>
+            <div class="promotion-item"><img src="./FLOW.png" alt="FLOW"></div>
+            <div class="promotion-item"><img src="./VORTEX.png" alt="VORTEX"></div>
+            <div class="promotion-item"><img src="./E-FFECT.png" alt="E-FFECT"></div>
+            <div class="promotion-item"><img src="./TRUSS.png" alt="TRUSS"></div>
+            <!-- Duplicate for seamless loop -->
+            <div class="promotion-item"><img src="./SURVIVAL.png" alt="SURVIVAL"></div>
+            <div class="promotion-item"><img src="./BRIDGE.png" alt="BRIDGE"></div>
+            <div class="promotion-item"><img src="./ACCElERATOR.png" alt="ACCELERATER"></div>
+            <div class="promotion-item"><img src="./SHORTCUT.png" alt="SHORTCUT"></div>
+            <div class="promotion-item"><img src="./ATG.png" alt="ATG"></div>
+            <div class="promotion-item"><img src="./FLOW.png" alt="FLOW"></div>
+            <div class="promotion-item"><img src="./VORTEX.png" alt="VORTEX"></div>
+            <div class="promotion-item"><img src="./E-FFECT.png" alt="E-FFECT"></div>
+            <div class="promotion-item"><img src="./TRUSS.png" alt="TRUSS"></div>
+            <!-- Additional duplicate for smoother loop -->
+            <div class="promotion-item"><img src="./SURVIVAL.png" alt="SURVIVAL"></div>
+            <div class="promotion-item"><img src="./BRIDGE.png" alt="BRIDGE"></div>
+            <div class="promotion-item"><img src="./ACCElERATOR.png" alt="ACCELERATER"></div>
+            <div class="promotion-item"><img src="./SHORTCUT.png" alt="SHORTCUT"></div>
+            <div class="promotion-item"><img src="./ATG.png" alt="ATG"></div>
+            <div class="promotion-item"><img src="./FLOW.png" alt="FLOW"></div>
+            <div class="promotion-item"><img src="./VORTEX.png" alt="VORTEX"></div>
+            <div class="promotion-item"><img src="./E-FFECT.png" alt="E-FFECT"></div>
+            <div class="promotion-item"><img src="./TRUSS.png" alt="TRUSS"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- TA 질문 섹션 -->
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        문제를 풀다보면 언제든 모르는 게 생기기 마련이죠.<br>
+        그럴 때는,
+      </p>
+      
+      <h2 class="k-sub" style="text-align: center; margin: 0; padding-top: 2rem;">
+        Q?A! TA!
       </h2>
+      
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        <span id="student-name-ta" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님이 올 한 해 sdijTA 앱에서 한 과목별 질문수는 얼마나 될까요?
+      </p>
+      
+      <p class="k-note" style="text-align: center; margin: 0; padding-top: 1rem;">
+        *실제 <span id="student-name-ta-note">--</span>님의 TA앱에 등록된 데이터 기반입니다.
+      </p>
+      
+      <!-- 개인 과목별 질문수 그래프 -->
+      <div class="personal-subject-ta-card" style="margin-top: 3rem;">
+        <div class="personal-subject-chart-container">
+          <div class="personal-subject-chart-item">
+            <div class="personal-subject-label">국어</div>
+            <div class="personal-subject-bar-wrapper">
+              <div class="personal-subject-bar" id="personalKoreanBar"></div>
+            </div>
+            <div class="personal-subject-value k-num" id="personalKoreanQuestions" style="color: var(--c-point);">0</div>
+          </div>
+          <div class="personal-subject-chart-item">
+            <div class="personal-subject-label">수학</div>
+            <div class="personal-subject-bar-wrapper">
+              <div class="personal-subject-bar" id="personalMathBar"></div>
+            </div>
+            <div class="personal-subject-value k-num" id="personalMathQuestions" style="color: var(--c-point);">0</div>
+          </div>
+          <div class="personal-subject-chart-item">
+            <div class="personal-subject-label">영어</div>
+            <div class="personal-subject-bar-wrapper">
+              <div class="personal-subject-bar" id="personalEnglishBar"></div>
+            </div>
+            <div class="personal-subject-value k-num" id="personalEnglishQuestions" style="color: var(--c-point);">0</div>
+          </div>
+          <div class="personal-subject-chart-item">
+            <div class="personal-subject-label">탐구1</div>
+            <div class="personal-subject-bar-wrapper">
+              <div class="personal-subject-bar" id="personalResearch1Bar"></div>
+            </div>
+            <div class="personal-subject-value k-num" id="personalResearch1Questions" style="color: var(--c-point);">0</div>
+          </div>
+          <div class="personal-subject-chart-item">
+            <div class="personal-subject-label">탐구2</div>
+            <div class="personal-subject-bar-wrapper">
+              <div class="personal-subject-bar" id="personalResearch2Bar"></div>
+            </div>
+            <div class="personal-subject-value k-num" id="personalResearch2Questions" style="color: var(--c-point);">0</div>
+          </div>
+        </div>
+      </div>
+      
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        수많은 문항을 풀며 쌓은 고민의 흔적들.<br>
+        그 순간마다, 질문은 또 다른 배움의 시작이 되었습니다.<br><br>
+        그렇게 쌓이고 쌓인 <span id="student-name-total" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님의 질문은,<br>
+        총 <span id="total-questions" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span> 개였습니다.<br><br>
+        <span id="student-name-effort" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님이 자신의 부족한 점을 하나하나 메꾸고자 한 이 노력,<br>
+        분명 수능장에서 빛을 발할 거예요.
+      </p>
 
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         하루의 끝을 또다시 맺으며
@@ -294,11 +587,29 @@
         dateTextElement.textContent = firstArrivalDate;
       }
       
-      // 이름
+      // 이름 (여러 곳에 설정)
       const name = getUrlParameter("name");
-      const nameElement = document.getElementById("student-name");
-      if (name && nameElement) {
-        nameElement.textContent = name;
+      const nameElements = [
+        document.getElementById("student-name"),
+        document.getElementById("student-name-arrival"),
+        document.getElementById("student-name-note"),
+        document.getElementById("student-name-strength"),
+        document.getElementById("student-name-ta"),
+        document.getElementById("student-name-ta-note"),
+        document.getElementById("student-name-total"),
+        document.getElementById("student-name-effort")
+      ];
+      nameElements.forEach(el => {
+        if (name && el) {
+          el.textContent = name;
+        }
+      });
+      
+      // 평균 등원 시각
+      const avgArrivalTime = getUrlParameter("avgArrivalTime");
+      const avgTimeElement = document.getElementById("avg-arrival-time-text");
+      if (avgArrivalTime && avgTimeElement) {
+        avgTimeElement.textContent = avgArrivalTime;
       }
       
       // 관 명
@@ -320,6 +631,130 @@
       const totalDaysElement = document.getElementById("total-days");
       if (totalDays && totalDaysElement) {
         totalDaysElement.textContent = totalDays;
+      }
+      
+      // 총 질문수
+      const totalQuestions = getUrlParameter("totalQuestions");
+      const totalQuestionsElement = document.getElementById("total-questions");
+      if (totalQuestions && totalQuestionsElement) {
+        totalQuestionsElement.textContent = totalQuestions;
+      }
+    });
+    
+    // 캐러셀 무한 루프 개선 - 첫 번째 세트 너비 계산
+    window.addEventListener("DOMContentLoaded", () => {
+      const carousel = document.getElementById("promoCarousel1");
+      if (carousel) {
+        // 첫 번째 아이템 9개의 너비 계산
+        const items = carousel.querySelectorAll('.promotion-item');
+        if (items.length >= 9) {
+          // gap 값 가져오기 (2rem을 px로 변환)
+          const computedStyle = window.getComputedStyle(carousel);
+          const gapValue = computedStyle.gap || '2rem';
+          const gapInPx = parseFloat(gapValue) * (gapValue.includes('rem') ? 16 : 1);
+          
+          let firstSetWidth = 0;
+          
+          // 첫 9개 아이템의 너비 + 8개 gap 계산
+          for (let i = 0; i < 9; i++) {
+            const item = items[i];
+            const itemWidth = item.offsetWidth;
+            firstSetWidth += itemWidth;
+            if (i < 8) {
+              firstSetWidth += gapInPx;
+            }
+          }
+          
+          // CSS 변수로 설정
+          carousel.style.setProperty('--carousel-offset', `-${firstSetWidth}px`);
+        }
+      }
+      
+      // 개인 과목별 TA 질문수 그래프 애니메이션
+      const personalKoreanQuestions = getUrlParameter("personalKoreanQuestions") || "0";
+      const personalMathQuestions = getUrlParameter("personalMathQuestions") || "0";
+      const personalEnglishQuestions = getUrlParameter("personalEnglishQuestions") || "0";
+      const personalResearch1Questions = getUrlParameter("personalResearch1Questions") || "0";
+      const personalResearch2Questions = getUrlParameter("personalResearch2Questions") || "0";
+      
+      const personalSubjects = [
+        { id: 'personalKorean', value: personalKoreanQuestions, barId: 'personalKoreanBar', labelId: 'personalKoreanQuestions' },
+        { id: 'personalMath', value: personalMathQuestions, barId: 'personalMathBar', labelId: 'personalMathQuestions' },
+        { id: 'personalEnglish', value: personalEnglishQuestions, barId: 'personalEnglishBar', labelId: 'personalEnglishQuestions' },
+        { id: 'personalResearch1', value: personalResearch1Questions, barId: 'personalResearch1Bar', labelId: 'personalResearch1Questions' },
+        { id: 'personalResearch2', value: personalResearch2Questions, barId: 'personalResearch2Bar', labelId: 'personalResearch2Questions' }
+      ];
+      
+      // 최대값 찾기 (비율 계산용)
+      const maxPersonalValue = Math.max(...personalSubjects.map(s => parseInt(s.value) || 0));
+      
+      // 초기값 설정
+      personalSubjects.forEach(subject => {
+        const barElement = document.getElementById(subject.barId);
+        const labelElement = document.getElementById(subject.labelId);
+        if (barElement) {
+          barElement.style.width = '0%';
+        }
+        if (labelElement) {
+          labelElement.textContent = new Intl.NumberFormat('ko-KR').format(parseInt(subject.value) || 0);
+        }
+      });
+      
+      // 그래프 애니메이션 함수
+      function animatePersonalBars() {
+        personalSubjects.forEach((subject, index) => {
+          const value = parseInt(subject.value) || 0;
+          const percentage = maxPersonalValue > 0 ? (value / maxPersonalValue) * 100 : 0;
+          
+          const labelElement = document.getElementById(subject.labelId);
+          const barElement = document.getElementById(subject.barId);
+          
+          if (barElement && labelElement) {
+            setTimeout(() => {
+              barElement.style.width = percentage + '%';
+              
+              // 숫자 카운팅 애니메이션
+              let currentValue = 0;
+              const duration = 2000;
+              const increment = value / (duration / 50);
+              const counterInterval = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= value) {
+                  currentValue = value;
+                  clearInterval(counterInterval);
+                }
+                labelElement.textContent = new Intl.NumberFormat('ko-KR').format(Math.floor(currentValue));
+              }, 50);
+            }, index * 200);
+          }
+        });
+      }
+      
+      // Intersection Observer로 화면에 보일 때 애니메이션 시작
+      const personalSubjectCard = document.querySelector('.personal-subject-ta-card');
+      if (personalSubjectCard) {
+        let personalAnimated = false;
+        const personalObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !personalAnimated) {
+              personalAnimated = true;
+              personalSubjects.forEach(subject => {
+                const barElement = document.getElementById(subject.barId);
+                if (barElement) {
+                  barElement.style.width = '0%';
+                }
+              });
+              setTimeout(() => {
+                animatePersonalBars();
+              }, 100);
+            }
+            if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+              personalAnimated = false;
+            }
+          });
+        }, { threshold: 0.3 });
+        
+        personalObserver.observe(personalSubjectCard);
       }
     });
   </script>
