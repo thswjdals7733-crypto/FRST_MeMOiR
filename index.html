@@ -125,6 +125,34 @@
     .nowrap-chunk { white-space: nowrap; display: inline-block; }
     .can-break { overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
     .hr-embed { height: 2px; background: #e5e7eb; margin: 24px 0; }
+    
+    /* -----------------------------
+       CARD STYLES
+    ----------------------------- */
+    .card-container {
+      display: flex;
+      gap: 16px;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+    .card {
+      flex: 1;
+      max-width: 171px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .card-label {
+      margin-bottom: 12px;
+    }
+    .card-value {
+      margin-top: auto;
+    }
 
     /* -----------------------------
        FORM 기본 설정
@@ -166,6 +194,18 @@
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         시대인재N과 함께한 나날들
       </h2>
+      
+      <!-- 기록의 시작/끝 카드 -->
+      <div class="card-container">
+        <div class="card">
+          <div class="card-label k-body">기록의 시작</div>
+          <div class="card-value k-body" id="first-arrival-date">--/--</div>
+        </div>
+        <div class="card">
+          <div class="card-label k-body">기록의 끝</div>
+          <div class="card-value k-num">11/10</div>
+        </div>
+      </div>
 
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         하루의 시작은 카드 태깅으로부터
@@ -230,12 +270,12 @@
       return urlParams.get(name);
     }
 
-    // 평균 등원 시각 설정
+    // 첫 등원일 설정
     window.addEventListener("DOMContentLoaded", () => {
-      const avgArrivalTime = getUrlParameter("avgArrivalTime");
-      const timeElement = document.getElementById("avg-arrival-time");
-      if (avgArrivalTime && timeElement) {
-        timeElement.textContent = avgArrivalTime;
+      const firstArrivalDate = getUrlParameter("firstArrivalDate");
+      const dateElement = document.getElementById("first-arrival-date");
+      if (firstArrivalDate && dateElement) {
+        dateElement.textContent = firstArrivalDate;
       }
     });
   </script>
