@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>Memoir Base</title>
 
-  <!-- Pretendard + Noto Sans KR -->
+  <!-- Pretendard + Noto Sans KR + Nanum Pen Script -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;700&display=swap" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" />
   
   <style>
     /* -----------------------------
@@ -113,7 +116,7 @@
        BASIC TYPOGRAPHY CLASSES
     ----------------------------- */
     .text-web-title { font-size: var(--fs-web-title); font-weight: var(--fw-bold); line-height: var(--lh-tight); color: var(--c-section-header); }
-    .k-header { font-size: var(--fs-header); font-weight: var(--fw-bold); line-height: var(--lh-tight); color: var(--c-section-header); }
+    .k-header { font-size: 2.00rem; font-weight: var(--fw-bold); line-height: var(--lh-tight); color: var(--c-section-header); }
     .k-sub { font-size: var(--fs-subtitle-large); font-weight: var(--fw-light); line-height: var(--lh-snug); color: var(--c-text-sub); }
     .k-body { font-size: var(--fs-body); font-weight: var(--fw-light); line-height: var(--lh-normal); color: var(--c-text-main); }
     .k-note { font-size: var(--fs-caption); font-weight: var(--fw-light); line-height: var(--lh-normal); color: var(--c-text-note); }
@@ -131,13 +134,15 @@
     ----------------------------- */
     .card-container {
       display: flex;
-      gap: 16px;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
       margin: 2rem 0;
       justify-content: center;
     }
     .card {
-      flex: 1;
-      max-width: 171px;
+      flex: 0 0 auto;
+      width: 171px;
       background: #fff;
       border-radius: 12px;
       padding: 20px;
@@ -146,6 +151,38 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+    }
+    .timeline-connector {
+      flex: 0 0 auto;
+      width: 2px;
+      height: 60px;
+      margin: 1rem 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timeline-line {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, 
+        var(--c-point) 0%, 
+        rgba(4, 89, 240, 0.6) 50%, 
+        var(--c-point) 100%);
+      border-radius: 1px;
+      position: relative;
+    }
+    .timeline-line::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background: var(--c-point);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(4, 89, 240, 0.5);
     }
     .card-label {
       margin-bottom: 12px;
@@ -183,6 +220,10 @@
       animation: promotion-scroll-1 20s linear infinite;
     }
     
+    #promoCarousel2 {
+      animation: promotion-scroll-2 20s linear infinite;
+    }
+    
     #promoCarousel3 {
       animation: promotion-scroll-3 20s linear infinite;
     }
@@ -194,6 +235,16 @@
       100% {
         /* 첫 번째 세트(9개 아이템)의 너비만큼 이동 - JavaScript로 동적 계산 */
         transform: translateX(var(--carousel-offset, -300%));
+      }
+    }
+    
+    @keyframes promotion-scroll-2 {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        /* 첫 번째 세트(4개 아이템)의 너비만큼 이동 - JavaScript로 동적 계산 */
+        transform: translateX(var(--carousel-offset-2, -300%));
       }
     }
     
@@ -238,6 +289,37 @@
       height: auto;
       object-fit: contain;
       display: block;
+      border: none;
+    }
+    
+    /* 시그니처 발행 캐러셀 - 한 화면에 3개 보이도록 */
+    #promoCarousel2 .promotion-item {
+      width: calc(33.333% - 1.33rem);
+      min-width: calc(33.333% - 1.33rem);
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    
+    #promoCarousel2 .promotion-item img {
+      border: none !important;
+      box-shadow: none !important;
+    }
+    
+    /* 앱서비스 캐러셀 아이템에 카드 스타일 제거 */
+    #promoCarousel3 .promotion-item {
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    
+    #promoCarousel3 .promotion-item img {
+      border: none !important;
+      box-shadow: none !important;
     }
     
     /* -----------------------------
@@ -338,6 +420,183 @@
     }
 
     /* -----------------------------
+       BAR CHART STYLES (과목별 푼 문항 수)
+    ----------------------------- */
+    .bar-chart-card {
+      background: #F0F2F5;
+      border-radius: 1rem;
+      padding: 4rem 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      margin-top: 2rem;
+      margin-bottom: 0;
+      min-height: 260px;
+      overflow: visible;
+    }
+    
+    .bar-chart-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      gap: 0.25rem;
+      margin-bottom: 0;
+      overflow-x: visible;
+      overflow-y: visible;
+      padding: 3rem 2rem 0 2rem;
+      min-height: 180px;
+      flex-wrap: nowrap;
+    }
+    
+    .bar-chart-item {
+      flex: 1 1 0%;
+      min-width: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      position: relative;
+    }
+    
+    .bar-wrapper {
+      width: 15px;
+      height: 200px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      order: 2;
+    }
+    
+    .bar-wrapper::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -50%;
+      right: -50%;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    
+    .bar {
+      width: 100%;
+      background: var(--c-point);
+      border-radius: 0.5rem 0.5rem 0 0;
+      transition: height 2s ease-out;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .bar-value {
+      font-size: var(--fs-body);
+      font-weight: var(--fw-bold);
+      color: var(--c-point);
+      margin-bottom: 0.5rem;
+      order: 1;
+      position: absolute;
+      top: -2rem !important;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      z-index: 10;
+    }
+    
+    .bar-label {
+      font-size: var(--fs-body);
+      font-weight: var(--fw-light);
+      color: var(--c-text-main);
+      order: 3;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* -----------------------------
+       OWL BADGE STYLES
+    ----------------------------- */
+    .owl-badge-cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+    
+    .owl-badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .owl-badge-card {
+      background: #F5F5F5;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .owl-badge-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .owl-badge-image {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      z-index: 2;
+      position: relative;
+    }
+    
+    .owl-badge-shadow {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 15%;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      filter: blur(10px);
+      z-index: 1;
+    }
+    
+    .owl-badge-title {
+      font-size: var(--fs-subtitle-large);
+      font-weight: var(--fw-regular);
+      color: var(--c-text-main);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    
+    .owl-badge-description {
+      font-size: var(--fs-body);
+      font-weight: var(--fw-light);
+      color: var(--c-text-note);
+      line-height: var(--lh-normal);
+      text-align: center;
+    }
+
+    /* -----------------------------
+       FINAL MESSAGE STYLES
+    ----------------------------- */
+    #final-message {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: var(--fs-body);
+      color: var(--c-text-main);
+    }
+    
+
+    /* -----------------------------
        FORM 기본 설정
     ----------------------------- */
     input, textarea { font-size: 16px; }
@@ -355,15 +614,19 @@
 
       <!-- 본문 설명 -->
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 1rem; font-style: italic;">
-        '<em>memoir</em>' : 주인공의 회고록
+        '<em>memoir</em>'[메모어] : 주인공의 회고록
       </p>
 
       <!-- 본문 -->
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
         매일의 시작, 매일의 노력, 매일의 끝맺음.<br>
-        흔들렸지만 멈추지 않았던 나날들과, 지쳤지만 다시 일어난 순간들.<br>
+        흔들렸지만 멈추지 않았던 나날들과,<br>
+        지쳤지만 다시 일어난 순간들.<br>
+        <br>
         그 무수한 시간들이 하루하루 쌓여<br>
-        올 한 해 누구도 대신 써줄 수 없는, 오직 여러분만의 memoir을 완성해 나갔습니다.<br>
+        올 한 해 누구도 대신 써줄 수 없는,<br>
+        오직 여러분만의 memoir을 완성해 나갔습니다.<br>
+        <br>
         시대인재와 함께한 2025년,<br>
         여러분의 이야기를 한 페이지씩 되돌아 볼까요?
       </p>
@@ -384,6 +647,9 @@
           <div class="card-label k-body">기록의 시작</div>
           <div class="card-value k-num" id="first-arrival-date" style="color: var(--c-point);">--/--</div>
         </div>
+        <div class="timeline-connector">
+          <div class="timeline-line"></div>
+        </div>
         <div class="card">
           <div class="card-label k-body">기록의 끝</div>
           <div class="card-value k-num">11/10</div>
@@ -393,14 +659,16 @@
       <!-- 개인화된 메시지 -->
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
         <span id="student-name" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님,<br>
-        <span id="first-arrival-date-text" style="color: var(--c-point); font-weight: var(--fw-bold);">--/--</span>에 시대인재와 만나 <span id="branch-name" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span> <span id="class-name" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>에서 <span id="total-days" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>간 함께했어요.<br>
-        비가 오나 눈이 오나 묵묵히 자신의 길을 걸어 온 시간들,<br>
-        그리고 그 시간들이 모여 완주한 올해의 레이스는<br>
+        <span id="first-arrival-date-text" style="color: var(--c-point); font-weight: var(--fw-bold);">--/--</span>에 시대인재와 만나<br>
+        <span id="branch-name" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span> <span id="class-name" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>에서 <span id="total-days" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>간 함께했어요.<br><br>
+        비가 오나 눈이 오나<br>
+        묵묵히 자신의 길을 걸어 온 시간들.<br>
+        그 시간들이 모여 완주한 올해의 레이스는<br>
         그것 자체만으로 성공적입니다.
       </p>
 
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
-        하루의 시작은 카드 태깅으로부터
+        하루의 시작은<br>카드 태깅으로부터
       </h2>
       
       <!-- 평균 등원 시각 메시지 -->
@@ -415,13 +683,15 @@
       
       <!-- 등원길 메시지 -->
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
-        동이 트는 시간, 아침의 산뜻한 공기를 마시며 매일매일 걸어온 그 등원길을 기억나시나요?<br>
-        어둑하다가도 밝아진 하늘을 보며 계절을 체감하곤 하죠.<br>
-        다양한 온기를 느낀 만큼, 더 단단한 <span id="student-name-strength" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님이 되셨을 거예요.
+        동이 트는 시간,<br>
+        산뜻한 공기를 마시며 걸어온 등원길을 기억하나요?<br>
+        그 길에서 맞이하는 하늘의 색채로 계절을 체감하죠.<br>
+        지나온 계절 속에서,<br>
+        더 나은 <span id="student-name-strength" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님이 되셨을 거예요.
       </p>
 
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
-        하루의 몰입은 부엉이 라이브러리에서
+        하루의 몰입은<br>부엉이 라이브러리에서
       </h2>
       
       <!-- 라이브러리 본문 -->
@@ -434,35 +704,35 @@
       <div class="promotion-section">
         <div class="promotion-carousel-wrapper">
           <div class="promotion-carousel-track" id="promoCarousel1">
-            <div class="promotion-item"><img src="./SURVIVAL.png" alt="SURVIVAL"></div>
-            <div class="promotion-item"><img src="./BRIDGE.png" alt="BRIDGE"></div>
-            <div class="promotion-item"><img src="./ACCElERATOR.png" alt="ACCELERATER"></div>
-            <div class="promotion-item"><img src="./SHORTCUT.png" alt="SHORTCUT"></div>
-            <div class="promotion-item"><img src="./ATG.png" alt="ATG"></div>
-            <div class="promotion-item"><img src="./FLOW.png" alt="FLOW"></div>
-            <div class="promotion-item"><img src="./VORTEX.png" alt="VORTEX"></div>
-            <div class="promotion-item"><img src="./E-FFECT.png" alt="E-FFECT"></div>
-            <div class="promotion-item"><img src="./TRUSS.png" alt="TRUSS"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/SURVIVAL.png" alt="SURVIVAL"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/BRIDGE.png" alt="BRIDGE"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/ACCElERATOR.png" alt="ACCELERATER"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/SHORTCUT.png" alt="SHORTCUT"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/ATG.png" alt="ATG"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/FLOW.png" alt="FLOW"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/VORTEX.png" alt="VORTEX"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/E-FFECT.png" alt="E-FFECT"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/TRUSS.png" alt="TRUSS"></div>
             <!-- Duplicate for seamless loop -->
-            <div class="promotion-item"><img src="./SURVIVAL.png" alt="SURVIVAL"></div>
-            <div class="promotion-item"><img src="./BRIDGE.png" alt="BRIDGE"></div>
-            <div class="promotion-item"><img src="./ACCElERATOR.png" alt="ACCELERATER"></div>
-            <div class="promotion-item"><img src="./SHORTCUT.png" alt="SHORTCUT"></div>
-            <div class="promotion-item"><img src="./ATG.png" alt="ATG"></div>
-            <div class="promotion-item"><img src="./FLOW.png" alt="FLOW"></div>
-            <div class="promotion-item"><img src="./VORTEX.png" alt="VORTEX"></div>
-            <div class="promotion-item"><img src="./E-FFECT.png" alt="E-FFECT"></div>
-            <div class="promotion-item"><img src="./TRUSS.png" alt="TRUSS"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/SURVIVAL.png" alt="SURVIVAL"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/BRIDGE.png" alt="BRIDGE"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/ACCElERATOR.png" alt="ACCELERATER"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/SHORTCUT.png" alt="SHORTCUT"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/ATG.png" alt="ATG"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/FLOW.png" alt="FLOW"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/VORTEX.png" alt="VORTEX"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/E-FFECT.png" alt="E-FFECT"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/TRUSS.png" alt="TRUSS"></div>
             <!-- Additional duplicate for smoother loop -->
-            <div class="promotion-item"><img src="./SURVIVAL.png" alt="SURVIVAL"></div>
-            <div class="promotion-item"><img src="./BRIDGE.png" alt="BRIDGE"></div>
-            <div class="promotion-item"><img src="./ACCElERATOR.png" alt="ACCELERATER"></div>
-            <div class="promotion-item"><img src="./SHORTCUT.png" alt="SHORTCUT"></div>
-            <div class="promotion-item"><img src="./ATG.png" alt="ATG"></div>
-            <div class="promotion-item"><img src="./FLOW.png" alt="FLOW"></div>
-            <div class="promotion-item"><img src="./VORTEX.png" alt="VORTEX"></div>
-            <div class="promotion-item"><img src="./E-FFECT.png" alt="E-FFECT"></div>
-            <div class="promotion-item"><img src="./TRUSS.png" alt="TRUSS"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/SURVIVAL.png" alt="SURVIVAL"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/BRIDGE.png" alt="BRIDGE"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/ACCElERATOR.png" alt="ACCELERATER"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/SHORTCUT.png" alt="SHORTCUT"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/ATG.png" alt="ATG"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/FLOW.png" alt="FLOW"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/VORTEX.png" alt="VORTEX"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/E-FFECT.png" alt="E-FFECT"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/TRUSS.png" alt="TRUSS"></div>
           </div>
         </div>
       </div>
@@ -531,7 +801,7 @@
         그 순간마다, 질문은 또 다른 배움의 시작이 되었습니다.<br><br>
         그렇게 쌓이고 쌓인 <span id="student-name-total" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님의 질문은,<br>
         총 <span id="total-questions" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>였습니다.<br><br>
-        <span id="student-name-effort" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님이 자신의 부족한 점을 하나하나 메꾸고자 한 이 노력,<br>
+        자신의 부족한 점을 하나하나 메꾸고자 한 이 노력,<br>
         분명 수능장에서 빛을 발할 거예요.
       </p>
       
@@ -542,19 +812,19 @@
       <div class="promotion-section" style="margin-top: 2rem;">
         <div class="promotion-carousel-wrapper">
           <div class="promotion-carousel-track" id="promoCarousel3">
-            <div class="promotion-item"><img src="./SDIJN.png" alt="SDIJN"></div>
-            <div class="promotion-item"><img src="./CONTENTS.png" alt="CONTENTS"></div>
-            <div class="promotion-item"><img src="./Timer.png" alt="TIMER"></div>
-            <div class="promotion-item"><img src="./TA.png" alt="TA"></div>
-            <div class="promotion-item"><img src="./SCHEDULE.png" alt="SCHEDULE"></div>
-            <div class="promotion-item"><img src="./ebook.png" alt="EBOOK"></div>
+            <div class="promotion-item"><img src="./앱이미지/SDIJN.png" alt="SDIJN"></div>
+            <div class="promotion-item"><img src="./앱이미지/CONTENTS.png" alt="CONTENTS"></div>
+            <div class="promotion-item"><img src="./앱이미지/Timer.png" alt="TIMER"></div>
+            <div class="promotion-item"><img src="./앱이미지/TA.png" alt="TA"></div>
+            <div class="promotion-item"><img src="./앱이미지/SCHEDULE.png" alt="SCHEDULE"></div>
+            <div class="promotion-item"><img src="./앱이미지/ebook.png" alt="EBOOK"></div>
             <!-- Duplicate for seamless loop -->
-            <div class="promotion-item"><img src="./SDIJN.png" alt="SDIJN"></div>
-            <div class="promotion-item"><img src="./CONTENTS.png" alt="CONTENTS"></div>
-            <div class="promotion-item"><img src="./Timer.png" alt="TIMER"></div>
-            <div class="promotion-item"><img src="./TA.png" alt="TA"></div>
-            <div class="promotion-item"><img src="./SCHEDULE.png" alt="SCHEDULE"></div>
-            <div class="promotion-item"><img src="./ebook.png" alt="EBOOK"></div>
+            <div class="promotion-item"><img src="./앱이미지/SDIJN.png" alt="SDIJN"></div>
+            <div class="promotion-item"><img src="./앱이미지/CONTENTS.png" alt="CONTENTS"></div>
+            <div class="promotion-item"><img src="./앱이미지/Timer.png" alt="TIMER"></div>
+            <div class="promotion-item"><img src="./앱이미지/TA.png" alt="TA"></div>
+            <div class="promotion-item"><img src="./앱이미지/SCHEDULE.png" alt="SCHEDULE"></div>
+            <div class="promotion-item"><img src="./앱이미지/ebook.png" alt="EBOOK"></div>
           </div>
         </div>
       </div>
@@ -562,6 +832,10 @@
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 3rem;">
         이처럼 콘텐츠를 풀고, 질문을 하고, 앱을 사용하면서<br>
         라이브러리에서의 몰입은 한 해간 이어졌어요.
+      </p>
+      
+      <p class="k-note" style="text-align: center; margin: 0; padding-top: 1rem;">
+        *실제 <span id="student-name-focus-note" style="color: var(--c-text-note);">--</span>님의 한 해간 몰입도 리포트를 집계한 결과, 평균 몰입도가 <span id="avg-focus-score" style="color: var(--c-text-note);">--</span>였어요!
       </p>
       
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
@@ -580,11 +854,68 @@
         결과보다 값진 건, 그 꾸준한 시도들이었습니다.<br>
         그리고 그 시간의 기록,<br>
         모의고사 응시 총 <span id="total-mock-tests" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>.<br><br>
-        매일의 공부가 문제로 쌓이고,<br>
-        풀이의 흔적이 곧 시간의 기록이 되었습니다.<br>
-        그 집중의 순간들이 만들어 낸 결과,<br>
+        쌓여간 문제들은 하루의 증거가 되었고,<br>
+        그 풀이의 자취는 시간의 흐름을 새겼습니다.
+      </p>
+      
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        <span id="student-name-problems" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님, 한 해간 과목별로 이만큼 풀어냈어요.
+      </p>
+      
+      <!-- 과목별 푼 문항 수 그래프 -->
+      <div class="bar-chart-card" style="margin-top: 3rem;">
+        <div class="bar-chart-container">
+          <div class="bar-chart-item">
+            <div class="bar-wrapper">
+              <div class="bar" id="koreanProblemsBar" style="position: relative; height: 0%;">
+                <div class="bar-value" id="koreanProblemsValue" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--c-point);">0</div>
+              </div>
+            </div>
+            <div class="bar-label">국어</div>
+          </div>
+          
+          <div class="bar-chart-item">
+            <div class="bar-wrapper">
+              <div class="bar" id="mathProblemsBar" style="position: relative; height: 0%;">
+                <div class="bar-value" id="mathProblemsValue" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--c-point);">0</div>
+              </div>
+            </div>
+            <div class="bar-label">수학</div>
+          </div>
+          
+          <div class="bar-chart-item">
+            <div class="bar-wrapper">
+              <div class="bar" id="englishProblemsBar" style="position: relative; height: 0%;">
+                <div class="bar-value" id="englishProblemsValue" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--c-point);">0</div>
+              </div>
+            </div>
+            <div class="bar-label">영어</div>
+          </div>
+          
+          <div class="bar-chart-item">
+            <div class="bar-wrapper">
+              <div class="bar" id="research1ProblemsBar" style="position: relative; height: 0%;">
+                <div class="bar-value" id="research1ProblemsValue" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--c-point);">0</div>
+              </div>
+            </div>
+            <div class="bar-label">탐구1</div>
+          </div>
+          
+          <div class="bar-chart-item">
+            <div class="bar-wrapper">
+              <div class="bar" id="research2ProblemsBar" style="position: relative; height: 0%;">
+                <div class="bar-value" id="research2ProblemsValue" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--c-point);">0</div>
+              </div>
+            </div>
+            <div class="bar-label">탐구2</div>
+          </div>
+        </div>
+      </div>
+      
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        이렇게 집중으로 엮어낸 순간들이,<br>
         총 <span id="total-personal-problems" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>.<br>
-        무려 <span id="shortcut-books" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>을 풀어낸 것과 같아요
+        수능 날 풀게되는 문항 수의 무려 <span id="exam-multiplier" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span> 더 풀어냈군요!
       </p>
       
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
@@ -610,15 +941,33 @@
       </p>
       
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
-        하루를 정리하며,<br>
-        <span id="student-name-diligent" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님은 또 하루를 성실완성했습니다.<br>
-        늦은 저녁 라이브러리에는 고요한 집중의 온도만 남았습니다.<br>
-        한 장의 노트를 덮고, 가방을 정리하던 그 시간<br>
-        <span id="student-name-diligent2" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님은 또 한 번 성실한 하루를 마무리했습니다.
+        잠깐의 휴식에도 시대인재가 힘이 되었길 바라요
+      </p>
+      
+      <!-- 시그니처 발행 캐러셀 -->
+      <div class="promotion-section" style="margin-top: 2rem;">
+        <div class="promotion-carousel-wrapper">
+          <div class="promotion-carousel-track" id="promoCarousel2">
+            <div class="promotion-item"><img src="./AFTERPACK.png" alt="AFTERPACK"></div>
+            <div class="promotion-item"><img src="./MAGAZINE.png" alt="MAGAZINE"></div>
+            <div class="promotion-item"><img src="./HANGHAE.png" alt="항해일지"></div>
+            <div class="promotion-item"><img src="./VOYAGERR.png" alt="보이저레터"></div>
+            <!-- Duplicate for seamless loop -->
+            <div class="promotion-item"><img src="./AFTERPACK.png" alt="AFTERPACK"></div>
+            <div class="promotion-item"><img src="./MAGAZINE.png" alt="MAGAZINE"></div>
+            <div class="promotion-item"><img src="./HANGHAE.png" alt="항해일지"></div>
+            <div class="promotion-item"><img src="./VOYAGERR.png" alt="보이저레터"></div>
+          </div>
+        </div>
+      </div>
+      
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        늦은 밤, 공부를 마치고, 가방을 정리하던 그 시간.<br>
+        <span id="student-name-diligent" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님은 또 한 번 성실한 하루를 마무리했습니다.
       </p>
 
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
-        우리들의 하루가 모이고 모여서
+        우리들의 하루가<br>모이고 모여서
       </h2>
       
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
@@ -658,13 +1007,178 @@
         올해를 빛낸 부엉이 여러분!
       </h2>
 
-      <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
-        After Service
-      </h2>
+      <div class="owl-badge-cards-container">
+        <!-- Gold Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/GoldOwl.png" alt="황금 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">황금 부엉이</p>
+          <p class="owl-badge-description k-body">올해를 완주한 챔피언</p>
+        </div>
+        
+        <!-- Early Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/EarlyOwl.png" alt="이른 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">얼리버드 부엉이</p>
+          <p class="owl-badge-description k-body">새소리와 함께 맞이한 새벽</p>
+        </div>
+        
+        <!-- Night Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/NightOwl.png" alt="밤 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">심야 부엉이</p>
+          <p class="owl-badge-description k-body">밤이 깊어도 식지 않는 열정</p>
+        </div>
+        
+        <!-- Sungsil Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/SungsilOwl.png" alt="성실 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">성실 부엉이</p>
+          <p class="owl-badge-description k-body">매일매일 꾸준히</p>
+        </div>
+        
+        <!-- Korean Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/KoreanOwl.png" alt="국어 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">국어 부엉이</p>
+          <p class="owl-badge-description k-body">나랏말싸미..</p>
+        </div>
+        
+        <!-- Math Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/MathOwl.png" alt="수학 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">수학 부엉이</p>
+          <p class="owl-badge-description k-body">계산이 멈추지 않아서일까</p>
+        </div>
+        
+        <!-- English Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/EnglishOwl.png" alt="영어 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">영어 부엉이</p>
+          <p class="owl-badge-description k-body">에이 비 시대인재 </p>
+        </div>
+        
+        <!-- Science Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/ScienceOwl.png" alt="과학 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">과탐 부엉이</p>
+          <p class="owl-badge-description k-body">I Like Science</p>
+        </div>
+        
+        <!-- Social Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/SocialOwl.png" alt="사회 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">사탐 부엉이</p>
+          <p class="owl-badge-description k-body">넓은 세상을 바라보는 눈</p>
+        </div>
+        
+        <!-- Molip Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/MolipOwl.png" alt="몰입 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">몰입 부엉이</p>
+          <p class="owl-badge-description k-body">안광지배철!</p>
+        </div>
+        
+        <!-- Sheep Owl -->
+        <div class="owl-badge-item">
+          <div class="owl-badge-card">
+            <div class="owl-badge-image-wrapper">
+              <img src="./부엉이뱃지이미지/SheepOwl.png" alt="양 부엉이" class="owl-badge-image">
+              <div class="owl-badge-shadow"></div>
+            </div>
+          </div>
+          <p class="owl-badge-title k-sub">문풀 부엉이</p>
+          <p class="owl-badge-description k-body">풀고 풀고 또 풀고</p>
+        </div>
+      </div>
 
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         시대인재는 앞으로도..
       </h2>
+
+      <!-- 애프터팩 -->
+      <h2 class="k-sub" style="text-align: center; margin: 0; padding-top: 3rem; color: var(--c-point);">
+        애프터팩
+      </h2>
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        2026학년도 정시를 위한 핵심 정보, 그리고 입시 그 이후 이야기까지.<br>
+        수능이 끝난 이후에 필요한 내용을 한껏 담아 여러분들께 전합니다.
+      </p>
+
+      <!-- 가채점 상담 -->
+      <h2 class="k-sub" style="text-align: center; margin: 0; padding-top: 3rem; color: var(--c-point);">
+        가채점 상담
+      </h2>
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        수능 직후, 가채점 결과를 바탕으로 학생의 성적을 분석하여,<br>
+        논술 응시 여부에 대해 빠르게 알려드립니다.
+      </p>
+
+      <!-- 정시 컨설팅 -->
+      <h2 class="k-sub" style="text-align: center; margin: 0; padding-top: 3rem; color: var(--c-point);">
+        정시 컨설팅
+      </h2>
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        재원생 모두가 맞춤형 컨설팅을 통해 최적 이상의 대학과 학과를 선택할 수 있도록,<br>
+        오직 시대인재N 최상의 컨설턴트가 끝까지 입시의 마무리를 성공적으로 매듭 짓겠습니다.
+      </p>
+
+      <p id="final-message" class="k-body" style="text-align: center; margin: 0; padding-top: 3rem; padding-bottom: 50vh;">
+        11월 13일 목요일,<br><br>
+        일 년간 여러분이 시대인재에서 채워온 시간을 믿으며<br>
+        스스로에 대한 확신을 갖고<br>
+        당당한 발걸음을 내딛길 바랍니다.<br>
+        시대인재는 여러분의 여정을 끝까지 함께 하겠습니다.
+      </p>
     </div>
   </div>
 
@@ -722,13 +1236,13 @@
         document.getElementById("student-name-ta"),
         document.getElementById("student-name-ta-note"),
         document.getElementById("student-name-total"),
-        document.getElementById("student-name-effort"),
         document.getElementById("student-name-library"),
         document.getElementById("student-name-exam"),
+        document.getElementById("student-name-problems"),
         document.getElementById("student-name-classroom"),
         document.getElementById("student-name-checkout-note"),
         document.getElementById("student-name-diligent"),
-        document.getElementById("student-name-diligent2")
+        document.getElementById("student-name-focus-note")
       ];
       nameElements.forEach(el => {
         if (name && el) {
@@ -792,11 +1306,18 @@
         totalPersonalProblemsElement.textContent = totalPersonalProblems;
       }
       
-      // 숏컷 권수
-      const shortcutBooks = getUrlParameter("shortcutBooks");
-      const shortcutBooksElement = document.getElementById("shortcut-books");
-      if (shortcutBooks && shortcutBooksElement) {
-        shortcutBooksElement.textContent = shortcutBooks;
+      // 평균 몰입도
+      const avgFocusScore = getUrlParameter("avgFocusScore");
+      const avgFocusScoreElement = document.getElementById("avg-focus-score");
+      if (avgFocusScore && avgFocusScoreElement) {
+        avgFocusScoreElement.textContent = avgFocusScore;
+      }
+      
+      // 수능 배수
+      const examMultiplier = getUrlParameter("examMultiplier");
+      const examMultiplierElement = document.getElementById("exam-multiplier");
+      if (examMultiplier && examMultiplierElement) {
+        examMultiplierElement.textContent = examMultiplier;
       }
       
       // 강의실 총 잔류시간
@@ -868,6 +1389,34 @@
           
           // CSS 변수로 설정
           carousel.style.setProperty('--carousel-offset', `-${firstSetWidth}px`);
+        }
+      }
+      
+      // 시그니처 발행 캐러셀 (promoCarousel2) - 첫 번째 세트 너비 계산
+      const carousel2 = document.getElementById("promoCarousel2");
+      if (carousel2) {
+        // 첫 번째 아이템 4개의 너비 계산
+        const items2 = carousel2.querySelectorAll('.promotion-item');
+        if (items2.length >= 4) {
+          // gap 값 가져오기 (2rem을 px로 변환)
+          const computedStyle2 = window.getComputedStyle(carousel2);
+          const gapValue2 = computedStyle2.gap || '2rem';
+          const gapInPx2 = parseFloat(gapValue2) * (gapValue2.includes('rem') ? 16 : 1);
+          
+          let firstSetWidth2 = 0;
+          
+          // 첫 4개 아이템의 너비 + 3개 gap 계산
+          for (let i = 0; i < 4; i++) {
+            const item = items2[i];
+            const itemWidth = item.offsetWidth;
+            firstSetWidth2 += itemWidth;
+            if (i < 3) {
+              firstSetWidth2 += gapInPx2;
+            }
+          }
+          
+          // CSS 변수로 설정
+          carousel2.style.setProperty('--carousel-offset-2', `-${firstSetWidth2}px`);
         }
       }
       
@@ -985,7 +1534,95 @@
         
         personalObserver.observe(personalSubjectCard);
       }
+      
+      // 과목별 푼 문항 수 그래프 애니메이션
+      const koreanProblems = getUrlParameter("koreanProblems") || "0";
+      const mathProblems = getUrlParameter("mathProblems") || "0";
+      const englishProblems = getUrlParameter("englishProblems") || "0";
+      const research1Problems = getUrlParameter("research1Problems") || "0";
+      const research2Problems = getUrlParameter("research2Problems") || "0";
+      
+      const problemSubjects = [
+        { id: 'korean', value: koreanProblems, barId: 'koreanProblemsBar', valueId: 'koreanProblemsValue' },
+        { id: 'math', value: mathProblems, barId: 'mathProblemsBar', valueId: 'mathProblemsValue' },
+        { id: 'english', value: englishProblems, barId: 'englishProblemsBar', valueId: 'englishProblemsValue' },
+        { id: 'research1', value: research1Problems, barId: 'research1ProblemsBar', valueId: 'research1ProblemsValue' },
+        { id: 'research2', value: research2Problems, barId: 'research2ProblemsBar', valueId: 'research2ProblemsValue' }
+      ];
+      
+      // 최대값 찾기 (비율 계산용)
+      const maxProblemValue = Math.max(...problemSubjects.map(s => parseInt(s.value) || 0));
+      
+      // 초기값 설정
+      problemSubjects.forEach(subject => {
+        const barElement = document.getElementById(subject.barId);
+        const valueElement = document.getElementById(subject.valueId);
+        if (barElement) {
+          barElement.style.height = '0%';
+        }
+        if (valueElement) {
+          valueElement.textContent = new Intl.NumberFormat('ko-KR').format(parseInt(subject.value) || 0);
+        }
+      });
+      
+      // 그래프 애니메이션 함수
+      function animateProblemBars() {
+        problemSubjects.forEach((subject, index) => {
+          const value = parseInt(subject.value) || 0;
+          const percentage = maxProblemValue > 0 ? (value / maxProblemValue) * 100 : 0;
+          
+          const valueElement = document.getElementById(subject.valueId);
+          const barElement = document.getElementById(subject.barId);
+          
+          if (barElement && valueElement) {
+            setTimeout(() => {
+              barElement.style.height = percentage + '%';
+              
+              // 숫자 카운팅 애니메이션
+              let currentValue = 0;
+              const duration = 2000;
+              const increment = value / (duration / 50);
+              const counterInterval = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= value) {
+                  currentValue = value;
+                  clearInterval(counterInterval);
+                }
+                valueElement.textContent = new Intl.NumberFormat('ko-KR').format(Math.floor(currentValue));
+              }, 50);
+            }, index * 200);
+          }
+        });
+      }
+      
+      // Intersection Observer로 화면에 보일 때 애니메이션 시작
+      const barChartCard = document.querySelector('.bar-chart-card');
+      if (barChartCard) {
+        let problemAnimated = false;
+        const problemObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !problemAnimated) {
+              problemAnimated = true;
+              problemSubjects.forEach(subject => {
+                const barElement = document.getElementById(subject.barId);
+                if (barElement) {
+                  barElement.style.height = '0%';
+                }
+              });
+              setTimeout(() => {
+                animateProblemBars();
+              }, 100);
+            }
+            if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+              problemAnimated = false;
+            }
+          });
+        }, { threshold: 0.3 });
+        
+        problemObserver.observe(barChartCard);
+      }
     });
+
   </script>
 </body>
 </html>
