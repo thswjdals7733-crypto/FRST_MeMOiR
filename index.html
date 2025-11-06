@@ -183,6 +183,10 @@
       animation: promotion-scroll-1 20s linear infinite;
     }
     
+    #promoCarousel3 {
+      animation: promotion-scroll-3 20s linear infinite;
+    }
+    
     @keyframes promotion-scroll-1 {
       0% {
         transform: translateX(0);
@@ -190,6 +194,16 @@
       100% {
         /* 첫 번째 세트(9개 아이템)의 너비만큼 이동 - JavaScript로 동적 계산 */
         transform: translateX(var(--carousel-offset, -300%));
+      }
+    }
+    
+    @keyframes promotion-scroll-3 {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        /* 첫 번째 세트(6개 아이템)의 너비만큼 이동 - JavaScript로 동적 계산 */
+        transform: translateX(var(--carousel-offset-3, -300%));
       }
     }
     
@@ -516,9 +530,61 @@
         수많은 문항을 풀며 쌓은 고민의 흔적들.<br>
         그 순간마다, 질문은 또 다른 배움의 시작이 되었습니다.<br><br>
         그렇게 쌓이고 쌓인 <span id="student-name-total" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님의 질문은,<br>
-        총 <span id="total-questions" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span> 개였습니다.<br><br>
+        총 <span id="total-questions" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>였습니다.<br><br>
         <span id="student-name-effort" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님이 자신의 부족한 점을 하나하나 메꾸고자 한 이 노력,<br>
         분명 수능장에서 빛을 발할 거예요.
+      </p>
+      
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 3rem;">
+        TA앱 이외에도 시대인재에서 이런 앱을 사용하셨어요
+      </p>
+      
+      <div class="promotion-section" style="margin-top: 2rem;">
+        <div class="promotion-carousel-wrapper">
+          <div class="promotion-carousel-track" id="promoCarousel3">
+            <div class="promotion-item"><img src="./SDIJN.png" alt="SDIJN"></div>
+            <div class="promotion-item"><img src="./CONTENTS.png" alt="CONTENTS"></div>
+            <div class="promotion-item"><img src="./Timer.png" alt="TIMER"></div>
+            <div class="promotion-item"><img src="./TA.png" alt="TA"></div>
+            <div class="promotion-item"><img src="./SCHEDULE.png" alt="SCHEDULE"></div>
+            <div class="promotion-item"><img src="./ebook.png" alt="EBOOK"></div>
+            <!-- Duplicate for seamless loop -->
+            <div class="promotion-item"><img src="./SDIJN.png" alt="SDIJN"></div>
+            <div class="promotion-item"><img src="./CONTENTS.png" alt="CONTENTS"></div>
+            <div class="promotion-item"><img src="./Timer.png" alt="TIMER"></div>
+            <div class="promotion-item"><img src="./TA.png" alt="TA"></div>
+            <div class="promotion-item"><img src="./SCHEDULE.png" alt="SCHEDULE"></div>
+            <div class="promotion-item"><img src="./ebook.png" alt="EBOOK"></div>
+          </div>
+        </div>
+      </div>
+      
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 3rem;">
+        이처럼 콘텐츠를 풀고, 질문을 하고, 앱을 사용하면서<br>
+        라이브러리에서의 몰입은 한 해간 이어졌어요.
+      </p>
+      
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        그렇게 몰입하며 살아온 올 한 해,<br>
+        <span id="student-name-library" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님이 라이브러리에서 보낸 시간은<br>
+        <span id="total-library-hours" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>이었습니다.
+      </p>
+
+      <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
+        하루의 배움은 강의실에서
+      </h2>
+      
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        수많은 시험지 위에서<br>
+        <span id="student-name-exam" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님은 스스로를 점검해 왔어요.<br>
+        결과보다 값진 건, 그 꾸준한 시도들이었습니다.<br>
+        그리고 그 시간의 기록,<br>
+        모의고사 응시 총 <span id="total-mock-tests" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>.<br><br>
+        매일의 공부가 문제로 쌓이고,<br>
+        풀이의 흔적이 곧 시간의 기록이 되었습니다.<br>
+        그 집중의 순간들이 만들어 낸 결과,<br>
+        총 <span id="total-personal-problems" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>문항.<br>
+        무려 <span id="shortcut-books" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>을 풀어낸 것과 같아요
       </p>
 
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
@@ -597,7 +663,9 @@
         document.getElementById("student-name-ta"),
         document.getElementById("student-name-ta-note"),
         document.getElementById("student-name-total"),
-        document.getElementById("student-name-effort")
+        document.getElementById("student-name-effort"),
+        document.getElementById("student-name-library"),
+        document.getElementById("student-name-exam")
       ];
       nameElements.forEach(el => {
         if (name && el) {
@@ -639,6 +707,34 @@
       if (totalQuestions && totalQuestionsElement) {
         totalQuestionsElement.textContent = totalQuestions;
       }
+      
+      // 라이브러리 총 잔류시간
+      const totalLibraryHours = getUrlParameter("totalLibraryHours");
+      const totalLibraryHoursElement = document.getElementById("total-library-hours");
+      if (totalLibraryHours && totalLibraryHoursElement) {
+        totalLibraryHoursElement.textContent = totalLibraryHours;
+      }
+      
+      // 모의고사 응시 총 회차 수
+      const totalMockTests = getUrlParameter("totalMockTests");
+      const totalMockTestsElement = document.getElementById("total-mock-tests");
+      if (totalMockTests && totalMockTestsElement) {
+        totalMockTestsElement.textContent = totalMockTests;
+      }
+      
+      // 개인 푼 문제 수
+      const totalPersonalProblems = getUrlParameter("totalPersonalProblems");
+      const totalPersonalProblemsElement = document.getElementById("total-personal-problems");
+      if (totalPersonalProblems && totalPersonalProblemsElement) {
+        totalPersonalProblemsElement.textContent = totalPersonalProblems;
+      }
+      
+      // 숏컷 권수
+      const shortcutBooks = getUrlParameter("shortcutBooks");
+      const shortcutBooksElement = document.getElementById("shortcut-books");
+      if (shortcutBooks && shortcutBooksElement) {
+        shortcutBooksElement.textContent = shortcutBooks;
+      }
     });
     
     // 캐러셀 무한 루프 개선 - 첫 번째 세트 너비 계산
@@ -667,6 +763,34 @@
           
           // CSS 변수로 설정
           carousel.style.setProperty('--carousel-offset', `-${firstSetWidth}px`);
+        }
+      }
+      
+      // 앱 서비스 캐러셀 (promoCarousel3) - 첫 번째 세트 너비 계산
+      const carousel3 = document.getElementById("promoCarousel3");
+      if (carousel3) {
+        // 첫 번째 아이템 6개의 너비 계산
+        const items3 = carousel3.querySelectorAll('.promotion-item');
+        if (items3.length >= 6) {
+          // gap 값 가져오기 (2rem을 px로 변환)
+          const computedStyle3 = window.getComputedStyle(carousel3);
+          const gapValue3 = computedStyle3.gap || '2rem';
+          const gapInPx3 = parseFloat(gapValue3) * (gapValue3.includes('rem') ? 16 : 1);
+          
+          let firstSetWidth3 = 0;
+          
+          // 첫 6개 아이템의 너비 + 5개 gap 계산
+          for (let i = 0; i < 6; i++) {
+            const item = items3[i];
+            const itemWidth = item.offsetWidth;
+            firstSetWidth3 += itemWidth;
+            if (i < 5) {
+              firstSetWidth3 += gapInPx3;
+            }
+          }
+          
+          // CSS 변수로 설정
+          carousel3.style.setProperty('--carousel-offset-3', `-${firstSetWidth3}px`);
         }
       }
       
