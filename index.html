@@ -64,7 +64,7 @@
       -webkit-text-size-adjust: 100%;
       text-wrap: pretty;
       min-height: 100dvh;
-      overflow: hidden;
+      overflow: hidden; /* 스크롤은 .embed-root에서 처리 */
     }
     :lang(ko) { word-break: keep-all; }
     h1, h2, h3 { text-wrap: balance; }
@@ -81,22 +81,22 @@
        FIXED CANVAS LAYOUT (390px)
     ----------------------------- */
     .embed-root{
-  width:100vw;
-  height:100vh;   /* <- 추가 */
-  height:100dvh;  /* <- 최신 브라우저 보완 */
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  overflow:auto;  /* 스크롤은 여기서 */
-  background:#F7FAFC;
-  overscroll-behavior:contain;
-}
-
+      width:100vw;
+      /* 뷰포트 기준 높이(브라우저 호환 3종) */
+      height:100vh;
+      height:100svh;
+      height:100dvh;
+      display:flex;
+      justify-content:center;   /* 가로 중앙 */
+      align-items:flex-start;   /* 위에서 시작(내용 길면 스크롤) */
+      overflow:auto;            /* 스크롤은 여기서 */
+      background:#F7FAFC;
+      overscroll-behavior:contain;
+    }
 
     .embed-stage {
       width: 390px;
-      transform-origin: center top;
-      margin: 0 auto;
+      transform-origin: top left; /* ← 중심을 좌상단으로 고정 */
       backface-visibility: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -111,7 +111,6 @@
 
     /* -----------------------------
        BASIC TYPOGRAPHY CLASSES
-       (아직 사용 안 하지만 기본 제공)
     ----------------------------- */
     .text-web-title { font-size: var(--fs-web-title); font-weight: var(--fw-bold); line-height: var(--lh-tight); color: var(--c-section-header); }
     .k-header { font-size: var(--fs-header); font-weight: var(--fw-bold); line-height: var(--lh-tight); color: var(--c-section-header); }
@@ -135,19 +134,19 @@
 </head>
 
 <body>
-  <!-- 화면 스케일 구조 (비어 있음) -->
+  <!-- 화면 스케일 구조 -->
   <div class="embed-root">
     <div class="embed-stage" id="stage">
       <!-- 웹 제목 -->
       <h1 class="text-web-title" style="text-align: center; margin: 0; padding: 2rem 0; font-style: italic !important;">
         2025<br>memoir
       </h1>
-      
+
       <!-- 본문 설명 -->
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 1rem; font-style: italic;">
         '<em>memoir</em>' : 주인공의 회고록
       </p>
-      
+
       <!-- 본문 -->
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
         매일의 시작, 매일의 노력, 매일의 끝맺음.<br>
@@ -157,53 +156,45 @@
         시대인재와 함께한 2025년,<br>
         여러분의 이야기를 한 페이지씩 되돌아 볼까요?
       </p>
-      
+
       <!-- 주석 -->
       <p class="k-note" style="text-align: center; margin: 0; padding-top: 2rem;">
         *데이터 집계기간 : 2/20-10/31
       </p>
-      
-      <!-- 평균 등원 시각 -->
-      <h2 class="k-sub" style="text-align: center; margin: 0; padding-top: 3rem;">
-        평균 등원 시각
-      </h2>
-      <p class="k-num" style="text-align: center; margin: 0; padding-top: 1rem;">
-        <span id="avg-arrival-time">--:--</span>
-      </p>
-      
+
       <!-- 섹션 머리말들 -->
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         시대인재N과 함께한 나날들
       </h2>
-      
+
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         하루의 시작은 카드 태깅으로부터
       </h2>
-      
+
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         하루의 몰입은 부엉이 라이브러리에서
       </h2>
-      
+
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         하루의 배움은 강의실에서
       </h2>
-      
+
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         하루의 끝을 또다시 맺으며
       </h2>
-      
+
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         우리들의 하루가 모이고 모여서
       </h2>
-      
+
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         올해를 빛낸 부엉이 여러분!
       </h2>
-      
+
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         After Service
       </h2>
-      
+
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         시대인재는 앞으로도..
       </h2>
@@ -219,13 +210,10 @@
     const root = document.querySelector(".embed-root");
 
     function resize() {
-  const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  const scale = Math.min(vw, DESIGN_WIDTH) / DESIGN_WIDTH; // 데스크탑=1, 좁은 화면은 축소
-  stage.style.transform = `scale(${scale})`;
-}
-
-
-
+      const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      const scale = Math.min(vw, DESIGN_WIDTH) / DESIGN_WIDTH; // 데스크탑=1, 좁은 화면은 축소
+      stage.style.transform = `scale(${scale})`;
+    }
 
     window.addEventListener("load", resize);
     window.addEventListener("resize", resize);
@@ -246,7 +234,6 @@
     window.addEventListener("DOMContentLoaded", () => {
       const avgArrivalTime = getUrlParameter("avgArrivalTime");
       const timeElement = document.getElementById("avg-arrival-time");
-      
       if (avgArrivalTime && timeElement) {
         timeElement.textContent = avgArrivalTime;
       }
