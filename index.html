@@ -206,6 +206,15 @@
           <div class="card-value k-num">11/10</div>
         </div>
       </div>
+      
+      <!-- 개인화된 메시지 -->
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        <span id="student-name">--</span>님,<br>
+        <span id="first-arrival-date-text">--/--</span>에 시대인재와 만나 <span id="branch-name">--</span> <span id="class-name">--</span>반에서 <span id="total-days">--</span>간 함께했어요.<br>
+        비가 오나 눈이 오나 묵묵히 자신의 길을 걸어 온 시간들,<br>
+        그리고 그 시간들이 모여 완주한 올해의 레이스는<br>
+        그것 자체만으로 성공적입니다.
+      </p>
 
       <h2 class="k-header" style="text-align: center; margin: 0; padding-top: 3rem;">
         하루의 시작은 카드 태깅으로부터
@@ -270,12 +279,47 @@
       return urlParams.get(name);
     }
 
-    // 첫 등원일 설정
+    // 파라미터 값 설정
     window.addEventListener("DOMContentLoaded", () => {
+      // 첫 등원일 (카드)
       const firstArrivalDate = getUrlParameter("firstArrivalDate");
       const dateElement = document.getElementById("first-arrival-date");
       if (firstArrivalDate && dateElement) {
         dateElement.textContent = firstArrivalDate;
+      }
+      
+      // 첫 등원일 (텍스트)
+      const dateTextElement = document.getElementById("first-arrival-date-text");
+      if (firstArrivalDate && dateTextElement) {
+        dateTextElement.textContent = firstArrivalDate;
+      }
+      
+      // 이름
+      const name = getUrlParameter("name");
+      const nameElement = document.getElementById("student-name");
+      if (name && nameElement) {
+        nameElement.textContent = name;
+      }
+      
+      // 관 명
+      const branchName = getUrlParameter("branchName");
+      const branchElement = document.getElementById("branch-name");
+      if (branchName && branchElement) {
+        branchElement.textContent = branchName;
+      }
+      
+      // 반 명
+      const className = getUrlParameter("className");
+      const classElement = document.getElementById("class-name");
+      if (className && classElement) {
+        classElement.textContent = className;
+      }
+      
+      // 총 등원일수
+      const totalDays = getUrlParameter("totalDays");
+      const totalDaysElement = document.getElementById("total-days");
+      if (totalDays && totalDaysElement) {
+        totalDaysElement.textContent = totalDays;
       }
     });
   </script>
