@@ -159,6 +159,31 @@
       align-items: center;
       text-align: center;
     }
+
+    .record-card {
+      opacity: 0;
+      transform: scale(0.9) translateY(16px);
+      will-change: transform, opacity;
+    }
+
+    .record-card.is-visible {
+      animation: recordCardPop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes recordCardPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(16px);
+      }
+      55% {
+        opacity: 1;
+        transform: scale(1.05) translateY(-6px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
     .timeline-connector {
       flex: 0 0 auto;
       width: 2px;
@@ -178,6 +203,16 @@
         var(--c-point) 100%);
       border-radius: 1px;
       position: relative;
+      transform-origin: top;
+      transform: scaleY(0);
+      opacity: 0;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease-out;
+      will-change: transform, opacity;
+    }
+
+    .timeline-line.is-drawn {
+      transform: scaleY(1);
+      opacity: 1;
     }
     .timeline-line::before {
       content: '';
@@ -216,70 +251,50 @@
     .promotion-carousel-wrapper {
       overflow: hidden;
       position: relative;
+      touch-action: pan-y;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .promotion-carousel-wrapper:active {
+      cursor: grabbing;
+    }
+    
+    .promotion-carousel-wrapper::before,
+    .promotion-carousel-wrapper::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 32px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    
+    .promotion-carousel-wrapper::before {
+      top: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+    }
+    
+    .promotion-carousel-wrapper::after {
+      bottom: 0;
+      background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
     }
     
     .promotion-carousel-track {
       display: flex;
       gap: 2rem;
-    }
-    
-    #promoCarousel1 {
-      animation: promotion-scroll-1 20s linear infinite;
-    }
-    
-    #promoCarousel2 {
-      animation: promotion-scroll-2 20s linear infinite;
-    }
-    
-    #promoCarousel3 {
-      animation: promotion-scroll-3 20s linear infinite;
-    }
-    
-    @keyframes promotion-scroll-1 {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        /* 첫 번째 세트(9개 아이템)의 너비만큼 이동 - JavaScript로 동적 계산 */
-        transform: translateX(var(--carousel-offset, -300%));
-      }
-    }
-    
-    @keyframes promotion-scroll-2 {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        /* 첫 번째 세트(4개 아이템)의 너비만큼 이동 - JavaScript로 동적 계산 */
-        transform: translateX(var(--carousel-offset-2, -300%));
-      }
-    }
-    
-    @keyframes promotion-scroll-3 {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        /* 첫 번째 세트(6개 아이템)의 너비만큼 이동 - JavaScript로 동적 계산 */
-        transform: translateX(var(--carousel-offset-3, -300%));
-      }
-    }
-    
-    .promotion-carousel-track:hover {
-      animation-play-state: paused;
+      will-change: transform;
     }
     
     .promotion-item {
       flex-shrink: 0;
       padding: 0;
       background: transparent;
-      border-radius: 0;
       font-size: 1rem;
       font-weight: var(--fw-light);
       color: var(--c-text-main);
       white-space: nowrap;
-      box-shadow: none;
-      overflow: visible;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -287,6 +302,9 @@
       width: calc(33.333% - 1.33rem);
       min-width: calc(33.333% - 1.33rem);
       height: 150px;
+      overflow: hidden;
+      border-radius: 0;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12), 0 10px 22px rgba(0, 0, 0, 0.08);
     }
     
     .promotion-item img {
@@ -297,6 +315,8 @@
       object-fit: contain;
       display: block;
       border: none;
+      pointer-events: none;
+      -webkit-user-drag: none;
     }
     
     /* 시그니처 발행 캐러셀 - 한 화면에 3개 보이도록 */
@@ -532,6 +552,9 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      opacity: 0;
+      transform: scale(1.2) translateY(-40px) rotate(-6deg);
+      will-change: transform, opacity;
     }
     
     .owl-badge-card {
@@ -594,6 +617,28 @@
       text-align: center;
     }
 
+    .owl-badge-item.is-visible {
+      animation: owlBadgeStamp 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes owlBadgeStamp {
+      0% {
+        opacity: 0;
+        transform: scale(1.2) translateY(-40px) rotate(-6deg);
+      }
+      40% {
+        opacity: 1;
+        transform: scale(0.95) translateY(10px) rotate(2deg);
+      }
+      70% {
+        transform: scale(1.08) translateY(-4px) rotate(-1deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotate(0deg);
+      }
+    }
+
     /* -----------------------------
        FINAL MESSAGE STYLES
     ----------------------------- */
@@ -614,6 +659,9 @@
       margin: 2rem auto;
       max-width: 100%;
       text-align: center;
+      opacity: 0;
+      transform: scale(0.92) translateY(20px);
+      will-change: transform, opacity;
     }
     
     .service-card-title {
@@ -629,6 +677,25 @@
       color: var(--c-text-main);
       line-height: var(--lh-normal);
       margin: 0;
+    }
+
+    .service-card.is-visible {
+      animation: serviceCardPop 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes serviceCardPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.92) translateY(24px);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.04) translateY(0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
     
     /* -----------------------------
@@ -689,7 +756,7 @@
 
       <!-- 주석 -->
       <p class="k-note" style="text-align: center; margin: 0; padding-top: 2rem;">
-        *데이터 집계기간 : 2/20-10/31
+        *데이터 집계기간 : 2025.02.20.-2025.10.31.
       </p>
 
       <!-- 섹션 머리말들 -->
@@ -698,17 +765,17 @@
       </h2>
       
       <!-- 기록의 시작/끝 카드 -->
-      <div class="card-container">
-        <div class="card">
+      <div class="card-container" id="record-card-group">
+        <div class="card record-card" id="record-card-start">
           <div class="card-label k-body">기록의 시작</div>
           <div class="card-value k-num" id="first-arrival-date" style="color: var(--c-point);">--/--</div>
         </div>
         <div class="timeline-connector">
-          <div class="timeline-line"></div>
+          <div class="timeline-line" id="record-timeline-line"></div>
         </div>
-        <div class="card">
+        <div class="card record-card" id="record-card-end">
           <div class="card-label k-body">기록의 끝</div>
-          <div class="card-value k-num">2025.11.10</div>
+          <div class="card-value k-num">2025.11.10.</div>
         </div>
       </div>
       
@@ -769,6 +836,9 @@
             <div class="promotion-item"><img src="./콘텐츠이미지/VORTEX.png" alt="VORTEX"></div>
             <div class="promotion-item"><img src="./콘텐츠이미지/E-FFECT.png" alt="E-FFECT"></div>
             <div class="promotion-item"><img src="./콘텐츠이미지/TRUSS.png" alt="TRUSS"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/GICHUL.png" alt="GICHUL"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/MOTIF.png" alt="MOTIF"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/REVIVAL.png" alt="REVIVAL"></div>
             <!-- Duplicate for seamless loop -->
             <div class="promotion-item"><img src="./콘텐츠이미지/SURVIVAL.png" alt="SURVIVAL"></div>
             <div class="promotion-item"><img src="./콘텐츠이미지/BRIDGE.png" alt="BRIDGE"></div>
@@ -779,6 +849,9 @@
             <div class="promotion-item"><img src="./콘텐츠이미지/VORTEX.png" alt="VORTEX"></div>
             <div class="promotion-item"><img src="./콘텐츠이미지/E-FFECT.png" alt="E-FFECT"></div>
             <div class="promotion-item"><img src="./콘텐츠이미지/TRUSS.png" alt="TRUSS"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/GICHUL.png" alt="GICHUL"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/MOTIF.png" alt="MOTIF"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/REVIVAL.png" alt="REVIVAL"></div>
             <!-- Additional duplicate for smoother loop -->
             <div class="promotion-item"><img src="./콘텐츠이미지/SURVIVAL.png" alt="SURVIVAL"></div>
             <div class="promotion-item"><img src="./콘텐츠이미지/BRIDGE.png" alt="BRIDGE"></div>
@@ -789,6 +862,9 @@
             <div class="promotion-item"><img src="./콘텐츠이미지/VORTEX.png" alt="VORTEX"></div>
             <div class="promotion-item"><img src="./콘텐츠이미지/E-FFECT.png" alt="E-FFECT"></div>
             <div class="promotion-item"><img src="./콘텐츠이미지/TRUSS.png" alt="TRUSS"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/GICHUL.png" alt="GICHUL"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/MOTIF.png" alt="MOTIF"></div>
+            <div class="promotion-item"><img src="./콘텐츠이미지/REVIVAL.png" alt="REVIVAL"></div>
           </div>
         </div>
       </div>
@@ -836,14 +912,14 @@
             <div class="personal-subject-value k-num" id="personalEnglishQuestions" style="color: var(--c-point);">0</div>
           </div>
           <div class="personal-subject-chart-item">
-            <div class="personal-subject-label">탐구1</div>
+            <div class="personal-subject-label" id="personalResearch1Label">탐구1</div>
             <div class="personal-subject-bar-wrapper">
               <div class="personal-subject-bar" id="personalResearch1Bar"></div>
             </div>
             <div class="personal-subject-value k-num" id="personalResearch1Questions" style="color: var(--c-point);">0</div>
           </div>
           <div class="personal-subject-chart-item">
-            <div class="personal-subject-label">탐구2</div>
+            <div class="personal-subject-label" id="personalResearch2Label">탐구2</div>
             <div class="personal-subject-bar-wrapper">
               <div class="personal-subject-bar" id="personalResearch2Bar"></div>
             </div>
@@ -862,7 +938,7 @@
       </p>
       
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 3rem;">
-        TA앱 이외에도 시대인재에서 이런 앱을 사용하셨어요
+        TA앱 이외에도 시대인재에서 이런 앱을 사용하셨어요.
       </p>
       
       <div class="promotion-section" style="margin-top: 2rem;">
@@ -954,7 +1030,7 @@
                 <div class="bar-value" id="research1ProblemsValue" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--c-point);">0</div>
               </div>
             </div>
-            <div class="bar-label">탐구1</div>
+            <div class="bar-label" id="research1Label">탐구1</div>
           </div>
           
           <div class="bar-chart-item">
@@ -963,7 +1039,7 @@
                 <div class="bar-value" id="research2ProblemsValue" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--c-point);">0</div>
               </div>
             </div>
-            <div class="bar-label">탐구2</div>
+            <div class="bar-label" id="research2Label">탐구2</div>
           </div>
         </div>
       </div>
@@ -1103,7 +1179,7 @@
       <div class="service-card">
         <h2 class="service-card-title">가채점 상담</h2>
         <p class="service-card-body">
-          수능 직후, 가채점 결과를 바탕으로 학생의 성적을 분석하여,<br>
+          수능 직후, 가채점 결과를 바탕으로 학생의 성적을 분석하여<br>
           논술 응시 여부에 대해 빠르게 알려드립니다.
         </p>
       </div>
@@ -1156,12 +1232,14 @@
       return urlParams.get(name);
     }
 
+    const sharedNumberFormatter = new Intl.NumberFormat("ko-KR");
+
     const formatWithCommas = (value) => {
       if (value == null) return "";
       return String(value).replace(/\d{4,}(?:\.\d+)?/g, match => {
         const numberValue = Number(match);
         if (Number.isNaN(numberValue)) return match;
-        return new Intl.NumberFormat("ko-KR").format(numberValue);
+        return sharedNumberFormatter.format(numberValue);
       });
     };
 
@@ -1177,7 +1255,8 @@
       // 첫 등원일 (텍스트)
       const dateTextElement = document.getElementById("first-arrival-date-text");
       if (firstArrivalDate && dateTextElement) {
-        const parts = firstArrivalDate.split(".").map(part => part.trim());
+        const normalizedFirstArrivalDate = firstArrivalDate.replace(/\.+$/, "");
+        const parts = normalizedFirstArrivalDate.split(".").map(part => part.trim());
         if (parts.length === 3) {
           const month = parts[1]?.padStart(2, "0") || "";
           const day = parts[2]?.padStart(2, "0") || "";
@@ -1290,6 +1369,30 @@
       const totalClassroomHoursElement = document.getElementById("total-classroom-hours");
       if (totalClassroomHours && totalClassroomHoursElement) {
         totalClassroomHoursElement.textContent = formatWithCommas(totalClassroomHours);
+      }
+      
+      // 탐구 과목명 커스텀
+      const research1LabelParam = getUrlParameter("research1Label");
+      const research2LabelParam = getUrlParameter("research2Label");
+      const research1LabelElement = document.getElementById("research1Label");
+      const research2LabelElement = document.getElementById("research2Label");
+      const personalResearch1LabelElement = document.getElementById("personalResearch1Label");
+      const personalResearch2LabelElement = document.getElementById("personalResearch2Label");
+      if (research1LabelParam) {
+        if (research1LabelElement) {
+          research1LabelElement.textContent = research1LabelParam;
+        }
+        if (personalResearch1LabelElement) {
+          personalResearch1LabelElement.textContent = research1LabelParam;
+        }
+      }
+      if (research2LabelParam) {
+        if (research2LabelElement) {
+          research2LabelElement.textContent = research2LabelParam;
+        }
+        if (personalResearch2LabelElement) {
+          personalResearch2LabelElement.textContent = research2LabelParam;
+        }
       }
       
       // 평균 하원 시각
@@ -1422,11 +1525,49 @@
       if (monthlyChartElement && monthlyQuestionsCanvas) {
         const monthlyLabels = ["3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월"];
         const monthlyValues = [8911, 17742, 21636, 18466, 29204, 25856, 24801, 25203];
-        const formatter = new Intl.NumberFormat("ko-KR");
+        const formatter = sharedNumberFormatter;
         let monthlyChartRendered = false;
+        let monthlyChartAnimated = false;
         let resizeListenerAttached = false;
+        let monthlyAnimationFrame = null;
+        let monthlyAnimationStart = null;
 
-        const renderMonthlyQuestionsChart = () => {
+        const calculatePoints = (width, height, originX, originY, chartMin, valueRange, xStep) =>
+          monthlyValues.map((value, index) => {
+            const x = originX + xStep * index;
+            const y = originY - ((value - chartMin) / valueRange) * height;
+            return { x, y, value };
+          });
+
+        const getAnimatedPoints = (basePoints, progress) => {
+          if (!basePoints.length) return [];
+
+          const clampedProgress = Math.min(Math.max(progress, 0), 1);
+          const totalSegments = Math.max(basePoints.length - 1, 1);
+          const segmentFloat = clampedProgress * totalSegments;
+          const fullSegments = Math.floor(segmentFloat);
+          const remainder = segmentFloat - fullSegments;
+
+          const pathPoints = [];
+          pathPoints.push({ ...basePoints[0], partial: false });
+
+          for (let i = 1; i <= fullSegments && i < basePoints.length; i += 1) {
+            pathPoints.push({ ...basePoints[i], partial: false });
+          }
+
+          if (remainder > 0 && fullSegments + 1 < basePoints.length) {
+            const prev = basePoints[fullSegments];
+            const next = basePoints[fullSegments + 1];
+            const x = prev.x + (next.x - prev.x) * remainder;
+            const y = prev.y + (next.y - prev.y) * remainder;
+            const value = prev.value + (next.value - prev.value) * remainder;
+            pathPoints.push({ x, y, value, partial: true });
+          }
+
+          return pathPoints;
+        };
+
+        const renderMonthlyQuestionsChart = (progress = 1) => {
           const canvas = monthlyQuestionsCanvas;
           const ctx = canvas.getContext("2d");
           if (!ctx) return;
@@ -1481,11 +1622,8 @@
 
           const pointCount = monthlyValues.length;
           const xStep = pointCount > 1 ? chartWidth / (pointCount - 1) : 0;
-          const points = monthlyValues.map((value, index) => {
-            const x = originX + xStep * index;
-            const y = originY - ((value - chartMin) / valueRange) * chartHeight;
-            return { x, y, value };
-          });
+          const points = calculatePoints(chartWidth, chartHeight, originX, originY, chartMin, valueRange, xStep);
+          const pathPoints = getAnimatedPoints(points, progress);
 
           ctx.fillStyle = "#6B7280";
           ctx.textAlign = "center";
@@ -1495,15 +1633,16 @@
             ctx.fillText(label, x, originY + 10);
           });
 
-          if (points.length) {
+          if (pathPoints.length > 0) {
             const gradient = ctx.createLinearGradient(0, paddingTop, 0, originY);
             gradient.addColorStop(0, "rgba(4, 89, 240, 0.18)");
             gradient.addColorStop(1, "rgba(4, 89, 240, 0)");
             ctx.fillStyle = gradient;
             ctx.beginPath();
-            ctx.moveTo(points[0].x, originY);
-            points.forEach(point => ctx.lineTo(point.x, point.y));
-            ctx.lineTo(points[points.length - 1].x, originY);
+            ctx.moveTo(pathPoints[0].x, originY);
+            pathPoints.forEach(point => ctx.lineTo(point.x, point.y));
+            const lastPoint = pathPoints[pathPoints.length - 1];
+            ctx.lineTo(lastPoint.x, originY);
             ctx.closePath();
             ctx.fill();
           }
@@ -1511,7 +1650,7 @@
           ctx.strokeStyle = "#0459F0";
           ctx.lineWidth = 2;
           ctx.beginPath();
-          points.forEach((point, index) => {
+          pathPoints.forEach((point, index) => {
             if (index === 0) {
               ctx.moveTo(point.x, point.y);
             } else {
@@ -1523,7 +1662,7 @@
           ctx.fillStyle = "#0459F0";
           ctx.strokeStyle = "#FFFFFF";
           ctx.lineWidth = 2;
-          points.forEach(point => {
+          pathPoints.forEach(point => {
             ctx.beginPath();
             ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
             ctx.fill();
@@ -1534,126 +1673,272 @@
           ctx.font = "11px 'Noto Sans KR', sans-serif";
           ctx.textAlign = "center";
           ctx.textBaseline = "bottom";
-          points.forEach(point => {
-            ctx.fillText(formatter.format(point.value), point.x, point.y - 8);
+          pathPoints.forEach(point => {
+            ctx.fillText(formatter.format(Math.round(point.value)), point.x, point.y - 8);
           });
         };
 
-        const ensureRender = () => {
-          renderMonthlyQuestionsChart();
+        const animateMonthlyQuestionsChart = () => {
+          if (monthlyAnimationFrame) {
+            cancelAnimationFrame(monthlyAnimationFrame);
+          }
+          monthlyAnimationStart = null;
+
+          const duration = 6000;
+          const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+          const step = (timestamp) => {
+            if (monthlyAnimationStart === null) {
+              monthlyAnimationStart = timestamp;
+            }
+            const elapsed = timestamp - monthlyAnimationStart;
+            const progress = Math.min(elapsed / duration, 1);
+            renderMonthlyQuestionsChart(easeOutCubic(progress));
+
+            if (progress < 1) {
+              monthlyAnimationFrame = requestAnimationFrame(step);
+            } else {
+              monthlyAnimationFrame = null;
+            }
+          };
+
+          monthlyAnimationFrame = requestAnimationFrame(step);
+        };
+
+        const triggerMonthlyChart = () => {
+          if (!monthlyChartAnimated) {
+            renderMonthlyQuestionsChart(0);
+            monthlyChartAnimated = true;
+            monthlyChartRendered = true;
+            animateMonthlyQuestionsChart();
+            startCommunityCounters();
+          }
           if (!resizeListenerAttached) {
             resizeListenerAttached = true;
-            window.addEventListener("resize", renderMonthlyQuestionsChart);
+            window.addEventListener("resize", () => renderMonthlyQuestionsChart(1));
           }
         };
 
         if ("IntersectionObserver" in window) {
-          const monthlyObserver = new IntersectionObserver(entries => {
+        const monthlyObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-              if (entry.isIntersecting && !monthlyChartRendered) {
-                monthlyChartRendered = true;
-                ensureRender();
+              if (entry.isIntersecting && !monthlyChartAnimated) {
+                triggerMonthlyChart();
+                monthlyObserver.disconnect();
               }
             });
-          }, { threshold: 0.25 });
+          }, { threshold: 0.15, rootMargin: "0px 0px -30%" });
 
           monthlyObserver.observe(monthlyChartElement);
         } else {
-          ensureRender();
+          triggerMonthlyChart();
+        }
+      }
+
+      const communityCounters = [
+        { selector: "#total-all-ta-questions", param: "totalAllTAQuestions" },
+        { selector: "#total-all-library-hours", param: "totalAllLibraryHours" },
+        { selector: "#total-all-problems", param: "totalAllProblems" },
+        { selector: "#total-all-classroom-hours", param: "totalAllClassroomHours" }
+      ];
+
+      let communityCountersStarted = false;
+
+      const startCommunityCounters = () => {
+        if (communityCountersStarted) return;
+        communityCountersStarted = true;
+        communityCounters.forEach(({ selector, param }) => {
+          const element = document.querySelector(selector);
+          if (!element) return;
+
+          const rawValue = getUrlParameter(param);
+          if (!rawValue) return;
+
+          const numberValue = parseInt(String(rawValue).replace(/[^0-9]/g, ""), 10);
+          if (Number.isNaN(numberValue)) {
+            element.textContent = rawValue;
+            return;
+          }
+
+          element.textContent = sharedNumberFormatter.format(numberValue) + (/[^\d]+$/.exec(rawValue)?.[0] || "");
+        });
+      };
+    const initSeamlessCarousel = (trackId, speed = 36) => {
+      const track = document.getElementById(trackId);
+      if (!track) return;
+
+      const wrapper = track.parentElement;
+      const state = {
+        track,
+        wrapper,
+        speed,
+        baseWidth: 0,
+        baseCount: 0,
+        position: 0,
+        lastTs: null,
+        rafId: null,
+        isDragging: false,
+        dragStartX: 0,
+        dragStartPos: 0,
+        lastMoveX: 0,
+        lastMoveTs: 0,
+        velocityX: 0,
+        inertiaUntil: 0,
+      };
+
+      const toPx = (value) => {
+        if (!value) return 0;
+        const num = parseFloat(value);
+        if (Number.isNaN(num)) return 0;
+        if (value.includes("rem")) return num * 16;
+        return num;
+      };
+
+      const detectBaseCount = () => {
+        const items = Array.from(state.track.querySelectorAll(".promotion-item"));
+        const seen = new Set();
+        let count = 0;
+        for (const el of items) {
+          const src = el.querySelector("img")?.getAttribute("src") || "";
+          const key = src.trim().toLowerCase();
+          if (!key) break;
+          if (seen.has(key)) break;
+          seen.add(key);
+          count += 1;
+        }
+        state.baseCount = count > 0 ? count : items.length;
+      };
+
+      const computeBaseWidth = () => {
+        const items = state.track.querySelectorAll(".promotion-item");
+        const style = window.getComputedStyle(state.track);
+        const gap = toPx(style.columnGap || style.gap || "0");
+        let w = 0;
+        for (let i = 0; i < Math.min(state.baseCount, items.length); i += 1) {
+          w += items[i].offsetWidth;
+        }
+        w += gap * Math.max(0, Math.min(state.baseCount, items.length) - 1);
+        state.baseWidth = w || 1;
+      };
+
+      const ensureClones = () => {
+        const needWidth = state.wrapper ? state.wrapper.clientWidth + state.baseWidth : state.baseWidth * 2;
+        let safety = 0;
+        while (state.track.scrollWidth < needWidth && safety < 20) {
+          const items = Array.from(state.track.querySelectorAll(".promotion-item"));
+          for (let i = 0; i < Math.min(state.baseCount, items.length); i += 1) {
+            state.track.appendChild(items[i].cloneNode(true));
+          }
+          safety += 1;
+        }
+      };
+
+      const applyPosition = () => {
+        const bw = state.baseWidth;
+        let pos = state.position % bw;
+        if (pos > 0) pos -= bw;
+        state.position = pos;
+        state.track.style.transform = `translateX(${pos}px)`;
+      };
+
+      const step = (ts) => {
+        if (state.lastTs == null) state.lastTs = ts;
+        const dt = ts - state.lastTs;
+        state.lastTs = ts;
+
+        if (!state.isDragging && state.baseWidth > 0) {
+          if (ts < state.inertiaUntil && Math.abs(state.velocityX) > 1) {
+            state.position += (state.velocityX * dt) / 1000;
+            state.velocityX *= 0.96;
+          } else {
+            state.position -= (state.speed * dt) / 1000;
+            state.velocityX = 0;
+          }
+          applyPosition();
+        }
+        state.rafId = requestAnimationFrame(step);
+      };
+
+      const onPointerDown = (e) => {
+        state.isDragging = true;
+        state.dragStartX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
+        state.dragStartPos = state.position;
+        state.lastMoveX = state.dragStartX;
+        state.lastMoveTs = performance.now();
+        state.velocityX = 0;
+        state.inertiaUntil = 0;
+        e.preventDefault();
+      };
+
+      const onPointerMove = (e) => {
+        if (!state.isDragging) return;
+        const x = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
+        const now = performance.now();
+        const dx = x - state.dragStartX;
+        state.position = state.dragStartPos + dx;
+        applyPosition();
+
+        const dt = now - state.lastMoveTs;
+        if (dt > 0) {
+          state.velocityX = (x - state.lastMoveX) / (dt / 1000);
+          state.lastMoveX = x;
+          state.lastMoveTs = now;
+        }
+      };
+
+      const onPointerUp = () => {
+        if (!state.isDragging) return;
+        state.isDragging = false;
+        const now = performance.now();
+        state.inertiaUntil = now + 600;
+      };
+
+      const initialize = () => {
+        detectBaseCount();
+        computeBaseWidth();
+        ensureClones();
+        computeBaseWidth();
+        applyPosition();
+        state.rafId = requestAnimationFrame(step);
+
+        if (state.wrapper) {
+          state.wrapper.addEventListener("touchstart", onPointerDown, { passive: false });
+          state.wrapper.addEventListener("touchmove", onPointerMove, { passive: false });
+          state.wrapper.addEventListener("touchend", onPointerUp, { passive: true });
+          state.wrapper.addEventListener("touchcancel", onPointerUp, { passive: true });
+
+          state.wrapper.addEventListener("mousedown", onPointerDown);
+          window.addEventListener("mousemove", onPointerMove);
+          window.addEventListener("mouseup", onPointerUp);
+
+          state.wrapper.addEventListener("pointerdown", onPointerDown);
+          window.addEventListener("pointermove", onPointerMove);
+          window.addEventListener("pointerup", onPointerUp);
+          window.addEventListener("pointercancel", onPointerUp);
+          window.addEventListener("mouseleave", onPointerUp);
         }
 
-        // 안전망: 500ms 후에도 렌더되지 않았다면 수동 실행
-        setTimeout(() => {
-          if (!monthlyChartRendered) {
-            monthlyChartRendered = true;
-            ensureRender();
-          }
-        }, 500);
-      }
+        let resizeTimer = null;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            computeBaseWidth();
+            ensureClones();
+            computeBaseWidth();
+            applyPosition();
+          }, 150);
+        });
+      };
+
+      initialize();
+    };
+
+    window.addEventListener("load", () => {
+      initSeamlessCarousel("promoCarousel1");
+      initSeamlessCarousel("promoCarousel2", 32);
+      initSeamlessCarousel("promoCarousel3", 34);
     });
     
-    // 캐러셀 무한 루프 개선 - 첫 번째 세트 너비 계산
-    window.addEventListener("DOMContentLoaded", () => {
-      const carousel = document.getElementById("promoCarousel1");
-      if (carousel) {
-        // 첫 번째 아이템 9개의 너비 계산
-        const items = carousel.querySelectorAll('.promotion-item');
-        if (items.length >= 9) {
-          // gap 값 가져오기 (2rem을 px로 변환)
-          const computedStyle = window.getComputedStyle(carousel);
-          const gapValue = computedStyle.gap || '2rem';
-          const gapInPx = parseFloat(gapValue) * (gapValue.includes('rem') ? 16 : 1);
-          
-          let firstSetWidth = 0;
-          
-          // 첫 9개 아이템의 너비 + 8개 gap 계산
-          for (let i = 0; i < 9; i++) {
-            const item = items[i];
-            const itemWidth = item.offsetWidth;
-            firstSetWidth += itemWidth;
-            if (i < 8) {
-              firstSetWidth += gapInPx;
-            }
-          }
-          
-          // CSS 변수로 설정
-          carousel.style.setProperty('--carousel-offset', `-${firstSetWidth}px`);
-        }
-      }
-      
-      // 시그니처 발행 캐러셀 (promoCarousel2) - 첫 번째 세트 너비 계산
-      const carousel2 = document.getElementById("promoCarousel2");
-      if (carousel2) {
-        const items2 = carousel2.querySelectorAll('.promotion-item');
-        const baseCount2 = Math.max(Math.floor(items2.length / 2), 1);
-        if (items2.length >= baseCount2) {
-          const computedStyle2 = window.getComputedStyle(carousel2);
-          const gapValue2 = computedStyle2.gap || '2rem';
-          const gapInPx2 = parseFloat(gapValue2) * (gapValue2.includes('rem') ? 16 : 1);
-          
-          let firstSetWidth2 = 0;
-          
-          for (let i = 0; i < baseCount2; i++) {
-            const item = items2[i];
-            const itemWidth = item.offsetWidth;
-            firstSetWidth2 += itemWidth;
-            if (i < baseCount2 - 1) {
-              firstSetWidth2 += gapInPx2;
-            }
-          }
-          
-          carousel2.style.setProperty('--carousel-offset-2', `-${firstSetWidth2}px`);
-        }
-      }
-      
-      // 앱 서비스 캐러셀 (promoCarousel3) - 첫 번째 세트 너비 계산
-      const carousel3 = document.getElementById("promoCarousel3");
-      if (carousel3) {
-        // 첫 번째 아이템 6개의 너비 계산
-        const items3 = carousel3.querySelectorAll('.promotion-item');
-        if (items3.length >= 6) {
-          // gap 값 가져오기 (2rem을 px로 변환)
-          const computedStyle3 = window.getComputedStyle(carousel3);
-          const gapValue3 = computedStyle3.gap || '2rem';
-          const gapInPx3 = parseFloat(gapValue3) * (gapValue3.includes('rem') ? 16 : 1);
-          
-          let firstSetWidth3 = 0;
-          
-          // 첫 6개 아이템의 너비 + 5개 gap 계산
-          for (let i = 0; i < 6; i++) {
-            const item = items3[i];
-            const itemWidth = item.offsetWidth;
-            firstSetWidth3 += itemWidth;
-            if (i < 5) {
-              firstSetWidth3 += gapInPx3;
-            }
-          }
-          
-          // CSS 변수로 설정
-          carousel3.style.setProperty('--carousel-offset-3', `-${firstSetWidth3}px`);
-        }
-      }
-      
       // 개인 과목별 TA 질문수 그래프 애니메이션
       const personalKoreanQuestions = getUrlParameter("personalKoreanQuestions") || "0";
       const personalMathQuestions = getUrlParameter("personalMathQuestions") || "0";
@@ -1680,7 +1965,7 @@
           barElement.style.width = '0%';
         }
         if (labelElement) {
-          labelElement.textContent = new Intl.NumberFormat('ko-KR').format(parseInt(subject.value) || 0);
+          labelElement.textContent = sharedNumberFormatter.format(0);
         }
       });
       
@@ -1696,19 +1981,21 @@
           if (barElement && labelElement) {
             setTimeout(() => {
               barElement.style.width = percentage + '%';
-              
-              // 숫자 카운팅 애니메이션
-              let currentValue = 0;
+
               const duration = 2000;
-              const increment = value / (duration / 50);
-              const counterInterval = setInterval(() => {
-                currentValue += increment;
-                if (currentValue >= value) {
-                  currentValue = value;
-                  clearInterval(counterInterval);
+              const start = performance.now();
+
+              const step = (timestamp) => {
+                const progress = Math.min((timestamp - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(value * eased);
+                labelElement.textContent = sharedNumberFormatter.format(current);
+                if (progress < 1) {
+                  requestAnimationFrame(step);
                 }
-                labelElement.textContent = new Intl.NumberFormat('ko-KR').format(Math.floor(currentValue));
-              }, 50);
+              };
+
+              requestAnimationFrame(step);
             }, index * 200);
           }
         });
@@ -1736,7 +2023,7 @@
               personalAnimated = false;
             }
           });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.3, rootMargin: "0px 0px -30%" });
         
         personalObserver.observe(personalSubjectCard);
       }
@@ -1767,7 +2054,7 @@
           barElement.style.height = '0%';
         }
         if (valueElement) {
-          valueElement.textContent = new Intl.NumberFormat('ko-KR').format(parseInt(subject.value) || 0);
+          valueElement.textContent = sharedNumberFormatter.format(0);
         }
       });
       
@@ -1783,19 +2070,21 @@
           if (barElement && valueElement) {
             setTimeout(() => {
               barElement.style.height = percentage + '%';
-              
-              // 숫자 카운팅 애니메이션
-              let currentValue = 0;
+
               const duration = 2000;
-              const increment = value / (duration / 50);
-              const counterInterval = setInterval(() => {
-                currentValue += increment;
-                if (currentValue >= value) {
-                  currentValue = value;
-                  clearInterval(counterInterval);
+              const start = performance.now();
+
+              const step = (timestamp) => {
+                const progress = Math.min((timestamp - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(value * eased);
+                valueElement.textContent = sharedNumberFormatter.format(current);
+                if (progress < 1) {
+                  requestAnimationFrame(step);
                 }
-                valueElement.textContent = new Intl.NumberFormat('ko-KR').format(Math.floor(currentValue));
-              }, 50);
+              };
+
+              requestAnimationFrame(step);
             }, index * 200);
           }
         });
@@ -1823,9 +2112,78 @@
               problemAnimated = false;
             }
           });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.3, rootMargin: "0px 0px -30%" });
         
         problemObserver.observe(barChartCard);
+      }
+
+      const recordCardGroup = document.getElementById('record-card-group');
+      const recordStartCard = document.getElementById('record-card-start');
+      const recordTimelineLine = document.getElementById('record-timeline-line');
+      const recordEndCard = document.getElementById('record-card-end');
+      if (recordCardGroup && recordStartCard && recordTimelineLine && recordEndCard) {
+        let recordAnimationTriggered = false;
+        let recordLineStarted = false;
+
+        const triggerRecordAnimation = () => {
+          if (recordAnimationTriggered) return;
+          recordAnimationTriggered = true;
+          recordStartCard.classList.add('is-visible');
+        };
+
+        recordStartCard.addEventListener('animationend', (event) => {
+          if (!recordLineStarted && event.animationName === 'recordCardPop') {
+            recordLineStarted = true;
+            requestAnimationFrame(() => {
+              recordTimelineLine.classList.add('is-drawn');
+            });
+          }
+        });
+
+        recordTimelineLine.addEventListener('transitionend', (event) => {
+          if (event.propertyName === 'transform' && recordLineStarted) {
+            recordEndCard.classList.add('is-visible');
+          }
+        });
+
+        const recordObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              triggerRecordAnimation();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.35, rootMargin: '0px 0px -30%' });
+
+        recordObserver.observe(recordCardGroup);
+      }
+
+      const serviceCards = document.querySelectorAll('.service-card');
+      if (serviceCards.length) {
+        const serviceCardObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.25, rootMargin: "0px 0px -30%" });
+
+        serviceCards.forEach(card => serviceCardObserver.observe(card));
+      }
+
+      const owlBadgeItems = document.querySelectorAll('.owl-badge-item');
+      if (owlBadgeItems.length) {
+        const owlBadgeObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2, rootMargin: "0px 0px -30%" });
+
+        owlBadgeItems.forEach(item => owlBadgeObserver.observe(item));
       }
     });
 
