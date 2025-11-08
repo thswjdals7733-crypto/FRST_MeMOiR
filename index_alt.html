@@ -162,26 +162,22 @@
 
     .record-card {
       opacity: 0;
-      transform: scale(0.9) translateY(16px);
+      transform: translateY(12px);
       will-change: transform, opacity;
     }
 
     .record-card.is-visible {
-      animation: recordCardPop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation: recordCardFade 0.6s ease-out forwards;
     }
 
-    @keyframes recordCardPop {
+    @keyframes recordCardFade {
       0% {
         opacity: 0;
-        transform: scale(0.9) translateY(16px);
-      }
-      55% {
-        opacity: 1;
-        transform: scale(1.05) translateY(-6px);
+        transform: translateY(12px);
       }
       100% {
         opacity: 1;
-        transform: scale(1) translateY(0);
+        transform: translateY(0);
       }
     }
     .timeline-connector {
@@ -925,7 +921,7 @@
                 <div class="bar-value" id="research1ProblemsValue" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--c-point);">0</div>
               </div>
             </div>
-            <div class="bar-label" id="research1Label">탐구1</div>
+            <div class="bar-label" id="research1Label">탐1</div>
           </div>
           
           <div class="bar-chart-item">
@@ -934,7 +930,7 @@
                 <div class="bar-value" id="research2ProblemsValue" style="position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--c-point);">0</div>
               </div>
             </div>
-            <div class="bar-label" id="research2Label">탐구2</div>
+            <div class="bar-label" id="research2Label">탐2</div>
           </div>
         </div>
       </div>
@@ -1273,21 +1269,21 @@
       const research2LabelElement = document.getElementById("research2Label");
       const personalResearch1LabelElement = document.getElementById("personalResearch1Label");
       const personalResearch2LabelElement = document.getElementById("personalResearch2Label");
-      if (research1LabelParam) {
-        if (research1LabelElement) {
-          research1LabelElement.textContent = research1LabelParam;
-        }
-        if (personalResearch1LabelElement) {
-          personalResearch1LabelElement.textContent = research1LabelParam;
-        }
+
+      const research1LabelText = research1LabelParam || "탐1";
+      const research2LabelText = research2LabelParam || "탐2";
+
+      if (research1LabelElement) {
+        research1LabelElement.textContent = research1LabelText;
       }
-      if (research2LabelParam) {
-        if (research2LabelElement) {
-          research2LabelElement.textContent = research2LabelParam;
-        }
-        if (personalResearch2LabelElement) {
-          personalResearch2LabelElement.textContent = research2LabelParam;
-        }
+      if (research2LabelElement) {
+        research2LabelElement.textContent = research2LabelText;
+      }
+      if (personalResearch1LabelElement) {
+        personalResearch1LabelElement.textContent = research1LabelText;
+      }
+      if (personalResearch2LabelElement) {
+        personalResearch2LabelElement.textContent = research2LabelText;
       }
       
       // 평균 하원 시각
@@ -2027,7 +2023,7 @@
         };
 
         recordStartCard.addEventListener('animationend', (event) => {
-          if (!recordLineStarted && event.animationName === 'recordCardPop') {
+          if (!recordLineStarted && event.animationName === 'recordCardFade') {
             recordLineStarted = true;
             requestAnimationFrame(() => {
               recordTimelineLine.classList.add('is-drawn');
