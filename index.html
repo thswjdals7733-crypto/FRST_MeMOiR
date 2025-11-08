@@ -647,17 +647,46 @@
     /* -----------------------------
        SERVICE CARD STYLES
     ----------------------------- */
+    .service-card-scroll {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      padding: 0 1rem;
+      margin: 3rem 0;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .service-card-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .service-card-scroll::-webkit-scrollbar-track {
+      background: #F7FAFC;
+      border-radius: 3px;
+    }
+
+    .service-card-scroll::-webkit-scrollbar-thumb {
+      background: #CBD5E0;
+      border-radius: 3px;
+    }
+
+    .service-card-scroll::-webkit-scrollbar-thumb:hover {
+      background: #A0AEC0;
+    }
+
     .service-card {
       background: #F0F2F5;
       border-radius: 1rem;
       padding: 2rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      margin: 2rem auto;
-      max-width: 100%;
       text-align: center;
-      opacity: 0;
-      transform: scale(0.92) translateY(20px);
-      will-change: transform, opacity;
+      min-width: 300px;
+      max-width: 300px;
+      flex: 0 0 300px;
+      opacity: 1;
+      transform: none;
+      will-change: auto;
     }
     
     .service-card-title {
@@ -676,22 +705,7 @@
     }
 
     .service-card.is-visible {
-      animation: serviceCardPop 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    @keyframes serviceCardPop {
-      0% {
-        opacity: 0;
-        transform: scale(0.92) translateY(24px);
-      }
-      60% {
-        opacity: 1;
-        transform: scale(1.04) translateY(0);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
+      animation: none;
     }
     
     /* -----------------------------
@@ -1049,8 +1063,13 @@
       </p>
       
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        칠판 위 판서와 노트 위 필기,<br>
+        집중과 열기가 뒤섞인 그 자리에서<br>
+        <span id="student-name-classroom" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님은 강의를 들으며 배움을 쌓아 왔습니다.
+      </p>
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
         그렇게 강의를 들은 시간<br>
-        총 <span id="total-classroom-hours" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>.<span id="student-name-classroom" style="display:none;">--</span>
+        총 <span id="total-classroom-hours" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>.
       </p>
 
       <h2 class="k-header" style="text-align: center; margin: 6.5em 0 0;">
@@ -1161,31 +1180,33 @@
         시대인재는 앞으로도..
       </h2>
 
-      <!-- 애프터팩 -->
-      <div class="service-card" style="margin-top: 3rem;">
-        <h2 class="service-card-title">애프터팩</h2>
-        <p class="service-card-body">
-          2026학년도 정시를 위한 핵심 정보, 그리고 입시 그 이후 이야기까지.<br>
-          수능이 끝난 이후에 필요한 내용을 한껏 담아 여러분들께 전합니다.
-        </p>
-      </div>
+      <div class="service-card-scroll">
+        <!-- 애프터팩 -->
+        <div class="service-card">
+          <h2 class="service-card-title">애프터팩</h2>
+          <p class="service-card-body">
+            2026학년도 정시를 위한 핵심 정보, 그리고 입시 그 이후 이야기까지.<br>
+            수능이 끝난 이후에 필요한 내용을 한껏 담아 여러분들께 전합니다.
+          </p>
+        </div>
 
-      <!-- 가채점 상담 -->
-      <div class="service-card">
-        <h2 class="service-card-title">가채점 상담</h2>
-        <p class="service-card-body">
-          수능 직후, 가채점 결과를 바탕으로 학생의 성적을 분석하여<br>
-          논술 응시 여부에 대해 빠르게 알려드립니다.
-        </p>
-      </div>
+        <!-- 가채점 상담 -->
+        <div class="service-card">
+          <h2 class="service-card-title">가채점 상담</h2>
+          <p class="service-card-body">
+            수능 직후, 가채점 결과를 바탕으로 학생의 성적을 분석하여<br>
+            논술 응시 여부에 대해 빠르게 알려드립니다.
+          </p>
+        </div>
 
-      <!-- 정시 컨설팅 -->
-      <div class="service-card">
-        <h2 class="service-card-title">정시 컨설팅</h2>
-        <p class="service-card-body">
-          재원생 모두가 맞춤형 컨설팅을 통해 최적 이상의 대학과 학과를 선택할 수 있도록,<br>
-          오직 시대인재N 최상의 컨설턴트가 끝까지 입시의 마무리를 성공적으로 매듭 짓겠습니다.
-        </p>
+        <!-- 정시 컨설팅 -->
+        <div class="service-card">
+          <h2 class="service-card-title">정시 컨설팅</h2>
+          <p class="service-card-body">
+            재원생 모두가 맞춤형 컨설팅을 통해 최적 이상의 대학과 학과를 선택할 수 있도록,<br>
+            오직 시대인재N 최상의 컨설턴트가 끝까지 입시의 마무리를 성공적으로 매듭 짓겠습니다.
+          </p>
+        </div>
       </div>
 
       <p id="final-message" class="k-body" style="text-align: center; margin: 0; padding-top: 3rem; padding-bottom: 50vh;">
@@ -2151,20 +2172,6 @@
         }, { threshold: 0.35, rootMargin: '0px 0px -30%' });
 
         recordObserver.observe(recordCardGroup);
-      }
-
-      const serviceCards = document.querySelectorAll('.service-card');
-      if (serviceCards.length) {
-        const serviceCardObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.25, rootMargin: "0px 0px -30%" });
-
-        serviceCards.forEach(card => serviceCardObserver.observe(card));
       }
 
       const owlBadgeItems = document.querySelectorAll('.owl-badge-item');
