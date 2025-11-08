@@ -689,6 +689,17 @@
       will-change: auto;
     }
     
+    .final-gradient-spacer {
+      height: 14rem;
+      background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(2, 86, 240, 0.44) 30%,
+        rgba(2, 86, 240, 0.26) 60%,
+        rgba(255, 255, 255, 1) 100%
+      );
+    }
+
     .service-card-title {
       font-size: var(--fs-subtitle-large);
       font-weight: var(--fw-light);
@@ -1173,6 +1184,10 @@
       <h2 class="k-header" style="text-align: center; margin: 6.5em 0 0;">
         올해를 빛낸 부엉이 여러분!
       </h2>
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 1rem;">
+        수고한 여러분에게 배지를 수여합니다!<br>
+        <span id="student-name-owlbadge" style="color: var(--c-text-main); font-weight: var(--fw-bold);">--</span>님은 이런 부엉이였어요.
+      </p>
 
       <div class="owl-badge-cards-container"></div>
 
@@ -1203,18 +1218,22 @@
         <div class="service-card">
           <h2 class="service-card-title">정시 컨설팅</h2>
           <p class="service-card-body">
-            재원생 모두가 맞춤형 컨설팅을 통해 최적 이상의 대학과 학과를 선택할 수 있도록,<br>
-            오직 시대인재N 최상의 컨설턴트가 끝까지 입시의 마무리를 성공적으로 매듭 짓겠습니다.
+            재원생 모두 맞춤형 컨설팅을 통해 최적 이상의 결과를 낼 수 있도록,<br>
+            시대인재N 최상의 컨설턴트가 끝까지 입시를 성공적으로 매듭 짓겠습니다.
           </p>
         </div>
       </div>
 
-      <p id="final-message" class="k-body" style="text-align: center; margin: 0; padding-top: 3rem; padding-bottom: 50vh;">
+      <p id="final-message" class="k-body" style="text-align: center; margin: 0; padding-top: 3rem; padding-bottom: 3rem;">
         <span class="k-body" style="font-weight: var(--fw-bold);">11월 13일 목요일</span>,<br><br>
         일 년간 여러분이 시대인재에서 채워온 시간을 믿으며<br>
         스스로에 대한 확신을 갖고<br>
         당당한 발걸음을 내딛길 바랍니다.<br>
-        시대인재는 여러분의 여정을 끝까지 함께 하겠습니다.
+        <br>
+        시대인재는 여러분의 여정을 끝까지 함께 하겠습니다.<br><br><br><br><br><br>
+      </p>
+      <p class="k-body" style="text-align: center; margin: 0; padding: 1rem 0 2rem 0; font-size: var(--fs-caption); color: rgba(34, 45, 64, 0.7);">
+        ©FRST_UX_Ci·Sn·Nw
       </p>
     </div>
   </div>
@@ -1302,7 +1321,8 @@
         document.getElementById("student-name-classroom"),
         document.getElementById("student-name-checkout-note"),
         document.getElementById("student-name-diligent"),
-        document.getElementById("student-name-focus-note")
+        document.getElementById("student-name-focus-note"),
+        document.getElementById("student-name-owlbadge")
       ];
       nameElements.forEach(el => {
         if (name && el) {
@@ -1450,19 +1470,19 @@
       const owlBadgeContainer = document.querySelector(".owl-badge-cards-container");
       if (owlBadgeContainer) {
         const owlBadgeData = {
-          GoldOwl: { title: "황금 부엉이", description: `<span class="k-note">올해를 빛낸 챔피언</span>` },
-          EarlyOwl: { title: "얼리버드 부엉이", description: `새소리와 함께 맞이한 새벽<br><span style="font-size:12px;">주로 07:10 이전에 등원하셨어요!</span>` },
-          NightOwl: { title: "심야 부엉이", description: `밤이 깊어도 식지 않는 열정<br><span style="font-size:12px;">주로 22:50 이후에 하원하셨어요!</span>` },
-          MolipOwl: { title: "몰입 부엉이", description: `집중 모드에 진입한 순간, 세상은 일시정지.<br><span style="font-size:12px;">3528명이 함께 이 배지를 받았어요.</span>` },
-          KoreanOwl: { title: "국어 부엉이", description: `나랏말싸미…<br><span style="font-size:12px;">1435명이 함께 이 배지를 받았어요.</span>` },
-          MathOwl: { title: "수학 부엉이", description: `계산이 멈추지 않는 탓일까<br><span style="font-size:12px;">559명이 함께 이 배지를 받았어요.</span>` },
-          EnglishOwl: { title: "영어 부엉이", description: `에이 비 시대인재<br><span style="font-size:12px;">869명이 함께 이 배지를 받았어요.</span>` },
+          GoldOwl: { title: "황금 부엉이", description: `<span style="font-size: var(--fs-body);">올해를 빛낸 챔피언</span>` },
+          EarlyOwl: { title: "얼리버드 부엉이", description: `새소리와 함께 맞이한 새벽<br><span class="k-note">주로 07:10 이전에 등원하셨어요!</span>` },
+          NightOwl: { title: "심야 부엉이", description: `밤이 깊어도 식지 않는 열정<br><span class="k-note">주로 22:50 이후에 하원하셨어요!</span>` },
+          MolipOwl: { title: "몰입 부엉이", description: `집중 모드에 진입한 순간, 세상은 일시정지.<br><span class="k-note">3528명이 함께 이 배지를 받았어요.</span>` },
+          KoreanOwl: { title: "국어 부엉이", description: `나랏말싸미…<br><span class="k-note">1435명이 함께 이 배지를 받았어요.</span>` },
+          MathOwl: { title: "수학 부엉이", description: `계산이 멈추지 않는 탓일까<br><span class="k-note">559명이 함께 이 배지를 받았어요.</span>` },
+          EnglishOwl: { title: "영어 부엉이", description: `에이 비 시대인재<br><span class="k-note">869명이 함께 이 배지를 받았어요.</span>` },
           SungsilOwl: { title: "성실 부엉이", description: "매일매일 꾸준히" },
-          SheepOwl: { title: "문풀 부엉이", description: `풀고 풀고 또 풀고<br><span style="font-size:12px;">533명이 함께 이 배지를 받았어요.</span>` },
-          ScienceOwl: { title: "과탐 부엉이", description: `I Like Science<br><span style="font-size:12px;">1838명이 함께 이 배지를 받았어요.</span>` },
-          SocialOwl: { title: "사탐 부엉이", description: `넓은 세상을 바라보는 눈<br><span style="font-size:12px;">88명이 함께 이 배지를 받았어요.</span>` },
+          SheepOwl: { title: "문풀 부엉이", description: `더이상 풀어낼 문제가 없다.<br>이미 다 풀었으니까,<br><span class="k-note">533명이 함께 이 배지를 받았어요.</span>` },
+          ScienceOwl: { title: "과탐 부엉이", description: `I Like Science<br><span class="k-note">1838명이 함께 이 배지를 받았어요.</span>` },
+          SocialOwl: { title: "사탐 부엉이", description: `넓은 세상을 바라보는 눈<br><span class="k-note">88명이 함께 이 배지를 받았어요.</span>` },
           EverydayOwl: { title: "매일의 부엉이", description: "꾸준함을 노래하다" },
-          QuestionOwl: { title: "질문 부엉이", description: `끝없는 지식 탐구<br><span style="font-size:12px;">552명이 함께 이 배지를 받았어요.</span>` }
+          QuestionOwl: { title: "질문 부엉이", description: `끝없는 지식 탐구<br><span class="k-note">552명이 함께 이 배지를 받았어요.</span>` }
         };
 
         const defaultOwls = ["GoldOwl", "EarlyOwl", "NightOwl"];
