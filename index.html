@@ -640,59 +640,16 @@
       padding: 2rem 1.5rem;
       margin: 2rem auto 0;
       max-width: 100%;
-    }
-    
-    .monthly-question-list {
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      justify-content: center;
     }
     
-    .monthly-question-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .monthly-question-month {
-      font-size: var(--fs-body);
-      font-weight: var(--fw-light);
-      color: var(--c-text-main);
-      width: 3.5rem;
-    }
-    
-    .monthly-question-bar-wrapper {
-      flex: 1;
-      height: 16px;
-      background: #E5E7EB;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-    
-    .monthly-question-bar {
-      height: 100%;
-      width: 0%;
-      background: var(--c-point);
-      border-radius: 999px;
-      transition: width 1.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    
-    .monthly-question-value {
-      font-size: var(--fs-body);
-      font-weight: var(--fw-bold);
-      color: var(--c-point);
-      min-width: 4.5rem;
-      text-align: right;
-    }
-    
-    @media (max-width: 480px) {
-      .monthly-question-month {
-        width: 3rem;
-      }
-      
-      .monthly-question-value {
-        min-width: 3.5rem;
-      }
+    .monthly-questions-chart canvas {
+      width: calc(100% - 1.5rem);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      transform: none;
     }
 
     /* -----------------------------
@@ -1046,15 +1003,29 @@
       <div class="promotion-section" style="margin-top: 2rem;">
         <div class="promotion-carousel-wrapper">
           <div class="promotion-carousel-track" id="promoCarousel2">
-            <div class="promotion-item"><img src="./AFTERPACK.png" alt="AFTERPACK"></div>
-            <div class="promotion-item"><img src="./MAGAZINE.png" alt="MAGAZINE"></div>
-            <div class="promotion-item"><img src="./HANGHAE.png" alt="항해일지"></div>
-            <div class="promotion-item"><img src="./VOYAGERR.png" alt="보이저레터"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/AfterPack.png" alt="AfterPack"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/MasterPack.png" alt="MasterPack"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/Mz 1.png" alt="Mz 1"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/Mz 2.png" alt="Mz 2"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/MZ_g 1.png" alt="MZ_g 1"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/MZ_g 2.png" alt="MZ_g 2"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/VL 2.png" alt="VL 2"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/VL 3.png" alt="VL 3"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/Sail 1.png" alt="Sail 1"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/Sail 2.png" alt="Sail 2"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/Sail 3.png" alt="Sail 3"></div>
             <!-- Duplicate for seamless loop -->
-            <div class="promotion-item"><img src="./AFTERPACK.png" alt="AFTERPACK"></div>
-            <div class="promotion-item"><img src="./MAGAZINE.png" alt="MAGAZINE"></div>
-            <div class="promotion-item"><img src="./HANGHAE.png" alt="항해일지"></div>
-            <div class="promotion-item"><img src="./VOYAGERR.png" alt="보이저레터"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/AfterPack.png" alt="AfterPack"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/MasterPack.png" alt="MasterPack"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/Mz 1.png" alt="Mz 1"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/Mz 2.png" alt="Mz 2"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/MZ_g 1.png" alt="MZ_g 1"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/MZ_g 2.png" alt="MZ_g 2"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/VL 2.png" alt="VL 2"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/VL 3.png" alt="VL 3"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/Sail 1.png" alt="Sail 1"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/Sail 2.png" alt="Sail 2"></div>
+            <div class="promotion-item"><img src="./시그니처이미지/Sail 3.png" alt="Sail 3"></div>
           </div>
         </div>
       </div>
@@ -1073,71 +1044,17 @@
         궁금증으로 가득 찬 한 해였습니다.<br>
         질문을 통해 새로운 지식을 배우고,<br>
         그렇게 배운 지식들이 모여 시대인재에서의<br>
-        하루하루를 채워갔습니다.<br><br>
-        그렇게 쌓인 질문의 수,<br>
-        총 <span id="total-all-ta-questions" class="k-num" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>.
+        하루하루를 채워갔습니다.
       </p>
       
       <div class="monthly-questions-chart" id="monthlyQuestionsChart">
-        <div class="monthly-question-list">
-          <div class="monthly-question-row" data-value="8911">
-            <span class="monthly-question-month">3월</span>
-            <div class="monthly-question-bar-wrapper">
-              <div class="monthly-question-bar"></div>
-            </div>
-            <span class="monthly-question-value">0</span>
-          </div>
-          <div class="monthly-question-row" data-value="17742">
-            <span class="monthly-question-month">4월</span>
-            <div class="monthly-question-bar-wrapper">
-              <div class="monthly-question-bar"></div>
-            </div>
-            <span class="monthly-question-value">0</span>
-          </div>
-          <div class="monthly-question-row" data-value="21636">
-            <span class="monthly-question-month">5월</span>
-            <div class="monthly-question-bar-wrapper">
-              <div class="monthly-question-bar"></div>
-            </div>
-            <span class="monthly-question-value">0</span>
-          </div>
-          <div class="monthly-question-row" data-value="18466">
-            <span class="monthly-question-month">6월</span>
-            <div class="monthly-question-bar-wrapper">
-              <div class="monthly-question-bar"></div>
-            </div>
-            <span class="monthly-question-value">0</span>
-          </div>
-          <div class="monthly-question-row" data-value="29204">
-            <span class="monthly-question-month">7월</span>
-            <div class="monthly-question-bar-wrapper">
-              <div class="monthly-question-bar"></div>
-            </div>
-            <span class="monthly-question-value">0</span>
-          </div>
-          <div class="monthly-question-row" data-value="25856">
-            <span class="monthly-question-month">8월</span>
-            <div class="monthly-question-bar-wrapper">
-              <div class="monthly-question-bar"></div>
-            </div>
-            <span class="monthly-question-value">0</span>
-          </div>
-          <div class="monthly-question-row" data-value="24801">
-            <span class="monthly-question-month">9월</span>
-            <div class="monthly-question-bar-wrapper">
-              <div class="monthly-question-bar"></div>
-            </div>
-            <span class="monthly-question-value">0</span>
-          </div>
-          <div class="monthly-question-row" data-value="25203">
-            <span class="monthly-question-month">10월</span>
-            <div class="monthly-question-bar-wrapper">
-              <div class="monthly-question-bar"></div>
-            </div>
-            <span class="monthly-question-value">0</span>
-          </div>
-        </div>
+        <canvas id="monthlyQuestionsCanvas" width="800" height="320"></canvas>
       </div>
+      
+      <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
+        그렇게 쌓인 질문의 수,<br>
+        총 <span id="total-all-ta-questions" class="k-num" style="color: var(--c-point); font-weight: var(--fw-bold);">--</span>.
+      </p>
       
       <p class="k-body" style="text-align: center; margin: 0; padding-top: 2rem;">
         수많은 펜 소리와 숨죽인 긴장들이 쌓여,<br>
@@ -1239,6 +1156,15 @@
       return urlParams.get(name);
     }
 
+    const formatWithCommas = (value) => {
+      if (value == null) return "";
+      return String(value).replace(/\d{4,}(?:\.\d+)?/g, match => {
+        const numberValue = Number(match);
+        if (Number.isNaN(numberValue)) return match;
+        return new Intl.NumberFormat("ko-KR").format(numberValue);
+      });
+    };
+
     // 파라미터 값 설정
     window.addEventListener("DOMContentLoaded", () => {
       // 첫 등원일 (카드)
@@ -1314,91 +1240,91 @@
       const totalDays = getUrlParameter("totalDays");
       const totalDaysElement = document.getElementById("total-days");
       if (totalDays && totalDaysElement) {
-        totalDaysElement.textContent = totalDays;
+        totalDaysElement.textContent = formatWithCommas(totalDays);
       }
       
       // 총 질문수
       const totalQuestions = getUrlParameter("totalQuestions");
       const totalQuestionsElement = document.getElementById("total-questions");
       if (totalQuestions && totalQuestionsElement) {
-        totalQuestionsElement.textContent = totalQuestions;
+        totalQuestionsElement.textContent = formatWithCommas(totalQuestions);
       }
       
       // 라이브러리 총 잔류시간
       const totalLibraryHours = getUrlParameter("totalLibraryHours");
       const totalLibraryHoursElement = document.getElementById("total-library-hours");
       if (totalLibraryHours && totalLibraryHoursElement) {
-        totalLibraryHoursElement.textContent = totalLibraryHours;
+        totalLibraryHoursElement.textContent = formatWithCommas(totalLibraryHours);
       }
       
       // 모의고사 응시 총 회차 수
       const totalMockTests = getUrlParameter("totalMockTests");
       const totalMockTestsElement = document.getElementById("total-mock-tests");
       if (totalMockTests && totalMockTestsElement) {
-        totalMockTestsElement.textContent = totalMockTests;
+        totalMockTestsElement.textContent = formatWithCommas(totalMockTests);
       }
       
       // 개인 푼 문제 수
       const totalPersonalProblems = getUrlParameter("totalPersonalProblems");
       const totalPersonalProblemsElement = document.getElementById("total-personal-problems");
       if (totalPersonalProblems && totalPersonalProblemsElement) {
-        totalPersonalProblemsElement.textContent = totalPersonalProblems;
+        totalPersonalProblemsElement.textContent = formatWithCommas(totalPersonalProblems);
       }
       
       // 평균 몰입도
       const avgFocusScore = getUrlParameter("avgFocusScore");
       const avgFocusScoreElement = document.getElementById("avg-focus-score");
       if (avgFocusScore && avgFocusScoreElement) {
-        avgFocusScoreElement.textContent = avgFocusScore;
+        avgFocusScoreElement.textContent = formatWithCommas(avgFocusScore);
       }
       
       // 수능 배수
       const examMultiplier = getUrlParameter("examMultiplier");
       const examMultiplierElement = document.getElementById("exam-multiplier");
       if (examMultiplier && examMultiplierElement) {
-        examMultiplierElement.textContent = examMultiplier;
+        examMultiplierElement.textContent = formatWithCommas(examMultiplier);
       }
       
       // 강의실 총 잔류시간
       const totalClassroomHours = getUrlParameter("totalClassroomHours");
       const totalClassroomHoursElement = document.getElementById("total-classroom-hours");
       if (totalClassroomHours && totalClassroomHoursElement) {
-        totalClassroomHoursElement.textContent = totalClassroomHours;
+        totalClassroomHoursElement.textContent = formatWithCommas(totalClassroomHours);
       }
       
       // 평균 하원 시각
       const avgCheckoutTime = getUrlParameter("avgCheckoutTime");
       const avgCheckoutTimeElement = document.getElementById("avg-checkout-time");
       if (avgCheckoutTime && avgCheckoutTimeElement) {
-        avgCheckoutTimeElement.textContent = avgCheckoutTime;
+        avgCheckoutTimeElement.textContent = formatWithCommas(avgCheckoutTime);
       }
       
       // TA 전체 학생 질문수
       const totalAllTAQuestions = getUrlParameter("totalAllTAQuestions");
       const totalAllTAQuestionsElement = document.getElementById("total-all-ta-questions");
       if (totalAllTAQuestions && totalAllTAQuestionsElement) {
-        totalAllTAQuestionsElement.textContent = totalAllTAQuestions;
+        totalAllTAQuestionsElement.textContent = formatWithCommas(totalAllTAQuestions);
       }
       
       // 라이브러리 총 잔류시간 (전체 학생)
       const totalAllLibraryHours = getUrlParameter("totalAllLibraryHours");
       const totalAllLibraryHoursElement = document.getElementById("total-all-library-hours");
       if (totalAllLibraryHours && totalAllLibraryHoursElement) {
-        totalAllLibraryHoursElement.textContent = totalAllLibraryHours;
+        totalAllLibraryHoursElement.textContent = formatWithCommas(totalAllLibraryHours);
       }
       
       // 전체 학생이 푼 총 문제수
       const totalAllProblems = getUrlParameter("totalAllProblems");
       const totalAllProblemsElement = document.getElementById("total-all-problems");
       if (totalAllProblems && totalAllProblemsElement) {
-        totalAllProblemsElement.textContent = totalAllProblems;
+        totalAllProblemsElement.textContent = formatWithCommas(totalAllProblems);
       }
       
       // 강의실 총 잔류시간 (전체 학생)
       const totalAllClassroomHours = getUrlParameter("totalAllClassroomHours");
       const totalAllClassroomHoursElement = document.getElementById("total-all-classroom-hours");
       if (totalAllClassroomHours && totalAllClassroomHoursElement) {
-        totalAllClassroomHoursElement.textContent = totalAllClassroomHours;
+        totalAllClassroomHoursElement.textContent = formatWithCommas(totalAllClassroomHours);
       }
 
       // 올해를 빛낸 부엉이 여러분 섹션
@@ -1490,54 +1416,159 @@
         });
       }
 
-      // 월별 질문수 그래프
+      // 월별 질문수 그래프 (꺾은선)
       const monthlyChartElement = document.getElementById("monthlyQuestionsChart");
-      if (monthlyChartElement) {
-        const monthlyRows = monthlyChartElement.querySelectorAll(".monthly-question-row");
-        const monthlyValues = Array.from(monthlyRows, row => parseInt(row.dataset.value, 10) || 0);
-        const maxMonthlyValue = Math.max(...monthlyValues, 1);
+      const monthlyQuestionsCanvas = document.getElementById("monthlyQuestionsCanvas");
+      if (monthlyChartElement && monthlyQuestionsCanvas) {
+        const monthlyLabels = ["3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월"];
+        const monthlyValues = [8911, 17742, 21636, 18466, 29204, 25856, 24801, 25203];
+        const formatter = new Intl.NumberFormat("ko-KR");
+        let monthlyChartRendered = false;
+        let resizeListenerAttached = false;
 
-        // 초기 상태 설정
-        monthlyRows.forEach(row => {
-          const bar = row.querySelector(".monthly-question-bar");
-          const valueEl = row.querySelector(".monthly-question-value");
-          if (bar) {
-            bar.style.width = "0%";
+        const renderMonthlyQuestionsChart = () => {
+          const canvas = monthlyQuestionsCanvas;
+          const ctx = canvas.getContext("2d");
+          if (!ctx) return;
+
+          const parentWidth = Math.max(canvas.parentElement?.clientWidth || 0, 0);
+          const displayWidth = Math.max(parentWidth, 320);
+          const displayHeight = Math.max(Math.min(displayWidth * 0.5, 360), 240);
+          const dpr = window.devicePixelRatio || 1;
+
+          canvas.style.width = `${displayWidth}px`;
+          canvas.style.height = `${displayHeight}px`;
+          canvas.width = displayWidth * dpr;
+          canvas.height = displayHeight * dpr;
+
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          ctx.scale(dpr, dpr);
+          ctx.clearRect(0, 0, displayWidth, displayHeight);
+
+          const paddingLeft = 32;
+          const paddingRight = 32;
+          const paddingTop = 32;
+          const paddingBottom = 48;
+          const chartWidth = displayWidth - paddingLeft - paddingRight;
+          const chartHeight = displayHeight - paddingTop - paddingBottom;
+          const originX = paddingLeft;
+          const originY = paddingTop + chartHeight;
+
+          const minValue = Math.min(...monthlyValues);
+          const maxValue = Math.max(...monthlyValues);
+          const valuePadding = (maxValue - minValue) * 0.1 || maxValue * 0.1 || 1;
+          const chartMin = Math.max(0, minValue - valuePadding);
+          const chartMax = maxValue + valuePadding;
+          const valueRange = chartMax - chartMin || 1;
+          const ySteps = 4;
+
+          ctx.font = "12px 'Noto Sans KR', sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.strokeStyle = "#E5E7EB";
+          ctx.fillStyle = "#6B7280";
+          ctx.lineWidth = 1;
+          ctx.setLineDash([4, 4]);
+          for (let i = 0; i <= ySteps; i += 1) {
+            const ratio = i / ySteps;
+            const y = originY - chartHeight * ratio;
+            ctx.beginPath();
+            ctx.moveTo(originX, y);
+            ctx.lineTo(originX + chartWidth, y);
+            ctx.stroke();
           }
-          if (valueEl) {
-            valueEl.textContent = "0";
+          ctx.setLineDash([]);
+
+          const pointCount = monthlyValues.length;
+          const xStep = pointCount > 1 ? chartWidth / (pointCount - 1) : 0;
+          const points = monthlyValues.map((value, index) => {
+            const x = originX + xStep * index;
+            const y = originY - ((value - chartMin) / valueRange) * chartHeight;
+            return { x, y, value };
+          });
+
+          ctx.fillStyle = "#6B7280";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "top";
+          monthlyLabels.forEach((label, index) => {
+            const x = originX + xStep * index;
+            ctx.fillText(label, x, originY + 10);
+          });
+
+          if (points.length) {
+            const gradient = ctx.createLinearGradient(0, paddingTop, 0, originY);
+            gradient.addColorStop(0, "rgba(4, 89, 240, 0.18)");
+            gradient.addColorStop(1, "rgba(4, 89, 240, 0)");
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, originY);
+            points.forEach(point => ctx.lineTo(point.x, point.y));
+            ctx.lineTo(points[points.length - 1].x, originY);
+            ctx.closePath();
+            ctx.fill();
           }
-        });
 
-        const animateMonthlyQuestions = () => {
-          monthlyRows.forEach((row, index) => {
-            const value = parseInt(row.dataset.value, 10) || 0;
-            const bar = row.querySelector(".monthly-question-bar");
-            const valueEl = row.querySelector(".monthly-question-value");
-            const percentage = Math.max((value / maxMonthlyValue) * 100, 3);
-
-            if (bar) {
-              bar.style.transitionDelay = `${index * 0.08}s`;
-              bar.style.width = `${percentage}%`;
+          ctx.strokeStyle = "#0459F0";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          points.forEach((point, index) => {
+            if (index === 0) {
+              ctx.moveTo(point.x, point.y);
+            } else {
+              ctx.lineTo(point.x, point.y);
             }
+          });
+          ctx.stroke();
 
-            if (valueEl) {
-              valueEl.textContent = new Intl.NumberFormat("ko-KR").format(value);
-            }
+          ctx.fillStyle = "#0459F0";
+          ctx.strokeStyle = "#FFFFFF";
+          ctx.lineWidth = 2;
+          points.forEach(point => {
+            ctx.beginPath();
+            ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+          });
+
+          ctx.fillStyle = "#1F2937";
+          ctx.font = "11px 'Noto Sans KR', sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "bottom";
+          points.forEach(point => {
+            ctx.fillText(formatter.format(point.value), point.x, point.y - 8);
           });
         };
 
-        let monthlyAnimated = false;
-        const monthlyObserver = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting && !monthlyAnimated) {
-              monthlyAnimated = true;
-              animateMonthlyQuestions();
-            }
-          });
-        }, { threshold: 0.3 });
+        const ensureRender = () => {
+          renderMonthlyQuestionsChart();
+          if (!resizeListenerAttached) {
+            resizeListenerAttached = true;
+            window.addEventListener("resize", renderMonthlyQuestionsChart);
+          }
+        };
 
-        monthlyObserver.observe(monthlyChartElement);
+        if ("IntersectionObserver" in window) {
+          const monthlyObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting && !monthlyChartRendered) {
+                monthlyChartRendered = true;
+                ensureRender();
+              }
+            });
+          }, { threshold: 0.25 });
+
+          monthlyObserver.observe(monthlyChartElement);
+        } else {
+          ensureRender();
+        }
+
+        // 안전망: 500ms 후에도 렌더되지 않았다면 수동 실행
+        setTimeout(() => {
+          if (!monthlyChartRendered) {
+            monthlyChartRendered = true;
+            ensureRender();
+          }
+        }, 500);
       }
     });
     
@@ -1573,27 +1604,24 @@
       // 시그니처 발행 캐러셀 (promoCarousel2) - 첫 번째 세트 너비 계산
       const carousel2 = document.getElementById("promoCarousel2");
       if (carousel2) {
-        // 첫 번째 아이템 4개의 너비 계산
         const items2 = carousel2.querySelectorAll('.promotion-item');
-        if (items2.length >= 4) {
-          // gap 값 가져오기 (2rem을 px로 변환)
+        const baseCount2 = Math.max(Math.floor(items2.length / 2), 1);
+        if (items2.length >= baseCount2) {
           const computedStyle2 = window.getComputedStyle(carousel2);
           const gapValue2 = computedStyle2.gap || '2rem';
           const gapInPx2 = parseFloat(gapValue2) * (gapValue2.includes('rem') ? 16 : 1);
           
           let firstSetWidth2 = 0;
           
-          // 첫 4개 아이템의 너비 + 3개 gap 계산
-          for (let i = 0; i < 4; i++) {
+          for (let i = 0; i < baseCount2; i++) {
             const item = items2[i];
             const itemWidth = item.offsetWidth;
             firstSetWidth2 += itemWidth;
-            if (i < 3) {
+            if (i < baseCount2 - 1) {
               firstSetWidth2 += gapInPx2;
             }
           }
           
-          // CSS 변수로 설정
           carousel2.style.setProperty('--carousel-offset-2', `-${firstSetWidth2}px`);
         }
       }
