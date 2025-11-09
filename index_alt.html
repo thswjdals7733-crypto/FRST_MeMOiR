@@ -27,6 +27,14 @@
     *, *::before, *::after { box-sizing: border-box; }
     img, video, canvas, svg { max-width: 100%; height: auto; display: block; }
 
+    .glide-embed-container {
+      width: 100%;
+      max-width: 390px;
+      margin: 0 auto;
+      overflow-x: hidden;
+      position: relative;
+    }
+
     /* -----------------------------
        ROOT VARIABLES (Design Tokens)
     ----------------------------- */
@@ -760,9 +768,10 @@
 </head>
 
 <body>
-  <!-- 화면 스케일 구조 -->
-  <div class="embed-root">
-    <div class="embed-stage" id="stage">
+  <div class="glide-embed-container">
+    <!-- 화면 스케일 구조 -->
+    <div class="embed-root">
+      <div class="embed-stage" id="stage">
       <!-- 웹 제목 -->
       <h1 class="text-web-title" style="text-align: center; margin: 0; padding: 2rem 0; font-style: italic !important;">
         2025<br>memoir
@@ -1151,6 +1160,7 @@
         ©FRST_UX_Ci·Sn·Nw
       </p>
     </div>
+  </div>
   </div>
 
   <script>
