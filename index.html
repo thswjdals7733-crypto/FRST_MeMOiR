@@ -647,32 +647,13 @@
     /* -----------------------------
        SERVICE CARD STYLES
     ----------------------------- */
-    .service-card-scroll {
+    .service-card-list {
       display: flex;
-      gap: 1.25rem;
-      overflow-x: auto;
-      padding: 0 1rem;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
       margin: 3rem 0;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .service-card-scroll::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .service-card-scroll::-webkit-scrollbar-track {
-      background: #F7FAFC;
-      border-radius: 3px;
-    }
-
-    .service-card-scroll::-webkit-scrollbar-thumb {
-      background: #CBD5E0;
-      border-radius: 3px;
-    }
-
-    .service-card-scroll::-webkit-scrollbar-thumb:hover {
-      background: #A0AEC0;
+      width: 100%;
     }
 
     .service-card {
@@ -681,12 +662,35 @@
       padding: 2rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       text-align: center;
-      min-width: 300px;
+      width: 100%;
       max-width: 300px;
-      flex: 0 0 300px;
       opacity: 1;
       transform: none;
       will-change: auto;
+    }
+    
+    .service-card.service-popup {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+
+    .service-card.service-popup.is-visible {
+      animation: serviceCardPopup 0.7s cubic-bezier(0.25, 0.9, 0.3, 1.25) forwards;
+    }
+
+    @keyframes serviceCardPopup {
+      0% {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-6px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     .final-gradient-spacer {
@@ -1202,9 +1206,9 @@
         시대인재는 앞으로도..
       </h2>
 
-      <div class="service-card-scroll">
+      <div class="service-card-list" id="service-card-list">
         <!-- 애프터팩 -->
-        <div class="service-card">
+        <div class="service-card service-popup">
           <h2 class="service-card-title">애프터팩</h2>
           <p class="service-card-body">
             2026학년도 정시를 위한 핵심 정보, 그리고 입시 그 이후 이야기까지.<br>
@@ -1213,7 +1217,7 @@
         </div>
 
         <!-- 가채점 상담 -->
-        <div class="service-card">
+        <div class="service-card service-popup">
           <h2 class="service-card-title">가채점 상담</h2>
           <p class="service-card-body">
             수능 직후, 가채점 결과를 바탕으로 학생의 성적을 분석하여<br>
@@ -1222,7 +1226,7 @@
         </div>
 
         <!-- 정시 컨설팅 -->
-        <div class="service-card">
+        <div class="service-card service-popup">
           <h2 class="service-card-title">정시 컨설팅</h2>
           <p class="service-card-body">
             재원생 모두 맞춤형 컨설팅을 통해 최적 이상의 결과를 낼 수 있도록,<br>
@@ -1486,7 +1490,7 @@
           MathOwl: { title: "수학 부엉이", description: `계산이 멈추지 않는 탓일까<br><span class="k-note">559명이 함께 이 배지를 받았어요.</span>` },
           EnglishOwl: { title: "영어 부엉이", description: `에이 비 시대인재<br><span class="k-note">869명이 함께 이 배지를 받았어요.</span>` },
           SungsilOwl: { title: "성실 부엉이", description: "매일매일 꾸준히" },
-          SheepOwl: { title: "문풀 부엉이", description: `더이상 풀어낼 문제가 없다.<br>이미 다 풀었으니까,<br><span class="k-note">533명이 함께 이 배지를 받았어요.</span>` },
+          SheepOwl: { title: "문풀 부엉이", description: `더이상 풀어낼 문제가 없다.<br>이미 다 풀었으니까,<br><span class="k-note">530명이 함께 이 배지를 받았어요.</span>` },
           ScienceOwl: { title: "과탐 부엉이", description: `I Like Science<br><span class="k-note">1838명이 함께 이 배지를 받았어요.</span>` },
           SocialOwl: { title: "사탐 부엉이", description: `넓은 세상을 바라보는 눈<br><span class="k-note">88명이 함께 이 배지를 받았어요.</span>` },
           EverydayOwl: { title: "매일의 부엉이", description: "꾸준함을 노래하다" },
@@ -1983,6 +1987,24 @@
       initSeamlessCarousel("promoCarousel2", 32);
       initSeamlessCarousel("promoCarousel3", 34);
     });
+    
+      const serviceList = document.getElementById("service-card-list");
+      const serviceCards = serviceList ? serviceList.querySelectorAll(".service-card.service-popup") : [];
+      if (serviceList && serviceCards.length) {
+        serviceCards.forEach(card => card.classList.remove("is-visible"));
+        const serviceObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              serviceCards.forEach((card, index) => {
+                setTimeout(() => card.classList.add("is-visible"), index * 150);
+              });
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0, rootMargin: "0px 0px -40% 0px" });
+
+        serviceObserver.observe(serviceList);
+      }
     
       // 개인 과목별 TA 질문수 그래프 애니메이션
       const personalKoreanQuestions = getUrlParameter("personalKoreanQuestions") || "0";
